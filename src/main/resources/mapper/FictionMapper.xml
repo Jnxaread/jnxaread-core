@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnxaread.dao.FictionMapper">
+  <resultMap id="BaseResultMap" type="com.jnxaread.bean.Fiction">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="categoryId" jdbcType="INTEGER" property="categoryId" />
+    <result column="userId" jdbcType="INTEGER" property="userId" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="chapterCount" jdbcType="INTEGER" property="chapterCount" />
+    <result column="wordCount" jdbcType="INTEGER" property="wordCount" />
+    <result column="viewCount" jdbcType="BIGINT" property="viewCount" />
+    <result column="hided" jdbcType="BIT" property="hided" />
+    <result column="lockedContent" jdbcType="BIT" property="lockedContent" />
+    <result column="lockedComment" jdbcType="BIT" property="lockedComment" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, categoryId, userId, createTime, title, introduction, chapterCount, wordCount, 
+    viewCount, hided, lockedContent, lockedComment, deleted
+  </sql>
+  <select id="selectByExample" parameterType="com.jnxaread.bean.FictionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fiction
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fiction
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fiction
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jnxaread.bean.FictionExample">
+    delete from fiction
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jnxaread.bean.Fiction">
+    insert into fiction (id, categoryId, userId, 
+      createTime, title, introduction, 
+      chapterCount, wordCount, viewCount, 
+      hided, lockedContent, lockedComment, 
+      deleted)
+    values (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{chapterCount,jdbcType=INTEGER}, #{wordCount,jdbcType=INTEGER}, #{viewCount,jdbcType=BIGINT}, 
+      #{hided,jdbcType=BIT}, #{lockedContent,jdbcType=BIT}, #{lockedComment,jdbcType=BIT}, 
+      #{deleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Fiction">
+    insert into fiction
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="categoryId != null">
+        categoryId,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="chapterCount != null">
+        chapterCount,
+      </if>
+      <if test="wordCount != null">
+        wordCount,
+      </if>
+      <if test="viewCount != null">
+        viewCount,
+      </if>
+      <if test="hided != null">
+        hided,
+      </if>
+      <if test="lockedContent != null">
+        lockedContent,
+      </if>
+      <if test="lockedComment != null">
+        lockedComment,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterCount != null">
+        #{chapterCount,jdbcType=INTEGER},
+      </if>
+      <if test="wordCount != null">
+        #{wordCount,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        #{viewCount,jdbcType=BIGINT},
+      </if>
+      <if test="hided != null">
+        #{hided,jdbcType=BIT},
+      </if>
+      <if test="lockedContent != null">
+        #{lockedContent,jdbcType=BIT},
+      </if>
+      <if test="lockedComment != null">
+        #{lockedComment,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jnxaread.bean.FictionExample" resultType="java.lang.Long">
+    select count(*) from fiction
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update fiction
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.categoryId != null">
+        categoryId = #{record.categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        userId = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.introduction != null">
+        introduction = #{record.introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chapterCount != null">
+        chapterCount = #{record.chapterCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.wordCount != null">
+        wordCount = #{record.wordCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.viewCount != null">
+        viewCount = #{record.viewCount,jdbcType=BIGINT},
+      </if>
+      <if test="record.hided != null">
+        hided = #{record.hided,jdbcType=BIT},
+      </if>
+      <if test="record.lockedContent != null">
+        lockedContent = #{record.lockedContent,jdbcType=BIT},
+      </if>
+      <if test="record.lockedComment != null">
+        lockedComment = #{record.lockedComment,jdbcType=BIT},
+      </if>
+      <if test="record.deleted != null">
+        deleted = #{record.deleted,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update fiction
+    set id = #{record.id,jdbcType=INTEGER},
+      categoryId = #{record.categoryId,jdbcType=INTEGER},
+      userId = #{record.userId,jdbcType=INTEGER},
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      title = #{record.title,jdbcType=VARCHAR},
+      introduction = #{record.introduction,jdbcType=VARCHAR},
+      chapterCount = #{record.chapterCount,jdbcType=INTEGER},
+      wordCount = #{record.wordCount,jdbcType=INTEGER},
+      viewCount = #{record.viewCount,jdbcType=BIGINT},
+      hided = #{record.hided,jdbcType=BIT},
+      lockedContent = #{record.lockedContent,jdbcType=BIT},
+      lockedComment = #{record.lockedComment,jdbcType=BIT},
+      deleted = #{record.deleted,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Fiction">
+    update fiction
+    <set>
+      <if test="categoryId != null">
+        categoryId = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        userId = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterCount != null">
+        chapterCount = #{chapterCount,jdbcType=INTEGER},
+      </if>
+      <if test="wordCount != null">
+        wordCount = #{wordCount,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        viewCount = #{viewCount,jdbcType=BIGINT},
+      </if>
+      <if test="hided != null">
+        hided = #{hided,jdbcType=BIT},
+      </if>
+      <if test="lockedContent != null">
+        lockedContent = #{lockedContent,jdbcType=BIT},
+      </if>
+      <if test="lockedComment != null">
+        lockedComment = #{lockedComment,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Fiction">
+    update fiction
+    set categoryId = #{categoryId,jdbcType=INTEGER},
+      userId = #{userId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      title = #{title,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      chapterCount = #{chapterCount,jdbcType=INTEGER},
+      wordCount = #{wordCount,jdbcType=INTEGER},
+      viewCount = #{viewCount,jdbcType=BIGINT},
+      hided = #{hided,jdbcType=BIT},
+      lockedContent = #{lockedContent,jdbcType=BIT},
+      lockedComment = #{lockedComment,jdbcType=BIT},
+      deleted = #{deleted,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

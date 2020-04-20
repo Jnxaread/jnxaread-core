@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnxaread.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.jnxaread.bean.User">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="countryCode" jdbcType="VARCHAR" property="countryCode" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="authorityId" jdbcType="INTEGER" property="authorityId" />
+    <result column="bannedTopic" jdbcType="BIT" property="bannedTopic" />
+    <result column="bannedReply" jdbcType="BIT" property="bannedReply" />
+    <result column="bannedMessage" jdbcType="BIT" property="bannedMessage" />
+    <result column="bannedFiction" jdbcType="BIT" property="bannedFiction" />
+    <result column="bannedChapter" jdbcType="BIT" property="bannedChapter" />
+    <result column="bannedComment" jdbcType="BIT" property="bannedComment" />
+    <result column="locked" jdbcType="BIT" property="locked" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+    <result column="topicCount" jdbcType="INTEGER" property="topicCount" />
+    <result column="replyCount" jdbcType="INTEGER" property="replyCount" />
+    <result column="fictionCount" jdbcType="INTEGER" property="fictionCount" />
+    <result column="chapterCount" jdbcType="INTEGER" property="chapterCount" />
+    <result column="commentCount" jdbcType="INTEGER" property="commentCount" />
+    <result column="loginCount" jdbcType="INTEGER" property="loginCount" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="comeFrom" jdbcType="VARCHAR" property="comeFrom" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, account, password, username, countryCode, mobile, email, gender, authorityId, 
+    bannedTopic, bannedReply, bannedMessage, bannedFiction, bannedChapter, bannedComment, 
+    locked, deleted, topicCount, replyCount, fictionCount, chapterCount, commentCount, 
+    loginCount, createTime, photo, comeFrom, signature, introduction
+  </sql>
+  <select id="selectByExample" parameterType="com.jnxaread.bean.UserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.jnxaread.bean.UserExample">
+    delete from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jnxaread.bean.User">
+    insert into user (id, account, password, 
+      username, countryCode, mobile, 
+      email, gender, authorityId, 
+      bannedTopic, bannedReply, bannedMessage, 
+      bannedFiction, bannedChapter, bannedComment, 
+      locked, deleted, topicCount, 
+      replyCount, fictionCount, chapterCount, 
+      commentCount, loginCount, createTime, 
+      photo, comeFrom, signature, 
+      introduction)
+    values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{authorityId,jdbcType=INTEGER}, 
+      #{bannedTopic,jdbcType=BIT}, #{bannedReply,jdbcType=BIT}, #{bannedMessage,jdbcType=BIT}, 
+      #{bannedFiction,jdbcType=BIT}, #{bannedChapter,jdbcType=BIT}, #{bannedComment,jdbcType=BIT}, 
+      #{locked,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{topicCount,jdbcType=INTEGER}, 
+      #{replyCount,jdbcType=INTEGER}, #{fictionCount,jdbcType=INTEGER}, #{chapterCount,jdbcType=INTEGER}, 
+      #{commentCount,jdbcType=INTEGER}, #{loginCount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{photo,jdbcType=VARCHAR}, #{comeFrom,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, 
+      #{introduction,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="countryCode != null">
+        countryCode,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="authorityId != null">
+        authorityId,
+      </if>
+      <if test="bannedTopic != null">
+        bannedTopic,
+      </if>
+      <if test="bannedReply != null">
+        bannedReply,
+      </if>
+      <if test="bannedMessage != null">
+        bannedMessage,
+      </if>
+      <if test="bannedFiction != null">
+        bannedFiction,
+      </if>
+      <if test="bannedChapter != null">
+        bannedChapter,
+      </if>
+      <if test="bannedComment != null">
+        bannedComment,
+      </if>
+      <if test="locked != null">
+        locked,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="topicCount != null">
+        topicCount,
+      </if>
+      <if test="replyCount != null">
+        replyCount,
+      </if>
+      <if test="fictionCount != null">
+        fictionCount,
+      </if>
+      <if test="chapterCount != null">
+        chapterCount,
+      </if>
+      <if test="commentCount != null">
+        commentCount,
+      </if>
+      <if test="loginCount != null">
+        loginCount,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="comeFrom != null">
+        comeFrom,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="authorityId != null">
+        #{authorityId,jdbcType=INTEGER},
+      </if>
+      <if test="bannedTopic != null">
+        #{bannedTopic,jdbcType=BIT},
+      </if>
+      <if test="bannedReply != null">
+        #{bannedReply,jdbcType=BIT},
+      </if>
+      <if test="bannedMessage != null">
+        #{bannedMessage,jdbcType=BIT},
+      </if>
+      <if test="bannedFiction != null">
+        #{bannedFiction,jdbcType=BIT},
+      </if>
+      <if test="bannedChapter != null">
+        #{bannedChapter,jdbcType=BIT},
+      </if>
+      <if test="bannedComment != null">
+        #{bannedComment,jdbcType=BIT},
+      </if>
+      <if test="locked != null">
+        #{locked,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="topicCount != null">
+        #{topicCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyCount != null">
+        #{replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="fictionCount != null">
+        #{fictionCount,jdbcType=INTEGER},
+      </if>
+      <if test="chapterCount != null">
+        #{chapterCount,jdbcType=INTEGER},
+      </if>
+      <if test="commentCount != null">
+        #{commentCount,jdbcType=INTEGER},
+      </if>
+      <if test="loginCount != null">
+        #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="comeFrom != null">
+        #{comeFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jnxaread.bean.UserExample" resultType="java.lang.Long">
+    select count(*) from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update user
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.account != null">
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.countryCode != null">
+        countryCode = #{record.countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null">
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gender != null">
+        gender = #{record.gender,jdbcType=INTEGER},
+      </if>
+      <if test="record.authorityId != null">
+        authorityId = #{record.authorityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bannedTopic != null">
+        bannedTopic = #{record.bannedTopic,jdbcType=BIT},
+      </if>
+      <if test="record.bannedReply != null">
+        bannedReply = #{record.bannedReply,jdbcType=BIT},
+      </if>
+      <if test="record.bannedMessage != null">
+        bannedMessage = #{record.bannedMessage,jdbcType=BIT},
+      </if>
+      <if test="record.bannedFiction != null">
+        bannedFiction = #{record.bannedFiction,jdbcType=BIT},
+      </if>
+      <if test="record.bannedChapter != null">
+        bannedChapter = #{record.bannedChapter,jdbcType=BIT},
+      </if>
+      <if test="record.bannedComment != null">
+        bannedComment = #{record.bannedComment,jdbcType=BIT},
+      </if>
+      <if test="record.locked != null">
+        locked = #{record.locked,jdbcType=BIT},
+      </if>
+      <if test="record.deleted != null">
+        deleted = #{record.deleted,jdbcType=BIT},
+      </if>
+      <if test="record.topicCount != null">
+        topicCount = #{record.topicCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyCount != null">
+        replyCount = #{record.replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.fictionCount != null">
+        fictionCount = #{record.fictionCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.chapterCount != null">
+        chapterCount = #{record.chapterCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.commentCount != null">
+        commentCount = #{record.commentCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.loginCount != null">
+        loginCount = #{record.loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.photo != null">
+        photo = #{record.photo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comeFrom != null">
+        comeFrom = #{record.comeFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signature != null">
+        signature = #{record.signature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.introduction != null">
+        introduction = #{record.introduction,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update user
+    set id = #{record.id,jdbcType=INTEGER},
+      account = #{record.account,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
+      countryCode = #{record.countryCode,jdbcType=VARCHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=INTEGER},
+      authorityId = #{record.authorityId,jdbcType=INTEGER},
+      bannedTopic = #{record.bannedTopic,jdbcType=BIT},
+      bannedReply = #{record.bannedReply,jdbcType=BIT},
+      bannedMessage = #{record.bannedMessage,jdbcType=BIT},
+      bannedFiction = #{record.bannedFiction,jdbcType=BIT},
+      bannedChapter = #{record.bannedChapter,jdbcType=BIT},
+      bannedComment = #{record.bannedComment,jdbcType=BIT},
+      locked = #{record.locked,jdbcType=BIT},
+      deleted = #{record.deleted,jdbcType=BIT},
+      topicCount = #{record.topicCount,jdbcType=INTEGER},
+      replyCount = #{record.replyCount,jdbcType=INTEGER},
+      fictionCount = #{record.fictionCount,jdbcType=INTEGER},
+      chapterCount = #{record.chapterCount,jdbcType=INTEGER},
+      commentCount = #{record.commentCount,jdbcType=INTEGER},
+      loginCount = #{record.loginCount,jdbcType=INTEGER},
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      photo = #{record.photo,jdbcType=VARCHAR},
+      comeFrom = #{record.comeFrom,jdbcType=VARCHAR},
+      signature = #{record.signature,jdbcType=VARCHAR},
+      introduction = #{record.introduction,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

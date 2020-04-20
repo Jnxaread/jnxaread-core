@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnxaread.dao.AuthorityMapper">
+  <resultMap id="BaseResultMap" type="com.jnxaread.bean.Authority">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+    <result column="banAccount" jdbcType="BIT" property="banAccount" />
+    <result column="banTopic" jdbcType="BIT" property="banTopic" />
+    <result column="banReply" jdbcType="BIT" property="banReply" />
+    <result column="banMessage" jdbcType="BIT" property="banMessage" />
+    <result column="banFiction" jdbcType="BIT" property="banFiction" />
+    <result column="banComment" jdbcType="BIT" property="banComment" />
+    <result column="deleteOwnTopic" jdbcType="BIT" property="deleteOwnTopic" />
+    <result column="deleteOwnReply" jdbcType="BIT" property="deleteOwnReply" />
+    <result column="deleteOwnFiction" jdbcType="BIT" property="deleteOwnFiction" />
+    <result column="deleteOwnChapter" jdbcType="BIT" property="deleteOwnChapter" />
+    <result column="deleteOwnComment" jdbcType="BIT" property="deleteOwnComment" />
+    <result column="deleteTopic" jdbcType="BIT" property="deleteTopic" />
+    <result column="deleteReply" jdbcType="BIT" property="deleteReply" />
+    <result column="deleteFiction" jdbcType="BIT" property="deleteFiction" />
+    <result column="deleteChapter" jdbcType="BIT" property="deleteChapter" />
+    <result column="deleteComment" jdbcType="BIT" property="deleteComment" />
+    <result column="lockTopic" jdbcType="BIT" property="lockTopic" />
+    <result column="lockFiction" jdbcType="BIT" property="lockFiction" />
+    <result column="lockChapter" jdbcType="BIT" property="lockChapter" />
+    <result column="lockNotice" jdbcType="BIT" property="lockNotice" />
+    <result column="lockContentOfTopic" jdbcType="BIT" property="lockContentOfTopic" />
+    <result column="lockContentOfFiction" jdbcType="BIT" property="lockContentOfFiction" />
+    <result column="lockContentOfChapter" jdbcType="BIT" property="lockContentOfChapter" />
+    <result column="lockCommentOfOwnFiction" jdbcType="BIT" property="lockCommentOfOwnFiction" />
+    <result column="lockCommentOfOwnChapter" jdbcType="BIT" property="lockCommentOfOwnChapter" />
+    <result column="lockCommentOfFiction" jdbcType="BIT" property="lockCommentOfFiction" />
+    <result column="lockCommentOfChapter" jdbcType="BIT" property="lockCommentOfChapter" />
+    <result column="hideOwnTopic" jdbcType="BIT" property="hideOwnTopic" />
+    <result column="hideOwnFiction" jdbcType="BIT" property="hideOwnFiction" />
+    <result column="hideOwnChapter" jdbcType="BIT" property="hideOwnChapter" />
+    <result column="hideTopic" jdbcType="BIT" property="hideTopic" />
+    <result column="hideFiction" jdbcType="BIT" property="hideFiction" />
+    <result column="hideChapter" jdbcType="BIT" property="hideChapter" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, role, banAccount, banTopic, banReply, banMessage, banFiction, banComment, deleteOwnTopic, 
+    deleteOwnReply, deleteOwnFiction, deleteOwnChapter, deleteOwnComment, deleteTopic, 
+    deleteReply, deleteFiction, deleteChapter, deleteComment, lockTopic, lockFiction, 
+    lockChapter, lockNotice, lockContentOfTopic, lockContentOfFiction, lockContentOfChapter, 
+    lockCommentOfOwnFiction, lockCommentOfOwnChapter, lockCommentOfFiction, lockCommentOfChapter, 
+    hideOwnTopic, hideOwnFiction, hideOwnChapter, hideTopic, hideFiction, hideChapter
+  </sql>
+  <select id="selectByExample" parameterType="com.jnxaread.bean.AuthorityExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from authority
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from authority
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from authority
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jnxaread.bean.AuthorityExample">
+    delete from authority
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jnxaread.bean.Authority">
+    insert into authority (id, role, banAccount, 
+      banTopic, banReply, banMessage, 
+      banFiction, banComment, deleteOwnTopic, 
+      deleteOwnReply, deleteOwnFiction, deleteOwnChapter, 
+      deleteOwnComment, deleteTopic, deleteReply, 
+      deleteFiction, deleteChapter, deleteComment, 
+      lockTopic, lockFiction, lockChapter, 
+      lockNotice, lockContentOfTopic, lockContentOfFiction, 
+      lockContentOfChapter, lockCommentOfOwnFiction, 
+      lockCommentOfOwnChapter, lockCommentOfFiction, 
+      lockCommentOfChapter, hideOwnTopic, hideOwnFiction, 
+      hideOwnChapter, hideTopic, hideFiction, 
+      hideChapter)
+    values (#{id,jdbcType=INTEGER}, #{role,jdbcType=VARCHAR}, #{banAccount,jdbcType=BIT}, 
+      #{banTopic,jdbcType=BIT}, #{banReply,jdbcType=BIT}, #{banMessage,jdbcType=BIT}, 
+      #{banFiction,jdbcType=BIT}, #{banComment,jdbcType=BIT}, #{deleteOwnTopic,jdbcType=BIT}, 
+      #{deleteOwnReply,jdbcType=BIT}, #{deleteOwnFiction,jdbcType=BIT}, #{deleteOwnChapter,jdbcType=BIT}, 
+      #{deleteOwnComment,jdbcType=BIT}, #{deleteTopic,jdbcType=BIT}, #{deleteReply,jdbcType=BIT}, 
+      #{deleteFiction,jdbcType=BIT}, #{deleteChapter,jdbcType=BIT}, #{deleteComment,jdbcType=BIT}, 
+      #{lockTopic,jdbcType=BIT}, #{lockFiction,jdbcType=BIT}, #{lockChapter,jdbcType=BIT}, 
+      #{lockNotice,jdbcType=BIT}, #{lockContentOfTopic,jdbcType=BIT}, #{lockContentOfFiction,jdbcType=BIT}, 
+      #{lockContentOfChapter,jdbcType=BIT}, #{lockCommentOfOwnFiction,jdbcType=BIT}, 
+      #{lockCommentOfOwnChapter,jdbcType=BIT}, #{lockCommentOfFiction,jdbcType=BIT}, 
+      #{lockCommentOfChapter,jdbcType=BIT}, #{hideOwnTopic,jdbcType=BIT}, #{hideOwnFiction,jdbcType=BIT}, 
+      #{hideOwnChapter,jdbcType=BIT}, #{hideTopic,jdbcType=BIT}, #{hideFiction,jdbcType=BIT}, 
+      #{hideChapter,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Authority">
+    insert into authority
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+      <if test="banAccount != null">
+        banAccount,
+      </if>
+      <if test="banTopic != null">
+        banTopic,
+      </if>
+      <if test="banReply != null">
+        banReply,
+      </if>
+      <if test="banMessage != null">
+        banMessage,
+      </if>
+      <if test="banFiction != null">
+        banFiction,
+      </if>
+      <if test="banComment != null">
+        banComment,
+      </if>
+      <if test="deleteOwnTopic != null">
+        deleteOwnTopic,
+      </if>
+      <if test="deleteOwnReply != null">
+        deleteOwnReply,
+      </if>
+      <if test="deleteOwnFiction != null">
+        deleteOwnFiction,
+      </if>
+      <if test="deleteOwnChapter != null">
+        deleteOwnChapter,
+      </if>
+      <if test="deleteOwnComment != null">
+        deleteOwnComment,
+      </if>
+      <if test="deleteTopic != null">
+        deleteTopic,
+      </if>
+      <if test="deleteReply != null">
+        deleteReply,
+      </if>
+      <if test="deleteFiction != null">
+        deleteFiction,
+      </if>
+      <if test="deleteChapter != null">
+        deleteChapter,
+      </if>
+      <if test="deleteComment != null">
+        deleteComment,
+      </if>
+      <if test="lockTopic != null">
+        lockTopic,
+      </if>
+      <if test="lockFiction != null">
+        lockFiction,
+      </if>
+      <if test="lockChapter != null">
+        lockChapter,
+      </if>
+      <if test="lockNotice != null">
+        lockNotice,
+      </if>
+      <if test="lockContentOfTopic != null">
+        lockContentOfTopic,
+      </if>
+      <if test="lockContentOfFiction != null">
+        lockContentOfFiction,
+      </if>
+      <if test="lockContentOfChapter != null">
+        lockContentOfChapter,
+      </if>
+      <if test="lockCommentOfOwnFiction != null">
+        lockCommentOfOwnFiction,
+      </if>
+      <if test="lockCommentOfOwnChapter != null">
+        lockCommentOfOwnChapter,
+      </if>
+      <if test="lockCommentOfFiction != null">
+        lockCommentOfFiction,
+      </if>
+      <if test="lockCommentOfChapter != null">
+        lockCommentOfChapter,
+      </if>
+      <if test="hideOwnTopic != null">
+        hideOwnTopic,
+      </if>
+      <if test="hideOwnFiction != null">
+        hideOwnFiction,
+      </if>
+      <if test="hideOwnChapter != null">
+        hideOwnChapter,
+      </if>
+      <if test="hideTopic != null">
+        hideTopic,
+      </if>
+      <if test="hideFiction != null">
+        hideFiction,
+      </if>
+      <if test="hideChapter != null">
+        hideChapter,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="banAccount != null">
+        #{banAccount,jdbcType=BIT},
+      </if>
+      <if test="banTopic != null">
+        #{banTopic,jdbcType=BIT},
+      </if>
+      <if test="banReply != null">
+        #{banReply,jdbcType=BIT},
+      </if>
+      <if test="banMessage != null">
+        #{banMessage,jdbcType=BIT},
+      </if>
+      <if test="banFiction != null">
+        #{banFiction,jdbcType=BIT},
+      </if>
+      <if test="banComment != null">
+        #{banComment,jdbcType=BIT},
+      </if>
+      <if test="deleteOwnTopic != null">
+        #{deleteOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="deleteOwnReply != null">
+        #{deleteOwnReply,jdbcType=BIT},
+      </if>
+      <if test="deleteOwnFiction != null">
+        #{deleteOwnFiction,jdbcType=BIT},
+      </if>
+      <if test="deleteOwnChapter != null">
+        #{deleteOwnChapter,jdbcType=BIT},
+      </if>
+      <if test="deleteOwnComment != null">
+        #{deleteOwnComment,jdbcType=BIT},
+      </if>
+      <if test="deleteTopic != null">
+        #{deleteTopic,jdbcType=BIT},
+      </if>
+      <if test="deleteReply != null">
+        #{deleteReply,jdbcType=BIT},
+      </if>
+      <if test="deleteFiction != null">
+        #{deleteFiction,jdbcType=BIT},
+      </if>
+      <if test="deleteChapter != null">
+        #{deleteChapter,jdbcType=BIT},
+      </if>
+      <if test="deleteComment != null">
+        #{deleteComment,jdbcType=BIT},
+      </if>
+      <if test="lockTopic != null">
+        #{lockTopic,jdbcType=BIT},
+      </if>
+      <if test="lockFiction != null">
+        #{lockFiction,jdbcType=BIT},
+      </if>
+      <if test="lockChapter != null">
+        #{lockChapter,jdbcType=BIT},
+      </if>
+      <if test="lockNotice != null">
+        #{lockNotice,jdbcType=BIT},
+      </if>
+      <if test="lockContentOfTopic != null">
+        #{lockContentOfTopic,jdbcType=BIT},
+      </if>
+      <if test="lockContentOfFiction != null">
+        #{lockContentOfFiction,jdbcType=BIT},
+      </if>
+      <if test="lockContentOfChapter != null">
+        #{lockContentOfChapter,jdbcType=BIT},
+      </if>
+      <if test="lockCommentOfOwnFiction != null">
+        #{lockCommentOfOwnFiction,jdbcType=BIT},
+      </if>
+      <if test="lockCommentOfOwnChapter != null">
+        #{lockCommentOfOwnChapter,jdbcType=BIT},
+      </if>
+      <if test="lockCommentOfFiction != null">
+        #{lockCommentOfFiction,jdbcType=BIT},
+      </if>
+      <if test="lockCommentOfChapter != null">
+        #{lockCommentOfChapter,jdbcType=BIT},
+      </if>
+      <if test="hideOwnTopic != null">
+        #{hideOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="hideOwnFiction != null">
+        #{hideOwnFiction,jdbcType=BIT},
+      </if>
+      <if test="hideOwnChapter != null">
+        #{hideOwnChapter,jdbcType=BIT},
+      </if>
+      <if test="hideTopic != null">
+        #{hideTopic,jdbcType=BIT},
+      </if>
+      <if test="hideFiction != null">
+        #{hideFiction,jdbcType=BIT},
+      </if>
+      <if test="hideChapter != null">
+        #{hideChapter,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jnxaread.bean.AuthorityExample" resultType="java.lang.Long">
+    select count(*) from authority
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update authority
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.role != null">
+        role = #{record.role,jdbcType=VARCHAR},
+      </if>
+      <if test="record.banAccount != null">
+        banAccount = #{record.banAccount,jdbcType=BIT},
+      </if>
+      <if test="record.banTopic != null">
+        banTopic = #{record.banTopic,jdbcType=BIT},
+      </if>
+      <if test="record.banReply != null">
+        banReply = #{record.banReply,jdbcType=BIT},
+      </if>
+      <if test="record.banMessage != null">
+        banMessage = #{record.banMessage,jdbcType=BIT},
+      </if>
+      <if test="record.banFiction != null">
+        banFiction = #{record.banFiction,jdbcType=BIT},
+      </if>
+      <if test="record.banComment != null">
+        banComment = #{record.banComment,jdbcType=BIT},
+      </if>
+      <if test="record.deleteOwnTopic != null">
+        deleteOwnTopic = #{record.deleteOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="record.deleteOwnReply != null">
+        deleteOwnReply = #{record.deleteOwnReply,jdbcType=BIT},
+      </if>
+      <if test="record.deleteOwnFiction != null">
+        deleteOwnFiction = #{record.deleteOwnFiction,jdbcType=BIT},
+      </if>
+      <if test="record.deleteOwnChapter != null">
+        deleteOwnChapter = #{record.deleteOwnChapter,jdbcType=BIT},
+      </if>
+      <if test="record.deleteOwnComment != null">
+        deleteOwnComment = #{record.deleteOwnComment,jdbcType=BIT},
+      </if>
+      <if test="record.deleteTopic != null">
+        deleteTopic = #{record.deleteTopic,jdbcType=BIT},
+      </if>
+      <if test="record.deleteReply != null">
+        deleteReply = #{record.deleteReply,jdbcType=BIT},
+      </if>
+      <if test="record.deleteFiction != null">
+        deleteFiction = #{record.deleteFiction,jdbcType=BIT},
+      </if>
+      <if test="record.deleteChapter != null">
+        deleteChapter = #{record.deleteChapter,jdbcType=BIT},
+      </if>
+      <if test="record.deleteComment != null">
+        deleteComment = #{record.deleteComment,jdbcType=BIT},
+      </if>
+      <if test="record.lockTopic != null">
+        lockTopic = #{record.lockTopic,jdbcType=BIT},
+      </if>
+      <if test="record.lockFiction != null">
+        lockFiction = #{record.lockFiction,jdbcType=BIT},
+      </if>
+      <if test="record.lockChapter != null">
+        lockChapter = #{record.lockChapter,jdbcType=BIT},
+      </if>
+      <if test="record.lockNotice != null">
+        lockNotice = #{record.lockNotice,jdbcType=BIT},
+      </if>
+      <if test="record.lockContentOfTopic != null">
+        lockContentOfTopic = #{record.lockContentOfTopic,jdbcType=BIT},
+      </if>
+      <if test="record.lockContentOfFiction != null">
+        lockContentOfFiction = #{record.lockContentOfFiction,jdbcType=BIT},
+      </if>
+      <if test="record.lockContentOfChapter != null">
+        lockContentOfChapter = #{record.lockContentOfChapter,jdbcType=BIT},
+      </if>
+      <if test="record.lockCommentOfOwnFiction != null">
+        lockCommentOfOwnFiction = #{record.lockCommentOfOwnFiction,jdbcType=BIT},
+      </if>
+      <if test="record.lockCommentOfOwnChapter != null">
+        lockCommentOfOwnChapter = #{record.lockCommentOfOwnChapter,jdbcType=BIT},
+      </if>
+      <if test="record.lockCommentOfFiction != null">
+        lockCommentOfFiction = #{record.lockCommentOfFiction,jdbcType=BIT},
+      </if>
+      <if test="record.lockCommentOfChapter != null">
+        lockCommentOfChapter = #{record.lockCommentOfChapter,jdbcType=BIT},
+      </if>
+      <if test="record.hideOwnTopic != null">
+        hideOwnTopic = #{record.hideOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="record.hideOwnFiction != null">
+        hideOwnFiction = #{record.hideOwnFiction,jdbcType=BIT},
+      </if>
+      <if test="record.hideOwnChapter != null">
+        hideOwnChapter = #{record.hideOwnChapter,jdbcType=BIT},
+      </if>
+      <if test="record.hideTopic != null">
+        hideTopic = #{record.hideTopic,jdbcType=BIT},
+      </if>
+      <if test="record.hideFiction != null">
+        hideFiction = #{record.hideFiction,jdbcType=BIT},
+      </if>
+      <if test="record.hideChapter != null">
+        hideChapter = #{record.hideChapter,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update authority
+    set id = #{record.id,jdbcType=INTEGER},
+      role = #{record.role,jdbcType=VARCHAR},
+      banAccount = #{record.banAccount,jdbcType=BIT},
+      banTopic = #{record.banTopic,jdbcType=BIT},
+      banReply = #{record.banReply,jdbcType=BIT},
+      banMessage = #{record.banMessage,jdbcType=BIT},
+      banFiction = #{record.banFiction,jdbcType=BIT},
+      banComment = #{record.banComment,jdbcType=BIT},
+      deleteOwnTopic = #{record.deleteOwnTopic,jdbcType=BIT},
+      deleteOwnReply = #{record.deleteOwnReply,jdbcType=BIT},
+      deleteOwnFiction = #{record.deleteOwnFiction,jdbcType=BIT},
+      deleteOwnChapter = #{record.deleteOwnChapter,jdbcType=BIT},
+      deleteOwnComment = #{record.deleteOwnComment,jdbcType=BIT},
+      deleteTopic = #{record.deleteTopic,jdbcType=BIT},
+      deleteReply = #{record.deleteReply,jdbcType=BIT},
+      deleteFiction = #{record.deleteFiction,jdbcType=BIT},
+      deleteChapter = #{record.deleteChapter,jdbcType=BIT},
+      deleteComment = #{record.deleteComment,jdbcType=BIT},
+      lockTopic = #{record.lockTopic,jdbcType=BIT},
+      lockFiction = #{record.lockFiction,jdbcType=BIT},
+      lockChapter = #{record.lockChapter,jdbcType=BIT},
+      lockNotice = #{record.lockNotice,jdbcType=BIT},
+      lockContentOfTopic = #{record.lockContentOfTopic,jdbcType=BIT},
+      lockContentOfFiction = #{record.lockContentOfFiction,jdbcType=BIT},
+      lockContentOfChapter = #{record.lockContentOfChapter,jdbcType=BIT},
+      lockCommentOfOwnFiction = #{record.lockCommentOfOwnFiction,jdbcType=BIT},
+      lockCommentOfOwnChapter = #{record.lockCommentOfOwnChapter,jdbcType=BIT},
+      lockCommentOfFiction = #{record.lockCommentOfFiction,jdbcType=BIT},
+      lockCommentOfChapter = #{record.lockCommentOfChapter,jdbcType=BIT},
+      hideOwnTopic = #{record.hideOwnTopic,jdbcType=BIT},
+      hideOwnFiction = #{record.hideOwnFiction,jdbcType=BIT},
+      hideOwnChapter = #{record.hideOwnChapter,jdbcType=BIT},
+      hideTopic = #{record.hideTopic,jdbcType=BIT},
+      hideFiction = #{record.hideFiction,jdbcType=BIT},
+      hideChapter = #{record.hideChapter,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Authority">
+    update authority
+    <set>
+      <if test="role != null">
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="banAccount != null">
+        banAccount = #{banAccount,jdbcType=BIT},
+      </if>
+      <if test="banTopic != null">
+        banTopic = #{banTopic,jdbcType=BIT},
+      </if>
+      <if test="banReply != null">
+        banReply = #{banReply,jdbcType=BIT},
+      </if>
+      <if test="banMessage != null">
+        banMessage = #{banMessage,jdbcType=BIT},
+      </if>
+      <if test="banFiction != null">
+        banFiction = #{banFiction,jdbcType=BIT},
+      </if>
+      <if test="banComment != null">
+        banComment = #{banComment,jdbcType=BIT},
+      </if>
+      <if test="deleteOwnTopic != null">
+        deleteOwnTopic = #{deleteOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="deleteOwnReply != null">
+        deleteOwnReply = #{deleteOwnReply,jdbcType=BIT},
+      </if>
+      <if test="deleteOwnFiction != null">
+        deleteOwnFiction = #{deleteOwnFiction,jdbcType=BIT},
+      </if>
+      <if test="deleteOwnChapter != null">
+        deleteOwnChapter = #{deleteOwnChapter,jdbcType=BIT},
+      </if>
+      <if test="deleteOwnComment != null">
+        deleteOwnComment = #{deleteOwnComment,jdbcType=BIT},
+      </if>
+      <if test="deleteTopic != null">
+        deleteTopic = #{deleteTopic,jdbcType=BIT},
+      </if>
+      <if test="deleteReply != null">
+        deleteReply = #{deleteReply,jdbcType=BIT},
+      </if>
+      <if test="deleteFiction != null">
+        deleteFiction = #{deleteFiction,jdbcType=BIT},
+      </if>
+      <if test="deleteChapter != null">
+        deleteChapter = #{deleteChapter,jdbcType=BIT},
+      </if>
+      <if test="deleteComment != null">
+        deleteComment = #{deleteComment,jdbcType=BIT},
+      </if>
+      <if test="lockTopic != null">
+        lockTopic = #{lockTopic,jdbcType=BIT},
+      </if>
+      <if test="lockFiction != null">
+        lockFiction = #{lockFiction,jdbcType=BIT},
+      </if>
+      <if test="lockChapter != null">
+        lockChapter = #{lockChapter,jdbcType=BIT},
+      </if>
+      <if test="lockNotice != null">
+        lockNotice = #{lockNotice,jdbcType=BIT},
+      </if>
+      <if test="lockContentOfTopic != null">
+        lockContentOfTopic = #{lockContentOfTopic,jdbcType=BIT},
+      </if>
+      <if test="lockContentOfFiction != null">
+        lockContentOfFiction = #{lockContentOfFiction,jdbcType=BIT},
+      </if>
+      <if test="lockContentOfChapter != null">
+        lockContentOfChapter = #{lockContentOfChapter,jdbcType=BIT},
+      </if>
+      <if test="lockCommentOfOwnFiction != null">
+        lockCommentOfOwnFiction = #{lockCommentOfOwnFiction,jdbcType=BIT},
+      </if>
+      <if test="lockCommentOfOwnChapter != null">
+        lockCommentOfOwnChapter = #{lockCommentOfOwnChapter,jdbcType=BIT},
+      </if>
+      <if test="lockCommentOfFiction != null">
+        lockCommentOfFiction = #{lockCommentOfFiction,jdbcType=BIT},
+      </if>
+      <if test="lockCommentOfChapter != null">
+        lockCommentOfChapter = #{lockCommentOfChapter,jdbcType=BIT},
+      </if>
+      <if test="hideOwnTopic != null">
+        hideOwnTopic = #{hideOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="hideOwnFiction != null">
+        hideOwnFiction = #{hideOwnFiction,jdbcType=BIT},
+      </if>
+      <if test="hideOwnChapter != null">
+        hideOwnChapter = #{hideOwnChapter,jdbcType=BIT},
+      </if>
+      <if test="hideTopic != null">
+        hideTopic = #{hideTopic,jdbcType=BIT},
+      </if>
+      <if test="hideFiction != null">
+        hideFiction = #{hideFiction,jdbcType=BIT},
+      </if>
+      <if test="hideChapter != null">
+        hideChapter = #{hideChapter,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Authority">
+    update authority
+    set role = #{role,jdbcType=VARCHAR},
+      banAccount = #{banAccount,jdbcType=BIT},
+      banTopic = #{banTopic,jdbcType=BIT},
+      banReply = #{banReply,jdbcType=BIT},
+      banMessage = #{banMessage,jdbcType=BIT},
+      banFiction = #{banFiction,jdbcType=BIT},
+      banComment = #{banComment,jdbcType=BIT},
+      deleteOwnTopic = #{deleteOwnTopic,jdbcType=BIT},
+      deleteOwnReply = #{deleteOwnReply,jdbcType=BIT},
+      deleteOwnFiction = #{deleteOwnFiction,jdbcType=BIT},
+      deleteOwnChapter = #{deleteOwnChapter,jdbcType=BIT},
+      deleteOwnComment = #{deleteOwnComment,jdbcType=BIT},
+      deleteTopic = #{deleteTopic,jdbcType=BIT},
+      deleteReply = #{deleteReply,jdbcType=BIT},
+      deleteFiction = #{deleteFiction,jdbcType=BIT},
+      deleteChapter = #{deleteChapter,jdbcType=BIT},
+      deleteComment = #{deleteComment,jdbcType=BIT},
+      lockTopic = #{lockTopic,jdbcType=BIT},
+      lockFiction = #{lockFiction,jdbcType=BIT},
+      lockChapter = #{lockChapter,jdbcType=BIT},
+      lockNotice = #{lockNotice,jdbcType=BIT},
+      lockContentOfTopic = #{lockContentOfTopic,jdbcType=BIT},
+      lockContentOfFiction = #{lockContentOfFiction,jdbcType=BIT},
+      lockContentOfChapter = #{lockContentOfChapter,jdbcType=BIT},
+      lockCommentOfOwnFiction = #{lockCommentOfOwnFiction,jdbcType=BIT},
+      lockCommentOfOwnChapter = #{lockCommentOfOwnChapter,jdbcType=BIT},
+      lockCommentOfFiction = #{lockCommentOfFiction,jdbcType=BIT},
+      lockCommentOfChapter = #{lockCommentOfChapter,jdbcType=BIT},
+      hideOwnTopic = #{hideOwnTopic,jdbcType=BIT},
+      hideOwnFiction = #{hideOwnFiction,jdbcType=BIT},
+      hideOwnChapter = #{hideOwnChapter,jdbcType=BIT},
+      hideTopic = #{hideTopic,jdbcType=BIT},
+      hideFiction = #{hideFiction,jdbcType=BIT},
+      hideChapter = #{hideChapter,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

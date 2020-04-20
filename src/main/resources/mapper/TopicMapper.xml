@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnxaread.dao.TopicMapper">
+  <resultMap id="BaseResultMap" type="com.jnxaread.bean.Topic">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userId" jdbcType="INTEGER" property="userId" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="replyCount" jdbcType="INTEGER" property="replyCount" />
+    <result column="viewCount" jdbcType="INTEGER" property="viewCount" />
+    <result column="locked" jdbcType="BIT" property="locked" />
+    <result column="hided" jdbcType="BIT" property="hided" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jnxaread.bean.Topic">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, userId, createTime, label, title, replyCount, viewCount, locked, hided, deleted
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.jnxaread.bean.TopicExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from topic
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.jnxaread.bean.TopicExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from topic
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from topic
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from topic
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jnxaread.bean.TopicExample">
+    delete from topic
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jnxaread.bean.Topic">
+    insert into topic (id, userId, createTime, 
+      label, title, replyCount, 
+      viewCount, locked, hided, deleted, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{replyCount,jdbcType=INTEGER}, 
+      #{viewCount,jdbcType=INTEGER}, #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Topic">
+    insert into topic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="label != null">
+        label,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="replyCount != null">
+        replyCount,
+      </if>
+      <if test="viewCount != null">
+        viewCount,
+      </if>
+      <if test="locked != null">
+        locked,
+      </if>
+      <if test="hided != null">
+        hided,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="replyCount != null">
+        #{replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="locked != null">
+        #{locked,jdbcType=BIT},
+      </if>
+      <if test="hided != null">
+        #{hided,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jnxaread.bean.TopicExample" resultType="java.lang.Long">
+    select count(*) from topic
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update topic
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        userId = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.label != null">
+        label = #{record.label,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replyCount != null">
+        replyCount = #{record.replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.viewCount != null">
+        viewCount = #{record.viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.locked != null">
+        locked = #{record.locked,jdbcType=BIT},
+      </if>
+      <if test="record.hided != null">
+        hided = #{record.hided,jdbcType=BIT},
+      </if>
+      <if test="record.deleted != null">
+        deleted = #{record.deleted,jdbcType=BIT},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update topic
+    set id = #{record.id,jdbcType=INTEGER},
+      userId = #{record.userId,jdbcType=INTEGER},
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      label = #{record.label,jdbcType=VARCHAR},
+      title = #{record.title,jdbcType=VARCHAR},
+      replyCount = #{record.replyCount,jdbcType=INTEGER},
+      viewCount = #{record.viewCount,jdbcType=INTEGER},
+      locked = #{record.locked,jdbcType=BIT},
+      hided = #{record.hided,jdbcType=BIT},
+      deleted = #{record.deleted,jdbcType=BIT},
+      content = #{record.content,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update topic
+    set id = #{record.id,jdbcType=INTEGER},
+      userId = #{record.userId,jdbcType=INTEGER},
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      label = #{record.label,jdbcType=VARCHAR},
+      title = #{record.title,jdbcType=VARCHAR},
+      replyCount = #{record.replyCount,jdbcType=INTEGER},
+      viewCount = #{record.viewCount,jdbcType=INTEGER},
+      locked = #{record.locked,jdbcType=BIT},
+      hided = #{record.hided,jdbcType=BIT},
+      deleted = #{record.deleted,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Topic">
+    update topic
+    <set>
+      <if test="userId != null">
+        userId = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="replyCount != null">
+        replyCount = #{replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        viewCount = #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="locked != null">
+        locked = #{locked,jdbcType=BIT},
+      </if>
+      <if test="hided != null">
+        hided = #{hided,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jnxaread.bean.Topic">
+    update topic
+    set userId = #{userId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      label = #{label,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      replyCount = #{replyCount,jdbcType=INTEGER},
+      viewCount = #{viewCount,jdbcType=INTEGER},
+      locked = #{locked,jdbcType=BIT},
+      hided = #{hided,jdbcType=BIT},
+      deleted = #{deleted,jdbcType=BIT},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Topic">
+    update topic
+    set userId = #{userId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      label = #{label,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      replyCount = #{replyCount,jdbcType=INTEGER},
+      viewCount = #{viewCount,jdbcType=INTEGER},
+      locked = #{locked,jdbcType=BIT},
+      hided = #{hided,jdbcType=BIT},
+      deleted = #{deleted,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
