@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * 权限Service
+ * 权限Service实现类
  * @author 未央
  * @create 2020-04-20 9:20
  */
