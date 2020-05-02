@@ -317,6 +317,7 @@ CREATE TABLE `User` (
   `comeFrom` varchar(128) DEFAULT NULL COMMENT '来自于',
   `signature` varchar(128) DEFAULT NULL COMMENT '个性签名',
   `introduction` varchar(255) DEFAULT NULL COMMENT '自我介绍',
+  PRIMARY KEY (`id`),
   KEY `id` (`id`),
   KEY `user_authority_id` (`authorityId`),
   CONSTRAINT `user_authority_id` FOREIGN KEY (`authorityId`) REFERENCES `Authority` (`id`)
