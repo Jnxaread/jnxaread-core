@@ -70,17 +70,19 @@ CREATE TABLE `Authority` (
   `hideOwnTopic` tinyint(1) NOT NULL COMMENT '隐藏自己的帖子',
   `hideOwnFiction` tinyint(1) NOT NULL COMMENT '隐藏自己的作品',
   `hideOwnChapter` tinyint(1) NOT NULL COMMENT '隐藏自己的章节',
+  `hideOwnComment` tinyint(1) NOT NULL COMMENT '隐藏自己的评论',
   `hideTopic` tinyint(1) NOT NULL COMMENT '隐藏别人的帖子',
   `hideFiction` tinyint(1) NOT NULL COMMENT '隐藏别人的作品',
   `hideChapter` tinyint(1) NOT NULL COMMENT '隐藏别人的章节',
+  `hideComment` tinyint(1) NOT NULL COMMENT '隐藏别人的评论',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `Authority` */
 
-insert  into `Authority`(`id`,`role`,`banAccount`,`banTopic`,`banReply`,`banMessage`,`banFiction`,`banComment`,`deleteOwnTopic`,`deleteOwnReply`,`deleteOwnFiction`,`deleteOwnChapter`,`deleteOwnComment`,`deleteTopic`,`deleteReply`,`deleteFiction`,`deleteChapter`,`deleteComment`,`lockTopic`,`lockFiction`,`lockChapter`,`lockNotice`,`lockContentOfTopic`,`lockContentOfFiction`,`lockContentOfChapter`,`lockCommentOfOwnFiction`,`lockCommentOfOwnChapter`,`lockCommentOfFiction`,`lockCommentOfChapter`,`hideOwnTopic`,`hideOwnFiction`,`hideOwnChapter`,`hideTopic`,`hideFiction`,`hideChapter`) values 
-(1,'超级管理员',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
-(2,'普通用户',0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,1,0,0,0);
+insert  into `Authority`(`id`,`role`,`banAccount`,`banTopic`,`banReply`,`banMessage`,`banFiction`,`banComment`,`deleteOwnTopic`,`deleteOwnReply`,`deleteOwnFiction`,`deleteOwnChapter`,`deleteOwnComment`,`deleteTopic`,`deleteReply`,`deleteFiction`,`deleteChapter`,`deleteComment`,`lockTopic`,`lockFiction`,`lockChapter`,`lockNotice`,`lockContentOfTopic`,`lockContentOfFiction`,`lockContentOfChapter`,`lockCommentOfOwnFiction`,`lockCommentOfOwnChapter`,`lockCommentOfFiction`,`lockCommentOfChapter`,`hideOwnTopic`,`hideOwnFiction`,`hideOwnChapter`,`hideOwnComment`,`hideTopic`,`hideFiction`,`hideChapter`,`hideComment`) values 
+(1,'超级管理员',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+(2,'普通用户',0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,1,1,0,0,0,0);
 
 /*Table structure for table `Category` */
 
