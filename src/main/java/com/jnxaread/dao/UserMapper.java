@@ -2,9 +2,12 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.User;
 import com.jnxaread.bean.UserExample;
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
+@Mapper
 public interface UserMapper {
     long countByExample(UserExample example);
 

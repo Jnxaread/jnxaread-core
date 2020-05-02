@@ -2,9 +2,12 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Comment;
 import com.jnxaread.bean.CommentExample;
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
+@Mapper
 public interface CommentMapper {
     long countByExample(CommentExample example);
 

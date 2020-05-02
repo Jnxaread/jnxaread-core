@@ -2,9 +2,12 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Category;
 import com.jnxaread.bean.CategoryExample;
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
+@Mapper
 public interface CategoryMapper {
     long countByExample(CategoryExample example);
 

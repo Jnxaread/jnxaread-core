@@ -2,9 +2,12 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Topic;
 import com.jnxaread.bean.TopicExample;
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
+@Mapper
 public interface TopicMapper {
     long countByExample(TopicExample example);
 

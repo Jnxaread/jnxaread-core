@@ -2,9 +2,12 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Chapter;
 import com.jnxaread.bean.ChapterExample;
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
+@Mapper
 public interface ChapterMapper {
     long countByExample(ChapterExample example);
 
