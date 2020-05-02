@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jnxaread.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.jnxaread.bean.User">
-    <result column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="account" jdbcType="VARCHAR" property="account" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="username" jdbcType="VARCHAR" property="username" />
@@ -109,6 +109,16 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
   <delete id="deleteByExample" parameterType="com.jnxaread.bean.UserExample">
     delete from user
     <if test="_parameter != null">
@@ -443,5 +453,123 @@
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.User">
+    update user
+    <set>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null">
+        countryCode = #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="authorityId != null">
+        authorityId = #{authorityId,jdbcType=INTEGER},
+      </if>
+      <if test="bannedTopic != null">
+        bannedTopic = #{bannedTopic,jdbcType=BIT},
+      </if>
+      <if test="bannedReply != null">
+        bannedReply = #{bannedReply,jdbcType=BIT},
+      </if>
+      <if test="bannedMessage != null">
+        bannedMessage = #{bannedMessage,jdbcType=BIT},
+      </if>
+      <if test="bannedFiction != null">
+        bannedFiction = #{bannedFiction,jdbcType=BIT},
+      </if>
+      <if test="bannedChapter != null">
+        bannedChapter = #{bannedChapter,jdbcType=BIT},
+      </if>
+      <if test="bannedComment != null">
+        bannedComment = #{bannedComment,jdbcType=BIT},
+      </if>
+      <if test="locked != null">
+        locked = #{locked,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="topicCount != null">
+        topicCount = #{topicCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyCount != null">
+        replyCount = #{replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="fictionCount != null">
+        fictionCount = #{fictionCount,jdbcType=INTEGER},
+      </if>
+      <if test="chapterCount != null">
+        chapterCount = #{chapterCount,jdbcType=INTEGER},
+      </if>
+      <if test="commentCount != null">
+        commentCount = #{commentCount,jdbcType=INTEGER},
+      </if>
+      <if test="loginCount != null">
+        loginCount = #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="comeFrom != null">
+        comeFrom = #{comeFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.User">
+    update user
+    set account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      countryCode = #{countryCode,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      authorityId = #{authorityId,jdbcType=INTEGER},
+      bannedTopic = #{bannedTopic,jdbcType=BIT},
+      bannedReply = #{bannedReply,jdbcType=BIT},
+      bannedMessage = #{bannedMessage,jdbcType=BIT},
+      bannedFiction = #{bannedFiction,jdbcType=BIT},
+      bannedChapter = #{bannedChapter,jdbcType=BIT},
+      bannedComment = #{bannedComment,jdbcType=BIT},
+      locked = #{locked,jdbcType=BIT},
+      deleted = #{deleted,jdbcType=BIT},
+      topicCount = #{topicCount,jdbcType=INTEGER},
+      replyCount = #{replyCount,jdbcType=INTEGER},
+      fictionCount = #{fictionCount,jdbcType=INTEGER},
+      chapterCount = #{chapterCount,jdbcType=INTEGER},
+      commentCount = #{commentCount,jdbcType=INTEGER},
+      loginCount = #{loginCount,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      photo = #{photo,jdbcType=VARCHAR},
+      comeFrom = #{comeFrom,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

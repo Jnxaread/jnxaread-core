@@ -49,7 +49,7 @@
         </javaClientGenerator>
 
         <!-- 指定每个表的生成策略 -->
-        <table tableName="Access" domainObjectName="Access">
+        <!--<table tableName="Access" domainObjectName="Access">
             <property name="useActualColumnNames" value="true"/>
         </table>
         <table tableName="Authority" domainObjectName="Authority">
@@ -81,7 +81,7 @@
         </table>
         <table tableName="Topic" domainObjectName="Topic">
             <property name="useActualColumnNames" value="true"/>
-        </table>
+        </table>-->
         <table tableName="User" domainObjectName="User">
             <property name="useActualColumnNames" value="true"/>
         </table>
