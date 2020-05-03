@@ -13,6 +13,8 @@ public class Chapter {
 
     private Integer number;
 
+    private String title;
+
     private Integer wordCount;
 
     private Integer viewCount;
@@ -65,6 +67,14 @@ public class Chapter {
 
     public void setNumber(Integer number) {
         this.number = number;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
     }
 
     public Integer getWordCount() {
