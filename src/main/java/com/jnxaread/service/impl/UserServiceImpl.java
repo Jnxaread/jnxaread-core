@@ -94,4 +94,9 @@ public class UserServiceImpl implements UserService {
         User user = userList.get(0);
         return user;
     }
+
+    @Override
+    public void updateUser(User updatedUser) {
+        userMapper.updateByPrimaryKeySelective(updatedUser);
+    }
 }
