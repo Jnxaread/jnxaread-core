@@ -1,7 +1,9 @@
 package com.jnxaread.service.impl;
 
+import com.jnxaread.bean.Login;
 import com.jnxaread.bean.User;
 import com.jnxaread.bean.UserExample;
+import com.jnxaread.dao.LoginMapper;
 import com.jnxaread.dao.UserMapper;
 import com.jnxaread.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired(required = false)
     private UserMapper userMapper;
+
+    @Autowired(required = false)
+    private LoginMapper loginMapper;
 
     /**
      * 添加用户
@@ -98,5 +103,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(User updatedUser) {
         userMapper.updateByPrimaryKeySelective(updatedUser);
+    }
+
+    @Override
+    public void addLogin(Login newLogin) {
+        loginMapper.insertSelective(newLogin);
     }
 }
