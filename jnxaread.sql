@@ -105,10 +105,11 @@ DROP TABLE IF EXISTS `Chapter`;
 
 CREATE TABLE `Chapter` (
   `id` int(11) NOT NULL COMMENT '主键自增',
-  `fictionId` int(11) NOT NULL COMMENT '外键，作者ID',
+  `fictionId` int(11) NOT NULL COMMENT '外键，作品ID',
   `userId` int(11) NOT NULL COMMENT '外键，作者ID',
   `createTime` datetime(6) NOT NULL COMMENT '发布时间',
   `number` int(11) NOT NULL COMMENT '章节号',
+  `title` varchar(35) NOT NULL COMMENT '章节标题',
   `wordCount` int(11) NOT NULL COMMENT '字数',
   `viewCount` int(11) NOT NULL DEFAULT '0' COMMENT '点击量',
   `content` text NOT NULL COMMENT '章节内容',
