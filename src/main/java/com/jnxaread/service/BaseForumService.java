@@ -1,7 +1,10 @@
 package com.jnxaread.service;
 
 import com.jnxaread.bean.Topic;
-import com.jnxaread.bean.model.TopicModel;
+import com.jnxaread.bean.wrap.ReplyWrap;
+import com.jnxaread.bean.wrap.TopicWrap;
+
+import java.util.List;
 
 /**
  * @author 未央
@@ -11,6 +14,10 @@ public interface BaseForumService {
 
     int addTopic(Topic newTopic);
 
-    TopicModel getTopicModel(int id);
+    TopicWrap getTopicWrap(int id);
+
+    List<ReplyWrap> getReplyWrapList(int topicId,int page);
+
+    long getReplyCountByTopicId(int topicId);
 
 }

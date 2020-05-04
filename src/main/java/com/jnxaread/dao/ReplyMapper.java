@@ -2,6 +2,7 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Reply;
 import com.jnxaread.bean.ReplyExample;
+import com.jnxaread.bean.wrap.ReplyWrap;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -36,4 +37,9 @@ public interface ReplyMapper {
     int updateByPrimaryKeyWithBLOBs(Reply record);
 
     int updateByPrimaryKey(Reply record);
+
+    /******************************************************************/
+
+    List<ReplyWrap> findWithUsername(@Param("topicId") int topicId, @Param("startRow") int startRow);
+
 }

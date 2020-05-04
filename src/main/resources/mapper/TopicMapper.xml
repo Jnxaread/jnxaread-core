@@ -111,7 +111,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -129,16 +129,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Topic">
-    insert into topic (id, userId, createTime, 
-      label, title, replyCount, 
-      viewCount, locked, hided, deleted, 
+    insert into topic (id, userId, createTime,
+      label, title, replyCount,
+      viewCount, locked, hided, deleted,
       content)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{replyCount,jdbcType=INTEGER}, 
-      #{viewCount,jdbcType=INTEGER}, #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+      #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{replyCount,jdbcType=INTEGER},
+      #{viewCount,jdbcType=INTEGER}, #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT},
       #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Topic">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Topic" useGeneratedKeys="true" keyProperty="id">
     insert into topic
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -354,4 +354,33 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!--============================================================================================-->
+  <resultMap extends="ResultMapWithBLOBs" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.TopicWrap">
+    <result column="username" jdbcType="VARCHAR" property="username"></result>
+    <result column="lastReply" jdbcType="VARCHAR" property="lastReply"></result>
+    <result column="lastSubmit" jdbcType="TIMESTAMP" property="lastSubmit"></result>
+  </resultMap>
+  <select id="findListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
+    SELECT a.*,IFNULL(b.lastSubmit,a.createTime) lastSubmit,IFNULL(b.lastReply,a.username) lastReply FROM
+    (SELECT topic.*,user.username FROM topic,user WHERE topic.hided=0 AND topic.deleted=0 AND topic.userId=user.id) a
+    LEFT JOIN
+    (SELECT lastSubmit,user.username lastReply,reply.topic_id rti FROM
+    (SELECT MAX(reply.createTime) lastSubmit FROM reply GROUP BY reply.topic_id) ma,reply,user
+    WHERE lastSubmit=reply.createTime AND reply.userId=user.id) b
+    ON a.id=b.rti ORDER BY lastSubmit DESC limit #{startRow},45
+  </select>
+  <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.TopicWrap">
+    SELECT topic.id,topic.createTime,topic.label,topic.title,topic.content,topic.replyCount,topic.viewCount,user.username
+    FROM topic,user WHERE topic.id=#{id} AND topic.hided=0 AND topic.deleted=0 AND topic.userId=user.id
+  </select>
+  <select id="selectByPrimaryKeyForUpdate" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.Topic">
+    select id,replyCount,locked,deleted from topic where id=#{id} for update
+  </select>
+  <update id="updateViewCountByPrimaryKey" parameterType="java.lang.Integer">
+    update topic set viewCount=viewCount+1 where id=#{id}
+  </update>
+  <update id="updateReplyCountByPrimaryKey" parameterType="java.lang.Integer">
+    update topic set replyCount=replyCount+1 where id=#{id}
+  </update>
+  <!--============================================================================================-->
 </mapper>
