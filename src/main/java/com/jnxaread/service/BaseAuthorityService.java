@@ -9,7 +9,7 @@ import java.util.List;
  * @author 未央
  * @create 2020-04-20 9:17
  */
-public interface AuthorityService {
+public interface BaseAuthorityService {
 
     List<Authority> getAuthorityList();
 

@@ -7,7 +7,7 @@ import com.jnxaread.bean.User;
  * @author 未央
  * @create 2020-05-02 17:01
  */
-public interface UserService {
+public interface BaseUserService {
 
     User addUser(User newUser);
 

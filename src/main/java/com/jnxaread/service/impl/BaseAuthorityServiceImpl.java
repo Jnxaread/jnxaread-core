@@ -3,7 +3,7 @@ package com.jnxaread.service.impl;
 import com.jnxaread.bean.Authority;
 import com.jnxaread.bean.AuthorityExample;
 import com.jnxaread.dao.AuthorityMapper;
-import com.jnxaread.service.AuthorityService;
+import com.jnxaread.service.BaseAuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * @create 2020-04-20 9:20
  */
 @Service
-public class AuthorityServiceImpl implements AuthorityService {
+public class BaseAuthorityServiceImpl implements BaseAuthorityService {
 
     @Autowired(required = false)
     private AuthorityMapper authorityMapper;

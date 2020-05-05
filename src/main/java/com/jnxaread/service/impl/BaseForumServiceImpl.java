@@ -1,7 +1,9 @@
 package com.jnxaread.service.impl;
 
+import com.jnxaread.bean.Reply;
 import com.jnxaread.bean.ReplyExample;
 import com.jnxaread.bean.Topic;
+import com.jnxaread.bean.TopicExample;
 import com.jnxaread.bean.wrap.ReplyWrap;
 import com.jnxaread.bean.wrap.TopicWrap;
 import com.jnxaread.dao.ReplyMapper;
@@ -10,6 +12,7 @@ import com.jnxaread.dao.UserMapper;
 import com.jnxaread.service.BaseForumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -35,6 +38,37 @@ public class BaseForumServiceImpl implements BaseForumService {
         //帖子作者的发帖量+1
         userMapper.updateTopicCountByPrimaryKey(newTopic.getUserId());
         return newTopic.getId();
+    }
+
+    @Override
+    @Transactional(timeout = 5)
+    public int addReply(Reply newReply) {
+        Topic topic = topicMapper.selectByPrimaryKeyForUpdate(newReply.getTopicId());
+        //如果帖子不存在或已被删除，则禁止回复
+        if (topic == null || topic.getDeleted()) {
+            return 1;
+        }
+        //如果帖子被锁定，则禁止回复
+        if (topic.getLocked()) {
+            return 2;
+        }
+        //如果引用的回复不存在，则禁止回复
+        if (newReply.getQuote() != 0) {
+            Reply quoteReply = getReplyByTopicIdAndFloor(newReply.getTopicId(), newReply.getQuote());
+            if (quoteReply == null) {
+                return 3;
+            }
+        }
+
+        int replyCount = topic.getReplyCount();
+        newReply.setFloor(replyCount + 1);
+        replyMapper.insertSelective(newReply);
+
+        //帖子的回复数量+1
+        topicMapper.updateReplyCountByPrimaryKey(topic.getId());
+        //作者的回复数量+1
+        userMapper.updateReplyCountByPrimaryKey(newReply.getUserId());
+        return 0;
     }
 
     @Override
@@ -67,6 +101,32 @@ public class BaseForumServiceImpl implements BaseForumService {
         criteria.andTopicIdEqualTo(topicId);
         long replyCount = replyMapper.countByExample(example);
         return replyCount;
+    }
+
+    @Override
+    public List<TopicWrap> getTopicWrapList(int page) {
+        int startRow = (page - 1) * 45;
+        List<TopicWrap> topicWrapList = topicMapper.findListWithUsername(startRow);
+        return topicWrapList;
+    }
+
+    @Override
+    public long getTopicCount() {
+        TopicExample example = new TopicExample();
+        long topicCount = topicMapper.countByExample(example);
+        return topicCount;
+    }
+
+    public Reply getReplyByTopicIdAndFloor(int topicId, int floor) {
+        ReplyExample example = new ReplyExample();
+        ReplyExample.Criteria criteria = example.createCriteria();
+        criteria.andTopicIdEqualTo(topicId);
+        criteria.andFloorEqualTo(floor);
+        List<Reply> replyList = replyMapper.selectByExample(example);
+        if (CollectionUtils.isEmpty(replyList)) {
+            return null;
+        }
+        return replyList.get(0);
     }
 
 }

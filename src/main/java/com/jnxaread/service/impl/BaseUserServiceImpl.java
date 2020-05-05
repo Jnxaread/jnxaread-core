@@ -5,7 +5,7 @@ import com.jnxaread.bean.User;
 import com.jnxaread.bean.UserExample;
 import com.jnxaread.dao.LoginMapper;
 import com.jnxaread.dao.UserMapper;
-import com.jnxaread.service.UserService;
+import com.jnxaread.service.BaseUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.List;
  * @create 2020-05-02 17:04
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class BaseUserServiceImpl implements BaseUserService {
 
     @Autowired(required = false)
     private UserMapper userMapper;

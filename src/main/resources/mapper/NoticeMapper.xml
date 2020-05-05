@@ -78,7 +78,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userId, createTime, lastUserId, lastTime, label, title, position, viewCount, 
+    id, userId, createTime, lastUserId, lastTime, label, title, position, viewCount,
     updateCount, locked, hided, deleted
   </sql>
   <sql id="Blob_Column_List">
@@ -115,7 +115,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -133,15 +133,15 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Notice">
-    insert into notice (id, userId, createTime, 
-      lastUserId, lastTime, label, 
-      title, position, viewCount, 
-      updateCount, locked, hided, 
+    insert into notice (id, userId, createTime,
+      lastUserId, lastTime, label,
+      title, position, viewCount,
+      updateCount, locked, hided,
       deleted, content)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{lastUserId,jdbcType=INTEGER}, #{lastTime,jdbcType=TIMESTAMP}, #{label,jdbcType=VARCHAR}, 
-      #{title,jdbcType=VARCHAR}, #{position,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER}, 
-      #{updateCount,jdbcType=INTEGER}, #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+      #{lastUserId,jdbcType=INTEGER}, #{lastTime,jdbcType=TIMESTAMP}, #{label,jdbcType=VARCHAR},
+      #{title,jdbcType=VARCHAR}, #{position,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER},
+      #{updateCount,jdbcType=INTEGER}, #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT},
       #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Notice">
@@ -408,4 +408,22 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!--=============================================================================================================-->
+  <resultMap extends="ResultMapWithBLOBs" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.NoticeWrap">
+    <result column="username" jdbcType="VARCHAR" property="username"/>
+  </resultMap>
+  <select id="findListWithUsername" resultMap="ResultMapWithUsername">
+        SELECT n.id,n.createTime,n.lastTime,n.label,n.title,n.viewCount,a.username,b.lastEdit
+        FROM notice n,(SELECT user.id,user.username FROM user) a,(SELECT user.id,user.username lastEdit FROM user) b
+        WHERE n.userId=a.id AND n.hided=0 AND n.deleted=0 AND n.lastUserId=b.id ORDER BY n.position ASC,n.createTime DESC
+    </select>
+  <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.NoticeWrap">
+        SELECT n.id,n.createTime,n.lastTime,n.label,n.title,n.content,n.viewCount,n.deleted,a.username,b.lastEdit
+        FROM notice n,(SELECT user.id,user.username FROM user) a,(SELECT user.id,user.username lastEdit FROM user) b
+        WHERE n.id=#{id} AND n.hided=0 AND n.deleted=0 AND n.userId=a.id AND n.lastUserId=b.id
+    </select>
+  <update id="updateViewCountByPrimaryKey" parameterType="java.lang.Integer">
+        update notice set viewCount=viewCount+1 where id=#{id}
+    </update>
+  <!--=============================================================================================================-->
 </mapper>

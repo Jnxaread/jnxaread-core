@@ -2,6 +2,7 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Notice;
 import com.jnxaread.bean.NoticeExample;
+import com.jnxaread.bean.wrap.NoticeWrap;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -36,4 +37,13 @@ public interface NoticeMapper {
     int updateByPrimaryKeyWithBLOBs(Notice record);
 
     int updateByPrimaryKey(Notice record);
+
+    /******************************************************************************************************************/
+
+    List<NoticeWrap> findListWithUsername();
+
+    NoticeWrap findWithUsername(int id);
+
+    int updateViewCountByPrimaryKey(int id);
+
 }
