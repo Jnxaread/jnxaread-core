@@ -7,7 +7,6 @@ import com.jnxaread.dao.LoginMapper;
 import com.jnxaread.dao.UserMapper;
 import com.jnxaread.service.BaseUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,7 +14,6 @@ import java.util.List;
  * @author 未央
  * @create 2020-05-02 17:04
  */
-@Service
 public class BaseUserServiceImpl implements BaseUserService {
 
     @Autowired(required = false)

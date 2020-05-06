@@ -4,7 +4,6 @@ import com.jnxaread.bean.wrap.NoticeWrap;
 import com.jnxaread.dao.NoticeMapper;
 import com.jnxaread.service.BaseNoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,7 +11,6 @@ import java.util.List;
  * @author 未央
  * @create 2020-05-05 18:02
  */
-@Service
 public class BaseNoticeServiceImpl implements BaseNoticeService {
 
     @Autowired(required = false)

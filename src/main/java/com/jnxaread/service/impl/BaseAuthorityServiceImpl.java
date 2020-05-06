@@ -5,7 +5,6 @@ import com.jnxaread.bean.AuthorityExample;
 import com.jnxaread.dao.AuthorityMapper;
 import com.jnxaread.service.BaseAuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -14,7 +13,6 @@ import java.util.List;
  * @author 未央
  * @create 2020-04-20 9:20
  */
-@Service
 public class BaseAuthorityServiceImpl implements BaseAuthorityService {
 
     @Autowired(required = false)

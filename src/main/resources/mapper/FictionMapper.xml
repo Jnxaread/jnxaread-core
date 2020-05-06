@@ -76,7 +76,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, categoryId, userId, createTime, title, introduction, chapterCount, wordCount, 
+    id, categoryId, userId, createTime, title, introduction, chapterCount, wordCount,
     commentCount, viewCount, hided, lockedContent, lockedComment, deleted
   </sql>
   <select id="selectByExample" parameterType="com.jnxaread.bean.FictionExample" resultMap="BaseResultMap">
@@ -94,7 +94,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from fiction
     where id = #{id,jdbcType=INTEGER}
@@ -110,18 +110,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Fiction">
-    insert into fiction (id, categoryId, userId, 
-      createTime, title, introduction, 
-      chapterCount, wordCount, commentCount, 
-      viewCount, hided, lockedContent, 
+    insert into fiction (id, categoryId, userId,
+      createTime, title, introduction,
+      chapterCount, wordCount, commentCount,
+      viewCount, hided, lockedContent,
       lockedComment, deleted)
-    values (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
-      #{chapterCount,jdbcType=INTEGER}, #{wordCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, 
-      #{viewCount,jdbcType=BIGINT}, #{hided,jdbcType=BIT}, #{lockedContent,jdbcType=BIT}, 
+    values (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR},
+      #{chapterCount,jdbcType=INTEGER}, #{wordCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER},
+      #{viewCount,jdbcType=BIGINT}, #{hided,jdbcType=BIT}, #{lockedContent,jdbcType=BIT},
       #{lockedComment,jdbcType=BIT}, #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Fiction">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Fiction" useGeneratedKeys="true" keyProperty="id">
     insert into fiction
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
