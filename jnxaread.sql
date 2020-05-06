@@ -111,6 +111,7 @@ CREATE TABLE `Chapter` (
   `number` int(11) NOT NULL COMMENT '章节号',
   `title` varchar(35) NOT NULL COMMENT '章节标题',
   `wordCount` int(11) NOT NULL COMMENT '字数',
+  `commentCount` int(11) NOT NULL DEFAULT '0' COMMENT '评论数量',
   `viewCount` int(11) NOT NULL DEFAULT '0' COMMENT '点击量',
   `content` text NOT NULL COMMENT '章节内容',
   `hided` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否隐藏',

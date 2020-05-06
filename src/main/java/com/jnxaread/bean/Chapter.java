@@ -17,6 +17,8 @@ public class Chapter {
 
     private Integer wordCount;
 
+    private Integer commentCount;
+
     private Integer viewCount;
 
     private Boolean hided;
@@ -83,6 +85,14 @@ public class Chapter {
 
     public void setWordCount(Integer wordCount) {
         this.wordCount = wordCount;
+    }
+
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
     }
 
     public Integer getViewCount() {
