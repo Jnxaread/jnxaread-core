@@ -19,6 +19,8 @@ public class Fiction {
 
     private Integer wordCount;
 
+    private Integer commentCount;
+
     private Long viewCount;
 
     private Boolean hided;
@@ -91,6 +93,14 @@ public class Fiction {
 
     public void setWordCount(Integer wordCount) {
         this.wordCount = wordCount;
+    }
+
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
     }
 
     public Long getViewCount() {

@@ -2,12 +2,9 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Fiction;
 import com.jnxaread.bean.FictionExample;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
-@Mapper
 public interface FictionMapper {
     long countByExample(FictionExample example);
 

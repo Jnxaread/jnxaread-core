@@ -163,6 +163,7 @@ CREATE TABLE `Fiction` (
   `introduction` varchar(255) NOT NULL COMMENT '小说简介',
   `chapterCount` int(11) NOT NULL DEFAULT '0' COMMENT '章节数量',
   `wordCount` int(11) NOT NULL DEFAULT '0' COMMENT '字数',
+  `commentCount` int(11) NOT NULL DEFAULT '0' COMMENT '评论数量',
   `viewCount` bigint(20) NOT NULL DEFAULT '0' COMMENT '点击量',
   `hided` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否隐藏',
   `lockedContent` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定作品内容',
