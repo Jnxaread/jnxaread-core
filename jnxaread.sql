@@ -179,6 +179,26 @@ CREATE TABLE `Fiction` (
 
 /*Data for the table `Fiction` */
 
+/*Table structure for table `Label` */
+
+DROP TABLE IF EXISTS `Label`;
+
+CREATE TABLE `Label` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
+  `fictionId` int(11) NOT NULL COMMENT '外键，作品ID',
+  `userId` int(11) NOT NULL COMMENT '外键，用户ID',
+  `label` varchar(15) NOT NULL COMMENT '作品标签',
+  `createTime` datetime(6) NOT NULL COMMENT '添加时间',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除',
+  PRIMARY KEY (`id`),
+  KEY `label_fiction_id` (`fictionId`),
+  KEY `label_user_id` (`userId`),
+  CONSTRAINT `label_fiction_id` FOREIGN KEY (`fictionId`) REFERENCES `Fiction` (`id`),
+  CONSTRAINT `label_user_id` FOREIGN KEY (`userId`) REFERENCES `User` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `Label` */
+
 /*Table structure for table `Login` */
 
 DROP TABLE IF EXISTS `Login`;
