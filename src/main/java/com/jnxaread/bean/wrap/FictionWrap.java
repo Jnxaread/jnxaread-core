@@ -8,7 +8,27 @@ import com.jnxaread.bean.Fiction;
  */
 public class FictionWrap extends Fiction {
 
+    private String category;
+
+    private String username;
+
     private String[] tag;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String[] getTag() {
         return tag;
@@ -17,5 +37,4 @@ public class FictionWrap extends Fiction {
     public void setTag(String[] tag) {
         this.tag = tag;
     }
-
 }

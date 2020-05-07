@@ -2,6 +2,7 @@ package com.jnxaread.service.impl;
 
 import com.jnxaread.bean.Fiction;
 import com.jnxaread.bean.Label;
+import com.jnxaread.bean.wrap.FictionWrap;
 import com.jnxaread.dao.ChapterMapper;
 import com.jnxaread.dao.CommentMapper;
 import com.jnxaread.dao.FictionMapper;
@@ -36,6 +37,13 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Override
     public void addLabel(Label label) {
         labelMapper.insertSelective(label);
+    }
+
+    @Override
+    public FictionWrap getFictionWrap(int id) {
+        FictionWrap fictionWrap = fictionMapper.findWidthUsername(id);
+        fictionMapper.updateViewCountByPrimaryKey(id);
+        return fictionWrap;
     }
 
 }

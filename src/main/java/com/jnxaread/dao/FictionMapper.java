@@ -2,6 +2,7 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Fiction;
 import com.jnxaread.bean.FictionExample;
+import com.jnxaread.bean.wrap.FictionWrap;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -30,4 +31,11 @@ public interface FictionMapper {
     int updateByPrimaryKeySelective(Fiction record);
 
     int updateByPrimaryKey(Fiction record);
+
+    /******************************************************************************************************************/
+
+    FictionWrap findWidthUsername(int id);
+
+    void updateViewCountByPrimaryKey(int id);
+
 }
