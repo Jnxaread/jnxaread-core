@@ -1,6 +1,7 @@
 package com.jnxaread.service;
 
 import com.jnxaread.bean.Fiction;
+import com.jnxaread.bean.Label;
 
 /**
  * @author 未央
@@ -9,5 +10,7 @@ import com.jnxaread.bean.Fiction;
 public interface BaseLibraryService {
 
     int addFiction(Fiction newFiction);
+
+    void addLabel(Label label);
 
 }
