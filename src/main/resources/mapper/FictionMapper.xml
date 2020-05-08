@@ -351,11 +351,11 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <!--===============================================================================================================-->
-  <resultMap extends="ResultMapWithBLOBs" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.FictionWrap">
+  <resultMap extends="BaseResultMap" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.FictionWrap">
     <result column="category" jdbcType="VARCHAR" property="category"></result>
     <result column="username" jdbcType="VARCHAR" property="username"></result>
   </resultMap>
-  <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.FictionWrap">
+  <select id="findWidthUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.FictionWrap">
     SELECT fiction.id,category.name,user.username,fiction.createTime,fiction.title,fiction.introduction,
     fiction.chapterCount,fiction.wordCount,fiction.commentCount,fiction.viewCount
     FROM fiction,category,user WHERE fiction.id=#{id} AND fiction.categoryId=category.id AND fiction.userId=user.id;

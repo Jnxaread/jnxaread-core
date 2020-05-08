@@ -12,7 +12,7 @@ public class FictionWrap extends Fiction {
 
     private String username;
 
-    private String[] tag;
+    private String[] tags;
 
     public String getCategory() {
         return category;
@@ -30,11 +30,11 @@ public class FictionWrap extends Fiction {
         this.username = username;
     }
 
-    public String[] getTag() {
-        return tag;
+    public String[] getTags() {
+        return tags;
     }
 
-    public void setTag(String[] tag) {
-        this.tag = tag;
+    public void setTags(String[] tags) {
+        this.tags = tags;
     }
 }
