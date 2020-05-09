@@ -11,6 +11,7 @@ import com.jnxaread.service.BaseLibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,6 +35,18 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Override
     public int addFiction(Fiction newFiction) {
         fictionMapper.insertSelective(newFiction);
+        Chapter chapter = new Chapter();
+        chapter.setFictionId(newFiction.getId());
+        chapter.setUserId(newFiction.getUserId());
+        chapter.setCreateTime(new Date());
+        chapter.setNumber(0);
+        chapter.setTitle("");
+        chapter.setWordCount(0);
+        chapter.setCommentCount(0);
+        chapter.setViewCount(0);
+        chapter.setContent("");
+        chapter.setDeleted(true);
+        chapterMapper.insertSelective(chapter);
         return newFiction.getId();
     }
 
@@ -45,7 +58,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Override
     public int addComment(Comment newComment) {
         Chapter chapter = chapterMapper.selectByPrimaryKey(newComment.getChapterId());
-        if (chapter.getDeleted() && newComment.getChapterId() != 1) {
+        if (chapter.getDeleted() && chapter.getNumber()!=0) {
             return 1;
         }
         commentMapper.insertSelective(newComment);

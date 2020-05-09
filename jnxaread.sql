@@ -147,7 +147,9 @@ CREATE TABLE `Comment` (
   KEY `comment_fiction_id` (`fictionId`),
   KEY `comment_chapter_id` (`chapterId`),
   KEY `comment_user_id` (`userId`),
-  CONSTRAINT `comment_fiction_id` FOREIGN KEY (`fictionId`) REFERENCES `Fiction` (`id`)
+  CONSTRAINT `comment_chapter_id` FOREIGN KEY (`chapterId`) REFERENCES `Chapter` (`id`),
+  CONSTRAINT `comment_fiction_id` FOREIGN KEY (`fictionId`) REFERENCES `Fiction` (`id`),
+  CONSTRAINT `comment_user_id` FOREIGN KEY (`userId`) REFERENCES `User` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `Comment` */
