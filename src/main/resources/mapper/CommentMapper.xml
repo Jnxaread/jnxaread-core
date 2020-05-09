@@ -7,8 +7,7 @@
     <result column="chapterId" jdbcType="INTEGER" property="chapterId" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="floor" jdbcType="INTEGER" property="floor" />
-    <result column="quote" jdbcType="INTEGER" property="quote" />
+    <result column="hided" jdbcType="BIT" property="hided" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jnxaread.bean.Comment">
@@ -73,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, fictionId, chapterId, userId, createTime, floor, quote, deleted
+    id, fictionId, chapterId, userId, createTime, hided, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -128,13 +127,11 @@
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Comment">
     insert into comment (id, fictionId, chapterId, 
-      userId, createTime, floor, 
-      quote, deleted, content
-      )
+      userId, createTime, hided, 
+      deleted, content)
     values (#{id,jdbcType=INTEGER}, #{fictionId,jdbcType=INTEGER}, #{chapterId,jdbcType=INTEGER}, 
-      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{floor,jdbcType=INTEGER}, 
-      #{quote,jdbcType=INTEGER}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
-      )
+      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{hided,jdbcType=BIT}, 
+      #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Comment">
     insert into comment
@@ -154,11 +151,8 @@
       <if test="createTime != null">
         createTime,
       </if>
-      <if test="floor != null">
-        floor,
-      </if>
-      <if test="quote != null">
-        quote,
+      <if test="hided != null">
+        hided,
       </if>
       <if test="deleted != null">
         deleted,
@@ -183,11 +177,8 @@
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="floor != null">
-        #{floor,jdbcType=INTEGER},
-      </if>
-      <if test="quote != null">
-        #{quote,jdbcType=INTEGER},
+      <if test="hided != null">
+        #{hided,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
@@ -221,11 +212,8 @@
       <if test="record.createTime != null">
         createTime = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.floor != null">
-        floor = #{record.floor,jdbcType=INTEGER},
-      </if>
-      <if test="record.quote != null">
-        quote = #{record.quote,jdbcType=INTEGER},
+      <if test="record.hided != null">
+        hided = #{record.hided,jdbcType=BIT},
       </if>
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
@@ -245,8 +233,7 @@
       chapterId = #{record.chapterId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
-      floor = #{record.floor,jdbcType=INTEGER},
-      quote = #{record.quote,jdbcType=INTEGER},
+      hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -260,8 +247,7 @@
       chapterId = #{record.chapterId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
-      floor = #{record.floor,jdbcType=INTEGER},
-      quote = #{record.quote,jdbcType=INTEGER},
+      hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -282,11 +268,8 @@
       <if test="createTime != null">
         createTime = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="floor != null">
-        floor = #{floor,jdbcType=INTEGER},
-      </if>
-      <if test="quote != null">
-        quote = #{quote,jdbcType=INTEGER},
+      <if test="hided != null">
+        hided = #{hided,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
@@ -303,8 +286,7 @@
       chapterId = #{chapterId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
-      floor = #{floor,jdbcType=INTEGER},
-      quote = #{quote,jdbcType=INTEGER},
+      hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
@@ -315,8 +297,7 @@
       chapterId = #{chapterId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
-      floor = #{floor,jdbcType=INTEGER},
-      quote = #{quote,jdbcType=INTEGER},
+      hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>

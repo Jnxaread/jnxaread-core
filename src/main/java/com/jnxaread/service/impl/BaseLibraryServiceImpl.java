@@ -3,7 +3,6 @@ package com.jnxaread.service.impl;
 import com.jnxaread.bean.*;
 import com.jnxaread.bean.wrap.FictionWrap;
 import com.jnxaread.dao.ChapterMapper;
-import com.jnxaread.dao.CommentMapper;
 import com.jnxaread.dao.FictionMapper;
 import com.jnxaread.dao.LabelMapper;
 import com.jnxaread.service.BaseLibraryService;
@@ -25,8 +24,8 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Autowired(required = false)
     private ChapterMapper chapterMapper;
 
-    @Autowired(required = false)
-    private CommentMapper commentMapper;
+//    @Autowired(required = false)
+//    private CommentMapper commentMapper;
 
     @Autowired(required = false)
     private LabelMapper labelMapper;
@@ -55,7 +54,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         labelMapper.insertSelective(label);
     }
 
-    @Override
+    /*@Override
     public int addComment(Comment newComment) {
         Chapter chapter = chapterMapper.selectByPrimaryKey(newComment.getChapterId());
         if (chapter.getDeleted() && newComment.getChapterId() != 0) {
@@ -63,7 +62,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         }
         commentMapper.insertSelective(newComment);
         return 0;
-    }
+    }*/
 
     @Override
     public FictionWrap getFictionWrap(int id) {

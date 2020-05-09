@@ -13,9 +13,7 @@ public class Comment {
 
     private Date createTime;
 
-    private Integer floor;
-
-    private Integer quote;
+    private Boolean hided;
 
     private Boolean deleted;
 
@@ -61,20 +59,12 @@ public class Comment {
         this.createTime = createTime;
     }
 
-    public Integer getFloor() {
-        return floor;
+    public Boolean getHided() {
+        return hided;
     }
 
-    public void setFloor(Integer floor) {
-        this.floor = floor;
-    }
-
-    public Integer getQuote() {
-        return quote;
-    }
-
-    public void setQuote(Integer quote) {
-        this.quote = quote;
+    public void setHided(Boolean hided) {
+        this.hided = hided;
     }
 
     public Boolean getDeleted() {

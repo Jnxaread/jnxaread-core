@@ -405,123 +405,63 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andFloorIsNull() {
-            addCriterion("floor is null");
+        public Criteria andHidedIsNull() {
+            addCriterion("hided is null");
             return (Criteria) this;
         }
 
-        public Criteria andFloorIsNotNull() {
-            addCriterion("floor is not null");
+        public Criteria andHidedIsNotNull() {
+            addCriterion("hided is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFloorEqualTo(Integer value) {
-            addCriterion("floor =", value, "floor");
+        public Criteria andHidedEqualTo(Boolean value) {
+            addCriterion("hided =", value, "hided");
             return (Criteria) this;
         }
 
-        public Criteria andFloorNotEqualTo(Integer value) {
-            addCriterion("floor <>", value, "floor");
+        public Criteria andHidedNotEqualTo(Boolean value) {
+            addCriterion("hided <>", value, "hided");
             return (Criteria) this;
         }
 
-        public Criteria andFloorGreaterThan(Integer value) {
-            addCriterion("floor >", value, "floor");
+        public Criteria andHidedGreaterThan(Boolean value) {
+            addCriterion("hided >", value, "hided");
             return (Criteria) this;
         }
 
-        public Criteria andFloorGreaterThanOrEqualTo(Integer value) {
-            addCriterion("floor >=", value, "floor");
+        public Criteria andHidedGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("hided >=", value, "hided");
             return (Criteria) this;
         }
 
-        public Criteria andFloorLessThan(Integer value) {
-            addCriterion("floor <", value, "floor");
+        public Criteria andHidedLessThan(Boolean value) {
+            addCriterion("hided <", value, "hided");
             return (Criteria) this;
         }
 
-        public Criteria andFloorLessThanOrEqualTo(Integer value) {
-            addCriterion("floor <=", value, "floor");
+        public Criteria andHidedLessThanOrEqualTo(Boolean value) {
+            addCriterion("hided <=", value, "hided");
             return (Criteria) this;
         }
 
-        public Criteria andFloorIn(List<Integer> values) {
-            addCriterion("floor in", values, "floor");
+        public Criteria andHidedIn(List<Boolean> values) {
+            addCriterion("hided in", values, "hided");
             return (Criteria) this;
         }
 
-        public Criteria andFloorNotIn(List<Integer> values) {
-            addCriterion("floor not in", values, "floor");
+        public Criteria andHidedNotIn(List<Boolean> values) {
+            addCriterion("hided not in", values, "hided");
             return (Criteria) this;
         }
 
-        public Criteria andFloorBetween(Integer value1, Integer value2) {
-            addCriterion("floor between", value1, value2, "floor");
+        public Criteria andHidedBetween(Boolean value1, Boolean value2) {
+            addCriterion("hided between", value1, value2, "hided");
             return (Criteria) this;
         }
 
-        public Criteria andFloorNotBetween(Integer value1, Integer value2) {
-            addCriterion("floor not between", value1, value2, "floor");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuoteIsNull() {
-            addCriterion("quote is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuoteIsNotNull() {
-            addCriterion("quote is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuoteEqualTo(Integer value) {
-            addCriterion("quote =", value, "quote");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuoteNotEqualTo(Integer value) {
-            addCriterion("quote <>", value, "quote");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuoteGreaterThan(Integer value) {
-            addCriterion("quote >", value, "quote");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuoteGreaterThanOrEqualTo(Integer value) {
-            addCriterion("quote >=", value, "quote");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuoteLessThan(Integer value) {
-            addCriterion("quote <", value, "quote");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuoteLessThanOrEqualTo(Integer value) {
-            addCriterion("quote <=", value, "quote");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuoteIn(List<Integer> values) {
-            addCriterion("quote in", values, "quote");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuoteNotIn(List<Integer> values) {
-            addCriterion("quote not in", values, "quote");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuoteBetween(Integer value1, Integer value2) {
-            addCriterion("quote between", value1, value2, "quote");
-            return (Criteria) this;
-        }
-
-        public Criteria andQuoteNotBetween(Integer value1, Integer value2) {
-            addCriterion("quote not between", value1, value2, "quote");
+        public Criteria andHidedNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("hided not between", value1, value2, "hided");
             return (Criteria) this;
         }
 

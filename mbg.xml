@@ -60,11 +60,11 @@
         </table>
         <table tableName="Chapter" domainObjectName="Chapter">
             <property name="useActualColumnNames" value="true"/>
-        </table>
+        </table>-->
         <table tableName="Comment" domainObjectName="Comment">
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="Fiction" domainObjectName="Fiction">
+        <!--<table tableName="Fiction" domainObjectName="Fiction">
             <property name="useActualColumnNames" value="true"/>
         </table>
         <table tableName="Login" domainObjectName="Login">
@@ -84,10 +84,10 @@
         </table>
         <table tableName="User" domainObjectName="User">
             <property name="useActualColumnNames" value="true"/>
-        </table>-->
+        </table>
         <table tableName="Label" domainObjectName="Label">
             <property name="useActualColumnNames" value="true"/>
-        </table>
+        </table>-->
 
     </context>
 </generatorConfiguration>
