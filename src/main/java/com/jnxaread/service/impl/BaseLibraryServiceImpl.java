@@ -45,7 +45,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Override
     public int addComment(Comment newComment) {
         Chapter chapter = chapterMapper.selectByPrimaryKey(newComment.getChapterId());
-        if (chapter.getDeleted() && newComment.getChapterId() != 0) {
+        if (chapter.getDeleted() && newComment.getChapterId() != 1) {
             return 1;
         }
         commentMapper.insertSelective(newComment);
