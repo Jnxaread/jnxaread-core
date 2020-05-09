@@ -108,7 +108,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -126,11 +126,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Comment">
-    insert into comment (id, fictionId, chapterId, 
-      userId, createTime, hided, 
+    insert into comment (id, fictionId, chapterId,
+      userId, createTime, hided,
       deleted, content)
-    values (#{id,jdbcType=INTEGER}, #{fictionId,jdbcType=INTEGER}, #{chapterId,jdbcType=INTEGER}, 
-      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{hided,jdbcType=BIT}, 
+    values (#{id,jdbcType=INTEGER}, #{fictionId,jdbcType=INTEGER}, #{chapterId,jdbcType=INTEGER},
+      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{hided,jdbcType=BIT},
       #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Comment">
@@ -301,4 +301,14 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!--========================================================================================-->
+  <resultMap extends="ResultMapWithBLOBs" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.CommentWrap">
+    <result column="username" jdbcType="VARCHAR" property="username"/>
+  </resultMap>
+  <select id="findListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
+    SELECT comment.createTime,comment.content,comment.hided,comment.deleted,user.username FROM comment,user
+    WHERE comment.fictionId=#{fictionId} AND comment.chapterId=#{chapterId} AND comment.hided=0 AND comment.deleted=0
+    AND comment.userId=user.id
+  </select>
+  <!--========================================================================================-->
 </mapper>

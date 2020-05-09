@@ -54,17 +54,17 @@
         </table>
         <table tableName="Authority" domainObjectName="Authority">
             <property name="useActualColumnNames" value="true"/>
-        </table>
+        </table>-->
         <table tableName="Category" domainObjectName="Category">
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="Chapter" domainObjectName="Chapter">
+        <!--<table tableName="Chapter" domainObjectName="Chapter">
             <property name="useActualColumnNames" value="true"/>
-        </table>-->
+        </table>
         <table tableName="Comment" domainObjectName="Comment">
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <!--<table tableName="Fiction" domainObjectName="Fiction">
+        <table tableName="Fiction" domainObjectName="Fiction">
             <property name="useActualColumnNames" value="true"/>
         </table>
         <table tableName="Login" domainObjectName="Login">

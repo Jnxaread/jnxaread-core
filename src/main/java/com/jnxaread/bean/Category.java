@@ -1,5 +1,7 @@
 package com.jnxaread.bean;
 
+import java.util.Date;
+
 public class Category {
     private Integer id;
 
@@ -10,6 +12,12 @@ public class Category {
     private Integer fictionCount;
 
     private Integer chapterCount;
+
+    private Date createTime;
+
+    private Boolean hided;
+
+    private Boolean deleted;
 
     public Integer getId() {
         return id;
@@ -49,5 +57,29 @@ public class Category {
 
     public void setChapterCount(Integer chapterCount) {
         this.chapterCount = chapterCount;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Boolean getHided() {
+        return hided;
+    }
+
+    public void setHided(Boolean hided) {
+        this.hided = hided;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
 }

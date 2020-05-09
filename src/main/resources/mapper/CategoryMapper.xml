@@ -7,6 +7,9 @@
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="fictionCount" jdbcType="INTEGER" property="fictionCount" />
     <result column="chapterCount" jdbcType="INTEGER" property="chapterCount" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="hided" jdbcType="BIT" property="hided" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, description, fictionCount, chapterCount
+    id, name, description, fictionCount, chapterCount, createTime, hided, deleted
   </sql>
   <select id="selectByExample" parameterType="com.jnxaread.bean.CategoryExample" resultMap="BaseResultMap">
     select
@@ -101,9 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Category">
     insert into category (id, name, description, 
-      fictionCount, chapterCount)
+      fictionCount, chapterCount, createTime, 
+      hided, deleted)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{fictionCount,jdbcType=INTEGER}, #{chapterCount,jdbcType=INTEGER})
+      #{fictionCount,jdbcType=INTEGER}, #{chapterCount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Category">
     insert into category
@@ -123,6 +128,15 @@
       <if test="chapterCount != null">
         chapterCount,
       </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="hided != null">
+        hided,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -139,6 +153,15 @@
       </if>
       <if test="chapterCount != null">
         #{chapterCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hided != null">
+        #{hided,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -166,6 +189,15 @@
       <if test="record.chapterCount != null">
         chapterCount = #{record.chapterCount,jdbcType=INTEGER},
       </if>
+      <if test="record.createTime != null">
+        createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.hided != null">
+        hided = #{record.hided,jdbcType=BIT},
+      </if>
+      <if test="record.deleted != null">
+        deleted = #{record.deleted,jdbcType=BIT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,7 +209,10 @@
       name = #{record.name,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
       fictionCount = #{record.fictionCount,jdbcType=INTEGER},
-      chapterCount = #{record.chapterCount,jdbcType=INTEGER}
+      chapterCount = #{record.chapterCount,jdbcType=INTEGER},
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      hided = #{record.hided,jdbcType=BIT},
+      deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,6 +232,15 @@
       <if test="chapterCount != null">
         chapterCount = #{chapterCount,jdbcType=INTEGER},
       </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hided != null">
+        hided = #{hided,jdbcType=BIT},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -205,7 +249,10 @@
     set name = #{name,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       fictionCount = #{fictionCount,jdbcType=INTEGER},
-      chapterCount = #{chapterCount,jdbcType=INTEGER}
+      chapterCount = #{chapterCount,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      hided = #{hided,jdbcType=BIT},
+      deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

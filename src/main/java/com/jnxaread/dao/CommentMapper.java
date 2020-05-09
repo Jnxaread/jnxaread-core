@@ -2,8 +2,10 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Comment;
 import com.jnxaread.bean.CommentExample;
-import java.util.List;
+import com.jnxaread.bean.wrap.CommentWrap;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CommentMapper {
     long countByExample(CommentExample example);
@@ -33,4 +35,9 @@ public interface CommentMapper {
     int updateByPrimaryKeyWithBLOBs(Comment record);
 
     int updateByPrimaryKey(Comment record);
+
+    /******************************************************************************************************************/
+
+    List<CommentWrap> findListWidthUsername(int fictionId, int chapterId);
+
 }

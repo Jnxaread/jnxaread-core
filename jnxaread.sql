@@ -94,17 +94,23 @@ CREATE TABLE `Category` (
   `description` varchar(255) NOT NULL COMMENT '类别说明',
   `fictionCount` int(11) NOT NULL DEFAULT '0' COMMENT '作品数量',
   `chapterCount` int(11) NOT NULL DEFAULT '0' COMMENT '章节数量',
+  `createTime` datetime(6) NOT NULL COMMENT '创建时间',
+  `hided` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否隐藏，如果为true，则隐藏该类别下的所有作品',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除，如果为true，则删除该类别下的所有作品',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `Category` */
+
+insert  into `Category`(`id`,`name`,`description`,`fictionCount`,`chapterCount`,`createTime`,`hided`,`deleted`) values 
+(1,'','',0,0,'2020-05-09 10:56:59.000000',0,1);
 
 /*Table structure for table `Chapter` */
 
 DROP TABLE IF EXISTS `Chapter`;
 
 CREATE TABLE `Chapter` (
-  `id` int(11) NOT NULL COMMENT '主键自增',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
   `fictionId` int(11) NOT NULL COMMENT '外键，作品ID',
   `userId` int(11) NOT NULL COMMENT '外键，作者ID',
   `createTime` datetime(6) NOT NULL COMMENT '发布时间',
@@ -123,9 +129,12 @@ CREATE TABLE `Chapter` (
   KEY `chapter_user_id` (`userId`),
   CONSTRAINT `chapter_fiction_id` FOREIGN KEY (`fictionId`) REFERENCES `Fiction` (`id`),
   CONSTRAINT `chapter_user_id` FOREIGN KEY (`userId`) REFERENCES `User` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `Chapter` */
+
+insert  into `Chapter`(`id`,`fictionId`,`userId`,`createTime`,`number`,`title`,`wordCount`,`commentCount`,`viewCount`,`content`,`hided`,`lockedContent`,`lockedComment`,`deleted`) values 
+(1,1,1,'2020-05-09 10:58:57.000000',0,'',0,0,0,'',0,0,0,1);
 
 /*Table structure for table `Comment` */
 
@@ -175,9 +184,12 @@ CREATE TABLE `Fiction` (
   KEY `fiction_category_id` (`categoryId`),
   CONSTRAINT `fiction_category_id` FOREIGN KEY (`categoryId`) REFERENCES `Category` (`id`),
   CONSTRAINT `fiction_user_id` FOREIGN KEY (`userId`) REFERENCES `User` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `Fiction` */
+
+insert  into `Fiction`(`id`,`categoryId`,`userId`,`createTime`,`title`,`introduction`,`chapterCount`,`wordCount`,`commentCount`,`viewCount`,`hided`,`lockedContent`,`lockedComment`,`deleted`) values 
+(1,1,1,'2020-05-09 10:58:23.000000','','',0,0,0,0,0,0,0,1);
 
 /*Table structure for table `Label` */
 
@@ -344,9 +356,12 @@ CREATE TABLE `User` (
   KEY `id` (`id`),
   KEY `user_authority_id` (`authorityId`),
   CONSTRAINT `user_authority_id` FOREIGN KEY (`authorityId`) REFERENCES `Authority` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `User` */
+
+insert  into `User`(`id`,`account`,`password`,`username`,`countryCode`,`mobile`,`email`,`gender`,`authorityId`,`bannedTopic`,`bannedReply`,`bannedMessage`,`bannedFiction`,`bannedChapter`,`bannedComment`,`locked`,`deleted`,`topicCount`,`replyCount`,`fictionCount`,`chapterCount`,`commentCount`,`loginCount`,`createTime`,`photo`,`comeFrom`,`signature`,`introduction`) values 
+(1,'','','','+86','00000000000','',0,2,0,0,0,0,0,0,0,1,0,0,0,0,0,0,'2020-05-09 10:57:50.000000',NULL,NULL,NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
