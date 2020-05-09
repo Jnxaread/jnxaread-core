@@ -1,5 +1,6 @@
 package com.jnxaread.service;
 
+import com.jnxaread.bean.Chapter;
 import com.jnxaread.bean.Comment;
 import com.jnxaread.bean.Fiction;
 import com.jnxaread.bean.Label;
@@ -24,6 +25,8 @@ public interface BaseLibraryService {
 
     List<Label> getLabelByFictionId(int fictionId);
 
-    List<CommentWrap> getCommentWrapList(int fictionId,int chapterId);
+    Chapter getChapterByNumber(int fictionId,int number);
+
+    List<CommentWrap> getCommentWrapList(int chapterId);
 
 }

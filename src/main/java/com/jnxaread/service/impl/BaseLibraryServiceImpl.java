@@ -57,8 +57,9 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
 
     @Override
     public int addComment(Comment newComment) {
+        Fiction fiction = fictionMapper.selectByPrimaryKey(newComment.getFictionId());
         Chapter chapter = chapterMapper.selectByPrimaryKey(newComment.getChapterId());
-        if (chapter.getDeleted() && chapter.getNumber()!=0) {
+        if (fiction.getDeleted() || (chapter.getDeleted() && chapter.getNumber() != 0)) {
             return 1;
         }
         commentMapper.insertSelective(newComment);
@@ -90,8 +91,21 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     }
 
     @Override
-    public List<CommentWrap> getCommentWrapList(int fictionId,int chapterId) {
-        List<CommentWrap> commentWrapList=commentMapper.findListWidthUsername(fictionId,chapterId);
+    public Chapter getChapterByNumber(int fictionId, int number) {
+        ChapterExample example = new ChapterExample();
+        ChapterExample.Criteria criteria = example.createCriteria();
+        criteria.andFictionIdEqualTo(fictionId);
+        criteria.andNumberEqualTo(number);
+        if (number != 0) {
+            criteria.andDeletedEqualTo(false);
+        }
+        List<Chapter> chapterList = chapterMapper.selectByExample(example);
+        return chapterList.get(0);
+    }
+
+    @Override
+    public List<CommentWrap> getCommentWrapList(int chapterId) {
+        List<CommentWrap> commentWrapList = commentMapper.findListWidthUsername(chapterId);
         return commentWrapList;
     }
 

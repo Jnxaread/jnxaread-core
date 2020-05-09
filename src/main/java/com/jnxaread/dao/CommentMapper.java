@@ -3,10 +3,12 @@ package com.jnxaread.dao;
 import com.jnxaread.bean.Comment;
 import com.jnxaread.bean.CommentExample;
 import com.jnxaread.bean.wrap.CommentWrap;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+@Mapper
 public interface CommentMapper {
     long countByExample(CommentExample example);
 
@@ -38,6 +40,6 @@ public interface CommentMapper {
 
     /******************************************************************************************************************/
 
-    List<CommentWrap> findListWidthUsername(int fictionId, int chapterId);
+    List<CommentWrap> findListWidthUsername(int chapterId);
 
 }

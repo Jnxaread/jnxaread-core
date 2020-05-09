@@ -40,6 +40,6 @@ public interface ReplyMapper {
 
     /******************************************************************/
 
-    List<ReplyWrap> findListWithUsername(@Param("topicId") int topicId, @Param("startRow") int startRow);
+    List<ReplyWrap> findListWidthUsername(@Param("topicId") int topicId, @Param("startRow") int startRow);
 
 }
