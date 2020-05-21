@@ -1,6 +1,7 @@
 package com.jnxaread.service.impl;
 
 import com.jnxaread.bean.*;
+import com.jnxaread.bean.wrap.ChapterWrap;
 import com.jnxaread.bean.wrap.CommentWrap;
 import com.jnxaread.bean.wrap.FictionWrap;
 import com.jnxaread.dao.ChapterMapper;
@@ -85,6 +86,12 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         fictionWrap.setTags(tags);
         fictionMapper.updateViewCountByPrimaryKey(id);
         return fictionWrap;
+    }
+
+    @Override
+    public ChapterWrap getChapterWrap(int id) {
+        ChapterWrap chapterWrap=chapterMapper.findWithUsername(id);
+        return chapterWrap;
     }
 
     @Override

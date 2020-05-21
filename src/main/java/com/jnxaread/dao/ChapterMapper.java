@@ -2,6 +2,7 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Chapter;
 import com.jnxaread.bean.ChapterExample;
+import com.jnxaread.bean.wrap.ChapterWrap;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -36,4 +37,8 @@ public interface ChapterMapper {
     int updateByPrimaryKeyWithBLOBs(Chapter record);
 
     int updateByPrimaryKey(Chapter record);
+
+    /******************************************************************************************************************/
+
+    ChapterWrap findWithUsername(int id);
 }

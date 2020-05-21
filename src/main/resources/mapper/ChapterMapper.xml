@@ -408,4 +408,12 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!--===============================================================================================================-->
+  <resultMap extends="ResultMapWithBLOBs" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.ChapterWrap">
+    <result column="username" jdbcType="VARCHAR" property="username"></result>
+  </resultMap>
+  <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.ChapterWrap">
+    SELECT chapter.*,user.username
+    FROM chapter,user WHERE chapter.id=#{id} AND chapter.hided=0 AND chapter.deleted=0 AND chapter.userId=user.id
+  </select>
 </mapper>
