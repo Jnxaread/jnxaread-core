@@ -19,6 +19,8 @@ public interface BaseLibraryService {
 
     void addLabel(Label label);
 
+    int addChapter(Chapter newChapter);
+
     int addComment(Comment newComment);
 
     FictionWrap getFictionWrap(int id);
@@ -28,5 +30,9 @@ public interface BaseLibraryService {
     Chapter getChapterByNumber(int fictionId,int number);
 
     List<CommentWrap> getCommentWrapList(int chapterId);
+
+    List<FictionWrap> getFictionWrapList(int page);
+
+    long getFictionCount();
 
 }

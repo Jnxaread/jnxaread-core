@@ -56,6 +56,12 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     }
 
     @Override
+    public int addChapter(Chapter newChapter) {
+        chapterMapper.insertSelective(newChapter);
+        return newChapter.getId();
+    }
+
+    @Override
     public int addComment(Comment newComment) {
         Fiction fiction = fictionMapper.selectByPrimaryKey(newComment.getFictionId());
         Chapter chapter = chapterMapper.selectByPrimaryKey(newComment.getChapterId());
@@ -107,6 +113,20 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     public List<CommentWrap> getCommentWrapList(int chapterId) {
         List<CommentWrap> commentWrapList = commentMapper.findListWidthUsername(chapterId);
         return commentWrapList;
+    }
+
+    @Override
+    public List<FictionWrap> getFictionWrapList(int page) {
+        int startRow = (page - 1) * 35;
+        List<FictionWrap> fictionWrapList = fictionMapper.findListWidthUsername(startRow);
+        return fictionWrapList;
+    }
+
+    @Override
+    public long getFictionCount() {
+        FictionExample example = new FictionExample();
+        long fictionCount = fictionMapper.countByExample(example);
+        return fictionCount;
     }
 
 }

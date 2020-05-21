@@ -38,4 +38,6 @@ public interface FictionMapper {
 
     void updateViewCountByPrimaryKey(int id);
 
+    List<FictionWrap> findListWidthUsername(int startRow);
+
 }

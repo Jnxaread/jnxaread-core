@@ -351,10 +351,15 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <!--===============================================================================================================-->
-  <resultMap extends="BaseResultMap" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.FictionWrap">
+  <resultMap extends="BaseResultMap" id="ResultMapWidthUsername" type="com.jnxaread.bean.wrap.FictionWrap">
     <result column="category" jdbcType="VARCHAR" property="category"></result>
     <result column="username" jdbcType="VARCHAR" property="username"></result>
   </resultMap>
+  <select id="findListWidthUsername" parameterType="java.lang.Integer" resultMap="ResultMapWidthUsername">
+    SELECT fiction.*,user.username FROM fiction,user
+    WHERE fiction.userId=user.id AND fiction.deleted=0
+    ORDER BY createTime DESC limit #{startRow},45
+  </select>
   <select id="findWidthUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.FictionWrap">
     SELECT fiction.id,category.name,user.username,fiction.createTime,fiction.title,fiction.introduction,
     fiction.chapterCount,fiction.wordCount,fiction.commentCount,fiction.viewCount

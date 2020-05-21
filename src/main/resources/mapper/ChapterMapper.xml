@@ -78,7 +78,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, fictionId, userId, createTime, number, title, wordCount, commentCount, viewCount, 
+    id, fictionId, userId, createTime, number, title, wordCount, commentCount, viewCount,
     hided, lockedContent, lockedComment, deleted
   </sql>
   <sql id="Blob_Column_List">
@@ -115,7 +115,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -133,18 +133,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Chapter">
-    insert into chapter (id, fictionId, userId, 
-      createTime, number, title, 
-      wordCount, commentCount, viewCount, 
-      hided, lockedContent, lockedComment, 
+    insert into chapter (id, fictionId, userId,
+      createTime, number, title,
+      wordCount, commentCount, viewCount,
+      hided, lockedContent, lockedComment,
       deleted, content)
-    values (#{id,jdbcType=INTEGER}, #{fictionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{number,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
-      #{wordCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER}, 
-      #{hided,jdbcType=BIT}, #{lockedContent,jdbcType=BIT}, #{lockedComment,jdbcType=BIT}, 
+    values (#{id,jdbcType=INTEGER}, #{fictionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{number,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
+      #{wordCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER},
+      #{hided,jdbcType=BIT}, #{lockedContent,jdbcType=BIT}, #{lockedComment,jdbcType=BIT},
       #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Chapter">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Chapter" useGeneratedKeys="true" keyProperty="id">
     insert into chapter
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
