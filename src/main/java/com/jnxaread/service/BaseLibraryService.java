@@ -26,6 +26,8 @@ public interface BaseLibraryService {
 
     FictionWrap getFictionWrap(int id);
 
+    Chapter getChapter(int id);
+
     ChapterWrap getChapterWrap(int id);
 
     List<Label> getLabelByFictionId(int fictionId);
@@ -33,6 +35,8 @@ public interface BaseLibraryService {
     Chapter getChapterByNumber(int fictionId, int number);
 
     List<CommentWrap> getCommentWrapList(int chapterId);
+
+    List<Chapter> getChapterList(int fictionId);
 
     List<FictionWrap> getFictionWrapList(int userId, int page);
 

@@ -34,7 +34,7 @@ public interface FictionMapper {
 
     /******************************************************************************************************************/
 
-    FictionWrap findWidthUsername(int id);
+    FictionWrap findWithUsername(int id);
 
     void updateViewCountByPrimaryKey(int id);
 

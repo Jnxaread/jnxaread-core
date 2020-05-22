@@ -75,7 +75,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
 
     @Override
     public FictionWrap getFictionWrap(int id) {
-        FictionWrap fictionWrap = fictionMapper.findWidthUsername(id);
+        FictionWrap fictionWrap = fictionMapper.findWithUsername(id);
         List<Label> labelList = getLabelByFictionId(id);
         ArrayList<String> tagArrayList = new ArrayList<>();
         labelList.forEach(label -> tagArrayList.add(label.getLabel()));
@@ -84,6 +84,12 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         fictionWrap.setTags(tags);
         fictionMapper.updateViewCountByPrimaryKey(id);
         return fictionWrap;
+    }
+
+    @Override
+    public Chapter getChapter(int id) {
+        Chapter chapter = chapterMapper.selectByPrimaryKey(id);
+        return chapter;
     }
 
     @Override
@@ -118,6 +124,16 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     public List<CommentWrap> getCommentWrapList(int chapterId) {
         List<CommentWrap> commentWrapList = commentMapper.findListWidthUsername(chapterId);
         return commentWrapList;
+    }
+
+    @Override
+    public List<Chapter> getChapterList(int fictionId) {
+        ChapterExample example = new ChapterExample();
+        ChapterExample.Criteria criteria = example.createCriteria();
+        criteria.andFictionIdEqualTo(fictionId);
+        criteria.andHidedEqualTo(false);
+        criteria.andDeletedEqualTo(false);
+        return chapterMapper.selectByExample(example);
     }
 
     @Override
