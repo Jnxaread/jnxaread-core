@@ -78,9 +78,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         FictionWrap fictionWrap = fictionMapper.findWidthUsername(id);
         List<Label> labelList = getLabelByFictionId(id);
         ArrayList<String> tagArrayList = new ArrayList<>();
-        labelList.forEach(label ->
-                tagArrayList.add(label.getLabel())
-        );
+        labelList.forEach(label -> tagArrayList.add(label.getLabel()));
         String[] tagsTemp = new String[tagArrayList.size()];
         String[] tags = tagArrayList.toArray(tagsTemp);
         fictionWrap.setTags(tags);
@@ -90,7 +88,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
 
     @Override
     public ChapterWrap getChapterWrap(int id) {
-        ChapterWrap chapterWrap=chapterMapper.findWithUsername(id);
+        ChapterWrap chapterWrap = chapterMapper.findWithUsername(id);
         return chapterWrap;
     }
 
@@ -123,15 +121,58 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     }
 
     @Override
-    public List<FictionWrap> getFictionWrapList(int page) {
-        int startRow = (page - 1) * 35;
-        List<FictionWrap> fictionWrapList = fictionMapper.findListWidthUsername(startRow);
+    public List<FictionWrap> getFictionWrapList(int userId, int page) {
+        int startRow = (page - 1) * 30;
+        List<FictionWrap> fictionWrapList = fictionMapper.findListWithUsername(userId, startRow);
+        //遍历fictionWrapList，给每一个fictionWrap设置tags
+        fictionWrapList.forEach(fictionWrap -> {
+            List<Label> labelList = getLabelByFictionId(fictionWrap.getId());
+            labelList.forEach(label -> {
+                List<String> tagList = new ArrayList<>();
+                tagList.add(label.getLabel());
+                String[] tags = tagList.toArray(new String[labelList.size()]);
+                fictionWrap.setTags(tags);
+            });
+        });
         return fictionWrapList;
     }
 
     @Override
-    public long getFictionCount() {
+    public List<FictionWrap> getOwnFictionWrapList(int userId, int page) {
+        int startRow = (page - 1) * 30;
+        List<FictionWrap> fictionWrapList = fictionMapper.findOwnListWithUsername(userId, startRow);
+        //遍历fictionWrapList，给每一个fictionWrap设置tags
+        fictionWrapList.forEach(fictionWrap -> {
+            List<Label> labelList = getLabelByFictionId(fictionWrap.getId());
+            labelList.forEach(label -> {
+                List<String> tagList = new ArrayList<>();
+                tagList.add(label.getLabel());
+                String[] tags = tagList.toArray(new String[labelList.size()]);
+                fictionWrap.setTags(tags);
+            });
+        });
+        return fictionWrapList;
+    }
+
+    @Override
+    public long getFictionCountByUserId(int userId) {
         FictionExample example = new FictionExample();
+        FictionExample.Criteria criteria = example.createCriteria();
+        if (userId != 0) {
+            criteria.andUserIdEqualTo(userId);
+        }
+        criteria.andHidedEqualTo(false);
+        criteria.andDeletedEqualTo(false);
+        long fictionCount = fictionMapper.countByExample(example);
+        return fictionCount;
+    }
+
+    @Override
+    public long getOwnFictionCount(int userId) {
+        FictionExample example = new FictionExample();
+        FictionExample.Criteria criteria = example.createCriteria();
+        criteria.andUserIdEqualTo(userId);
+        criteria.andDeletedEqualTo(false);
         long fictionCount = fictionMapper.countByExample(example);
         return fictionCount;
     }

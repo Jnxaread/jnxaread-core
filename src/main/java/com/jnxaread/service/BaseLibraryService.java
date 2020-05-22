@@ -30,12 +30,16 @@ public interface BaseLibraryService {
 
     List<Label> getLabelByFictionId(int fictionId);
 
-    Chapter getChapterByNumber(int fictionId,int number);
+    Chapter getChapterByNumber(int fictionId, int number);
 
     List<CommentWrap> getCommentWrapList(int chapterId);
 
-    List<FictionWrap> getFictionWrapList(int page);
+    List<FictionWrap> getFictionWrapList(int userId, int page);
 
-    long getFictionCount();
+    List<FictionWrap> getOwnFictionWrapList(int userId, int page);
+
+    long getFictionCountByUserId(int userId);
+
+    long getOwnFictionCount(int userId);
 
 }
