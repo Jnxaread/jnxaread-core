@@ -10,6 +10,7 @@ import com.jnxaread.dao.FictionMapper;
 import com.jnxaread.dao.LabelMapper;
 import com.jnxaread.service.BaseLibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,6 +35,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     private LabelMapper labelMapper;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int addFiction(Fiction newFiction) {
         fictionMapper.insertSelective(newFiction);
         Chapter chapter = new Chapter();
@@ -52,17 +54,28 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void addLabel(Label label) {
         labelMapper.insertSelective(label);
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int addChapter(Chapter newChapter) {
+        Chapter chapter = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber());
+        if (chapter != null) {
+            return -1;
+        }
+        Chapter chapter1 = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber() - 1);
+        if (chapter1 == null) {
+            return -2;
+        }
         chapterMapper.insertSelective(newChapter);
         return newChapter.getId();
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int addComment(Comment newComment) {
         Fiction fiction = fictionMapper.selectByPrimaryKey(newComment.getFictionId());
         Chapter chapter = chapterMapper.selectByPrimaryKey(newComment.getChapterId());
@@ -117,7 +130,11 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
             criteria.andDeletedEqualTo(false);
         }
         List<Chapter> chapterList = chapterMapper.selectByExample(example);
-        return chapterList.get(0);
+        if (chapterList.size() > 0) {
+            return chapterList.get(0);
+        } else {
+            return null;
+        }
     }
 
     @Override

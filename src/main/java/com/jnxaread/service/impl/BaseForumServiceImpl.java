@@ -32,7 +32,7 @@ public class BaseForumServiceImpl implements BaseForumService {
     private UserMapper userMapper;
 
     @Override
-    @Transactional(timeout = 5)
+    @Transactional(rollbackFor = Exception.class)
     public int addTopic(Topic newTopic) {
         topicMapper.insertSelective(newTopic);
         //帖子作者的发帖量+1
@@ -41,7 +41,7 @@ public class BaseForumServiceImpl implements BaseForumService {
     }
 
     @Override
-    @Transactional(timeout = 5)
+    @Transactional(rollbackFor = Exception.class)
     public int addReply(Reply newReply) {
         Topic topic = topicMapper.selectByPrimaryKeyForUpdate(newReply.getTopicId());
         //如果帖子不存在或已被删除，则禁止回复
