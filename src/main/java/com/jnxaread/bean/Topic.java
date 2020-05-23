@@ -17,6 +17,8 @@ public class Topic {
 
     private Integer viewCount;
 
+    private Boolean anonymous;
+
     private Boolean locked;
 
     private Boolean hided;
@@ -79,6 +81,14 @@ public class Topic {
 
     public void setViewCount(Integer viewCount) {
         this.viewCount = viewCount;
+    }
+
+    public Boolean getAnonymous() {
+        return anonymous;
+    }
+
+    public void setAnonymous(Boolean anonymous) {
+        this.anonymous = anonymous;
     }
 
     public Boolean getLocked() {

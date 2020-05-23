@@ -405,6 +405,66 @@ public class CommentExample {
             return (Criteria) this;
         }
 
+        public Criteria andAnonymousIsNull() {
+            addCriterion("anonymous is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnonymousIsNotNull() {
+            addCriterion("anonymous is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnonymousEqualTo(Boolean value) {
+            addCriterion("anonymous =", value, "anonymous");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnonymousNotEqualTo(Boolean value) {
+            addCriterion("anonymous <>", value, "anonymous");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnonymousGreaterThan(Boolean value) {
+            addCriterion("anonymous >", value, "anonymous");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnonymousGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("anonymous >=", value, "anonymous");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnonymousLessThan(Boolean value) {
+            addCriterion("anonymous <", value, "anonymous");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnonymousLessThanOrEqualTo(Boolean value) {
+            addCriterion("anonymous <=", value, "anonymous");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnonymousIn(List<Boolean> values) {
+            addCriterion("anonymous in", values, "anonymous");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnonymousNotIn(List<Boolean> values) {
+            addCriterion("anonymous not in", values, "anonymous");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnonymousBetween(Boolean value1, Boolean value2) {
+            addCriterion("anonymous between", value1, value2, "anonymous");
+            return (Criteria) this;
+        }
+
+        public Criteria andAnonymousNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("anonymous not between", value1, value2, "anonymous");
+            return (Criteria) this;
+        }
+
         public Criteria andHidedIsNull() {
             addCriterion("hided is null");
             return (Criteria) this;

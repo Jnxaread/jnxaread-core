@@ -15,6 +15,8 @@ public class Reply {
 
     private Integer quote;
 
+    private Boolean anonymous;
+
     private Boolean deleted;
 
     private String content;
@@ -65,6 +67,14 @@ public class Reply {
 
     public void setQuote(Integer quote) {
         this.quote = quote;
+    }
+
+    public Boolean getAnonymous() {
+        return anonymous;
+    }
+
+    public void setAnonymous(Boolean anonymous) {
+        this.anonymous = anonymous;
     }
 
     public Boolean getDeleted() {

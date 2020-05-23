@@ -23,9 +23,9 @@ public class Chapter {
 
     private Boolean hided;
 
-    private Boolean lockedContent;
+    private Boolean contentLocked;
 
-    private Boolean lockedComment;
+    private Boolean commentLocked;
 
     private Boolean deleted;
 
@@ -111,20 +111,20 @@ public class Chapter {
         this.hided = hided;
     }
 
-    public Boolean getLockedContent() {
-        return lockedContent;
+    public Boolean getContentLocked() {
+        return contentLocked;
     }
 
-    public void setLockedContent(Boolean lockedContent) {
-        this.lockedContent = lockedContent;
+    public void setContentLocked(Boolean contentLocked) {
+        this.contentLocked = contentLocked;
     }
 
-    public Boolean getLockedComment() {
-        return lockedComment;
+    public Boolean getCommentLocked() {
+        return commentLocked;
     }
 
-    public void setLockedComment(Boolean lockedComment) {
-        this.lockedComment = lockedComment;
+    public void setCommentLocked(Boolean commentLocked) {
+        this.commentLocked = commentLocked;
     }
 
     public Boolean getDeleted() {

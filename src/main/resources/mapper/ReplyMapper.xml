@@ -8,6 +8,7 @@
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
     <result column="floor" jdbcType="INTEGER" property="floor" />
     <result column="quote" jdbcType="INTEGER" property="quote" />
+    <result column="anonymous" jdbcType="BIT" property="anonymous" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jnxaread.bean.Reply">
@@ -72,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, topicId, userId, createTime, floor, quote, deleted
+    id, topicId, userId, createTime, floor, quote, anonymous, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -128,10 +129,12 @@
   <insert id="insert" parameterType="com.jnxaread.bean.Reply">
     insert into reply (id, topicId, userId,
       createTime, floor, quote,
-      deleted, content)
+      anonymous, deleted, content
+      )
     values (#{id,jdbcType=INTEGER}, #{topicId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
       #{createTime,jdbcType=TIMESTAMP}, #{floor,jdbcType=INTEGER}, #{quote,jdbcType=INTEGER},
-      #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
+      #{anonymous,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Reply">
     insert into reply
@@ -153,6 +156,9 @@
       </if>
       <if test="quote != null">
         quote,
+      </if>
+      <if test="anonymous != null">
+        anonymous,
       </if>
       <if test="deleted != null">
         deleted,
@@ -179,6 +185,9 @@
       </if>
       <if test="quote != null">
         #{quote,jdbcType=INTEGER},
+      </if>
+      <if test="anonymous != null">
+        #{anonymous,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
@@ -215,6 +224,9 @@
       <if test="record.quote != null">
         quote = #{record.quote,jdbcType=INTEGER},
       </if>
+      <if test="record.anonymous != null">
+        anonymous = #{record.anonymous,jdbcType=BIT},
+      </if>
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
       </if>
@@ -234,6 +246,7 @@
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
       floor = #{record.floor,jdbcType=INTEGER},
       quote = #{record.quote,jdbcType=INTEGER},
+      anonymous = #{record.anonymous,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -248,6 +261,7 @@
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
       floor = #{record.floor,jdbcType=INTEGER},
       quote = #{record.quote,jdbcType=INTEGER},
+      anonymous = #{record.anonymous,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -271,6 +285,9 @@
       <if test="quote != null">
         quote = #{quote,jdbcType=INTEGER},
       </if>
+      <if test="anonymous != null">
+        anonymous = #{anonymous,jdbcType=BIT},
+      </if>
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
       </if>
@@ -287,6 +304,7 @@
       createTime = #{createTime,jdbcType=TIMESTAMP},
       floor = #{floor,jdbcType=INTEGER},
       quote = #{quote,jdbcType=INTEGER},
+      anonymous = #{anonymous,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
@@ -298,6 +316,7 @@
       createTime = #{createTime,jdbcType=TIMESTAMP},
       floor = #{floor,jdbcType=INTEGER},
       quote = #{quote,jdbcType=INTEGER},
+      anonymous = #{anonymous,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>

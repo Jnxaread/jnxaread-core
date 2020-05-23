@@ -13,6 +13,8 @@ public class Comment {
 
     private Date createTime;
 
+    private Boolean anonymous;
+
     private Boolean hided;
 
     private Boolean deleted;
@@ -57,6 +59,14 @@ public class Comment {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Boolean getAnonymous() {
+        return anonymous;
+    }
+
+    public void setAnonymous(Boolean anonymous) {
+        this.anonymous = anonymous;
     }
 
     public Boolean getHided() {

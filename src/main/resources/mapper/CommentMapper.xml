@@ -7,6 +7,7 @@
     <result column="chapterId" jdbcType="INTEGER" property="chapterId" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="anonymous" jdbcType="BIT" property="anonymous" />
     <result column="hided" jdbcType="BIT" property="hided" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
@@ -72,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, fictionId, chapterId, userId, createTime, hided, deleted
+    id, fictionId, chapterId, userId, createTime, anonymous, hided, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -127,11 +128,13 @@
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Comment">
     insert into comment (id, fictionId, chapterId,
-      userId, createTime, hided,
-      deleted, content)
+      userId, createTime, anonymous,
+      hided, deleted, content
+      )
     values (#{id,jdbcType=INTEGER}, #{fictionId,jdbcType=INTEGER}, #{chapterId,jdbcType=INTEGER},
-      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{hided,jdbcType=BIT},
-      #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
+      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{anonymous,jdbcType=BIT},
+      #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Comment">
     insert into comment
@@ -150,6 +153,9 @@
       </if>
       <if test="createTime != null">
         createTime,
+      </if>
+      <if test="anonymous != null">
+        anonymous,
       </if>
       <if test="hided != null">
         hided,
@@ -176,6 +182,9 @@
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="anonymous != null">
+        #{anonymous,jdbcType=BIT},
       </if>
       <if test="hided != null">
         #{hided,jdbcType=BIT},
@@ -212,6 +221,9 @@
       <if test="record.createTime != null">
         createTime = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.anonymous != null">
+        anonymous = #{record.anonymous,jdbcType=BIT},
+      </if>
       <if test="record.hided != null">
         hided = #{record.hided,jdbcType=BIT},
       </if>
@@ -233,6 +245,7 @@
       chapterId = #{record.chapterId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      anonymous = #{record.anonymous,jdbcType=BIT},
       hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT},
       content = #{record.content,jdbcType=LONGVARCHAR}
@@ -247,6 +260,7 @@
       chapterId = #{record.chapterId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      anonymous = #{record.anonymous,jdbcType=BIT},
       hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
@@ -268,6 +282,9 @@
       <if test="createTime != null">
         createTime = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="anonymous != null">
+        anonymous = #{anonymous,jdbcType=BIT},
+      </if>
       <if test="hided != null">
         hided = #{hided,jdbcType=BIT},
       </if>
@@ -286,6 +303,7 @@
       chapterId = #{chapterId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
+      anonymous = #{anonymous,jdbcType=BIT},
       hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
       content = #{content,jdbcType=LONGVARCHAR}
@@ -297,6 +315,7 @@
       chapterId = #{chapterId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
+      anonymous = #{anonymous,jdbcType=BIT},
       hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}

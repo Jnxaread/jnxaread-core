@@ -12,8 +12,8 @@
     <result column="commentCount" jdbcType="INTEGER" property="commentCount" />
     <result column="viewCount" jdbcType="INTEGER" property="viewCount" />
     <result column="hided" jdbcType="BIT" property="hided" />
-    <result column="lockedContent" jdbcType="BIT" property="lockedContent" />
-    <result column="lockedComment" jdbcType="BIT" property="lockedComment" />
+    <result column="contentLocked" jdbcType="BIT" property="contentLocked" />
+    <result column="commentLocked" jdbcType="BIT" property="commentLocked" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jnxaread.bean.Chapter">
@@ -79,7 +79,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, fictionId, userId, createTime, number, title, wordCount, commentCount, viewCount,
-    hided, lockedContent, lockedComment, deleted
+    hided, contentLocked, commentLocked, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -136,12 +136,12 @@
     insert into chapter (id, fictionId, userId,
       createTime, number, title,
       wordCount, commentCount, viewCount,
-      hided, lockedContent, lockedComment,
+      hided, contentLocked, commentLocked,
       deleted, content)
     values (#{id,jdbcType=INTEGER}, #{fictionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
       #{createTime,jdbcType=TIMESTAMP}, #{number,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
       #{wordCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER},
-      #{hided,jdbcType=BIT}, #{lockedContent,jdbcType=BIT}, #{lockedComment,jdbcType=BIT},
+      #{hided,jdbcType=BIT}, #{contentLocked,jdbcType=BIT}, #{commentLocked,jdbcType=BIT},
       #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Chapter" useGeneratedKeys="true" keyProperty="id">
@@ -177,11 +177,11 @@
       <if test="hided != null">
         hided,
       </if>
-      <if test="lockedContent != null">
-        lockedContent,
+      <if test="contentLocked != null">
+        contentLocked,
       </if>
-      <if test="lockedComment != null">
-        lockedComment,
+      <if test="commentLocked != null">
+        commentLocked,
       </if>
       <if test="deleted != null">
         deleted,
@@ -221,11 +221,11 @@
       <if test="hided != null">
         #{hided,jdbcType=BIT},
       </if>
-      <if test="lockedContent != null">
-        #{lockedContent,jdbcType=BIT},
+      <if test="contentLocked != null">
+        #{contentLocked,jdbcType=BIT},
       </if>
-      <if test="lockedComment != null">
-        #{lockedComment,jdbcType=BIT},
+      <if test="commentLocked != null">
+        #{commentLocked,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
@@ -274,11 +274,11 @@
       <if test="record.hided != null">
         hided = #{record.hided,jdbcType=BIT},
       </if>
-      <if test="record.lockedContent != null">
-        lockedContent = #{record.lockedContent,jdbcType=BIT},
+      <if test="record.contentLocked != null">
+        contentLocked = #{record.contentLocked,jdbcType=BIT},
       </if>
-      <if test="record.lockedComment != null">
-        lockedComment = #{record.lockedComment,jdbcType=BIT},
+      <if test="record.commentLocked != null">
+        commentLocked = #{record.commentLocked,jdbcType=BIT},
       </if>
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
@@ -303,8 +303,8 @@
       commentCount = #{record.commentCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
       hided = #{record.hided,jdbcType=BIT},
-      lockedContent = #{record.lockedContent,jdbcType=BIT},
-      lockedComment = #{record.lockedComment,jdbcType=BIT},
+      contentLocked = #{record.contentLocked,jdbcType=BIT},
+      commentLocked = #{record.commentLocked,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -323,8 +323,8 @@
       commentCount = #{record.commentCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
       hided = #{record.hided,jdbcType=BIT},
-      lockedContent = #{record.lockedContent,jdbcType=BIT},
-      lockedComment = #{record.lockedComment,jdbcType=BIT},
+      contentLocked = #{record.contentLocked,jdbcType=BIT},
+      commentLocked = #{record.commentLocked,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -360,11 +360,11 @@
       <if test="hided != null">
         hided = #{hided,jdbcType=BIT},
       </if>
-      <if test="lockedContent != null">
-        lockedContent = #{lockedContent,jdbcType=BIT},
+      <if test="contentLocked != null">
+        contentLocked = #{contentLocked,jdbcType=BIT},
       </if>
-      <if test="lockedComment != null">
-        lockedComment = #{lockedComment,jdbcType=BIT},
+      <if test="commentLocked != null">
+        commentLocked = #{commentLocked,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
@@ -386,8 +386,8 @@
       commentCount = #{commentCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
       hided = #{hided,jdbcType=BIT},
-      lockedContent = #{lockedContent,jdbcType=BIT},
-      lockedComment = #{lockedComment,jdbcType=BIT},
+      contentLocked = #{contentLocked,jdbcType=BIT},
+      commentLocked = #{commentLocked,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
@@ -403,8 +403,8 @@
       commentCount = #{commentCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
       hided = #{hided,jdbcType=BIT},
-      lockedContent = #{lockedContent,jdbcType=BIT},
-      lockedComment = #{lockedComment,jdbcType=BIT},
+      contentLocked = #{contentLocked,jdbcType=BIT},
+      commentLocked = #{commentLocked,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>

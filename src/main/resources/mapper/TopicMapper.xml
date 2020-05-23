@@ -9,6 +9,7 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="replyCount" jdbcType="INTEGER" property="replyCount" />
     <result column="viewCount" jdbcType="INTEGER" property="viewCount" />
+    <result column="anonymous" jdbcType="BIT" property="anonymous" />
     <result column="locked" jdbcType="BIT" property="locked" />
     <result column="hided" jdbcType="BIT" property="hided" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
@@ -75,7 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userId, createTime, label, title, replyCount, viewCount, locked, hided, deleted
+    id, userId, createTime, label, title, replyCount, viewCount, anonymous, locked, hided,
+    deleted
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -131,12 +133,14 @@
   <insert id="insert" parameterType="com.jnxaread.bean.Topic">
     insert into topic (id, userId, createTime,
       label, title, replyCount,
-      viewCount, locked, hided, deleted,
-      content)
+      viewCount, anonymous, locked,
+      hided, deleted, content
+      )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
       #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{replyCount,jdbcType=INTEGER},
-      #{viewCount,jdbcType=INTEGER}, #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT},
-      #{content,jdbcType=LONGVARCHAR})
+      #{viewCount,jdbcType=INTEGER}, #{anonymous,jdbcType=BIT}, #{locked,jdbcType=BIT},
+      #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Topic" useGeneratedKeys="true" keyProperty="id">
     insert into topic
@@ -161,6 +165,9 @@
       </if>
       <if test="viewCount != null">
         viewCount,
+      </if>
+      <if test="anonymous != null">
+        anonymous,
       </if>
       <if test="locked != null">
         locked,
@@ -196,6 +203,9 @@
       </if>
       <if test="viewCount != null">
         #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="anonymous != null">
+        #{anonymous,jdbcType=BIT},
       </if>
       <if test="locked != null">
         #{locked,jdbcType=BIT},
@@ -241,6 +251,9 @@
       <if test="record.viewCount != null">
         viewCount = #{record.viewCount,jdbcType=INTEGER},
       </if>
+      <if test="record.anonymous != null">
+        anonymous = #{record.anonymous,jdbcType=BIT},
+      </if>
       <if test="record.locked != null">
         locked = #{record.locked,jdbcType=BIT},
       </if>
@@ -267,6 +280,7 @@
       title = #{record.title,jdbcType=VARCHAR},
       replyCount = #{record.replyCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
+      anonymous = #{record.anonymous,jdbcType=BIT},
       locked = #{record.locked,jdbcType=BIT},
       hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT},
@@ -284,6 +298,7 @@
       title = #{record.title,jdbcType=VARCHAR},
       replyCount = #{record.replyCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
+      anonymous = #{record.anonymous,jdbcType=BIT},
       locked = #{record.locked,jdbcType=BIT},
       hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT}
@@ -312,6 +327,9 @@
       <if test="viewCount != null">
         viewCount = #{viewCount,jdbcType=INTEGER},
       </if>
+      <if test="anonymous != null">
+        anonymous = #{anonymous,jdbcType=BIT},
+      </if>
       <if test="locked != null">
         locked = #{locked,jdbcType=BIT},
       </if>
@@ -335,6 +353,7 @@
       title = #{title,jdbcType=VARCHAR},
       replyCount = #{replyCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
+      anonymous = #{anonymous,jdbcType=BIT},
       locked = #{locked,jdbcType=BIT},
       hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
@@ -349,6 +368,7 @@
       title = #{title,jdbcType=VARCHAR},
       replyCount = #{replyCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
+      anonymous = #{anonymous,jdbcType=BIT},
       locked = #{locked,jdbcType=BIT},
       hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT}
