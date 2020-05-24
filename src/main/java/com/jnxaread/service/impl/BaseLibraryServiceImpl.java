@@ -175,12 +175,10 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         //遍历fictionWrapList，给每一个fictionWrap设置tags
         fictionWrapList.forEach(fictionWrap -> {
             List<Label> labelList = getLabelByFictionId(fictionWrap.getId());
-            labelList.forEach(label -> {
-                List<String> tagList = new ArrayList<>();
-                tagList.add(label.getLabel());
-                String[] tags = tagList.toArray(new String[labelList.size()]);
-                fictionWrap.setTags(tags);
-            });
+            List<String> tagList = new ArrayList<>();
+            labelList.forEach(label -> tagList.add(label.getLabel()));
+            String[] tags = tagList.toArray(new String[labelList.size()]);
+            fictionWrap.setTags(tags);
         });
         return fictionWrapList;
     }

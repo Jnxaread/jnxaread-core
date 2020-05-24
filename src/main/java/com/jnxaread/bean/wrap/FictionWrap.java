@@ -16,6 +16,10 @@ public class FictionWrap extends Fiction {
 
     private Date lastTime;
 
+    private Integer lastNumber;
+
+    private String lastChapter;
+
     private String[] tags;
 
     public String getCategory() {
@@ -40,6 +44,22 @@ public class FictionWrap extends Fiction {
 
     public void setLastTime(Date lastTime) {
         this.lastTime = lastTime;
+    }
+
+    public Integer getLastNumber() {
+        return lastNumber;
+    }
+
+    public void setLastNumber(Integer lastNumber) {
+        this.lastNumber = lastNumber;
+    }
+
+    public String getLastChapter() {
+        return lastChapter;
+    }
+
+    public void setLastChapter(String lastChapter) {
+        this.lastChapter = lastChapter;
     }
 
     public String[] getTags() {

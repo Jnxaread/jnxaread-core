@@ -355,24 +355,23 @@
     <result column="category" jdbcType="VARCHAR" property="category"></result>
     <result column="username" jdbcType="VARCHAR" property="username"></result>
     <result column="lastTime" jdbcType="VARCHAR" property="lastTime"></result>
+    <result column="lastNumber" jdbcType="VARCHAR" property="lastNumber"></result>
+    <result column="lastChapter" jdbcType="VARCHAR" property="lastChapter"></result>
   </resultMap>
   <select id="findListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
-    SELECT f.id,u.username,ca.name category,f.title,f.introduction,
-    f.chapterCount,f.wordCount,f.commentCount,f.viewCount,MAX(ch.createTime) lastTime
-    FROM fiction f,chapter ch,user u,category ca
-    WHERE f.id=ch.fictionId AND ch.number!=0 AND f.userId=u.id
-    AND f.categoryId=ca.id AND f.deleted=0 AND f.hided=0
+    SELECT fmc.id,fmc.title,fmc.introduction,fmc.chapterCount,fmc.wordCount,fmc.commentCount,fmc.viewCount,ch.number lastNumber,ch.title lastChapter,ch.createTime lastTime FROM
+    (SELECT f.id,f.userId,f.title,f.introduction,f.chapterCount,f.wordCount,f.commentCount,f.viewCount,f.hided,f.deleted,mc.id chapterId FROM fiction f,(SELECT fictionId,MAX(id) id FROM chapter GROUP BY fictionId) mc WHERE f.id=mc.fictionId) fmc,chapter ch
+    WHERE fmc.chapterId=ch.id AND ch.number!=0 AND fmc.deleted=0 AND fmc.hided=0
     <if test="userId!=0">
-      AND f.userId=#{userId}
+      AND fmc.userId=#{userId}
     </if>
-    GROUP BY f.id ORDER BY lastTime DESC LIMIT #{startRow},30;
+    ORDER BY lastTime DESC LIMIT #{startRow},30;
   </select>
   <select id="findOwnListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
-    SELECT f.id,u.username,ca.name category,f.title,f.introduction,
-    f.chapterCount,f.wordCount,f.commentCount,f.viewCount,MAX(ch.createTime) lastTime
-    FROM fiction f,chapter ch,user u,category ca
-    WHERE f.id=ch.fictionId AND f.userId=#{userId} AND u.id=#{userId} AND f.categoryId=ca.id AND f.deleted=0
-    GROUP BY f.id ORDER BY lastTime DESC LIMIT #{startRow},30;
+    SELECT fmc.id,fmc.title,fmc.introduction,fmc.chapterCount,fmc.wordCount,fmc.commentCount,fmc.viewCount,ch.number lastNumber,ch.title lastChapter,ch.createTime lastTime FROM
+    (SELECT f.id,f.userId,f.title,f.introduction,f.chapterCount,f.wordCount,f.commentCount,f.viewCount,f.deleted,mc.id chapterId FROM fiction f,(SELECT fictionId,MAX(id) id FROM chapter GROUP BY fictionId) mc WHERE f.id=mc.fictionId) fmc,chapter ch
+    WHERE fmc.chapterId=ch.id AND fmc.userId=#{userId} AND fmc.deleted=0
+    ORDER BY lastTime DESC LIMIT #{startRow},30;
   </select>
   <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.FictionWrap">
     SELECT fiction.id,category.name,user.username,fiction.createTime,fiction.title,fiction.introduction,
