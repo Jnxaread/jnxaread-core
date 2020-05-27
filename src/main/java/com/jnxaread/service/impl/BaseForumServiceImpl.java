@@ -84,11 +84,14 @@ public class BaseForumServiceImpl implements BaseForumService {
     @Override
     public List<ReplyWrap> getReplyWrapList(int topicId, int page) {
         int startRow = (page - 1) * 50;
-        List<ReplyWrap> replyWrapList = replyMapper.findListWidthUsername(topicId, startRow);
+        List<ReplyWrap> replyWrapList = replyMapper.findListWithUsername(topicId, startRow);
         //遍历回复列表，如果回复已被删除，则将内容替换为“该回复以被删除”
         for (ReplyWrap replyWrap : replyWrapList) {
             if (replyWrap.getDeleted()) {
                 replyWrap.setContent("<p style='font-style:oblique'>该回复已被删除</p>");
+            } else if (replyWrap.getQuote() != 0) {
+                ReplyWrap quotedReply = replyMapper.findWithUsername(replyWrap.getQuote());
+                replyWrap.setQuotedReply(quotedReply);
             }
         }
         return replyWrapList;

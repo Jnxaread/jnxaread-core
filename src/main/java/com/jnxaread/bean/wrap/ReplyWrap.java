@@ -10,7 +10,7 @@ public class ReplyWrap extends Reply {
 
     private String username;
 
-//    private int quoteIndex;
+    private ReplyWrap quotedReply;
 
     public String getUsername() {
         return username;
@@ -20,11 +20,11 @@ public class ReplyWrap extends Reply {
         this.username = username;
     }
 
-//    public int getQuoteIndex() {
-//        return quoteIndex;
-//    }
-//
-//    public void setQuoteIndex(int quoteIndex) {
-//        this.quoteIndex = quoteIndex;
-//    }
+    public ReplyWrap getQuotedReply() {
+        return quotedReply;
+    }
+
+    public void setQuotedReply(ReplyWrap quotedReply) {
+        this.quotedReply = quotedReply;
+    }
 }
