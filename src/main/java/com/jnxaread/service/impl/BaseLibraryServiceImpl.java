@@ -144,6 +144,12 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     }
 
     @Override
+    public List<CommentWrap> getCommentWrapListByUserId(int userId) {
+        List<CommentWrap> commentWrapList=commentMapper.findListByUserId(userId);
+        return commentWrapList;
+    }
+
+    @Override
     public List<Chapter> getChapterList(int fictionId) {
         ChapterExample example = new ChapterExample();
         ChapterExample.Criteria criteria = example.createCriteria();

@@ -323,10 +323,15 @@
   <!--========================================================================================-->
   <resultMap extends="ResultMapWithBLOBs" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.ReplyWrap">
     <result column="username" jdbcType="VARCHAR" property="username"/>
+    <result column="title" jdbcType="VARCHAR" property="topicTitle"/>
   </resultMap>
   <select id="findListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
-    SELECT reply.id,reply.createTime,reply.floor,reply.quote,reply.content,reply.deleted,user.username
-    FROM reply,user WHERE reply.topicId=#{topicId} AND reply.userId=user.id LIMIT #{startRow},50
+    SELECT reply.id,reply.createTime,reply.floor,reply.quote,reply.content,user.username
+    FROM reply,user WHERE reply.topicId=#{topicId} AND reply.userId=user.id AND reply.deleted=0 LIMIT #{startRow},50
+  </select>
+  <select id="findListByUserId" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
+    SELECT reply.id,reply.topicId,reply.createTime,reply.floor,reply.quote,reply.content,user.username,topic.title
+    FROM reply,user,topic WHERE reply.userId=#{userId} AND user.id=#{userId} AND reply.deleted=0 AND reply.topicId=topic.id
   </select>
   <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.ReplyWrap">
     SELECT reply.id,reply.createTime,reply.floor,reply.quote,reply.content,reply.deleted,user.username

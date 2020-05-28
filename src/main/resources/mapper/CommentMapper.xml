@@ -323,10 +323,15 @@
   <!--========================================================================================-->
   <resultMap extends="ResultMapWithBLOBs" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.CommentWrap">
     <result column="username" jdbcType="VARCHAR" property="username"/>
+    <result column="title" jdbcType="VARCHAR" property="fictionTitle"/>
   </resultMap>
   <select id="findListWidthUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
     SELECT comment.createTime,comment.content,comment.hided,comment.deleted,user.username FROM comment,user
     WHERE comment.chapterId=#{chapterId} AND comment.hided=0 AND comment.deleted=0 AND comment.userId=user.id
+  </select>
+  <select id="findListByUserId" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
+    SELECT comment.createTime,comment.content,user.username,fiction.title FROM comment,user,fiction
+    WHERE comment.userId=#{userId} AND comment.hided=0 AND comment.deleted=0 AND user.id=#{userId} AND comment.fictionId=fiction.id
   </select>
   <!--========================================================================================-->
 </mapper>

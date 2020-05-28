@@ -12,6 +12,8 @@ public class ReplyWrap extends Reply {
 
     private ReplyWrap quotedReply;
 
+    private String topicTitle;
+
     public String getUsername() {
         return username;
     }
@@ -26,5 +28,13 @@ public class ReplyWrap extends Reply {
 
     public void setQuotedReply(ReplyWrap quotedReply) {
         this.quotedReply = quotedReply;
+    }
+
+    public String getTopicTitle() {
+        return topicTitle;
+    }
+
+    public void setTopicTitle(String topicTitle) {
+        this.topicTitle = topicTitle;
     }
 }

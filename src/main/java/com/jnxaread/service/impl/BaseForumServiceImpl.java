@@ -87,10 +87,11 @@ public class BaseForumServiceImpl implements BaseForumService {
         List<ReplyWrap> replyWrapList = replyMapper.findListWithUsername(topicId, startRow);
         //遍历回复列表，如果回复已被删除，则将内容替换为“该回复以被删除”
         for (ReplyWrap replyWrap : replyWrapList) {
-            if (replyWrap.getDeleted()) {
-                replyWrap.setContent("<p style='font-style:oblique'>该回复已被删除</p>");
-            } else if (replyWrap.getQuote() != 0) {
+            if (replyWrap.getQuote() != 0) {
                 ReplyWrap quotedReply = replyMapper.findWithUsername(replyWrap.getQuote());
+                if (quotedReply.getDeleted()) {
+                    quotedReply.setContent("<p style='font-style:oblique'>该回复已被删除</p>");
+                }
                 replyWrap.setQuotedReply(quotedReply);
             }
         }
@@ -111,6 +112,22 @@ public class BaseForumServiceImpl implements BaseForumService {
         int startRow = (page - 1) * 45;
         List<TopicWrap> topicWrapList = topicMapper.findListWithUsername(startRow);
         return topicWrapList;
+    }
+
+    @Override
+    public List<ReplyWrap> getReplyWrapListByUserId(int userId) {
+        List<ReplyWrap> replyWrapList = replyMapper.findListByUserId(userId);
+        //遍历回复列表，如果回复已被删除，则将内容替换为“该回复以被删除”
+        for (ReplyWrap replyWrap : replyWrapList) {
+            if (replyWrap.getQuote() != 0) {
+                ReplyWrap quotedReply = replyMapper.findWithUsername(replyWrap.getQuote());
+                if (quotedReply.getDeleted()) {
+                    quotedReply.setContent("<p style='font-style:oblique'>该回复已被删除</p>");
+                }
+                replyWrap.setQuotedReply(quotedReply);
+            }
+        }
+        return replyWrapList;
     }
 
     @Override

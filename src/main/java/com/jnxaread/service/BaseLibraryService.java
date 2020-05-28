@@ -36,6 +36,8 @@ public interface BaseLibraryService {
 
     List<CommentWrap> getCommentWrapList(int chapterId);
 
+    List<CommentWrap> getCommentWrapListByUserId(int userId);
+
     List<Chapter> getChapterList(int fictionId);
 
     List<FictionWrap> getFictionWrapList(int userId, int page);

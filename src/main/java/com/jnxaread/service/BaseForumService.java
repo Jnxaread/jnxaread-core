@@ -63,6 +63,14 @@ public interface BaseForumService {
     List<TopicWrap> getTopicWrapList(int page);
 
     /**
+     * 根据用户ID获取回复包装类型列表
+     *
+     * @param userId
+     * @return
+     */
+    List<ReplyWrap> getReplyWrapListByUserId(int userId);
+
+    /**
      * 获取帖子数量
      *
      * @return
