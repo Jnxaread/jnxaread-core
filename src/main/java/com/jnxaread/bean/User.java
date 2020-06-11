@@ -21,6 +21,10 @@ public class User {
 
     private Integer authorityId;
 
+    private Integer level;
+
+    private Integer grade;
+
     private Boolean bannedTopic;
 
     private Boolean bannedReply;
@@ -129,6 +133,22 @@ public class User {
 
     public void setAuthorityId(Integer authorityId) {
         this.authorityId = authorityId;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public Integer getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Integer grade) {
+        this.grade = grade;
     }
 
     public Boolean getBannedTopic() {

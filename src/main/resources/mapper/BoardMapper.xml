@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.CategoryMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.bean.Category">
+<mapper namespace="com.example.demo.dao.BoardMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.bean.Board">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="fictionCount" jdbcType="INTEGER" property="fictionCount" />
-    <result column="chapterCount" jdbcType="INTEGER" property="chapterCount" />
+    <result column="topicCount" jdbcType="INTEGER" property="topicCount" />
+    <result column="replyCount" jdbcType="INTEGER" property="replyCount" />
     <result column="restricted" jdbcType="INTEGER" property="restricted" />
     <result column="locked" jdbcType="BIT" property="locked" />
     <result column="hided" jdbcType="BIT" property="hided" />
@@ -72,16 +72,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, description, fictionCount, chapterCount, restricted, locked, hided, deleted, 
+    id, name, description, topicCount, replyCount, restricted, locked, hided, deleted, 
     createTime
   </sql>
-  <select id="selectByExample" parameterType="com.example.demo.bean.CategoryExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.demo.bean.BoardExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from category
+    from board
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -92,31 +92,31 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from category
+    from board
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from category
+    delete from board
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.demo.bean.CategoryExample">
-    delete from category
+  <delete id="deleteByExample" parameterType="com.example.demo.bean.BoardExample">
+    delete from board
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.demo.bean.Category">
-    insert into category (id, name, description, 
-      fictionCount, chapterCount, restricted, 
+  <insert id="insert" parameterType="com.example.demo.bean.Board">
+    insert into board (id, name, description, 
+      topicCount, replyCount, restricted, 
       locked, hided, deleted, createTime
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{fictionCount,jdbcType=INTEGER}, #{chapterCount,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER}, 
+      #{topicCount,jdbcType=INTEGER}, #{replyCount,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER}, 
       #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.bean.Category">
-    insert into category
+  <insert id="insertSelective" parameterType="com.example.demo.bean.Board">
+    insert into board
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -127,11 +127,11 @@
       <if test="description != null">
         description,
       </if>
-      <if test="fictionCount != null">
-        fictionCount,
+      <if test="topicCount != null">
+        topicCount,
       </if>
-      <if test="chapterCount != null">
-        chapterCount,
+      <if test="replyCount != null">
+        replyCount,
       </if>
       <if test="restricted != null">
         restricted,
@@ -159,11 +159,11 @@
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
-      <if test="fictionCount != null">
-        #{fictionCount,jdbcType=INTEGER},
+      <if test="topicCount != null">
+        #{topicCount,jdbcType=INTEGER},
       </if>
-      <if test="chapterCount != null">
-        #{chapterCount,jdbcType=INTEGER},
+      <if test="replyCount != null">
+        #{replyCount,jdbcType=INTEGER},
       </if>
       <if test="restricted != null">
         #{restricted,jdbcType=INTEGER},
@@ -182,14 +182,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.demo.bean.CategoryExample" resultType="java.lang.Long">
-    select count(*) from category
+  <select id="countByExample" parameterType="com.example.demo.bean.BoardExample" resultType="java.lang.Long">
+    select count(*) from board
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update category
+    update board
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -200,11 +200,11 @@
       <if test="record.description != null">
         description = #{record.description,jdbcType=VARCHAR},
       </if>
-      <if test="record.fictionCount != null">
-        fictionCount = #{record.fictionCount,jdbcType=INTEGER},
+      <if test="record.topicCount != null">
+        topicCount = #{record.topicCount,jdbcType=INTEGER},
       </if>
-      <if test="record.chapterCount != null">
-        chapterCount = #{record.chapterCount,jdbcType=INTEGER},
+      <if test="record.replyCount != null">
+        replyCount = #{record.replyCount,jdbcType=INTEGER},
       </if>
       <if test="record.restricted != null">
         restricted = #{record.restricted,jdbcType=INTEGER},
@@ -227,12 +227,12 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update category
+    update board
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
-      fictionCount = #{record.fictionCount,jdbcType=INTEGER},
-      chapterCount = #{record.chapterCount,jdbcType=INTEGER},
+      topicCount = #{record.topicCount,jdbcType=INTEGER},
+      replyCount = #{record.replyCount,jdbcType=INTEGER},
       restricted = #{record.restricted,jdbcType=INTEGER},
       locked = #{record.locked,jdbcType=BIT},
       hided = #{record.hided,jdbcType=BIT},
@@ -242,8 +242,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.bean.Category">
-    update category
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.bean.Board">
+    update board
     <set>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -251,11 +251,11 @@
       <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
       </if>
-      <if test="fictionCount != null">
-        fictionCount = #{fictionCount,jdbcType=INTEGER},
+      <if test="topicCount != null">
+        topicCount = #{topicCount,jdbcType=INTEGER},
       </if>
-      <if test="chapterCount != null">
-        chapterCount = #{chapterCount,jdbcType=INTEGER},
+      <if test="replyCount != null">
+        replyCount = #{replyCount,jdbcType=INTEGER},
       </if>
       <if test="restricted != null">
         restricted = #{restricted,jdbcType=INTEGER},
@@ -275,12 +275,12 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.bean.Category">
-    update category
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.bean.Board">
+    update board
     set name = #{name,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
-      fictionCount = #{fictionCount,jdbcType=INTEGER},
-      chapterCount = #{chapterCount,jdbcType=INTEGER},
+      topicCount = #{topicCount,jdbcType=INTEGER},
+      replyCount = #{replyCount,jdbcType=INTEGER},
       restricted = #{restricted,jdbcType=INTEGER},
       locked = #{locked,jdbcType=BIT},
       hided = #{hided,jdbcType=BIT},

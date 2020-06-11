@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jnxaread.dao.TopicMapper">
-  <resultMap id="BaseResultMap" type="com.jnxaread.bean.Topic">
+<mapper namespace="com.example.demo.dao.TopicMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.bean.Topic">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
@@ -9,12 +9,13 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="replyCount" jdbcType="INTEGER" property="replyCount" />
     <result column="viewCount" jdbcType="INTEGER" property="viewCount" />
+    <result column="restricted" jdbcType="INTEGER" property="restricted" />
     <result column="anonymous" jdbcType="BIT" property="anonymous" />
     <result column="locked" jdbcType="BIT" property="locked" />
     <result column="hided" jdbcType="BIT" property="hided" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jnxaread.bean.Topic">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.demo.bean.Topic">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -76,13 +77,13 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userId, createTime, label, title, replyCount, viewCount, anonymous, locked, hided,
-    deleted
+    id, userId, createTime, label, title, replyCount, viewCount, restricted, anonymous,
+    locked, hided, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.jnxaread.bean.TopicExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.example.demo.bean.TopicExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -98,7 +99,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.jnxaread.bean.TopicExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.demo.bean.TopicExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -124,25 +125,25 @@
     delete from topic
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.jnxaread.bean.TopicExample">
+  <delete id="deleteByExample" parameterType="com.example.demo.bean.TopicExample">
     delete from topic
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.jnxaread.bean.Topic">
+  <insert id="insert" parameterType="com.example.demo.bean.Topic">
     insert into topic (id, userId, createTime,
       label, title, replyCount,
-      viewCount, anonymous, locked,
-      hided, deleted, content
+      viewCount, restricted, anonymous,
+      locked, hided, deleted, content
       )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
       #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{replyCount,jdbcType=INTEGER},
-      #{viewCount,jdbcType=INTEGER}, #{anonymous,jdbcType=BIT}, #{locked,jdbcType=BIT},
-      #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
+      #{viewCount,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER}, #{anonymous,jdbcType=BIT},
+      #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Topic" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.example.demo.bean.Topic" useGeneratedKeys="true" keyProperty="id">
     insert into topic
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -165,6 +166,9 @@
       </if>
       <if test="viewCount != null">
         viewCount,
+      </if>
+      <if test="restricted != null">
+        restricted,
       </if>
       <if test="anonymous != null">
         anonymous,
@@ -204,6 +208,9 @@
       <if test="viewCount != null">
         #{viewCount,jdbcType=INTEGER},
       </if>
+      <if test="restricted != null">
+        #{restricted,jdbcType=INTEGER},
+      </if>
       <if test="anonymous != null">
         #{anonymous,jdbcType=BIT},
       </if>
@@ -221,7 +228,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.jnxaread.bean.TopicExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.example.demo.bean.TopicExample" resultType="java.lang.Long">
     select count(*) from topic
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -250,6 +257,9 @@
       </if>
       <if test="record.viewCount != null">
         viewCount = #{record.viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.restricted != null">
+        restricted = #{record.restricted,jdbcType=INTEGER},
       </if>
       <if test="record.anonymous != null">
         anonymous = #{record.anonymous,jdbcType=BIT},
@@ -280,6 +290,7 @@
       title = #{record.title,jdbcType=VARCHAR},
       replyCount = #{record.replyCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
+      restricted = #{record.restricted,jdbcType=INTEGER},
       anonymous = #{record.anonymous,jdbcType=BIT},
       locked = #{record.locked,jdbcType=BIT},
       hided = #{record.hided,jdbcType=BIT},
@@ -298,6 +309,7 @@
       title = #{record.title,jdbcType=VARCHAR},
       replyCount = #{record.replyCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
+      restricted = #{record.restricted,jdbcType=INTEGER},
       anonymous = #{record.anonymous,jdbcType=BIT},
       locked = #{record.locked,jdbcType=BIT},
       hided = #{record.hided,jdbcType=BIT},
@@ -306,7 +318,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Topic">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.bean.Topic">
     update topic
     <set>
       <if test="userId != null">
@@ -327,6 +339,9 @@
       <if test="viewCount != null">
         viewCount = #{viewCount,jdbcType=INTEGER},
       </if>
+      <if test="restricted != null">
+        restricted = #{restricted,jdbcType=INTEGER},
+      </if>
       <if test="anonymous != null">
         anonymous = #{anonymous,jdbcType=BIT},
       </if>
@@ -345,7 +360,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jnxaread.bean.Topic">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.demo.bean.Topic">
     update topic
     set userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
@@ -353,6 +368,7 @@
       title = #{title,jdbcType=VARCHAR},
       replyCount = #{replyCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
+      restricted = #{restricted,jdbcType=INTEGER},
       anonymous = #{anonymous,jdbcType=BIT},
       locked = #{locked,jdbcType=BIT},
       hided = #{hided,jdbcType=BIT},
@@ -360,7 +376,7 @@
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Topic">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.bean.Topic">
     update topic
     set userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
@@ -368,6 +384,7 @@
       title = #{title,jdbcType=VARCHAR},
       replyCount = #{replyCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
+      restricted = #{restricted,jdbcType=INTEGER},
       anonymous = #{anonymous,jdbcType=BIT},
       locked = #{locked,jdbcType=BIT},
       hided = #{hided,jdbcType=BIT},

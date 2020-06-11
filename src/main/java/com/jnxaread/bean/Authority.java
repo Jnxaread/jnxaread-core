@@ -65,11 +65,65 @@ public class Authority {
 
     private Boolean hideOwnChapter;
 
+    private Boolean hideOwnComment;
+
     private Boolean hideTopic;
 
     private Boolean hideFiction;
 
     private Boolean hideChapter;
+
+    private Boolean hideComment;
+
+    private Boolean setAnonymousOfOwnTopic;
+
+    private Boolean setAnonymousOfOwnReply;
+
+    private Boolean setAnonymousOfOwnComment;
+
+    private Boolean cancelAnonymousOfOwnTopic;
+
+    private Boolean cancelAnonymousOfOwnReply;
+
+    private Boolean cancelAnonymousOfOwnComment;
+
+    private Boolean cancelAnonymousTopic;
+
+    private Boolean cancelAnonymousReply;
+
+    private Boolean cancelAnonymousComment;
+
+    private Boolean restricOwnFiction;
+
+    private Boolean restricOwnChapter;
+
+    private Boolean restricOwnTopic;
+
+    private Boolean restrictFiction;
+
+    private Boolean restricChapter;
+
+    private Boolean restricTopic;
+
+    private Boolean restricCategory;
+
+    private Boolean restricBoard;
+
+    private Boolean addCategory;
+
+    private Boolean addBoard;
+
+    private Boolean lockCategory;
+
+    private Boolean lockBoard;
+
+    private Boolean hideCategory;
+
+    private Boolean hideBoard;
+
+    private Boolean deleteCategory;
+
+    private Boolean deleteBoard;
 
     public Integer getId() {
         return id;
@@ -327,6 +381,14 @@ public class Authority {
         this.hideOwnChapter = hideOwnChapter;
     }
 
+    public Boolean getHideOwnComment() {
+        return hideOwnComment;
+    }
+
+    public void setHideOwnComment(Boolean hideOwnComment) {
+        this.hideOwnComment = hideOwnComment;
+    }
+
     public Boolean getHideTopic() {
         return hideTopic;
     }
@@ -349,5 +411,213 @@ public class Authority {
 
     public void setHideChapter(Boolean hideChapter) {
         this.hideChapter = hideChapter;
+    }
+
+    public Boolean getHideComment() {
+        return hideComment;
+    }
+
+    public void setHideComment(Boolean hideComment) {
+        this.hideComment = hideComment;
+    }
+
+    public Boolean getSetAnonymousOfOwnTopic() {
+        return setAnonymousOfOwnTopic;
+    }
+
+    public void setSetAnonymousOfOwnTopic(Boolean setAnonymousOfOwnTopic) {
+        this.setAnonymousOfOwnTopic = setAnonymousOfOwnTopic;
+    }
+
+    public Boolean getSetAnonymousOfOwnReply() {
+        return setAnonymousOfOwnReply;
+    }
+
+    public void setSetAnonymousOfOwnReply(Boolean setAnonymousOfOwnReply) {
+        this.setAnonymousOfOwnReply = setAnonymousOfOwnReply;
+    }
+
+    public Boolean getSetAnonymousOfOwnComment() {
+        return setAnonymousOfOwnComment;
+    }
+
+    public void setSetAnonymousOfOwnComment(Boolean setAnonymousOfOwnComment) {
+        this.setAnonymousOfOwnComment = setAnonymousOfOwnComment;
+    }
+
+    public Boolean getCancelAnonymousOfOwnTopic() {
+        return cancelAnonymousOfOwnTopic;
+    }
+
+    public void setCancelAnonymousOfOwnTopic(Boolean cancelAnonymousOfOwnTopic) {
+        this.cancelAnonymousOfOwnTopic = cancelAnonymousOfOwnTopic;
+    }
+
+    public Boolean getCancelAnonymousOfOwnReply() {
+        return cancelAnonymousOfOwnReply;
+    }
+
+    public void setCancelAnonymousOfOwnReply(Boolean cancelAnonymousOfOwnReply) {
+        this.cancelAnonymousOfOwnReply = cancelAnonymousOfOwnReply;
+    }
+
+    public Boolean getCancelAnonymousOfOwnComment() {
+        return cancelAnonymousOfOwnComment;
+    }
+
+    public void setCancelAnonymousOfOwnComment(Boolean cancelAnonymousOfOwnComment) {
+        this.cancelAnonymousOfOwnComment = cancelAnonymousOfOwnComment;
+    }
+
+    public Boolean getCancelAnonymousTopic() {
+        return cancelAnonymousTopic;
+    }
+
+    public void setCancelAnonymousTopic(Boolean cancelAnonymousTopic) {
+        this.cancelAnonymousTopic = cancelAnonymousTopic;
+    }
+
+    public Boolean getCancelAnonymousReply() {
+        return cancelAnonymousReply;
+    }
+
+    public void setCancelAnonymousReply(Boolean cancelAnonymousReply) {
+        this.cancelAnonymousReply = cancelAnonymousReply;
+    }
+
+    public Boolean getCancelAnonymousComment() {
+        return cancelAnonymousComment;
+    }
+
+    public void setCancelAnonymousComment(Boolean cancelAnonymousComment) {
+        this.cancelAnonymousComment = cancelAnonymousComment;
+    }
+
+    public Boolean getRestricOwnFiction() {
+        return restricOwnFiction;
+    }
+
+    public void setRestricOwnFiction(Boolean restricOwnFiction) {
+        this.restricOwnFiction = restricOwnFiction;
+    }
+
+    public Boolean getRestricOwnChapter() {
+        return restricOwnChapter;
+    }
+
+    public void setRestricOwnChapter(Boolean restricOwnChapter) {
+        this.restricOwnChapter = restricOwnChapter;
+    }
+
+    public Boolean getRestricOwnTopic() {
+        return restricOwnTopic;
+    }
+
+    public void setRestricOwnTopic(Boolean restricOwnTopic) {
+        this.restricOwnTopic = restricOwnTopic;
+    }
+
+    public Boolean getRestrictFiction() {
+        return restrictFiction;
+    }
+
+    public void setRestrictFiction(Boolean restrictFiction) {
+        this.restrictFiction = restrictFiction;
+    }
+
+    public Boolean getRestricChapter() {
+        return restricChapter;
+    }
+
+    public void setRestricChapter(Boolean restricChapter) {
+        this.restricChapter = restricChapter;
+    }
+
+    public Boolean getRestricTopic() {
+        return restricTopic;
+    }
+
+    public void setRestricTopic(Boolean restricTopic) {
+        this.restricTopic = restricTopic;
+    }
+
+    public Boolean getRestricCategory() {
+        return restricCategory;
+    }
+
+    public void setRestricCategory(Boolean restricCategory) {
+        this.restricCategory = restricCategory;
+    }
+
+    public Boolean getRestricBoard() {
+        return restricBoard;
+    }
+
+    public void setRestricBoard(Boolean restricBoard) {
+        this.restricBoard = restricBoard;
+    }
+
+    public Boolean getAddCategory() {
+        return addCategory;
+    }
+
+    public void setAddCategory(Boolean addCategory) {
+        this.addCategory = addCategory;
+    }
+
+    public Boolean getAddBoard() {
+        return addBoard;
+    }
+
+    public void setAddBoard(Boolean addBoard) {
+        this.addBoard = addBoard;
+    }
+
+    public Boolean getLockCategory() {
+        return lockCategory;
+    }
+
+    public void setLockCategory(Boolean lockCategory) {
+        this.lockCategory = lockCategory;
+    }
+
+    public Boolean getLockBoard() {
+        return lockBoard;
+    }
+
+    public void setLockBoard(Boolean lockBoard) {
+        this.lockBoard = lockBoard;
+    }
+
+    public Boolean getHideCategory() {
+        return hideCategory;
+    }
+
+    public void setHideCategory(Boolean hideCategory) {
+        this.hideCategory = hideCategory;
+    }
+
+    public Boolean getHideBoard() {
+        return hideBoard;
+    }
+
+    public void setHideBoard(Boolean hideBoard) {
+        this.hideBoard = hideBoard;
+    }
+
+    public Boolean getDeleteCategory() {
+        return deleteCategory;
+    }
+
+    public void setDeleteCategory(Boolean deleteCategory) {
+        this.deleteCategory = deleteCategory;
+    }
+
+    public Boolean getDeleteBoard() {
+        return deleteBoard;
+    }
+
+    public void setDeleteBoard(Boolean deleteBoard) {
+        this.deleteBoard = deleteBoard;
     }
 }

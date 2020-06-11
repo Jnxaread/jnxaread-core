@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jnxaread.dao.UserMapper">
-  <resultMap id="BaseResultMap" type="com.jnxaread.bean.User">
+<mapper namespace="com.example.demo.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.bean.User">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="account" jdbcType="VARCHAR" property="account" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -11,6 +11,8 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="gender" jdbcType="INTEGER" property="gender" />
     <result column="authorityId" jdbcType="INTEGER" property="authorityId" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="grade" jdbcType="INTEGER" property="grade" />
     <result column="bannedTopic" jdbcType="BIT" property="bannedTopic" />
     <result column="bannedReply" jdbcType="BIT" property="bannedReply" />
     <result column="bannedMessage" jdbcType="BIT" property="bannedMessage" />
@@ -91,11 +93,11 @@
   </sql>
   <sql id="Base_Column_List">
     id, account, password, username, countryCode, mobile, email, gender, authorityId,
-    bannedTopic, bannedReply, bannedMessage, bannedFiction, bannedChapter, bannedComment,
-    locked, deleted, topicCount, replyCount, fictionCount, chapterCount, commentCount,
-    loginCount, createTime, photo, comeFrom, signature, introduction
+    level, grade, bannedTopic, bannedReply, bannedMessage, bannedFiction, bannedChapter,
+    bannedComment, locked, deleted, topicCount, replyCount, fictionCount, chapterCount,
+    commentCount, loginCount, createTime, photo, comeFrom, signature, introduction
   </sql>
-  <select id="selectByExample" parameterType="com.jnxaread.bean.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.demo.bean.UserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -119,35 +121,37 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.jnxaread.bean.UserExample">
+  <delete id="deleteByExample" parameterType="com.example.demo.bean.UserExample">
     delete from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.jnxaread.bean.User">
+  <insert id="insert" parameterType="com.example.demo.bean.User">
     insert into user (id, account, password,
       username, countryCode, mobile,
       email, gender, authorityId,
-      bannedTopic, bannedReply, bannedMessage,
-      bannedFiction, bannedChapter, bannedComment,
-      locked, deleted, topicCount,
-      replyCount, fictionCount, chapterCount,
-      commentCount, loginCount, createTime,
-      photo, comeFrom, signature,
-      introduction)
+      level, grade, bannedTopic,
+      bannedReply, bannedMessage, bannedFiction,
+      bannedChapter, bannedComment, locked,
+      deleted, topicCount, replyCount,
+      fictionCount, chapterCount, commentCount,
+      loginCount, createTime, photo,
+      comeFrom, signature, introduction
+      )
     values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{username,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR},
       #{email,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{authorityId,jdbcType=INTEGER},
-      #{bannedTopic,jdbcType=BIT}, #{bannedReply,jdbcType=BIT}, #{bannedMessage,jdbcType=BIT},
-      #{bannedFiction,jdbcType=BIT}, #{bannedChapter,jdbcType=BIT}, #{bannedComment,jdbcType=BIT},
-      #{locked,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{topicCount,jdbcType=INTEGER},
-      #{replyCount,jdbcType=INTEGER}, #{fictionCount,jdbcType=INTEGER}, #{chapterCount,jdbcType=INTEGER},
-      #{commentCount,jdbcType=INTEGER}, #{loginCount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
-      #{photo,jdbcType=VARCHAR}, #{comeFrom,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR},
-      #{introduction,jdbcType=VARCHAR})
+      #{level,jdbcType=INTEGER}, #{grade,jdbcType=INTEGER}, #{bannedTopic,jdbcType=BIT},
+      #{bannedReply,jdbcType=BIT}, #{bannedMessage,jdbcType=BIT}, #{bannedFiction,jdbcType=BIT},
+      #{bannedChapter,jdbcType=BIT}, #{bannedComment,jdbcType=BIT}, #{locked,jdbcType=BIT},
+      #{deleted,jdbcType=BIT}, #{topicCount,jdbcType=INTEGER}, #{replyCount,jdbcType=INTEGER},
+      #{fictionCount,jdbcType=INTEGER}, #{chapterCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER},
+      #{loginCount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{photo,jdbcType=VARCHAR},
+      #{comeFrom,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.User" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.example.demo.bean.User" useGeneratedKeys="true" keyProperty="id">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -176,6 +180,12 @@
       </if>
       <if test="authorityId != null">
         authorityId,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="grade != null">
+        grade,
       </if>
       <if test="bannedTopic != null">
         bannedTopic,
@@ -263,6 +273,12 @@
       <if test="authorityId != null">
         #{authorityId,jdbcType=INTEGER},
       </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=INTEGER},
+      </if>
       <if test="bannedTopic != null">
         #{bannedTopic,jdbcType=BIT},
       </if>
@@ -322,7 +338,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.jnxaread.bean.UserExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.example.demo.bean.UserExample" resultType="java.lang.Long">
     select count(*) from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -357,6 +373,12 @@
       </if>
       <if test="record.authorityId != null">
         authorityId = #{record.authorityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.level != null">
+        level = #{record.level,jdbcType=INTEGER},
+      </if>
+      <if test="record.grade != null">
+        grade = #{record.grade,jdbcType=INTEGER},
       </if>
       <if test="record.bannedTopic != null">
         bannedTopic = #{record.bannedTopic,jdbcType=BIT},
@@ -431,6 +453,8 @@
       email = #{record.email,jdbcType=VARCHAR},
       gender = #{record.gender,jdbcType=INTEGER},
       authorityId = #{record.authorityId,jdbcType=INTEGER},
+      level = #{record.level,jdbcType=INTEGER},
+      grade = #{record.grade,jdbcType=INTEGER},
       bannedTopic = #{record.bannedTopic,jdbcType=BIT},
       bannedReply = #{record.bannedReply,jdbcType=BIT},
       bannedMessage = #{record.bannedMessage,jdbcType=BIT},
@@ -454,7 +478,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.User">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.bean.User">
     update user
     <set>
       <if test="account != null">
@@ -480,6 +504,12 @@
       </if>
       <if test="authorityId != null">
         authorityId = #{authorityId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=INTEGER},
       </if>
       <if test="bannedTopic != null">
         bannedTopic = #{bannedTopic,jdbcType=BIT},
@@ -541,7 +571,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.User">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.bean.User">
     update user
     set account = #{account,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -551,6 +581,8 @@
       email = #{email,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=INTEGER},
       authorityId = #{authorityId,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=INTEGER},
       bannedTopic = #{bannedTopic,jdbcType=BIT},
       bannedReply = #{bannedReply,jdbcType=BIT},
       bannedMessage = #{bannedMessage,jdbcType=BIT},

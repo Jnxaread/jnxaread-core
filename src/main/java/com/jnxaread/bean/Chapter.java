@@ -21,6 +21,8 @@ public class Chapter {
 
     private Integer viewCount;
 
+    private Integer restricted;
+
     private Boolean hided;
 
     private Boolean contentLocked;
@@ -101,6 +103,14 @@ public class Chapter {
 
     public void setViewCount(Integer viewCount) {
         this.viewCount = viewCount;
+    }
+
+    public Integer getRestricted() {
+        return restricted;
+    }
+
+    public void setRestricted(Integer restricted) {
+        this.restricted = restricted;
     }
 
     public Boolean getHided() {

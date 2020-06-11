@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jnxaread.dao.ChapterMapper">
-  <resultMap id="BaseResultMap" type="com.jnxaread.bean.Chapter">
+<mapper namespace="com.example.demo.dao.ChapterMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.bean.Chapter">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="fictionId" jdbcType="INTEGER" property="fictionId" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
@@ -11,12 +11,13 @@
     <result column="wordCount" jdbcType="INTEGER" property="wordCount" />
     <result column="commentCount" jdbcType="INTEGER" property="commentCount" />
     <result column="viewCount" jdbcType="INTEGER" property="viewCount" />
+    <result column="restricted" jdbcType="INTEGER" property="restricted" />
     <result column="hided" jdbcType="BIT" property="hided" />
     <result column="contentLocked" jdbcType="BIT" property="contentLocked" />
     <result column="commentLocked" jdbcType="BIT" property="commentLocked" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jnxaread.bean.Chapter">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.demo.bean.Chapter">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -79,12 +80,12 @@
   </sql>
   <sql id="Base_Column_List">
     id, fictionId, userId, createTime, number, title, wordCount, commentCount, viewCount,
-    hided, contentLocked, commentLocked, deleted
+    restricted, hided, contentLocked, commentLocked, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.jnxaread.bean.ChapterExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.example.demo.bean.ChapterExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -100,7 +101,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.jnxaread.bean.ChapterExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.demo.bean.ChapterExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -126,25 +127,27 @@
     delete from chapter
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.jnxaread.bean.ChapterExample">
+  <delete id="deleteByExample" parameterType="com.example.demo.bean.ChapterExample">
     delete from chapter
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.jnxaread.bean.Chapter">
+  <insert id="insert" parameterType="com.example.demo.bean.Chapter">
     insert into chapter (id, fictionId, userId,
       createTime, number, title,
       wordCount, commentCount, viewCount,
-      hided, contentLocked, commentLocked,
-      deleted, content)
+      restricted, hided, contentLocked,
+      commentLocked, deleted, content
+      )
     values (#{id,jdbcType=INTEGER}, #{fictionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
       #{createTime,jdbcType=TIMESTAMP}, #{number,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
       #{wordCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER},
-      #{hided,jdbcType=BIT}, #{contentLocked,jdbcType=BIT}, #{commentLocked,jdbcType=BIT},
-      #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
+      #{restricted,jdbcType=INTEGER}, #{hided,jdbcType=BIT}, #{contentLocked,jdbcType=BIT},
+      #{commentLocked,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Chapter" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.example.demo.bean.Chapter" useGeneratedKeys="true" keyProperty="id">
     insert into chapter
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -173,6 +176,9 @@
       </if>
       <if test="viewCount != null">
         viewCount,
+      </if>
+      <if test="restricted != null">
+        restricted,
       </if>
       <if test="hided != null">
         hided,
@@ -218,6 +224,9 @@
       <if test="viewCount != null">
         #{viewCount,jdbcType=INTEGER},
       </if>
+      <if test="restricted != null">
+        #{restricted,jdbcType=INTEGER},
+      </if>
       <if test="hided != null">
         #{hided,jdbcType=BIT},
       </if>
@@ -235,7 +244,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.jnxaread.bean.ChapterExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.example.demo.bean.ChapterExample" resultType="java.lang.Long">
     select count(*) from chapter
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -271,6 +280,9 @@
       <if test="record.viewCount != null">
         viewCount = #{record.viewCount,jdbcType=INTEGER},
       </if>
+      <if test="record.restricted != null">
+        restricted = #{record.restricted,jdbcType=INTEGER},
+      </if>
       <if test="record.hided != null">
         hided = #{record.hided,jdbcType=BIT},
       </if>
@@ -302,6 +314,7 @@
       wordCount = #{record.wordCount,jdbcType=INTEGER},
       commentCount = #{record.commentCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
+      restricted = #{record.restricted,jdbcType=INTEGER},
       hided = #{record.hided,jdbcType=BIT},
       contentLocked = #{record.contentLocked,jdbcType=BIT},
       commentLocked = #{record.commentLocked,jdbcType=BIT},
@@ -322,6 +335,7 @@
       wordCount = #{record.wordCount,jdbcType=INTEGER},
       commentCount = #{record.commentCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
+      restricted = #{record.restricted,jdbcType=INTEGER},
       hided = #{record.hided,jdbcType=BIT},
       contentLocked = #{record.contentLocked,jdbcType=BIT},
       commentLocked = #{record.commentLocked,jdbcType=BIT},
@@ -330,7 +344,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Chapter">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.bean.Chapter">
     update chapter
     <set>
       <if test="fictionId != null">
@@ -357,6 +371,9 @@
       <if test="viewCount != null">
         viewCount = #{viewCount,jdbcType=INTEGER},
       </if>
+      <if test="restricted != null">
+        restricted = #{restricted,jdbcType=INTEGER},
+      </if>
       <if test="hided != null">
         hided = #{hided,jdbcType=BIT},
       </if>
@@ -375,7 +392,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jnxaread.bean.Chapter">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.demo.bean.Chapter">
     update chapter
     set fictionId = #{fictionId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
@@ -385,6 +402,7 @@
       wordCount = #{wordCount,jdbcType=INTEGER},
       commentCount = #{commentCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
+      restricted = #{restricted,jdbcType=INTEGER},
       hided = #{hided,jdbcType=BIT},
       contentLocked = #{contentLocked,jdbcType=BIT},
       commentLocked = #{commentLocked,jdbcType=BIT},
@@ -392,7 +410,7 @@
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Chapter">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.bean.Chapter">
     update chapter
     set fictionId = #{fictionId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
@@ -402,6 +420,7 @@
       wordCount = #{wordCount,jdbcType=INTEGER},
       commentCount = #{commentCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
+      restricted = #{restricted,jdbcType=INTEGER},
       hided = #{hided,jdbcType=BIT},
       contentLocked = #{contentLocked,jdbcType=BIT},
       commentLocked = #{commentLocked,jdbcType=BIT},
@@ -416,4 +435,5 @@
     SELECT chapter.*,user.username
     FROM chapter,user WHERE chapter.id=#{id} AND chapter.hided=0 AND chapter.deleted=0 AND chapter.userId=user.id
   </select>
+  <!--===============================================================================================================-->
 </mapper>

@@ -655,6 +655,66 @@ public class ChapterExample {
             return (Criteria) this;
         }
 
+        public Criteria andRestrictedIsNull() {
+            addCriterion("restricted is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedIsNotNull() {
+            addCriterion("restricted is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedEqualTo(Integer value) {
+            addCriterion("restricted =", value, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedNotEqualTo(Integer value) {
+            addCriterion("restricted <>", value, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedGreaterThan(Integer value) {
+            addCriterion("restricted >", value, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedGreaterThanOrEqualTo(Integer value) {
+            addCriterion("restricted >=", value, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedLessThan(Integer value) {
+            addCriterion("restricted <", value, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedLessThanOrEqualTo(Integer value) {
+            addCriterion("restricted <=", value, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedIn(List<Integer> values) {
+            addCriterion("restricted in", values, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedNotIn(List<Integer> values) {
+            addCriterion("restricted not in", values, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedBetween(Integer value1, Integer value2) {
+            addCriterion("restricted between", value1, value2, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedNotBetween(Integer value1, Integer value2) {
+            addCriterion("restricted not between", value1, value2, "restricted");
+            return (Criteria) this;
+        }
+
         public Criteria andHidedIsNull() {
             addCriterion("hided is null");
             return (Criteria) this;

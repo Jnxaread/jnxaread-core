@@ -2,16 +2,16 @@ package com.jnxaread.bean;
 
 import java.util.Date;
 
-public class Category {
+public class Board {
     private Integer id;
 
     private String name;
 
     private String description;
 
-    private Integer fictionCount;
+    private Integer topicCount;
 
-    private Integer chapterCount;
+    private Integer replyCount;
 
     private Integer restricted;
 
@@ -47,20 +47,20 @@ public class Category {
         this.description = description == null ? null : description.trim();
     }
 
-    public Integer getFictionCount() {
-        return fictionCount;
+    public Integer getTopicCount() {
+        return topicCount;
     }
 
-    public void setFictionCount(Integer fictionCount) {
-        this.fictionCount = fictionCount;
+    public void setTopicCount(Integer topicCount) {
+        this.topicCount = topicCount;
     }
 
-    public Integer getChapterCount() {
-        return chapterCount;
+    public Integer getReplyCount() {
+        return replyCount;
     }
 
-    public void setChapterCount(Integer chapterCount) {
-        this.chapterCount = chapterCount;
+    public void setReplyCount(Integer replyCount) {
+        this.replyCount = replyCount;
     }
 
     public Integer getRestricted() {

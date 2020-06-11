@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jnxaread.dao.AuthorityMapper">
-  <resultMap id="BaseResultMap" type="com.jnxaread.bean.Authority">
+<mapper namespace="com.example.demo.dao.AuthorityMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.bean.Authority">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="role" jdbcType="VARCHAR" property="role" />
     <result column="banAccount" jdbcType="BIT" property="banAccount" />
@@ -34,9 +34,36 @@
     <result column="hideOwnTopic" jdbcType="BIT" property="hideOwnTopic" />
     <result column="hideOwnFiction" jdbcType="BIT" property="hideOwnFiction" />
     <result column="hideOwnChapter" jdbcType="BIT" property="hideOwnChapter" />
+    <result column="hideOwnComment" jdbcType="BIT" property="hideOwnComment" />
     <result column="hideTopic" jdbcType="BIT" property="hideTopic" />
     <result column="hideFiction" jdbcType="BIT" property="hideFiction" />
     <result column="hideChapter" jdbcType="BIT" property="hideChapter" />
+    <result column="hideComment" jdbcType="BIT" property="hideComment" />
+    <result column="setAnonymousOfOwnTopic" jdbcType="BIT" property="setAnonymousOfOwnTopic" />
+    <result column="setAnonymousOfOwnReply" jdbcType="BIT" property="setAnonymousOfOwnReply" />
+    <result column="setAnonymousOfOwnComment" jdbcType="BIT" property="setAnonymousOfOwnComment" />
+    <result column="cancelAnonymousOfOwnTopic" jdbcType="BIT" property="cancelAnonymousOfOwnTopic" />
+    <result column="cancelAnonymousOfOwnReply" jdbcType="BIT" property="cancelAnonymousOfOwnReply" />
+    <result column="cancelAnonymousOfOwnComment" jdbcType="BIT" property="cancelAnonymousOfOwnComment" />
+    <result column="cancelAnonymousTopic" jdbcType="BIT" property="cancelAnonymousTopic" />
+    <result column="cancelAnonymousReply" jdbcType="BIT" property="cancelAnonymousReply" />
+    <result column="cancelAnonymousComment" jdbcType="BIT" property="cancelAnonymousComment" />
+    <result column="restricOwnFiction" jdbcType="BIT" property="restricOwnFiction" />
+    <result column="restricOwnChapter" jdbcType="BIT" property="restricOwnChapter" />
+    <result column="restricOwnTopic" jdbcType="BIT" property="restricOwnTopic" />
+    <result column="restrictFiction" jdbcType="BIT" property="restrictFiction" />
+    <result column="restricChapter" jdbcType="BIT" property="restricChapter" />
+    <result column="restricTopic" jdbcType="BIT" property="restricTopic" />
+    <result column="restricCategory" jdbcType="BIT" property="restricCategory" />
+    <result column="restricBoard" jdbcType="BIT" property="restricBoard" />
+    <result column="addCategory" jdbcType="BIT" property="addCategory" />
+    <result column="addBoard" jdbcType="BIT" property="addBoard" />
+    <result column="lockCategory" jdbcType="BIT" property="lockCategory" />
+    <result column="lockBoard" jdbcType="BIT" property="lockBoard" />
+    <result column="hideCategory" jdbcType="BIT" property="hideCategory" />
+    <result column="hideBoard" jdbcType="BIT" property="hideBoard" />
+    <result column="deleteCategory" jdbcType="BIT" property="deleteCategory" />
+    <result column="deleteBoard" jdbcType="BIT" property="deleteBoard" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -102,9 +129,15 @@
     deleteReply, deleteFiction, deleteChapter, deleteComment, lockTopic, lockFiction, 
     lockChapter, lockNotice, lockContentOfTopic, lockContentOfFiction, lockContentOfChapter, 
     lockCommentOfOwnFiction, lockCommentOfOwnChapter, lockCommentOfFiction, lockCommentOfChapter, 
-    hideOwnTopic, hideOwnFiction, hideOwnChapter, hideTopic, hideFiction, hideChapter
+    hideOwnTopic, hideOwnFiction, hideOwnChapter, hideOwnComment, hideTopic, hideFiction, 
+    hideChapter, hideComment, setAnonymousOfOwnTopic, setAnonymousOfOwnReply, setAnonymousOfOwnComment, 
+    cancelAnonymousOfOwnTopic, cancelAnonymousOfOwnReply, cancelAnonymousOfOwnComment, 
+    cancelAnonymousTopic, cancelAnonymousReply, cancelAnonymousComment, restricOwnFiction, 
+    restricOwnChapter, restricOwnTopic, restrictFiction, restricChapter, restricTopic, 
+    restricCategory, restricBoard, addCategory, addBoard, lockCategory, lockBoard, hideCategory, 
+    hideBoard, deleteCategory, deleteBoard
   </sql>
-  <select id="selectByExample" parameterType="com.jnxaread.bean.AuthorityExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.demo.bean.AuthorityExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -128,13 +161,13 @@
     delete from authority
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.jnxaread.bean.AuthorityExample">
+  <delete id="deleteByExample" parameterType="com.example.demo.bean.AuthorityExample">
     delete from authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.jnxaread.bean.Authority">
+  <insert id="insert" parameterType="com.example.demo.bean.Authority">
     insert into authority (id, role, banAccount, 
       banTopic, banReply, banMessage, 
       banFiction, banComment, deleteOwnTopic, 
@@ -146,8 +179,18 @@
       lockContentOfChapter, lockCommentOfOwnFiction, 
       lockCommentOfOwnChapter, lockCommentOfFiction, 
       lockCommentOfChapter, hideOwnTopic, hideOwnFiction, 
-      hideOwnChapter, hideTopic, hideFiction, 
-      hideChapter)
+      hideOwnChapter, hideOwnComment, hideTopic, 
+      hideFiction, hideChapter, hideComment, 
+      setAnonymousOfOwnTopic, setAnonymousOfOwnReply, 
+      setAnonymousOfOwnComment, cancelAnonymousOfOwnTopic, 
+      cancelAnonymousOfOwnReply, cancelAnonymousOfOwnComment, 
+      cancelAnonymousTopic, cancelAnonymousReply, cancelAnonymousComment, 
+      restricOwnFiction, restricOwnChapter, restricOwnTopic, 
+      restrictFiction, restricChapter, restricTopic, 
+      restricCategory, restricBoard, addCategory, 
+      addBoard, lockCategory, lockBoard, 
+      hideCategory, hideBoard, deleteCategory, 
+      deleteBoard)
     values (#{id,jdbcType=INTEGER}, #{role,jdbcType=VARCHAR}, #{banAccount,jdbcType=BIT}, 
       #{banTopic,jdbcType=BIT}, #{banReply,jdbcType=BIT}, #{banMessage,jdbcType=BIT}, 
       #{banFiction,jdbcType=BIT}, #{banComment,jdbcType=BIT}, #{deleteOwnTopic,jdbcType=BIT}, 
@@ -159,10 +202,20 @@
       #{lockContentOfChapter,jdbcType=BIT}, #{lockCommentOfOwnFiction,jdbcType=BIT}, 
       #{lockCommentOfOwnChapter,jdbcType=BIT}, #{lockCommentOfFiction,jdbcType=BIT}, 
       #{lockCommentOfChapter,jdbcType=BIT}, #{hideOwnTopic,jdbcType=BIT}, #{hideOwnFiction,jdbcType=BIT}, 
-      #{hideOwnChapter,jdbcType=BIT}, #{hideTopic,jdbcType=BIT}, #{hideFiction,jdbcType=BIT}, 
-      #{hideChapter,jdbcType=BIT})
+      #{hideOwnChapter,jdbcType=BIT}, #{hideOwnComment,jdbcType=BIT}, #{hideTopic,jdbcType=BIT}, 
+      #{hideFiction,jdbcType=BIT}, #{hideChapter,jdbcType=BIT}, #{hideComment,jdbcType=BIT}, 
+      #{setAnonymousOfOwnTopic,jdbcType=BIT}, #{setAnonymousOfOwnReply,jdbcType=BIT}, 
+      #{setAnonymousOfOwnComment,jdbcType=BIT}, #{cancelAnonymousOfOwnTopic,jdbcType=BIT}, 
+      #{cancelAnonymousOfOwnReply,jdbcType=BIT}, #{cancelAnonymousOfOwnComment,jdbcType=BIT}, 
+      #{cancelAnonymousTopic,jdbcType=BIT}, #{cancelAnonymousReply,jdbcType=BIT}, #{cancelAnonymousComment,jdbcType=BIT}, 
+      #{restricOwnFiction,jdbcType=BIT}, #{restricOwnChapter,jdbcType=BIT}, #{restricOwnTopic,jdbcType=BIT}, 
+      #{restrictFiction,jdbcType=BIT}, #{restricChapter,jdbcType=BIT}, #{restricTopic,jdbcType=BIT}, 
+      #{restricCategory,jdbcType=BIT}, #{restricBoard,jdbcType=BIT}, #{addCategory,jdbcType=BIT}, 
+      #{addBoard,jdbcType=BIT}, #{lockCategory,jdbcType=BIT}, #{lockBoard,jdbcType=BIT}, 
+      #{hideCategory,jdbcType=BIT}, #{hideBoard,jdbcType=BIT}, #{deleteCategory,jdbcType=BIT}, 
+      #{deleteBoard,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Authority">
+  <insert id="insertSelective" parameterType="com.example.demo.bean.Authority">
     insert into authority
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -261,6 +314,9 @@
       <if test="hideOwnChapter != null">
         hideOwnChapter,
       </if>
+      <if test="hideOwnComment != null">
+        hideOwnComment,
+      </if>
       <if test="hideTopic != null">
         hideTopic,
       </if>
@@ -269,6 +325,84 @@
       </if>
       <if test="hideChapter != null">
         hideChapter,
+      </if>
+      <if test="hideComment != null">
+        hideComment,
+      </if>
+      <if test="setAnonymousOfOwnTopic != null">
+        setAnonymousOfOwnTopic,
+      </if>
+      <if test="setAnonymousOfOwnReply != null">
+        setAnonymousOfOwnReply,
+      </if>
+      <if test="setAnonymousOfOwnComment != null">
+        setAnonymousOfOwnComment,
+      </if>
+      <if test="cancelAnonymousOfOwnTopic != null">
+        cancelAnonymousOfOwnTopic,
+      </if>
+      <if test="cancelAnonymousOfOwnReply != null">
+        cancelAnonymousOfOwnReply,
+      </if>
+      <if test="cancelAnonymousOfOwnComment != null">
+        cancelAnonymousOfOwnComment,
+      </if>
+      <if test="cancelAnonymousTopic != null">
+        cancelAnonymousTopic,
+      </if>
+      <if test="cancelAnonymousReply != null">
+        cancelAnonymousReply,
+      </if>
+      <if test="cancelAnonymousComment != null">
+        cancelAnonymousComment,
+      </if>
+      <if test="restricOwnFiction != null">
+        restricOwnFiction,
+      </if>
+      <if test="restricOwnChapter != null">
+        restricOwnChapter,
+      </if>
+      <if test="restricOwnTopic != null">
+        restricOwnTopic,
+      </if>
+      <if test="restrictFiction != null">
+        restrictFiction,
+      </if>
+      <if test="restricChapter != null">
+        restricChapter,
+      </if>
+      <if test="restricTopic != null">
+        restricTopic,
+      </if>
+      <if test="restricCategory != null">
+        restricCategory,
+      </if>
+      <if test="restricBoard != null">
+        restricBoard,
+      </if>
+      <if test="addCategory != null">
+        addCategory,
+      </if>
+      <if test="addBoard != null">
+        addBoard,
+      </if>
+      <if test="lockCategory != null">
+        lockCategory,
+      </if>
+      <if test="lockBoard != null">
+        lockBoard,
+      </if>
+      <if test="hideCategory != null">
+        hideCategory,
+      </if>
+      <if test="hideBoard != null">
+        hideBoard,
+      </if>
+      <if test="deleteCategory != null">
+        deleteCategory,
+      </if>
+      <if test="deleteBoard != null">
+        deleteBoard,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -368,6 +502,9 @@
       <if test="hideOwnChapter != null">
         #{hideOwnChapter,jdbcType=BIT},
       </if>
+      <if test="hideOwnComment != null">
+        #{hideOwnComment,jdbcType=BIT},
+      </if>
       <if test="hideTopic != null">
         #{hideTopic,jdbcType=BIT},
       </if>
@@ -377,9 +514,87 @@
       <if test="hideChapter != null">
         #{hideChapter,jdbcType=BIT},
       </if>
+      <if test="hideComment != null">
+        #{hideComment,jdbcType=BIT},
+      </if>
+      <if test="setAnonymousOfOwnTopic != null">
+        #{setAnonymousOfOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="setAnonymousOfOwnReply != null">
+        #{setAnonymousOfOwnReply,jdbcType=BIT},
+      </if>
+      <if test="setAnonymousOfOwnComment != null">
+        #{setAnonymousOfOwnComment,jdbcType=BIT},
+      </if>
+      <if test="cancelAnonymousOfOwnTopic != null">
+        #{cancelAnonymousOfOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="cancelAnonymousOfOwnReply != null">
+        #{cancelAnonymousOfOwnReply,jdbcType=BIT},
+      </if>
+      <if test="cancelAnonymousOfOwnComment != null">
+        #{cancelAnonymousOfOwnComment,jdbcType=BIT},
+      </if>
+      <if test="cancelAnonymousTopic != null">
+        #{cancelAnonymousTopic,jdbcType=BIT},
+      </if>
+      <if test="cancelAnonymousReply != null">
+        #{cancelAnonymousReply,jdbcType=BIT},
+      </if>
+      <if test="cancelAnonymousComment != null">
+        #{cancelAnonymousComment,jdbcType=BIT},
+      </if>
+      <if test="restricOwnFiction != null">
+        #{restricOwnFiction,jdbcType=BIT},
+      </if>
+      <if test="restricOwnChapter != null">
+        #{restricOwnChapter,jdbcType=BIT},
+      </if>
+      <if test="restricOwnTopic != null">
+        #{restricOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="restrictFiction != null">
+        #{restrictFiction,jdbcType=BIT},
+      </if>
+      <if test="restricChapter != null">
+        #{restricChapter,jdbcType=BIT},
+      </if>
+      <if test="restricTopic != null">
+        #{restricTopic,jdbcType=BIT},
+      </if>
+      <if test="restricCategory != null">
+        #{restricCategory,jdbcType=BIT},
+      </if>
+      <if test="restricBoard != null">
+        #{restricBoard,jdbcType=BIT},
+      </if>
+      <if test="addCategory != null">
+        #{addCategory,jdbcType=BIT},
+      </if>
+      <if test="addBoard != null">
+        #{addBoard,jdbcType=BIT},
+      </if>
+      <if test="lockCategory != null">
+        #{lockCategory,jdbcType=BIT},
+      </if>
+      <if test="lockBoard != null">
+        #{lockBoard,jdbcType=BIT},
+      </if>
+      <if test="hideCategory != null">
+        #{hideCategory,jdbcType=BIT},
+      </if>
+      <if test="hideBoard != null">
+        #{hideBoard,jdbcType=BIT},
+      </if>
+      <if test="deleteCategory != null">
+        #{deleteCategory,jdbcType=BIT},
+      </if>
+      <if test="deleteBoard != null">
+        #{deleteBoard,jdbcType=BIT},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.jnxaread.bean.AuthorityExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.example.demo.bean.AuthorityExample" resultType="java.lang.Long">
     select count(*) from authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -484,6 +699,9 @@
       <if test="record.hideOwnChapter != null">
         hideOwnChapter = #{record.hideOwnChapter,jdbcType=BIT},
       </if>
+      <if test="record.hideOwnComment != null">
+        hideOwnComment = #{record.hideOwnComment,jdbcType=BIT},
+      </if>
       <if test="record.hideTopic != null">
         hideTopic = #{record.hideTopic,jdbcType=BIT},
       </if>
@@ -492,6 +710,84 @@
       </if>
       <if test="record.hideChapter != null">
         hideChapter = #{record.hideChapter,jdbcType=BIT},
+      </if>
+      <if test="record.hideComment != null">
+        hideComment = #{record.hideComment,jdbcType=BIT},
+      </if>
+      <if test="record.setAnonymousOfOwnTopic != null">
+        setAnonymousOfOwnTopic = #{record.setAnonymousOfOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="record.setAnonymousOfOwnReply != null">
+        setAnonymousOfOwnReply = #{record.setAnonymousOfOwnReply,jdbcType=BIT},
+      </if>
+      <if test="record.setAnonymousOfOwnComment != null">
+        setAnonymousOfOwnComment = #{record.setAnonymousOfOwnComment,jdbcType=BIT},
+      </if>
+      <if test="record.cancelAnonymousOfOwnTopic != null">
+        cancelAnonymousOfOwnTopic = #{record.cancelAnonymousOfOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="record.cancelAnonymousOfOwnReply != null">
+        cancelAnonymousOfOwnReply = #{record.cancelAnonymousOfOwnReply,jdbcType=BIT},
+      </if>
+      <if test="record.cancelAnonymousOfOwnComment != null">
+        cancelAnonymousOfOwnComment = #{record.cancelAnonymousOfOwnComment,jdbcType=BIT},
+      </if>
+      <if test="record.cancelAnonymousTopic != null">
+        cancelAnonymousTopic = #{record.cancelAnonymousTopic,jdbcType=BIT},
+      </if>
+      <if test="record.cancelAnonymousReply != null">
+        cancelAnonymousReply = #{record.cancelAnonymousReply,jdbcType=BIT},
+      </if>
+      <if test="record.cancelAnonymousComment != null">
+        cancelAnonymousComment = #{record.cancelAnonymousComment,jdbcType=BIT},
+      </if>
+      <if test="record.restricOwnFiction != null">
+        restricOwnFiction = #{record.restricOwnFiction,jdbcType=BIT},
+      </if>
+      <if test="record.restricOwnChapter != null">
+        restricOwnChapter = #{record.restricOwnChapter,jdbcType=BIT},
+      </if>
+      <if test="record.restricOwnTopic != null">
+        restricOwnTopic = #{record.restricOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="record.restrictFiction != null">
+        restrictFiction = #{record.restrictFiction,jdbcType=BIT},
+      </if>
+      <if test="record.restricChapter != null">
+        restricChapter = #{record.restricChapter,jdbcType=BIT},
+      </if>
+      <if test="record.restricTopic != null">
+        restricTopic = #{record.restricTopic,jdbcType=BIT},
+      </if>
+      <if test="record.restricCategory != null">
+        restricCategory = #{record.restricCategory,jdbcType=BIT},
+      </if>
+      <if test="record.restricBoard != null">
+        restricBoard = #{record.restricBoard,jdbcType=BIT},
+      </if>
+      <if test="record.addCategory != null">
+        addCategory = #{record.addCategory,jdbcType=BIT},
+      </if>
+      <if test="record.addBoard != null">
+        addBoard = #{record.addBoard,jdbcType=BIT},
+      </if>
+      <if test="record.lockCategory != null">
+        lockCategory = #{record.lockCategory,jdbcType=BIT},
+      </if>
+      <if test="record.lockBoard != null">
+        lockBoard = #{record.lockBoard,jdbcType=BIT},
+      </if>
+      <if test="record.hideCategory != null">
+        hideCategory = #{record.hideCategory,jdbcType=BIT},
+      </if>
+      <if test="record.hideBoard != null">
+        hideBoard = #{record.hideBoard,jdbcType=BIT},
+      </if>
+      <if test="record.deleteCategory != null">
+        deleteCategory = #{record.deleteCategory,jdbcType=BIT},
+      </if>
+      <if test="record.deleteBoard != null">
+        deleteBoard = #{record.deleteBoard,jdbcType=BIT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -532,14 +828,41 @@
       hideOwnTopic = #{record.hideOwnTopic,jdbcType=BIT},
       hideOwnFiction = #{record.hideOwnFiction,jdbcType=BIT},
       hideOwnChapter = #{record.hideOwnChapter,jdbcType=BIT},
+      hideOwnComment = #{record.hideOwnComment,jdbcType=BIT},
       hideTopic = #{record.hideTopic,jdbcType=BIT},
       hideFiction = #{record.hideFiction,jdbcType=BIT},
-      hideChapter = #{record.hideChapter,jdbcType=BIT}
+      hideChapter = #{record.hideChapter,jdbcType=BIT},
+      hideComment = #{record.hideComment,jdbcType=BIT},
+      setAnonymousOfOwnTopic = #{record.setAnonymousOfOwnTopic,jdbcType=BIT},
+      setAnonymousOfOwnReply = #{record.setAnonymousOfOwnReply,jdbcType=BIT},
+      setAnonymousOfOwnComment = #{record.setAnonymousOfOwnComment,jdbcType=BIT},
+      cancelAnonymousOfOwnTopic = #{record.cancelAnonymousOfOwnTopic,jdbcType=BIT},
+      cancelAnonymousOfOwnReply = #{record.cancelAnonymousOfOwnReply,jdbcType=BIT},
+      cancelAnonymousOfOwnComment = #{record.cancelAnonymousOfOwnComment,jdbcType=BIT},
+      cancelAnonymousTopic = #{record.cancelAnonymousTopic,jdbcType=BIT},
+      cancelAnonymousReply = #{record.cancelAnonymousReply,jdbcType=BIT},
+      cancelAnonymousComment = #{record.cancelAnonymousComment,jdbcType=BIT},
+      restricOwnFiction = #{record.restricOwnFiction,jdbcType=BIT},
+      restricOwnChapter = #{record.restricOwnChapter,jdbcType=BIT},
+      restricOwnTopic = #{record.restricOwnTopic,jdbcType=BIT},
+      restrictFiction = #{record.restrictFiction,jdbcType=BIT},
+      restricChapter = #{record.restricChapter,jdbcType=BIT},
+      restricTopic = #{record.restricTopic,jdbcType=BIT},
+      restricCategory = #{record.restricCategory,jdbcType=BIT},
+      restricBoard = #{record.restricBoard,jdbcType=BIT},
+      addCategory = #{record.addCategory,jdbcType=BIT},
+      addBoard = #{record.addBoard,jdbcType=BIT},
+      lockCategory = #{record.lockCategory,jdbcType=BIT},
+      lockBoard = #{record.lockBoard,jdbcType=BIT},
+      hideCategory = #{record.hideCategory,jdbcType=BIT},
+      hideBoard = #{record.hideBoard,jdbcType=BIT},
+      deleteCategory = #{record.deleteCategory,jdbcType=BIT},
+      deleteBoard = #{record.deleteBoard,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Authority">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.bean.Authority">
     update authority
     <set>
       <if test="role != null">
@@ -635,6 +958,9 @@
       <if test="hideOwnChapter != null">
         hideOwnChapter = #{hideOwnChapter,jdbcType=BIT},
       </if>
+      <if test="hideOwnComment != null">
+        hideOwnComment = #{hideOwnComment,jdbcType=BIT},
+      </if>
       <if test="hideTopic != null">
         hideTopic = #{hideTopic,jdbcType=BIT},
       </if>
@@ -644,10 +970,88 @@
       <if test="hideChapter != null">
         hideChapter = #{hideChapter,jdbcType=BIT},
       </if>
+      <if test="hideComment != null">
+        hideComment = #{hideComment,jdbcType=BIT},
+      </if>
+      <if test="setAnonymousOfOwnTopic != null">
+        setAnonymousOfOwnTopic = #{setAnonymousOfOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="setAnonymousOfOwnReply != null">
+        setAnonymousOfOwnReply = #{setAnonymousOfOwnReply,jdbcType=BIT},
+      </if>
+      <if test="setAnonymousOfOwnComment != null">
+        setAnonymousOfOwnComment = #{setAnonymousOfOwnComment,jdbcType=BIT},
+      </if>
+      <if test="cancelAnonymousOfOwnTopic != null">
+        cancelAnonymousOfOwnTopic = #{cancelAnonymousOfOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="cancelAnonymousOfOwnReply != null">
+        cancelAnonymousOfOwnReply = #{cancelAnonymousOfOwnReply,jdbcType=BIT},
+      </if>
+      <if test="cancelAnonymousOfOwnComment != null">
+        cancelAnonymousOfOwnComment = #{cancelAnonymousOfOwnComment,jdbcType=BIT},
+      </if>
+      <if test="cancelAnonymousTopic != null">
+        cancelAnonymousTopic = #{cancelAnonymousTopic,jdbcType=BIT},
+      </if>
+      <if test="cancelAnonymousReply != null">
+        cancelAnonymousReply = #{cancelAnonymousReply,jdbcType=BIT},
+      </if>
+      <if test="cancelAnonymousComment != null">
+        cancelAnonymousComment = #{cancelAnonymousComment,jdbcType=BIT},
+      </if>
+      <if test="restricOwnFiction != null">
+        restricOwnFiction = #{restricOwnFiction,jdbcType=BIT},
+      </if>
+      <if test="restricOwnChapter != null">
+        restricOwnChapter = #{restricOwnChapter,jdbcType=BIT},
+      </if>
+      <if test="restricOwnTopic != null">
+        restricOwnTopic = #{restricOwnTopic,jdbcType=BIT},
+      </if>
+      <if test="restrictFiction != null">
+        restrictFiction = #{restrictFiction,jdbcType=BIT},
+      </if>
+      <if test="restricChapter != null">
+        restricChapter = #{restricChapter,jdbcType=BIT},
+      </if>
+      <if test="restricTopic != null">
+        restricTopic = #{restricTopic,jdbcType=BIT},
+      </if>
+      <if test="restricCategory != null">
+        restricCategory = #{restricCategory,jdbcType=BIT},
+      </if>
+      <if test="restricBoard != null">
+        restricBoard = #{restricBoard,jdbcType=BIT},
+      </if>
+      <if test="addCategory != null">
+        addCategory = #{addCategory,jdbcType=BIT},
+      </if>
+      <if test="addBoard != null">
+        addBoard = #{addBoard,jdbcType=BIT},
+      </if>
+      <if test="lockCategory != null">
+        lockCategory = #{lockCategory,jdbcType=BIT},
+      </if>
+      <if test="lockBoard != null">
+        lockBoard = #{lockBoard,jdbcType=BIT},
+      </if>
+      <if test="hideCategory != null">
+        hideCategory = #{hideCategory,jdbcType=BIT},
+      </if>
+      <if test="hideBoard != null">
+        hideBoard = #{hideBoard,jdbcType=BIT},
+      </if>
+      <if test="deleteCategory != null">
+        deleteCategory = #{deleteCategory,jdbcType=BIT},
+      </if>
+      <if test="deleteBoard != null">
+        deleteBoard = #{deleteBoard,jdbcType=BIT},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Authority">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.bean.Authority">
     update authority
     set role = #{role,jdbcType=VARCHAR},
       banAccount = #{banAccount,jdbcType=BIT},
@@ -680,9 +1084,36 @@
       hideOwnTopic = #{hideOwnTopic,jdbcType=BIT},
       hideOwnFiction = #{hideOwnFiction,jdbcType=BIT},
       hideOwnChapter = #{hideOwnChapter,jdbcType=BIT},
+      hideOwnComment = #{hideOwnComment,jdbcType=BIT},
       hideTopic = #{hideTopic,jdbcType=BIT},
       hideFiction = #{hideFiction,jdbcType=BIT},
-      hideChapter = #{hideChapter,jdbcType=BIT}
+      hideChapter = #{hideChapter,jdbcType=BIT},
+      hideComment = #{hideComment,jdbcType=BIT},
+      setAnonymousOfOwnTopic = #{setAnonymousOfOwnTopic,jdbcType=BIT},
+      setAnonymousOfOwnReply = #{setAnonymousOfOwnReply,jdbcType=BIT},
+      setAnonymousOfOwnComment = #{setAnonymousOfOwnComment,jdbcType=BIT},
+      cancelAnonymousOfOwnTopic = #{cancelAnonymousOfOwnTopic,jdbcType=BIT},
+      cancelAnonymousOfOwnReply = #{cancelAnonymousOfOwnReply,jdbcType=BIT},
+      cancelAnonymousOfOwnComment = #{cancelAnonymousOfOwnComment,jdbcType=BIT},
+      cancelAnonymousTopic = #{cancelAnonymousTopic,jdbcType=BIT},
+      cancelAnonymousReply = #{cancelAnonymousReply,jdbcType=BIT},
+      cancelAnonymousComment = #{cancelAnonymousComment,jdbcType=BIT},
+      restricOwnFiction = #{restricOwnFiction,jdbcType=BIT},
+      restricOwnChapter = #{restricOwnChapter,jdbcType=BIT},
+      restricOwnTopic = #{restricOwnTopic,jdbcType=BIT},
+      restrictFiction = #{restrictFiction,jdbcType=BIT},
+      restricChapter = #{restricChapter,jdbcType=BIT},
+      restricTopic = #{restricTopic,jdbcType=BIT},
+      restricCategory = #{restricCategory,jdbcType=BIT},
+      restricBoard = #{restricBoard,jdbcType=BIT},
+      addCategory = #{addCategory,jdbcType=BIT},
+      addBoard = #{addBoard,jdbcType=BIT},
+      lockCategory = #{lockCategory,jdbcType=BIT},
+      lockBoard = #{lockBoard,jdbcType=BIT},
+      hideCategory = #{hideCategory,jdbcType=BIT},
+      hideBoard = #{hideBoard,jdbcType=BIT},
+      deleteCategory = #{deleteCategory,jdbcType=BIT},
+      deleteBoard = #{deleteBoard,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

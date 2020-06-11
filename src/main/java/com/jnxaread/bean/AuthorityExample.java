@@ -2034,6 +2034,66 @@ public class AuthorityExample {
             return (Criteria) this;
         }
 
+        public Criteria andHideOwnCommentIsNull() {
+            addCriterion("hideOwnComment is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideOwnCommentIsNotNull() {
+            addCriterion("hideOwnComment is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideOwnCommentEqualTo(Boolean value) {
+            addCriterion("hideOwnComment =", value, "hideOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideOwnCommentNotEqualTo(Boolean value) {
+            addCriterion("hideOwnComment <>", value, "hideOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideOwnCommentGreaterThan(Boolean value) {
+            addCriterion("hideOwnComment >", value, "hideOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideOwnCommentGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("hideOwnComment >=", value, "hideOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideOwnCommentLessThan(Boolean value) {
+            addCriterion("hideOwnComment <", value, "hideOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideOwnCommentLessThanOrEqualTo(Boolean value) {
+            addCriterion("hideOwnComment <=", value, "hideOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideOwnCommentIn(List<Boolean> values) {
+            addCriterion("hideOwnComment in", values, "hideOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideOwnCommentNotIn(List<Boolean> values) {
+            addCriterion("hideOwnComment not in", values, "hideOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideOwnCommentBetween(Boolean value1, Boolean value2) {
+            addCriterion("hideOwnComment between", value1, value2, "hideOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideOwnCommentNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("hideOwnComment not between", value1, value2, "hideOwnComment");
+            return (Criteria) this;
+        }
+
         public Criteria andHideTopicIsNull() {
             addCriterion("hideTopic is null");
             return (Criteria) this;
@@ -2211,6 +2271,1566 @@ public class AuthorityExample {
 
         public Criteria andHideChapterNotBetween(Boolean value1, Boolean value2) {
             addCriterion("hideChapter not between", value1, value2, "hideChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCommentIsNull() {
+            addCriterion("hideComment is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCommentIsNotNull() {
+            addCriterion("hideComment is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCommentEqualTo(Boolean value) {
+            addCriterion("hideComment =", value, "hideComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCommentNotEqualTo(Boolean value) {
+            addCriterion("hideComment <>", value, "hideComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCommentGreaterThan(Boolean value) {
+            addCriterion("hideComment >", value, "hideComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCommentGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("hideComment >=", value, "hideComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCommentLessThan(Boolean value) {
+            addCriterion("hideComment <", value, "hideComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCommentLessThanOrEqualTo(Boolean value) {
+            addCriterion("hideComment <=", value, "hideComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCommentIn(List<Boolean> values) {
+            addCriterion("hideComment in", values, "hideComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCommentNotIn(List<Boolean> values) {
+            addCriterion("hideComment not in", values, "hideComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCommentBetween(Boolean value1, Boolean value2) {
+            addCriterion("hideComment between", value1, value2, "hideComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCommentNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("hideComment not between", value1, value2, "hideComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnTopicIsNull() {
+            addCriterion("setAnonymousOfOwnTopic is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnTopicIsNotNull() {
+            addCriterion("setAnonymousOfOwnTopic is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnTopicEqualTo(Boolean value) {
+            addCriterion("setAnonymousOfOwnTopic =", value, "setAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnTopicNotEqualTo(Boolean value) {
+            addCriterion("setAnonymousOfOwnTopic <>", value, "setAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnTopicGreaterThan(Boolean value) {
+            addCriterion("setAnonymousOfOwnTopic >", value, "setAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnTopicGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("setAnonymousOfOwnTopic >=", value, "setAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnTopicLessThan(Boolean value) {
+            addCriterion("setAnonymousOfOwnTopic <", value, "setAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnTopicLessThanOrEqualTo(Boolean value) {
+            addCriterion("setAnonymousOfOwnTopic <=", value, "setAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnTopicIn(List<Boolean> values) {
+            addCriterion("setAnonymousOfOwnTopic in", values, "setAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnTopicNotIn(List<Boolean> values) {
+            addCriterion("setAnonymousOfOwnTopic not in", values, "setAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnTopicBetween(Boolean value1, Boolean value2) {
+            addCriterion("setAnonymousOfOwnTopic between", value1, value2, "setAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnTopicNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("setAnonymousOfOwnTopic not between", value1, value2, "setAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnReplyIsNull() {
+            addCriterion("setAnonymousOfOwnReply is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnReplyIsNotNull() {
+            addCriterion("setAnonymousOfOwnReply is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnReplyEqualTo(Boolean value) {
+            addCriterion("setAnonymousOfOwnReply =", value, "setAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnReplyNotEqualTo(Boolean value) {
+            addCriterion("setAnonymousOfOwnReply <>", value, "setAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnReplyGreaterThan(Boolean value) {
+            addCriterion("setAnonymousOfOwnReply >", value, "setAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnReplyGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("setAnonymousOfOwnReply >=", value, "setAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnReplyLessThan(Boolean value) {
+            addCriterion("setAnonymousOfOwnReply <", value, "setAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnReplyLessThanOrEqualTo(Boolean value) {
+            addCriterion("setAnonymousOfOwnReply <=", value, "setAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnReplyIn(List<Boolean> values) {
+            addCriterion("setAnonymousOfOwnReply in", values, "setAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnReplyNotIn(List<Boolean> values) {
+            addCriterion("setAnonymousOfOwnReply not in", values, "setAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnReplyBetween(Boolean value1, Boolean value2) {
+            addCriterion("setAnonymousOfOwnReply between", value1, value2, "setAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnReplyNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("setAnonymousOfOwnReply not between", value1, value2, "setAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnCommentIsNull() {
+            addCriterion("setAnonymousOfOwnComment is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnCommentIsNotNull() {
+            addCriterion("setAnonymousOfOwnComment is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnCommentEqualTo(Boolean value) {
+            addCriterion("setAnonymousOfOwnComment =", value, "setAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnCommentNotEqualTo(Boolean value) {
+            addCriterion("setAnonymousOfOwnComment <>", value, "setAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnCommentGreaterThan(Boolean value) {
+            addCriterion("setAnonymousOfOwnComment >", value, "setAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnCommentGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("setAnonymousOfOwnComment >=", value, "setAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnCommentLessThan(Boolean value) {
+            addCriterion("setAnonymousOfOwnComment <", value, "setAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnCommentLessThanOrEqualTo(Boolean value) {
+            addCriterion("setAnonymousOfOwnComment <=", value, "setAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnCommentIn(List<Boolean> values) {
+            addCriterion("setAnonymousOfOwnComment in", values, "setAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnCommentNotIn(List<Boolean> values) {
+            addCriterion("setAnonymousOfOwnComment not in", values, "setAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnCommentBetween(Boolean value1, Boolean value2) {
+            addCriterion("setAnonymousOfOwnComment between", value1, value2, "setAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andSetAnonymousOfOwnCommentNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("setAnonymousOfOwnComment not between", value1, value2, "setAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnTopicIsNull() {
+            addCriterion("cancelAnonymousOfOwnTopic is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnTopicIsNotNull() {
+            addCriterion("cancelAnonymousOfOwnTopic is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnTopicEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnTopic =", value, "cancelAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnTopicNotEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnTopic <>", value, "cancelAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnTopicGreaterThan(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnTopic >", value, "cancelAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnTopicGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnTopic >=", value, "cancelAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnTopicLessThan(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnTopic <", value, "cancelAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnTopicLessThanOrEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnTopic <=", value, "cancelAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnTopicIn(List<Boolean> values) {
+            addCriterion("cancelAnonymousOfOwnTopic in", values, "cancelAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnTopicNotIn(List<Boolean> values) {
+            addCriterion("cancelAnonymousOfOwnTopic not in", values, "cancelAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnTopicBetween(Boolean value1, Boolean value2) {
+            addCriterion("cancelAnonymousOfOwnTopic between", value1, value2, "cancelAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnTopicNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("cancelAnonymousOfOwnTopic not between", value1, value2, "cancelAnonymousOfOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnReplyIsNull() {
+            addCriterion("cancelAnonymousOfOwnReply is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnReplyIsNotNull() {
+            addCriterion("cancelAnonymousOfOwnReply is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnReplyEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnReply =", value, "cancelAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnReplyNotEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnReply <>", value, "cancelAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnReplyGreaterThan(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnReply >", value, "cancelAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnReplyGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnReply >=", value, "cancelAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnReplyLessThan(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnReply <", value, "cancelAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnReplyLessThanOrEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnReply <=", value, "cancelAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnReplyIn(List<Boolean> values) {
+            addCriterion("cancelAnonymousOfOwnReply in", values, "cancelAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnReplyNotIn(List<Boolean> values) {
+            addCriterion("cancelAnonymousOfOwnReply not in", values, "cancelAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnReplyBetween(Boolean value1, Boolean value2) {
+            addCriterion("cancelAnonymousOfOwnReply between", value1, value2, "cancelAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnReplyNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("cancelAnonymousOfOwnReply not between", value1, value2, "cancelAnonymousOfOwnReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnCommentIsNull() {
+            addCriterion("cancelAnonymousOfOwnComment is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnCommentIsNotNull() {
+            addCriterion("cancelAnonymousOfOwnComment is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnCommentEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnComment =", value, "cancelAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnCommentNotEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnComment <>", value, "cancelAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnCommentGreaterThan(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnComment >", value, "cancelAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnCommentGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnComment >=", value, "cancelAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnCommentLessThan(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnComment <", value, "cancelAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnCommentLessThanOrEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousOfOwnComment <=", value, "cancelAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnCommentIn(List<Boolean> values) {
+            addCriterion("cancelAnonymousOfOwnComment in", values, "cancelAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnCommentNotIn(List<Boolean> values) {
+            addCriterion("cancelAnonymousOfOwnComment not in", values, "cancelAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnCommentBetween(Boolean value1, Boolean value2) {
+            addCriterion("cancelAnonymousOfOwnComment between", value1, value2, "cancelAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousOfOwnCommentNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("cancelAnonymousOfOwnComment not between", value1, value2, "cancelAnonymousOfOwnComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousTopicIsNull() {
+            addCriterion("cancelAnonymousTopic is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousTopicIsNotNull() {
+            addCriterion("cancelAnonymousTopic is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousTopicEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousTopic =", value, "cancelAnonymousTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousTopicNotEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousTopic <>", value, "cancelAnonymousTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousTopicGreaterThan(Boolean value) {
+            addCriterion("cancelAnonymousTopic >", value, "cancelAnonymousTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousTopicGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousTopic >=", value, "cancelAnonymousTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousTopicLessThan(Boolean value) {
+            addCriterion("cancelAnonymousTopic <", value, "cancelAnonymousTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousTopicLessThanOrEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousTopic <=", value, "cancelAnonymousTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousTopicIn(List<Boolean> values) {
+            addCriterion("cancelAnonymousTopic in", values, "cancelAnonymousTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousTopicNotIn(List<Boolean> values) {
+            addCriterion("cancelAnonymousTopic not in", values, "cancelAnonymousTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousTopicBetween(Boolean value1, Boolean value2) {
+            addCriterion("cancelAnonymousTopic between", value1, value2, "cancelAnonymousTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousTopicNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("cancelAnonymousTopic not between", value1, value2, "cancelAnonymousTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousReplyIsNull() {
+            addCriterion("cancelAnonymousReply is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousReplyIsNotNull() {
+            addCriterion("cancelAnonymousReply is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousReplyEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousReply =", value, "cancelAnonymousReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousReplyNotEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousReply <>", value, "cancelAnonymousReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousReplyGreaterThan(Boolean value) {
+            addCriterion("cancelAnonymousReply >", value, "cancelAnonymousReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousReplyGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousReply >=", value, "cancelAnonymousReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousReplyLessThan(Boolean value) {
+            addCriterion("cancelAnonymousReply <", value, "cancelAnonymousReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousReplyLessThanOrEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousReply <=", value, "cancelAnonymousReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousReplyIn(List<Boolean> values) {
+            addCriterion("cancelAnonymousReply in", values, "cancelAnonymousReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousReplyNotIn(List<Boolean> values) {
+            addCriterion("cancelAnonymousReply not in", values, "cancelAnonymousReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousReplyBetween(Boolean value1, Boolean value2) {
+            addCriterion("cancelAnonymousReply between", value1, value2, "cancelAnonymousReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousReplyNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("cancelAnonymousReply not between", value1, value2, "cancelAnonymousReply");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousCommentIsNull() {
+            addCriterion("cancelAnonymousComment is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousCommentIsNotNull() {
+            addCriterion("cancelAnonymousComment is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousCommentEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousComment =", value, "cancelAnonymousComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousCommentNotEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousComment <>", value, "cancelAnonymousComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousCommentGreaterThan(Boolean value) {
+            addCriterion("cancelAnonymousComment >", value, "cancelAnonymousComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousCommentGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousComment >=", value, "cancelAnonymousComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousCommentLessThan(Boolean value) {
+            addCriterion("cancelAnonymousComment <", value, "cancelAnonymousComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousCommentLessThanOrEqualTo(Boolean value) {
+            addCriterion("cancelAnonymousComment <=", value, "cancelAnonymousComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousCommentIn(List<Boolean> values) {
+            addCriterion("cancelAnonymousComment in", values, "cancelAnonymousComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousCommentNotIn(List<Boolean> values) {
+            addCriterion("cancelAnonymousComment not in", values, "cancelAnonymousComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousCommentBetween(Boolean value1, Boolean value2) {
+            addCriterion("cancelAnonymousComment between", value1, value2, "cancelAnonymousComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCancelAnonymousCommentNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("cancelAnonymousComment not between", value1, value2, "cancelAnonymousComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnFictionIsNull() {
+            addCriterion("restricOwnFiction is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnFictionIsNotNull() {
+            addCriterion("restricOwnFiction is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnFictionEqualTo(Boolean value) {
+            addCriterion("restricOwnFiction =", value, "restricOwnFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnFictionNotEqualTo(Boolean value) {
+            addCriterion("restricOwnFiction <>", value, "restricOwnFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnFictionGreaterThan(Boolean value) {
+            addCriterion("restricOwnFiction >", value, "restricOwnFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnFictionGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restricOwnFiction >=", value, "restricOwnFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnFictionLessThan(Boolean value) {
+            addCriterion("restricOwnFiction <", value, "restricOwnFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnFictionLessThanOrEqualTo(Boolean value) {
+            addCriterion("restricOwnFiction <=", value, "restricOwnFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnFictionIn(List<Boolean> values) {
+            addCriterion("restricOwnFiction in", values, "restricOwnFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnFictionNotIn(List<Boolean> values) {
+            addCriterion("restricOwnFiction not in", values, "restricOwnFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnFictionBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricOwnFiction between", value1, value2, "restricOwnFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnFictionNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricOwnFiction not between", value1, value2, "restricOwnFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnChapterIsNull() {
+            addCriterion("restricOwnChapter is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnChapterIsNotNull() {
+            addCriterion("restricOwnChapter is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnChapterEqualTo(Boolean value) {
+            addCriterion("restricOwnChapter =", value, "restricOwnChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnChapterNotEqualTo(Boolean value) {
+            addCriterion("restricOwnChapter <>", value, "restricOwnChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnChapterGreaterThan(Boolean value) {
+            addCriterion("restricOwnChapter >", value, "restricOwnChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnChapterGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restricOwnChapter >=", value, "restricOwnChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnChapterLessThan(Boolean value) {
+            addCriterion("restricOwnChapter <", value, "restricOwnChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnChapterLessThanOrEqualTo(Boolean value) {
+            addCriterion("restricOwnChapter <=", value, "restricOwnChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnChapterIn(List<Boolean> values) {
+            addCriterion("restricOwnChapter in", values, "restricOwnChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnChapterNotIn(List<Boolean> values) {
+            addCriterion("restricOwnChapter not in", values, "restricOwnChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnChapterBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricOwnChapter between", value1, value2, "restricOwnChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnChapterNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricOwnChapter not between", value1, value2, "restricOwnChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnTopicIsNull() {
+            addCriterion("restricOwnTopic is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnTopicIsNotNull() {
+            addCriterion("restricOwnTopic is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnTopicEqualTo(Boolean value) {
+            addCriterion("restricOwnTopic =", value, "restricOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnTopicNotEqualTo(Boolean value) {
+            addCriterion("restricOwnTopic <>", value, "restricOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnTopicGreaterThan(Boolean value) {
+            addCriterion("restricOwnTopic >", value, "restricOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnTopicGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restricOwnTopic >=", value, "restricOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnTopicLessThan(Boolean value) {
+            addCriterion("restricOwnTopic <", value, "restricOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnTopicLessThanOrEqualTo(Boolean value) {
+            addCriterion("restricOwnTopic <=", value, "restricOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnTopicIn(List<Boolean> values) {
+            addCriterion("restricOwnTopic in", values, "restricOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnTopicNotIn(List<Boolean> values) {
+            addCriterion("restricOwnTopic not in", values, "restricOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnTopicBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricOwnTopic between", value1, value2, "restricOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricOwnTopicNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricOwnTopic not between", value1, value2, "restricOwnTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictFictionIsNull() {
+            addCriterion("restrictFiction is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictFictionIsNotNull() {
+            addCriterion("restrictFiction is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictFictionEqualTo(Boolean value) {
+            addCriterion("restrictFiction =", value, "restrictFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictFictionNotEqualTo(Boolean value) {
+            addCriterion("restrictFiction <>", value, "restrictFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictFictionGreaterThan(Boolean value) {
+            addCriterion("restrictFiction >", value, "restrictFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictFictionGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restrictFiction >=", value, "restrictFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictFictionLessThan(Boolean value) {
+            addCriterion("restrictFiction <", value, "restrictFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictFictionLessThanOrEqualTo(Boolean value) {
+            addCriterion("restrictFiction <=", value, "restrictFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictFictionIn(List<Boolean> values) {
+            addCriterion("restrictFiction in", values, "restrictFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictFictionNotIn(List<Boolean> values) {
+            addCriterion("restrictFiction not in", values, "restrictFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictFictionBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictFiction between", value1, value2, "restrictFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictFictionNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictFiction not between", value1, value2, "restrictFiction");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricChapterIsNull() {
+            addCriterion("restricChapter is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricChapterIsNotNull() {
+            addCriterion("restricChapter is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricChapterEqualTo(Boolean value) {
+            addCriterion("restricChapter =", value, "restricChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricChapterNotEqualTo(Boolean value) {
+            addCriterion("restricChapter <>", value, "restricChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricChapterGreaterThan(Boolean value) {
+            addCriterion("restricChapter >", value, "restricChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricChapterGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restricChapter >=", value, "restricChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricChapterLessThan(Boolean value) {
+            addCriterion("restricChapter <", value, "restricChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricChapterLessThanOrEqualTo(Boolean value) {
+            addCriterion("restricChapter <=", value, "restricChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricChapterIn(List<Boolean> values) {
+            addCriterion("restricChapter in", values, "restricChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricChapterNotIn(List<Boolean> values) {
+            addCriterion("restricChapter not in", values, "restricChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricChapterBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricChapter between", value1, value2, "restricChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricChapterNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricChapter not between", value1, value2, "restricChapter");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricTopicIsNull() {
+            addCriterion("restricTopic is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricTopicIsNotNull() {
+            addCriterion("restricTopic is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricTopicEqualTo(Boolean value) {
+            addCriterion("restricTopic =", value, "restricTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricTopicNotEqualTo(Boolean value) {
+            addCriterion("restricTopic <>", value, "restricTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricTopicGreaterThan(Boolean value) {
+            addCriterion("restricTopic >", value, "restricTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricTopicGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restricTopic >=", value, "restricTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricTopicLessThan(Boolean value) {
+            addCriterion("restricTopic <", value, "restricTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricTopicLessThanOrEqualTo(Boolean value) {
+            addCriterion("restricTopic <=", value, "restricTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricTopicIn(List<Boolean> values) {
+            addCriterion("restricTopic in", values, "restricTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricTopicNotIn(List<Boolean> values) {
+            addCriterion("restricTopic not in", values, "restricTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricTopicBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricTopic between", value1, value2, "restricTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricTopicNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricTopic not between", value1, value2, "restricTopic");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricCategoryIsNull() {
+            addCriterion("restricCategory is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricCategoryIsNotNull() {
+            addCriterion("restricCategory is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricCategoryEqualTo(Boolean value) {
+            addCriterion("restricCategory =", value, "restricCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricCategoryNotEqualTo(Boolean value) {
+            addCriterion("restricCategory <>", value, "restricCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricCategoryGreaterThan(Boolean value) {
+            addCriterion("restricCategory >", value, "restricCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricCategoryGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restricCategory >=", value, "restricCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricCategoryLessThan(Boolean value) {
+            addCriterion("restricCategory <", value, "restricCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricCategoryLessThanOrEqualTo(Boolean value) {
+            addCriterion("restricCategory <=", value, "restricCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricCategoryIn(List<Boolean> values) {
+            addCriterion("restricCategory in", values, "restricCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricCategoryNotIn(List<Boolean> values) {
+            addCriterion("restricCategory not in", values, "restricCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricCategoryBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricCategory between", value1, value2, "restricCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricCategoryNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricCategory not between", value1, value2, "restricCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricBoardIsNull() {
+            addCriterion("restricBoard is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricBoardIsNotNull() {
+            addCriterion("restricBoard is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricBoardEqualTo(Boolean value) {
+            addCriterion("restricBoard =", value, "restricBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricBoardNotEqualTo(Boolean value) {
+            addCriterion("restricBoard <>", value, "restricBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricBoardGreaterThan(Boolean value) {
+            addCriterion("restricBoard >", value, "restricBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricBoardGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restricBoard >=", value, "restricBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricBoardLessThan(Boolean value) {
+            addCriterion("restricBoard <", value, "restricBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricBoardLessThanOrEqualTo(Boolean value) {
+            addCriterion("restricBoard <=", value, "restricBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricBoardIn(List<Boolean> values) {
+            addCriterion("restricBoard in", values, "restricBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricBoardNotIn(List<Boolean> values) {
+            addCriterion("restricBoard not in", values, "restricBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricBoardBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricBoard between", value1, value2, "restricBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestricBoardNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restricBoard not between", value1, value2, "restricBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryIsNull() {
+            addCriterion("addCategory is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryIsNotNull() {
+            addCriterion("addCategory is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryEqualTo(Boolean value) {
+            addCriterion("addCategory =", value, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryNotEqualTo(Boolean value) {
+            addCriterion("addCategory <>", value, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryGreaterThan(Boolean value) {
+            addCriterion("addCategory >", value, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("addCategory >=", value, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryLessThan(Boolean value) {
+            addCriterion("addCategory <", value, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryLessThanOrEqualTo(Boolean value) {
+            addCriterion("addCategory <=", value, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryIn(List<Boolean> values) {
+            addCriterion("addCategory in", values, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryNotIn(List<Boolean> values) {
+            addCriterion("addCategory not in", values, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryBetween(Boolean value1, Boolean value2) {
+            addCriterion("addCategory between", value1, value2, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("addCategory not between", value1, value2, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardIsNull() {
+            addCriterion("addBoard is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardIsNotNull() {
+            addCriterion("addBoard is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardEqualTo(Boolean value) {
+            addCriterion("addBoard =", value, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardNotEqualTo(Boolean value) {
+            addCriterion("addBoard <>", value, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardGreaterThan(Boolean value) {
+            addCriterion("addBoard >", value, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("addBoard >=", value, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardLessThan(Boolean value) {
+            addCriterion("addBoard <", value, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardLessThanOrEqualTo(Boolean value) {
+            addCriterion("addBoard <=", value, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardIn(List<Boolean> values) {
+            addCriterion("addBoard in", values, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardNotIn(List<Boolean> values) {
+            addCriterion("addBoard not in", values, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardBetween(Boolean value1, Boolean value2) {
+            addCriterion("addBoard between", value1, value2, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("addBoard not between", value1, value2, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCategoryIsNull() {
+            addCriterion("lockCategory is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCategoryIsNotNull() {
+            addCriterion("lockCategory is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCategoryEqualTo(Boolean value) {
+            addCriterion("lockCategory =", value, "lockCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCategoryNotEqualTo(Boolean value) {
+            addCriterion("lockCategory <>", value, "lockCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCategoryGreaterThan(Boolean value) {
+            addCriterion("lockCategory >", value, "lockCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCategoryGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("lockCategory >=", value, "lockCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCategoryLessThan(Boolean value) {
+            addCriterion("lockCategory <", value, "lockCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCategoryLessThanOrEqualTo(Boolean value) {
+            addCriterion("lockCategory <=", value, "lockCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCategoryIn(List<Boolean> values) {
+            addCriterion("lockCategory in", values, "lockCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCategoryNotIn(List<Boolean> values) {
+            addCriterion("lockCategory not in", values, "lockCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCategoryBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockCategory between", value1, value2, "lockCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCategoryNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockCategory not between", value1, value2, "lockCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBoardIsNull() {
+            addCriterion("lockBoard is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBoardIsNotNull() {
+            addCriterion("lockBoard is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBoardEqualTo(Boolean value) {
+            addCriterion("lockBoard =", value, "lockBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBoardNotEqualTo(Boolean value) {
+            addCriterion("lockBoard <>", value, "lockBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBoardGreaterThan(Boolean value) {
+            addCriterion("lockBoard >", value, "lockBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBoardGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("lockBoard >=", value, "lockBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBoardLessThan(Boolean value) {
+            addCriterion("lockBoard <", value, "lockBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBoardLessThanOrEqualTo(Boolean value) {
+            addCriterion("lockBoard <=", value, "lockBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBoardIn(List<Boolean> values) {
+            addCriterion("lockBoard in", values, "lockBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBoardNotIn(List<Boolean> values) {
+            addCriterion("lockBoard not in", values, "lockBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBoardBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockBoard between", value1, value2, "lockBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBoardNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockBoard not between", value1, value2, "lockBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCategoryIsNull() {
+            addCriterion("hideCategory is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCategoryIsNotNull() {
+            addCriterion("hideCategory is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCategoryEqualTo(Boolean value) {
+            addCriterion("hideCategory =", value, "hideCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCategoryNotEqualTo(Boolean value) {
+            addCriterion("hideCategory <>", value, "hideCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCategoryGreaterThan(Boolean value) {
+            addCriterion("hideCategory >", value, "hideCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCategoryGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("hideCategory >=", value, "hideCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCategoryLessThan(Boolean value) {
+            addCriterion("hideCategory <", value, "hideCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCategoryLessThanOrEqualTo(Boolean value) {
+            addCriterion("hideCategory <=", value, "hideCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCategoryIn(List<Boolean> values) {
+            addCriterion("hideCategory in", values, "hideCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCategoryNotIn(List<Boolean> values) {
+            addCriterion("hideCategory not in", values, "hideCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCategoryBetween(Boolean value1, Boolean value2) {
+            addCriterion("hideCategory between", value1, value2, "hideCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideCategoryNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("hideCategory not between", value1, value2, "hideCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideBoardIsNull() {
+            addCriterion("hideBoard is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideBoardIsNotNull() {
+            addCriterion("hideBoard is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideBoardEqualTo(Boolean value) {
+            addCriterion("hideBoard =", value, "hideBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideBoardNotEqualTo(Boolean value) {
+            addCriterion("hideBoard <>", value, "hideBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideBoardGreaterThan(Boolean value) {
+            addCriterion("hideBoard >", value, "hideBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideBoardGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("hideBoard >=", value, "hideBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideBoardLessThan(Boolean value) {
+            addCriterion("hideBoard <", value, "hideBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideBoardLessThanOrEqualTo(Boolean value) {
+            addCriterion("hideBoard <=", value, "hideBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideBoardIn(List<Boolean> values) {
+            addCriterion("hideBoard in", values, "hideBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideBoardNotIn(List<Boolean> values) {
+            addCriterion("hideBoard not in", values, "hideBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideBoardBetween(Boolean value1, Boolean value2) {
+            addCriterion("hideBoard between", value1, value2, "hideBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andHideBoardNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("hideBoard not between", value1, value2, "hideBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteCategoryIsNull() {
+            addCriterion("deleteCategory is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteCategoryIsNotNull() {
+            addCriterion("deleteCategory is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteCategoryEqualTo(Boolean value) {
+            addCriterion("deleteCategory =", value, "deleteCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteCategoryNotEqualTo(Boolean value) {
+            addCriterion("deleteCategory <>", value, "deleteCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteCategoryGreaterThan(Boolean value) {
+            addCriterion("deleteCategory >", value, "deleteCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteCategoryGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("deleteCategory >=", value, "deleteCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteCategoryLessThan(Boolean value) {
+            addCriterion("deleteCategory <", value, "deleteCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteCategoryLessThanOrEqualTo(Boolean value) {
+            addCriterion("deleteCategory <=", value, "deleteCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteCategoryIn(List<Boolean> values) {
+            addCriterion("deleteCategory in", values, "deleteCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteCategoryNotIn(List<Boolean> values) {
+            addCriterion("deleteCategory not in", values, "deleteCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteCategoryBetween(Boolean value1, Boolean value2) {
+            addCriterion("deleteCategory between", value1, value2, "deleteCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteCategoryNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("deleteCategory not between", value1, value2, "deleteCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBoardIsNull() {
+            addCriterion("deleteBoard is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBoardIsNotNull() {
+            addCriterion("deleteBoard is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBoardEqualTo(Boolean value) {
+            addCriterion("deleteBoard =", value, "deleteBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBoardNotEqualTo(Boolean value) {
+            addCriterion("deleteBoard <>", value, "deleteBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBoardGreaterThan(Boolean value) {
+            addCriterion("deleteBoard >", value, "deleteBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBoardGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("deleteBoard >=", value, "deleteBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBoardLessThan(Boolean value) {
+            addCriterion("deleteBoard <", value, "deleteBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBoardLessThanOrEqualTo(Boolean value) {
+            addCriterion("deleteBoard <=", value, "deleteBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBoardIn(List<Boolean> values) {
+            addCriterion("deleteBoard in", values, "deleteBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBoardNotIn(List<Boolean> values) {
+            addCriterion("deleteBoard not in", values, "deleteBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBoardBetween(Boolean value1, Boolean value2) {
+            addCriterion("deleteBoard between", value1, value2, "deleteBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBoardNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("deleteBoard not between", value1, value2, "deleteBoard");
             return (Criteria) this;
         }
     }
