@@ -93,21 +93,21 @@ public class Authority {
 
     private Boolean cancelAnonymousComment;
 
-    private Boolean restricOwnFiction;
+    private Boolean restrictOwnFiction;
 
-    private Boolean restricOwnChapter;
+    private Boolean restrictOwnChapter;
 
-    private Boolean restricOwnTopic;
+    private Boolean restrictOwnTopic;
 
     private Boolean restrictFiction;
 
-    private Boolean restricChapter;
+    private Boolean restrictChapter;
 
-    private Boolean restricTopic;
+    private Boolean restrictTopic;
 
-    private Boolean restricCategory;
+    private Boolean restrictCategory;
 
-    private Boolean restricBoard;
+    private Boolean restrictBoard;
 
     private Boolean addCategory;
 
@@ -493,28 +493,28 @@ public class Authority {
         this.cancelAnonymousComment = cancelAnonymousComment;
     }
 
-    public Boolean getRestricOwnFiction() {
-        return restricOwnFiction;
+    public Boolean getRestrictOwnFiction() {
+        return restrictOwnFiction;
     }
 
-    public void setRestricOwnFiction(Boolean restricOwnFiction) {
-        this.restricOwnFiction = restricOwnFiction;
+    public void setRestrictOwnFiction(Boolean restrictOwnFiction) {
+        this.restrictOwnFiction = restrictOwnFiction;
     }
 
-    public Boolean getRestricOwnChapter() {
-        return restricOwnChapter;
+    public Boolean getRestrictOwnChapter() {
+        return restrictOwnChapter;
     }
 
-    public void setRestricOwnChapter(Boolean restricOwnChapter) {
-        this.restricOwnChapter = restricOwnChapter;
+    public void setRestrictOwnChapter(Boolean restrictOwnChapter) {
+        this.restrictOwnChapter = restrictOwnChapter;
     }
 
-    public Boolean getRestricOwnTopic() {
-        return restricOwnTopic;
+    public Boolean getRestrictOwnTopic() {
+        return restrictOwnTopic;
     }
 
-    public void setRestricOwnTopic(Boolean restricOwnTopic) {
-        this.restricOwnTopic = restricOwnTopic;
+    public void setRestrictOwnTopic(Boolean restrictOwnTopic) {
+        this.restrictOwnTopic = restrictOwnTopic;
     }
 
     public Boolean getRestrictFiction() {
@@ -525,36 +525,36 @@ public class Authority {
         this.restrictFiction = restrictFiction;
     }
 
-    public Boolean getRestricChapter() {
-        return restricChapter;
+    public Boolean getRestrictChapter() {
+        return restrictChapter;
     }
 
-    public void setRestricChapter(Boolean restricChapter) {
-        this.restricChapter = restricChapter;
+    public void setRestrictChapter(Boolean restrictChapter) {
+        this.restrictChapter = restrictChapter;
     }
 
-    public Boolean getRestricTopic() {
-        return restricTopic;
+    public Boolean getRestrictTopic() {
+        return restrictTopic;
     }
 
-    public void setRestricTopic(Boolean restricTopic) {
-        this.restricTopic = restricTopic;
+    public void setRestrictTopic(Boolean restrictTopic) {
+        this.restrictTopic = restrictTopic;
     }
 
-    public Boolean getRestricCategory() {
-        return restricCategory;
+    public Boolean getRestrictCategory() {
+        return restrictCategory;
     }
 
-    public void setRestricCategory(Boolean restricCategory) {
-        this.restricCategory = restricCategory;
+    public void setRestrictCategory(Boolean restrictCategory) {
+        this.restrictCategory = restrictCategory;
     }
 
-    public Boolean getRestricBoard() {
-        return restricBoard;
+    public Boolean getRestrictBoard() {
+        return restrictBoard;
     }
 
-    public void setRestricBoard(Boolean restricBoard) {
-        this.restricBoard = restricBoard;
+    public void setRestrictBoard(Boolean restrictBoard) {
+        this.restrictBoard = restrictBoard;
     }
 
     public Boolean getAddCategory() {

@@ -2874,183 +2874,183 @@ public class AuthorityExample {
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnFictionIsNull() {
-            addCriterion("restricOwnFiction is null");
+        public Criteria andRestrictOwnFictionIsNull() {
+            addCriterion("restrictOwnFiction is null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnFictionIsNotNull() {
-            addCriterion("restricOwnFiction is not null");
+        public Criteria andRestrictOwnFictionIsNotNull() {
+            addCriterion("restrictOwnFiction is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnFictionEqualTo(Boolean value) {
-            addCriterion("restricOwnFiction =", value, "restricOwnFiction");
+        public Criteria andRestrictOwnFictionEqualTo(Boolean value) {
+            addCriterion("restrictOwnFiction =", value, "restrictOwnFiction");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnFictionNotEqualTo(Boolean value) {
-            addCriterion("restricOwnFiction <>", value, "restricOwnFiction");
+        public Criteria andRestrictOwnFictionNotEqualTo(Boolean value) {
+            addCriterion("restrictOwnFiction <>", value, "restrictOwnFiction");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnFictionGreaterThan(Boolean value) {
-            addCriterion("restricOwnFiction >", value, "restricOwnFiction");
+        public Criteria andRestrictOwnFictionGreaterThan(Boolean value) {
+            addCriterion("restrictOwnFiction >", value, "restrictOwnFiction");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnFictionGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("restricOwnFiction >=", value, "restricOwnFiction");
+        public Criteria andRestrictOwnFictionGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restrictOwnFiction >=", value, "restrictOwnFiction");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnFictionLessThan(Boolean value) {
-            addCriterion("restricOwnFiction <", value, "restricOwnFiction");
+        public Criteria andRestrictOwnFictionLessThan(Boolean value) {
+            addCriterion("restrictOwnFiction <", value, "restrictOwnFiction");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnFictionLessThanOrEqualTo(Boolean value) {
-            addCriterion("restricOwnFiction <=", value, "restricOwnFiction");
+        public Criteria andRestrictOwnFictionLessThanOrEqualTo(Boolean value) {
+            addCriterion("restrictOwnFiction <=", value, "restrictOwnFiction");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnFictionIn(List<Boolean> values) {
-            addCriterion("restricOwnFiction in", values, "restricOwnFiction");
+        public Criteria andRestrictOwnFictionIn(List<Boolean> values) {
+            addCriterion("restrictOwnFiction in", values, "restrictOwnFiction");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnFictionNotIn(List<Boolean> values) {
-            addCriterion("restricOwnFiction not in", values, "restricOwnFiction");
+        public Criteria andRestrictOwnFictionNotIn(List<Boolean> values) {
+            addCriterion("restrictOwnFiction not in", values, "restrictOwnFiction");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnFictionBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricOwnFiction between", value1, value2, "restricOwnFiction");
+        public Criteria andRestrictOwnFictionBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictOwnFiction between", value1, value2, "restrictOwnFiction");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnFictionNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricOwnFiction not between", value1, value2, "restricOwnFiction");
+        public Criteria andRestrictOwnFictionNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictOwnFiction not between", value1, value2, "restrictOwnFiction");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnChapterIsNull() {
-            addCriterion("restricOwnChapter is null");
+        public Criteria andRestrictOwnChapterIsNull() {
+            addCriterion("restrictOwnChapter is null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnChapterIsNotNull() {
-            addCriterion("restricOwnChapter is not null");
+        public Criteria andRestrictOwnChapterIsNotNull() {
+            addCriterion("restrictOwnChapter is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnChapterEqualTo(Boolean value) {
-            addCriterion("restricOwnChapter =", value, "restricOwnChapter");
+        public Criteria andRestrictOwnChapterEqualTo(Boolean value) {
+            addCriterion("restrictOwnChapter =", value, "restrictOwnChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnChapterNotEqualTo(Boolean value) {
-            addCriterion("restricOwnChapter <>", value, "restricOwnChapter");
+        public Criteria andRestrictOwnChapterNotEqualTo(Boolean value) {
+            addCriterion("restrictOwnChapter <>", value, "restrictOwnChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnChapterGreaterThan(Boolean value) {
-            addCriterion("restricOwnChapter >", value, "restricOwnChapter");
+        public Criteria andRestrictOwnChapterGreaterThan(Boolean value) {
+            addCriterion("restrictOwnChapter >", value, "restrictOwnChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnChapterGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("restricOwnChapter >=", value, "restricOwnChapter");
+        public Criteria andRestrictOwnChapterGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restrictOwnChapter >=", value, "restrictOwnChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnChapterLessThan(Boolean value) {
-            addCriterion("restricOwnChapter <", value, "restricOwnChapter");
+        public Criteria andRestrictOwnChapterLessThan(Boolean value) {
+            addCriterion("restrictOwnChapter <", value, "restrictOwnChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnChapterLessThanOrEqualTo(Boolean value) {
-            addCriterion("restricOwnChapter <=", value, "restricOwnChapter");
+        public Criteria andRestrictOwnChapterLessThanOrEqualTo(Boolean value) {
+            addCriterion("restrictOwnChapter <=", value, "restrictOwnChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnChapterIn(List<Boolean> values) {
-            addCriterion("restricOwnChapter in", values, "restricOwnChapter");
+        public Criteria andRestrictOwnChapterIn(List<Boolean> values) {
+            addCriterion("restrictOwnChapter in", values, "restrictOwnChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnChapterNotIn(List<Boolean> values) {
-            addCriterion("restricOwnChapter not in", values, "restricOwnChapter");
+        public Criteria andRestrictOwnChapterNotIn(List<Boolean> values) {
+            addCriterion("restrictOwnChapter not in", values, "restrictOwnChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnChapterBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricOwnChapter between", value1, value2, "restricOwnChapter");
+        public Criteria andRestrictOwnChapterBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictOwnChapter between", value1, value2, "restrictOwnChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnChapterNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricOwnChapter not between", value1, value2, "restricOwnChapter");
+        public Criteria andRestrictOwnChapterNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictOwnChapter not between", value1, value2, "restrictOwnChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnTopicIsNull() {
-            addCriterion("restricOwnTopic is null");
+        public Criteria andRestrictOwnTopicIsNull() {
+            addCriterion("restrictOwnTopic is null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnTopicIsNotNull() {
-            addCriterion("restricOwnTopic is not null");
+        public Criteria andRestrictOwnTopicIsNotNull() {
+            addCriterion("restrictOwnTopic is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnTopicEqualTo(Boolean value) {
-            addCriterion("restricOwnTopic =", value, "restricOwnTopic");
+        public Criteria andRestrictOwnTopicEqualTo(Boolean value) {
+            addCriterion("restrictOwnTopic =", value, "restrictOwnTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnTopicNotEqualTo(Boolean value) {
-            addCriterion("restricOwnTopic <>", value, "restricOwnTopic");
+        public Criteria andRestrictOwnTopicNotEqualTo(Boolean value) {
+            addCriterion("restrictOwnTopic <>", value, "restrictOwnTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnTopicGreaterThan(Boolean value) {
-            addCriterion("restricOwnTopic >", value, "restricOwnTopic");
+        public Criteria andRestrictOwnTopicGreaterThan(Boolean value) {
+            addCriterion("restrictOwnTopic >", value, "restrictOwnTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnTopicGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("restricOwnTopic >=", value, "restricOwnTopic");
+        public Criteria andRestrictOwnTopicGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restrictOwnTopic >=", value, "restrictOwnTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnTopicLessThan(Boolean value) {
-            addCriterion("restricOwnTopic <", value, "restricOwnTopic");
+        public Criteria andRestrictOwnTopicLessThan(Boolean value) {
+            addCriterion("restrictOwnTopic <", value, "restrictOwnTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnTopicLessThanOrEqualTo(Boolean value) {
-            addCriterion("restricOwnTopic <=", value, "restricOwnTopic");
+        public Criteria andRestrictOwnTopicLessThanOrEqualTo(Boolean value) {
+            addCriterion("restrictOwnTopic <=", value, "restrictOwnTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnTopicIn(List<Boolean> values) {
-            addCriterion("restricOwnTopic in", values, "restricOwnTopic");
+        public Criteria andRestrictOwnTopicIn(List<Boolean> values) {
+            addCriterion("restrictOwnTopic in", values, "restrictOwnTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnTopicNotIn(List<Boolean> values) {
-            addCriterion("restricOwnTopic not in", values, "restricOwnTopic");
+        public Criteria andRestrictOwnTopicNotIn(List<Boolean> values) {
+            addCriterion("restrictOwnTopic not in", values, "restrictOwnTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnTopicBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricOwnTopic between", value1, value2, "restricOwnTopic");
+        public Criteria andRestrictOwnTopicBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictOwnTopic between", value1, value2, "restrictOwnTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricOwnTopicNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricOwnTopic not between", value1, value2, "restricOwnTopic");
+        public Criteria andRestrictOwnTopicNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictOwnTopic not between", value1, value2, "restrictOwnTopic");
             return (Criteria) this;
         }
 
@@ -3114,243 +3114,243 @@ public class AuthorityExample {
             return (Criteria) this;
         }
 
-        public Criteria andRestricChapterIsNull() {
-            addCriterion("restricChapter is null");
+        public Criteria andRestrictChapterIsNull() {
+            addCriterion("restrictChapter is null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricChapterIsNotNull() {
-            addCriterion("restricChapter is not null");
+        public Criteria andRestrictChapterIsNotNull() {
+            addCriterion("restrictChapter is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricChapterEqualTo(Boolean value) {
-            addCriterion("restricChapter =", value, "restricChapter");
+        public Criteria andRestrictChapterEqualTo(Boolean value) {
+            addCriterion("restrictChapter =", value, "restrictChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricChapterNotEqualTo(Boolean value) {
-            addCriterion("restricChapter <>", value, "restricChapter");
+        public Criteria andRestrictChapterNotEqualTo(Boolean value) {
+            addCriterion("restrictChapter <>", value, "restrictChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricChapterGreaterThan(Boolean value) {
-            addCriterion("restricChapter >", value, "restricChapter");
+        public Criteria andRestrictChapterGreaterThan(Boolean value) {
+            addCriterion("restrictChapter >", value, "restrictChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricChapterGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("restricChapter >=", value, "restricChapter");
+        public Criteria andRestrictChapterGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restrictChapter >=", value, "restrictChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricChapterLessThan(Boolean value) {
-            addCriterion("restricChapter <", value, "restricChapter");
+        public Criteria andRestrictChapterLessThan(Boolean value) {
+            addCriterion("restrictChapter <", value, "restrictChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricChapterLessThanOrEqualTo(Boolean value) {
-            addCriterion("restricChapter <=", value, "restricChapter");
+        public Criteria andRestrictChapterLessThanOrEqualTo(Boolean value) {
+            addCriterion("restrictChapter <=", value, "restrictChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricChapterIn(List<Boolean> values) {
-            addCriterion("restricChapter in", values, "restricChapter");
+        public Criteria andRestrictChapterIn(List<Boolean> values) {
+            addCriterion("restrictChapter in", values, "restrictChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricChapterNotIn(List<Boolean> values) {
-            addCriterion("restricChapter not in", values, "restricChapter");
+        public Criteria andRestrictChapterNotIn(List<Boolean> values) {
+            addCriterion("restrictChapter not in", values, "restrictChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricChapterBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricChapter between", value1, value2, "restricChapter");
+        public Criteria andRestrictChapterBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictChapter between", value1, value2, "restrictChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricChapterNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricChapter not between", value1, value2, "restricChapter");
+        public Criteria andRestrictChapterNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictChapter not between", value1, value2, "restrictChapter");
             return (Criteria) this;
         }
 
-        public Criteria andRestricTopicIsNull() {
-            addCriterion("restricTopic is null");
+        public Criteria andRestrictTopicIsNull() {
+            addCriterion("restrictTopic is null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricTopicIsNotNull() {
-            addCriterion("restricTopic is not null");
+        public Criteria andRestrictTopicIsNotNull() {
+            addCriterion("restrictTopic is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricTopicEqualTo(Boolean value) {
-            addCriterion("restricTopic =", value, "restricTopic");
+        public Criteria andRestrictTopicEqualTo(Boolean value) {
+            addCriterion("restrictTopic =", value, "restrictTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricTopicNotEqualTo(Boolean value) {
-            addCriterion("restricTopic <>", value, "restricTopic");
+        public Criteria andRestrictTopicNotEqualTo(Boolean value) {
+            addCriterion("restrictTopic <>", value, "restrictTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricTopicGreaterThan(Boolean value) {
-            addCriterion("restricTopic >", value, "restricTopic");
+        public Criteria andRestrictTopicGreaterThan(Boolean value) {
+            addCriterion("restrictTopic >", value, "restrictTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricTopicGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("restricTopic >=", value, "restricTopic");
+        public Criteria andRestrictTopicGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restrictTopic >=", value, "restrictTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricTopicLessThan(Boolean value) {
-            addCriterion("restricTopic <", value, "restricTopic");
+        public Criteria andRestrictTopicLessThan(Boolean value) {
+            addCriterion("restrictTopic <", value, "restrictTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricTopicLessThanOrEqualTo(Boolean value) {
-            addCriterion("restricTopic <=", value, "restricTopic");
+        public Criteria andRestrictTopicLessThanOrEqualTo(Boolean value) {
+            addCriterion("restrictTopic <=", value, "restrictTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricTopicIn(List<Boolean> values) {
-            addCriterion("restricTopic in", values, "restricTopic");
+        public Criteria andRestrictTopicIn(List<Boolean> values) {
+            addCriterion("restrictTopic in", values, "restrictTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricTopicNotIn(List<Boolean> values) {
-            addCriterion("restricTopic not in", values, "restricTopic");
+        public Criteria andRestrictTopicNotIn(List<Boolean> values) {
+            addCriterion("restrictTopic not in", values, "restrictTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricTopicBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricTopic between", value1, value2, "restricTopic");
+        public Criteria andRestrictTopicBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictTopic between", value1, value2, "restrictTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricTopicNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricTopic not between", value1, value2, "restricTopic");
+        public Criteria andRestrictTopicNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictTopic not between", value1, value2, "restrictTopic");
             return (Criteria) this;
         }
 
-        public Criteria andRestricCategoryIsNull() {
-            addCriterion("restricCategory is null");
+        public Criteria andRestrictCategoryIsNull() {
+            addCriterion("restrictCategory is null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricCategoryIsNotNull() {
-            addCriterion("restricCategory is not null");
+        public Criteria andRestrictCategoryIsNotNull() {
+            addCriterion("restrictCategory is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricCategoryEqualTo(Boolean value) {
-            addCriterion("restricCategory =", value, "restricCategory");
+        public Criteria andRestrictCategoryEqualTo(Boolean value) {
+            addCriterion("restrictCategory =", value, "restrictCategory");
             return (Criteria) this;
         }
 
-        public Criteria andRestricCategoryNotEqualTo(Boolean value) {
-            addCriterion("restricCategory <>", value, "restricCategory");
+        public Criteria andRestrictCategoryNotEqualTo(Boolean value) {
+            addCriterion("restrictCategory <>", value, "restrictCategory");
             return (Criteria) this;
         }
 
-        public Criteria andRestricCategoryGreaterThan(Boolean value) {
-            addCriterion("restricCategory >", value, "restricCategory");
+        public Criteria andRestrictCategoryGreaterThan(Boolean value) {
+            addCriterion("restrictCategory >", value, "restrictCategory");
             return (Criteria) this;
         }
 
-        public Criteria andRestricCategoryGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("restricCategory >=", value, "restricCategory");
+        public Criteria andRestrictCategoryGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restrictCategory >=", value, "restrictCategory");
             return (Criteria) this;
         }
 
-        public Criteria andRestricCategoryLessThan(Boolean value) {
-            addCriterion("restricCategory <", value, "restricCategory");
+        public Criteria andRestrictCategoryLessThan(Boolean value) {
+            addCriterion("restrictCategory <", value, "restrictCategory");
             return (Criteria) this;
         }
 
-        public Criteria andRestricCategoryLessThanOrEqualTo(Boolean value) {
-            addCriterion("restricCategory <=", value, "restricCategory");
+        public Criteria andRestrictCategoryLessThanOrEqualTo(Boolean value) {
+            addCriterion("restrictCategory <=", value, "restrictCategory");
             return (Criteria) this;
         }
 
-        public Criteria andRestricCategoryIn(List<Boolean> values) {
-            addCriterion("restricCategory in", values, "restricCategory");
+        public Criteria andRestrictCategoryIn(List<Boolean> values) {
+            addCriterion("restrictCategory in", values, "restrictCategory");
             return (Criteria) this;
         }
 
-        public Criteria andRestricCategoryNotIn(List<Boolean> values) {
-            addCriterion("restricCategory not in", values, "restricCategory");
+        public Criteria andRestrictCategoryNotIn(List<Boolean> values) {
+            addCriterion("restrictCategory not in", values, "restrictCategory");
             return (Criteria) this;
         }
 
-        public Criteria andRestricCategoryBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricCategory between", value1, value2, "restricCategory");
+        public Criteria andRestrictCategoryBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictCategory between", value1, value2, "restrictCategory");
             return (Criteria) this;
         }
 
-        public Criteria andRestricCategoryNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricCategory not between", value1, value2, "restricCategory");
+        public Criteria andRestrictCategoryNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictCategory not between", value1, value2, "restrictCategory");
             return (Criteria) this;
         }
 
-        public Criteria andRestricBoardIsNull() {
-            addCriterion("restricBoard is null");
+        public Criteria andRestrictBoardIsNull() {
+            addCriterion("restrictBoard is null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricBoardIsNotNull() {
-            addCriterion("restricBoard is not null");
+        public Criteria andRestrictBoardIsNotNull() {
+            addCriterion("restrictBoard is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRestricBoardEqualTo(Boolean value) {
-            addCriterion("restricBoard =", value, "restricBoard");
+        public Criteria andRestrictBoardEqualTo(Boolean value) {
+            addCriterion("restrictBoard =", value, "restrictBoard");
             return (Criteria) this;
         }
 
-        public Criteria andRestricBoardNotEqualTo(Boolean value) {
-            addCriterion("restricBoard <>", value, "restricBoard");
+        public Criteria andRestrictBoardNotEqualTo(Boolean value) {
+            addCriterion("restrictBoard <>", value, "restrictBoard");
             return (Criteria) this;
         }
 
-        public Criteria andRestricBoardGreaterThan(Boolean value) {
-            addCriterion("restricBoard >", value, "restricBoard");
+        public Criteria andRestrictBoardGreaterThan(Boolean value) {
+            addCriterion("restrictBoard >", value, "restrictBoard");
             return (Criteria) this;
         }
 
-        public Criteria andRestricBoardGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("restricBoard >=", value, "restricBoard");
+        public Criteria andRestrictBoardGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restrictBoard >=", value, "restrictBoard");
             return (Criteria) this;
         }
 
-        public Criteria andRestricBoardLessThan(Boolean value) {
-            addCriterion("restricBoard <", value, "restricBoard");
+        public Criteria andRestrictBoardLessThan(Boolean value) {
+            addCriterion("restrictBoard <", value, "restrictBoard");
             return (Criteria) this;
         }
 
-        public Criteria andRestricBoardLessThanOrEqualTo(Boolean value) {
-            addCriterion("restricBoard <=", value, "restricBoard");
+        public Criteria andRestrictBoardLessThanOrEqualTo(Boolean value) {
+            addCriterion("restrictBoard <=", value, "restrictBoard");
             return (Criteria) this;
         }
 
-        public Criteria andRestricBoardIn(List<Boolean> values) {
-            addCriterion("restricBoard in", values, "restricBoard");
+        public Criteria andRestrictBoardIn(List<Boolean> values) {
+            addCriterion("restrictBoard in", values, "restrictBoard");
             return (Criteria) this;
         }
 
-        public Criteria andRestricBoardNotIn(List<Boolean> values) {
-            addCriterion("restricBoard not in", values, "restricBoard");
+        public Criteria andRestrictBoardNotIn(List<Boolean> values) {
+            addCriterion("restrictBoard not in", values, "restrictBoard");
             return (Criteria) this;
         }
 
-        public Criteria andRestricBoardBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricBoard between", value1, value2, "restricBoard");
+        public Criteria andRestrictBoardBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictBoard between", value1, value2, "restrictBoard");
             return (Criteria) this;
         }
 
-        public Criteria andRestricBoardNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("restricBoard not between", value1, value2, "restricBoard");
+        public Criteria andRestrictBoardNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictBoard not between", value1, value2, "restrictBoard");
             return (Criteria) this;
         }
 
