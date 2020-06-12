@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.BoardMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.bean.Board">
+<mapper namespace="com.jnxaread.dao.BoardMapper">
+  <resultMap id="BaseResultMap" type="com.jnxaread.bean.Board">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="description" jdbcType="VARCHAR" property="description" />
@@ -72,10 +72,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, description, topicCount, replyCount, restricted, locked, hided, deleted, 
+    id, name, description, topicCount, replyCount, restricted, locked, hided, deleted,
     createTime
   </sql>
-  <select id="selectByExample" parameterType="com.example.demo.bean.BoardExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.jnxaread.bean.BoardExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -90,7 +90,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from board
     where id = #{id,jdbcType=INTEGER}
@@ -99,23 +99,23 @@
     delete from board
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.demo.bean.BoardExample">
+  <delete id="deleteByExample" parameterType="com.jnxaread.bean.BoardExample">
     delete from board
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.demo.bean.Board">
-    insert into board (id, name, description, 
-      topicCount, replyCount, restricted, 
+  <insert id="insert" parameterType="com.jnxaread.bean.Board">
+    insert into board (id, name, description,
+      topicCount, replyCount, restricted,
       locked, hided, deleted, createTime
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{topicCount,jdbcType=INTEGER}, #{replyCount,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+      #{topicCount,jdbcType=INTEGER}, #{replyCount,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER},
       #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.bean.Board">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Board">
     insert into board
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -182,7 +182,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.demo.bean.BoardExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.jnxaread.bean.BoardExample" resultType="java.lang.Long">
     select count(*) from board
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -242,7 +242,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.bean.Board">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Board">
     update board
     <set>
       <if test="name != null">
@@ -275,7 +275,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.bean.Board">
+  <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Board">
     update board
     set name = #{name,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.AuthorityMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.bean.Authority">
+<mapper namespace="com.jnxaread.dao.AuthorityMapper">
+  <resultMap id="BaseResultMap" type="com.jnxaread.bean.Authority">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="role" jdbcType="VARCHAR" property="role" />
     <result column="banAccount" jdbcType="BIT" property="banAccount" />
@@ -124,20 +124,20 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, role, banAccount, banTopic, banReply, banMessage, banFiction, banComment, deleteOwnTopic, 
-    deleteOwnReply, deleteOwnFiction, deleteOwnChapter, deleteOwnComment, deleteTopic, 
-    deleteReply, deleteFiction, deleteChapter, deleteComment, lockTopic, lockFiction, 
-    lockChapter, lockNotice, lockContentOfTopic, lockContentOfFiction, lockContentOfChapter, 
-    lockCommentOfOwnFiction, lockCommentOfOwnChapter, lockCommentOfFiction, lockCommentOfChapter, 
-    hideOwnTopic, hideOwnFiction, hideOwnChapter, hideOwnComment, hideTopic, hideFiction, 
-    hideChapter, hideComment, setAnonymousOfOwnTopic, setAnonymousOfOwnReply, setAnonymousOfOwnComment, 
-    cancelAnonymousOfOwnTopic, cancelAnonymousOfOwnReply, cancelAnonymousOfOwnComment, 
-    cancelAnonymousTopic, cancelAnonymousReply, cancelAnonymousComment, restrictOwnFiction, 
-    restrictOwnChapter, restrictOwnTopic, restrictFiction, restrictChapter, restrictTopic, 
-    restrictCategory, restrictBoard, addCategory, addBoard, lockCategory, lockBoard, 
+    id, role, banAccount, banTopic, banReply, banMessage, banFiction, banComment, deleteOwnTopic,
+    deleteOwnReply, deleteOwnFiction, deleteOwnChapter, deleteOwnComment, deleteTopic,
+    deleteReply, deleteFiction, deleteChapter, deleteComment, lockTopic, lockFiction,
+    lockChapter, lockNotice, lockContentOfTopic, lockContentOfFiction, lockContentOfChapter,
+    lockCommentOfOwnFiction, lockCommentOfOwnChapter, lockCommentOfFiction, lockCommentOfChapter,
+    hideOwnTopic, hideOwnFiction, hideOwnChapter, hideOwnComment, hideTopic, hideFiction,
+    hideChapter, hideComment, setAnonymousOfOwnTopic, setAnonymousOfOwnReply, setAnonymousOfOwnComment,
+    cancelAnonymousOfOwnTopic, cancelAnonymousOfOwnReply, cancelAnonymousOfOwnComment,
+    cancelAnonymousTopic, cancelAnonymousReply, cancelAnonymousComment, restrictOwnFiction,
+    restrictOwnChapter, restrictOwnTopic, restrictFiction, restrictChapter, restrictTopic,
+    restrictCategory, restrictBoard, addCategory, addBoard, lockCategory, lockBoard,
     hideCategory, hideBoard, deleteCategory, deleteBoard
   </sql>
-  <select id="selectByExample" parameterType="com.example.demo.bean.AuthorityExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.jnxaread.bean.AuthorityExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -152,7 +152,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from authority
     where id = #{id,jdbcType=INTEGER}
@@ -161,61 +161,61 @@
     delete from authority
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.demo.bean.AuthorityExample">
+  <delete id="deleteByExample" parameterType="com.jnxaread.bean.AuthorityExample">
     delete from authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.demo.bean.Authority">
-    insert into authority (id, role, banAccount, 
-      banTopic, banReply, banMessage, 
-      banFiction, banComment, deleteOwnTopic, 
-      deleteOwnReply, deleteOwnFiction, deleteOwnChapter, 
-      deleteOwnComment, deleteTopic, deleteReply, 
-      deleteFiction, deleteChapter, deleteComment, 
-      lockTopic, lockFiction, lockChapter, 
-      lockNotice, lockContentOfTopic, lockContentOfFiction, 
-      lockContentOfChapter, lockCommentOfOwnFiction, 
-      lockCommentOfOwnChapter, lockCommentOfFiction, 
-      lockCommentOfChapter, hideOwnTopic, hideOwnFiction, 
-      hideOwnChapter, hideOwnComment, hideTopic, 
-      hideFiction, hideChapter, hideComment, 
-      setAnonymousOfOwnTopic, setAnonymousOfOwnReply, 
-      setAnonymousOfOwnComment, cancelAnonymousOfOwnTopic, 
-      cancelAnonymousOfOwnReply, cancelAnonymousOfOwnComment, 
-      cancelAnonymousTopic, cancelAnonymousReply, cancelAnonymousComment, 
-      restrictOwnFiction, restrictOwnChapter, restrictOwnTopic, 
-      restrictFiction, restrictChapter, restrictTopic, 
-      restrictCategory, restrictBoard, addCategory, 
-      addBoard, lockCategory, lockBoard, 
-      hideCategory, hideBoard, deleteCategory, 
+  <insert id="insert" parameterType="com.jnxaread.bean.Authority">
+    insert into authority (id, role, banAccount,
+      banTopic, banReply, banMessage,
+      banFiction, banComment, deleteOwnTopic,
+      deleteOwnReply, deleteOwnFiction, deleteOwnChapter,
+      deleteOwnComment, deleteTopic, deleteReply,
+      deleteFiction, deleteChapter, deleteComment,
+      lockTopic, lockFiction, lockChapter,
+      lockNotice, lockContentOfTopic, lockContentOfFiction,
+      lockContentOfChapter, lockCommentOfOwnFiction,
+      lockCommentOfOwnChapter, lockCommentOfFiction,
+      lockCommentOfChapter, hideOwnTopic, hideOwnFiction,
+      hideOwnChapter, hideOwnComment, hideTopic,
+      hideFiction, hideChapter, hideComment,
+      setAnonymousOfOwnTopic, setAnonymousOfOwnReply,
+      setAnonymousOfOwnComment, cancelAnonymousOfOwnTopic,
+      cancelAnonymousOfOwnReply, cancelAnonymousOfOwnComment,
+      cancelAnonymousTopic, cancelAnonymousReply, cancelAnonymousComment,
+      restrictOwnFiction, restrictOwnChapter, restrictOwnTopic,
+      restrictFiction, restrictChapter, restrictTopic,
+      restrictCategory, restrictBoard, addCategory,
+      addBoard, lockCategory, lockBoard,
+      hideCategory, hideBoard, deleteCategory,
       deleteBoard)
-    values (#{id,jdbcType=INTEGER}, #{role,jdbcType=VARCHAR}, #{banAccount,jdbcType=BIT}, 
-      #{banTopic,jdbcType=BIT}, #{banReply,jdbcType=BIT}, #{banMessage,jdbcType=BIT}, 
-      #{banFiction,jdbcType=BIT}, #{banComment,jdbcType=BIT}, #{deleteOwnTopic,jdbcType=BIT}, 
-      #{deleteOwnReply,jdbcType=BIT}, #{deleteOwnFiction,jdbcType=BIT}, #{deleteOwnChapter,jdbcType=BIT}, 
-      #{deleteOwnComment,jdbcType=BIT}, #{deleteTopic,jdbcType=BIT}, #{deleteReply,jdbcType=BIT}, 
-      #{deleteFiction,jdbcType=BIT}, #{deleteChapter,jdbcType=BIT}, #{deleteComment,jdbcType=BIT}, 
-      #{lockTopic,jdbcType=BIT}, #{lockFiction,jdbcType=BIT}, #{lockChapter,jdbcType=BIT}, 
-      #{lockNotice,jdbcType=BIT}, #{lockContentOfTopic,jdbcType=BIT}, #{lockContentOfFiction,jdbcType=BIT}, 
-      #{lockContentOfChapter,jdbcType=BIT}, #{lockCommentOfOwnFiction,jdbcType=BIT}, 
-      #{lockCommentOfOwnChapter,jdbcType=BIT}, #{lockCommentOfFiction,jdbcType=BIT}, 
-      #{lockCommentOfChapter,jdbcType=BIT}, #{hideOwnTopic,jdbcType=BIT}, #{hideOwnFiction,jdbcType=BIT}, 
-      #{hideOwnChapter,jdbcType=BIT}, #{hideOwnComment,jdbcType=BIT}, #{hideTopic,jdbcType=BIT}, 
-      #{hideFiction,jdbcType=BIT}, #{hideChapter,jdbcType=BIT}, #{hideComment,jdbcType=BIT}, 
-      #{setAnonymousOfOwnTopic,jdbcType=BIT}, #{setAnonymousOfOwnReply,jdbcType=BIT}, 
-      #{setAnonymousOfOwnComment,jdbcType=BIT}, #{cancelAnonymousOfOwnTopic,jdbcType=BIT}, 
-      #{cancelAnonymousOfOwnReply,jdbcType=BIT}, #{cancelAnonymousOfOwnComment,jdbcType=BIT}, 
-      #{cancelAnonymousTopic,jdbcType=BIT}, #{cancelAnonymousReply,jdbcType=BIT}, #{cancelAnonymousComment,jdbcType=BIT}, 
-      #{restrictOwnFiction,jdbcType=BIT}, #{restrictOwnChapter,jdbcType=BIT}, #{restrictOwnTopic,jdbcType=BIT}, 
-      #{restrictFiction,jdbcType=BIT}, #{restrictChapter,jdbcType=BIT}, #{restrictTopic,jdbcType=BIT}, 
-      #{restrictCategory,jdbcType=BIT}, #{restrictBoard,jdbcType=BIT}, #{addCategory,jdbcType=BIT}, 
-      #{addBoard,jdbcType=BIT}, #{lockCategory,jdbcType=BIT}, #{lockBoard,jdbcType=BIT}, 
-      #{hideCategory,jdbcType=BIT}, #{hideBoard,jdbcType=BIT}, #{deleteCategory,jdbcType=BIT}, 
+    values (#{id,jdbcType=INTEGER}, #{role,jdbcType=VARCHAR}, #{banAccount,jdbcType=BIT},
+      #{banTopic,jdbcType=BIT}, #{banReply,jdbcType=BIT}, #{banMessage,jdbcType=BIT},
+      #{banFiction,jdbcType=BIT}, #{banComment,jdbcType=BIT}, #{deleteOwnTopic,jdbcType=BIT},
+      #{deleteOwnReply,jdbcType=BIT}, #{deleteOwnFiction,jdbcType=BIT}, #{deleteOwnChapter,jdbcType=BIT},
+      #{deleteOwnComment,jdbcType=BIT}, #{deleteTopic,jdbcType=BIT}, #{deleteReply,jdbcType=BIT},
+      #{deleteFiction,jdbcType=BIT}, #{deleteChapter,jdbcType=BIT}, #{deleteComment,jdbcType=BIT},
+      #{lockTopic,jdbcType=BIT}, #{lockFiction,jdbcType=BIT}, #{lockChapter,jdbcType=BIT},
+      #{lockNotice,jdbcType=BIT}, #{lockContentOfTopic,jdbcType=BIT}, #{lockContentOfFiction,jdbcType=BIT},
+      #{lockContentOfChapter,jdbcType=BIT}, #{lockCommentOfOwnFiction,jdbcType=BIT},
+      #{lockCommentOfOwnChapter,jdbcType=BIT}, #{lockCommentOfFiction,jdbcType=BIT},
+      #{lockCommentOfChapter,jdbcType=BIT}, #{hideOwnTopic,jdbcType=BIT}, #{hideOwnFiction,jdbcType=BIT},
+      #{hideOwnChapter,jdbcType=BIT}, #{hideOwnComment,jdbcType=BIT}, #{hideTopic,jdbcType=BIT},
+      #{hideFiction,jdbcType=BIT}, #{hideChapter,jdbcType=BIT}, #{hideComment,jdbcType=BIT},
+      #{setAnonymousOfOwnTopic,jdbcType=BIT}, #{setAnonymousOfOwnReply,jdbcType=BIT},
+      #{setAnonymousOfOwnComment,jdbcType=BIT}, #{cancelAnonymousOfOwnTopic,jdbcType=BIT},
+      #{cancelAnonymousOfOwnReply,jdbcType=BIT}, #{cancelAnonymousOfOwnComment,jdbcType=BIT},
+      #{cancelAnonymousTopic,jdbcType=BIT}, #{cancelAnonymousReply,jdbcType=BIT}, #{cancelAnonymousComment,jdbcType=BIT},
+      #{restrictOwnFiction,jdbcType=BIT}, #{restrictOwnChapter,jdbcType=BIT}, #{restrictOwnTopic,jdbcType=BIT},
+      #{restrictFiction,jdbcType=BIT}, #{restrictChapter,jdbcType=BIT}, #{restrictTopic,jdbcType=BIT},
+      #{restrictCategory,jdbcType=BIT}, #{restrictBoard,jdbcType=BIT}, #{addCategory,jdbcType=BIT},
+      #{addBoard,jdbcType=BIT}, #{lockCategory,jdbcType=BIT}, #{lockBoard,jdbcType=BIT},
+      #{hideCategory,jdbcType=BIT}, #{hideBoard,jdbcType=BIT}, #{deleteCategory,jdbcType=BIT},
       #{deleteBoard,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.bean.Authority">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Authority">
     insert into authority
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -594,7 +594,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.demo.bean.AuthorityExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.jnxaread.bean.AuthorityExample" resultType="java.lang.Long">
     select count(*) from authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -862,7 +862,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.bean.Authority">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Authority">
     update authority
     <set>
       <if test="role != null">
@@ -1051,7 +1051,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.bean.Authority">
+  <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Authority">
     update authority
     set role = #{role,jdbcType=VARCHAR},
       banAccount = #{banAccount,jdbcType=BIT},
