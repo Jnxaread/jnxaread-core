@@ -374,6 +374,7 @@
     <result column="lastTime" jdbcType="VARCHAR" property="lastTime"></result>
     <result column="lastNumber" jdbcType="VARCHAR" property="lastNumber"></result>
     <result column="lastChapter" jdbcType="VARCHAR" property="lastChapter"></result>
+    <result column="maxNumber" jdbcType="INTEGER" property="maxNumber"></result>
   </resultMap>
   <select id="findListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
     SELECT fmc.id,u.username,fmc.title,fmc.introduction,fmc.chapterCount,fmc.wordCount,fmc.commentCount,fmc.viewCount,ch.number lastNumber,ch.title lastChapter,ch.createTime lastTime FROM
@@ -392,8 +393,9 @@
   </select>
   <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.FictionWrap">
     SELECT fiction.id,category.name,user.username,fiction.createTime,fiction.title,fiction.introduction,
-    fiction.chapterCount,fiction.wordCount,fiction.commentCount,fiction.viewCount
-    FROM fiction,category,user WHERE fiction.id=#{id} AND fiction.categoryId=category.id AND fiction.userId=user.id;
+    fiction.chapterCount,fiction.wordCount,fiction.commentCount,fiction.viewCount,MAX(chapter.number) maxNumber
+    FROM fiction,category,user,chapter
+    WHERE fiction.id=#{id} AND fiction.categoryId=category.id AND fiction.userId=user.id AND chapter.fictionId=#{id} AND chapter.deleted=0;
   </select>
   <update id="updateViewCountByPrimaryKey" parameterType="java.lang.Integer">
     update fiction set viewCount=viewCount+1 where id=#{id}

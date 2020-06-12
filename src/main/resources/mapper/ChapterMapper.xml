@@ -435,5 +435,8 @@
     SELECT chapter.*,user.username
     FROM chapter,user WHERE chapter.id=#{id} AND chapter.hided=0 AND chapter.deleted=0 AND chapter.userId=user.id
   </select>
+  <select id="selectMaxNumberByFictionId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    SELECT MAX(number) FROM chapter WHERE chapter.fictionId=#{fictionId} AND chapter.deleted=0
+  </select>
   <!--===============================================================================================================-->
 </mapper>

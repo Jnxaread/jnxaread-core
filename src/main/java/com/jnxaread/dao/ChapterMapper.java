@@ -41,4 +41,6 @@ public interface ChapterMapper {
     /******************************************************************************************************************/
 
     ChapterWrap findWithUsername(int id);
+
+    int selectMaxNumberByFictionId(int fictionId);
 }
