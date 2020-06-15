@@ -23,6 +23,4 @@ public class FictionWrap extends Fiction {
     private String lastChapter;
 
     private String[] tags;
-
-    private Integer maxNumber;
 }
