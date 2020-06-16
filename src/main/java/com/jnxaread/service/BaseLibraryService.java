@@ -16,12 +16,31 @@ import java.util.List;
  */
 public interface BaseLibraryService {
 
+    /**
+     * 添加作品
+     * @param newFiction
+     * @return
+     */
     int addFiction(Fiction newFiction);
 
+    /**
+     * 添加作品标签
+     * @param label
+     */
     void addLabel(Label label);
 
+    /**
+     * 添加章节
+     * @param newChapter
+     * @return
+     */
     int addChapter(Chapter newChapter);
 
+    /**
+     * 添加评论
+     * @param newComment
+     * @return
+     */
     int addComment(Comment newComment);
 
     FictionWrap getFictionWrap(int id);

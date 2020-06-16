@@ -45,19 +45,13 @@ public class BaseForumServiceImpl implements BaseForumService {
     public int addReply(Reply newReply) {
         Topic topic = topicMapper.selectByPrimaryKeyForUpdate(newReply.getTopicId());
         //如果帖子不存在或已被删除，则禁止回复
-        if (topic == null || topic.getDeleted()) {
-            return 1;
-        }
+        if (topic == null || topic.getDeleted()) return 1;
         //如果帖子被锁定，则禁止回复
-        if (topic.getLocked()) {
-            return 2;
-        }
+        if (topic.getLocked()) return 2;
         //如果引用的回复不存在，则禁止回复
         if (newReply.getQuote() != 0) {
             Reply quoteReply = getReplyByTopicIdAndFloor(newReply.getTopicId(), newReply.getQuote());
-            if (quoteReply == null) {
-                return 3;
-            }
+            if (quoteReply == null) return 3;
         }
 
         int replyCount = topic.getReplyCount();
@@ -65,7 +59,9 @@ public class BaseForumServiceImpl implements BaseForumService {
         replyMapper.insertSelective(newReply);
 
         //帖子的回复数量+1
-        topicMapper.updateReplyCountByPrimaryKey(topic.getId());
+//        topicMapper.updateReplyCountByPrimaryKey(topic.getId());
+        topic.setReplyCount(topic.getReplyCount()+1);
+        topicMapper.updateByPrimaryKeySelective(topic);
         //作者的回复数量+1
         userMapper.updateReplyCountByPrimaryKey(newReply.getUserId());
         return 0;

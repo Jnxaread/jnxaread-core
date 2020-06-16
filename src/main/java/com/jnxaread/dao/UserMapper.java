@@ -33,7 +33,11 @@ public interface UserMapper {
 
     /******************************************************************************************************************/
 
+    int updateLoginCountByPrimaryKey(int id);
+
     int updateTopicCountByPrimaryKey(int id);
 
     int updateReplyCountByPrimaryKey(int id);
+
+    int updateGradeByPrimaryKey(@Param("id") int id,@Param("increase") int increase);
 }

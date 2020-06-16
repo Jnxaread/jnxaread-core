@@ -605,11 +605,17 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <!--===============================================================================================================-->
+  <update id="updateLoginCountByPrimaryKey" parameterType="java.lang.Integer">
+    update user set loginCount=loginCount+1 where id=#{id}
+  </update>
   <update id="updateTopicCountByPrimaryKey" parameterType="java.lang.Integer">
     update user set topicCount=topicCount+1 where id=#{id}
   </update>
   <update id="updateReplyCountByPrimaryKey" parameterType="java.lang.Integer">
     update user set replyCount=replyCount+1 where id=#{id}
+  </update>
+  <update id="updateGradeByPrimaryKey" parameterType="java.lang.Integer">
+    update user set grade=grade+#{increase} where id=#{id}
   </update>
   <!--===============================================================================================================-->
 </mapper>

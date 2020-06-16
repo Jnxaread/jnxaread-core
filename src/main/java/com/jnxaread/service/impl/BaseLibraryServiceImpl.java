@@ -63,13 +63,9 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Transactional(rollbackFor = Exception.class)
     public int addChapter(Chapter newChapter) {
         Chapter chapter = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber());
-        if (chapter != null) {
-            return -1;
-        }
+        if (chapter != null) return -1;
         Chapter chapter1 = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber() - 1);
-        if (chapter1 == null) {
-            return -2;
-        }
+        if (chapter1 == null) return -2;
         chapterMapper.insertSelective(newChapter);
         return newChapter.getId();
     }

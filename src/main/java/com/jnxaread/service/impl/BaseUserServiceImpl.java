@@ -5,8 +5,10 @@ import com.jnxaread.bean.User;
 import com.jnxaread.bean.UserExample;
 import com.jnxaread.dao.LoginMapper;
 import com.jnxaread.dao.UserMapper;
+import com.jnxaread.entity.UserGrade;
 import com.jnxaread.service.BaseUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,6 +23,9 @@ public class BaseUserServiceImpl implements BaseUserService {
 
     @Autowired(required = false)
     private LoginMapper loginMapper;
+
+    @Autowired
+    private UserGrade userGrade;
 
     /**
      * 添加用户
@@ -104,7 +109,10 @@ public class BaseUserServiceImpl implements BaseUserService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void addLogin(Login newLogin) {
+        userMapper.updateLoginCountByPrimaryKey(newLogin.getUserId());
+        userMapper.updateGradeByPrimaryKey(newLogin.getUserId(),userGrade.getLogin());
         loginMapper.insertSelective(newLogin);
     }
 }
