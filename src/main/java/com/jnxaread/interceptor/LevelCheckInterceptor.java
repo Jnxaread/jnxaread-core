@@ -12,20 +12,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * 登录校验拦截器
- * 拦截所有的发布请求
- *
  * @author 未央
- * @create 2020-05-08 10:13
+ * @create 2020-06-16 18:10
  */
 @Component
-public class LoginCheckInterceptor implements HandlerInterceptor {
+public class LevelCheckInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        if (user == null) {
-            ResponseUtil.response(response, UnifiedResult.build(400, "您还未登录，请登录", null));
+        String levelStr = request.getParameter("level");
+        if (levelStr == null) ResponseUtil.response(response, UnifiedResult.build(400, "参数错误", null));
+        Integer level = Integer.valueOf(levelStr);
+        if (level < 0 || level > 5) {
+            ResponseUtil.response(response, UnifiedResult.build(400, "参数错误", null));
+        }
+        if (level > 0) {
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            if (user == null || !user.getLevel().equals(level)) {
+                ResponseUtil.response(response, UnifiedResult.build(400, "参数错误", null));
+            }
         }
         return true;
     }

@@ -40,7 +40,7 @@ public interface TopicMapper {
 
     /**********************************************************************************/
 
-    List<TopicWrap> findListWithUsername(int startRow);
+    List<TopicWrap> findListWithUsername(@Param("level") int level, @Param("startRow") int startRow);
 
     TopicWrap findWithUsername(int id);
 

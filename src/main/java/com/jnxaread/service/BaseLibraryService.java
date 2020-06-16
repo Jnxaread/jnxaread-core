@@ -18,6 +18,7 @@ public interface BaseLibraryService {
 
     /**
      * 添加作品
+     *
      * @param newFiction
      * @return
      */
@@ -25,12 +26,14 @@ public interface BaseLibraryService {
 
     /**
      * 添加作品标签
+     *
      * @param label
      */
     void addLabel(Label label);
 
     /**
      * 添加章节
+     *
      * @param newChapter
      * @return
      */
@@ -38,6 +41,7 @@ public interface BaseLibraryService {
 
     /**
      * 添加评论
+     *
      * @param newComment
      * @return
      */
@@ -57,9 +61,9 @@ public interface BaseLibraryService {
 
     List<CommentWrap> getCommentWrapListByUserId(int userId);
 
-    List<Chapter> getChapterList(int fictionId);
+    List<Chapter> getChapterList(int fictionId, int level);
 
-    List<FictionWrap> getFictionWrapList(int userId, int page);
+    List<FictionWrap> getFictionWrapList(int userId,int level, int page);
 
     List<FictionWrap> getOwnFictionWrapList(int userId, int page);
 

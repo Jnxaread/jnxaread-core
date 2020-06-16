@@ -33,6 +33,7 @@ public class BaseUserServiceImpl implements BaseUserService {
 
     /**
      * 添加用户
+     *
      * @param newUser
      * @return
      */
@@ -44,6 +45,7 @@ public class BaseUserServiceImpl implements BaseUserService {
 
     /**
      * 根据ID获取用户
+     *
      * @param id
      * @return
      */
@@ -55,6 +57,7 @@ public class BaseUserServiceImpl implements BaseUserService {
 
     /**
      * 根据账号获取用户
+     *
      * @param account
      * @return
      */
@@ -73,6 +76,7 @@ public class BaseUserServiceImpl implements BaseUserService {
 
     /**
      * 根据用户名获取用户
+     *
      * @param username
      * @return
      */
@@ -91,6 +95,7 @@ public class BaseUserServiceImpl implements BaseUserService {
 
     /**
      * 根据邮箱获取用户
+     *
      * @param email
      * @return
      */
@@ -119,12 +124,12 @@ public class BaseUserServiceImpl implements BaseUserService {
         /*userMapper.updateLoginCountByPrimaryKey(newLogin.getUserId());
         userMapper.updateGradeByPrimaryKey(newLogin.getUserId(),userGrade.getLogin());*/
         User user = userMapper.selectByPrimaryKey(newLogin.getUserId());
-        user.setLoginCount(user.getLoginCount()+1);
-        user.setGrade(user.getGrade()+userGrade.getLogin());
+        user.setLoginCount(user.getLoginCount() + 1);
+        user.setGrade(user.getGrade() + userGrade.getLogin());
         Integer[] gradeArr = userLevel.getGradeArr();
-        for (int i=0;i<gradeArr.length;i++){
-            if (gradeArr[i]>user.getGrade()){
-                user.setLevel(i-1);
+        for (int i = 0; i < gradeArr.length; i++) {
+            if (gradeArr[i] > user.getGrade()) {
+                user.setLevel(i - 1);
                 break;
             }
         }

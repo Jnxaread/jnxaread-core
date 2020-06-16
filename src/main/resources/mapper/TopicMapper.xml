@@ -399,7 +399,7 @@
   </resultMap>
   <select id="findListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
     SELECT a.*,IFNULL(b.lastSubmit,a.createTime) lastSubmit,IFNULL(b.lastReply,a.username) lastReply FROM
-    (SELECT topic.*,user.username FROM topic,user WHERE topic.hided=0 AND topic.deleted=0 AND topic.userId=user.id) a
+    (SELECT topic.*,user.username FROM topic,user WHERE topic.restricted&lt;=#{level} AND topic.hided=0 AND topic.deleted=0 AND topic.userId=user.id) a
     LEFT JOIN
     (SELECT lastSubmit,user.username lastReply,reply.topicId rti FROM
     (SELECT MAX(reply.createTime) lastSubmit FROM reply GROUP BY reply.topicId) ma,reply,user

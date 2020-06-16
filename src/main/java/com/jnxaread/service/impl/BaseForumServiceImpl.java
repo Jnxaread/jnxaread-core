@@ -69,7 +69,7 @@ public class BaseForumServiceImpl implements BaseForumService {
         topicMapper.updateByPrimaryKeySelective(topic);
         //作者的回复数量+1
         userMapper.updateReplyCountByPrimaryKey(newReply.getUserId());
-        userMapper.updateGradeByPrimaryKey(newReply.getUserId(),userGrade.getNewReply());
+        userMapper.updateGradeByPrimaryKey(newReply.getUserId(), userGrade.getNewReply());
         return 0;
     }
 
@@ -110,9 +110,9 @@ public class BaseForumServiceImpl implements BaseForumService {
     }
 
     @Override
-    public List<TopicWrap> getTopicWrapList(int page) {
+    public List<TopicWrap> getTopicWrapList(int level, int page) {
         int startRow = (page - 1) * 45;
-        List<TopicWrap> topicWrapList = topicMapper.findListWithUsername(startRow);
+        List<TopicWrap> topicWrapList = topicMapper.findListWithUsername(level, startRow);
         return topicWrapList;
     }
 

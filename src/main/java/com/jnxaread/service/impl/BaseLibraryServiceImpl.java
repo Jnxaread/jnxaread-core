@@ -55,7 +55,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         chapter.setDeleted(true);
         chapterMapper.insertSelective(chapter);
         userMapper.updateFictionCountByPrimaryKey(newFiction.getUserId());
-        userMapper.updateGradeByPrimaryKey(newFiction.getUserId(),userGrade.getNewFiction());
+        userMapper.updateGradeByPrimaryKey(newFiction.getUserId(), userGrade.getNewFiction());
         return newFiction.getId();
     }
 
@@ -74,7 +74,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         if (chapter1 == null) return -2;
         chapterMapper.insertSelective(newChapter);
         userMapper.updateChapterCountByPrimaryKey(newChapter.getUserId());
-        userMapper.updateGradeByPrimaryKey(newChapter.getUserId(),userGrade.getNewChapter());
+        userMapper.updateGradeByPrimaryKey(newChapter.getUserId(), userGrade.getNewChapter());
         return newChapter.getId();
     }
 
@@ -86,7 +86,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         if (fiction.getDeleted() || (chapter.getDeleted() && chapter.getNumber() != 0)) return 1;
         commentMapper.insertSelective(newComment);
         userMapper.updateCommentCountByPrimaryKey(newComment.getUserId());
-        userMapper.updateGradeByPrimaryKey(newComment.getUserId(),userGrade.getNewComment());
+        userMapper.updateGradeByPrimaryKey(newComment.getUserId(), userGrade.getNewComment());
         return 0;
     }
 
@@ -149,24 +149,25 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
 
     @Override
     public List<CommentWrap> getCommentWrapListByUserId(int userId) {
-        List<CommentWrap> commentWrapList=commentMapper.findListByUserId(userId);
+        List<CommentWrap> commentWrapList = commentMapper.findListByUserId(userId);
         return commentWrapList;
     }
 
     @Override
-    public List<Chapter> getChapterList(int fictionId) {
+    public List<Chapter> getChapterList(int fictionId, int level) {
         ChapterExample example = new ChapterExample();
         ChapterExample.Criteria criteria = example.createCriteria();
         criteria.andFictionIdEqualTo(fictionId);
+        criteria.andRestrictedLessThanOrEqualTo(level);
         criteria.andHidedEqualTo(false);
         criteria.andDeletedEqualTo(false);
         return chapterMapper.selectByExample(example);
     }
 
     @Override
-    public List<FictionWrap> getFictionWrapList(int userId, int page) {
+    public List<FictionWrap> getFictionWrapList(int userId, int level, int page) {
         int startRow = (page - 1) * 30;
-        List<FictionWrap> fictionWrapList = fictionMapper.findListWithUsername(userId, startRow);
+        List<FictionWrap> fictionWrapList = fictionMapper.findListWithUsername(userId, level, startRow);
         //遍历fictionWrapList，给每一个fictionWrap设置tags
         fictionWrapList.forEach(fictionWrap -> {
             List<Label> labelList = getLabelByFictionId(fictionWrap.getId());
