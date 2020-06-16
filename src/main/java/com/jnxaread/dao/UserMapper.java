@@ -39,5 +39,13 @@ public interface UserMapper {
 
     int updateReplyCountByPrimaryKey(int id);
 
+    int updateFictionCountByPrimaryKey(int id);
+
+    int updateChapterCountByPrimaryKey(int id);
+
+    int updateCommentCountByPrimaryKey(int id);
+
+    int updateLevelByPrimaryKey(@Param("id") int id,@Param("level") int level);
+
     int updateGradeByPrimaryKey(@Param("id") int id,@Param("increase") int increase);
 }

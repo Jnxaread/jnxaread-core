@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 /**
+ * 用户积分体系
+ * 规定了用户的每次发布所能获得的积分
+ *
  * @author 未央
  * @create 2020-06-16 10:11
  */

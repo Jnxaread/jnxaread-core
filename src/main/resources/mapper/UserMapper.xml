@@ -614,6 +614,18 @@
   <update id="updateReplyCountByPrimaryKey" parameterType="java.lang.Integer">
     update user set replyCount=replyCount+1 where id=#{id}
   </update>
+  <update id="updateFictionCountByPrimaryKey" parameterType="java.lang.Integer">
+    update user set fictionCount=fictionCount+1 where id=#{id}
+  </update>
+  <update id="updateChapterCountByPrimaryKey" parameterType="java.lang.Integer">
+    update user set chapterCount=chapterCount+1 where id=#{id}
+  </update>
+  <update id="updateCommentCountByPrimaryKey" parameterType="java.lang.Integer">
+    update user set commentCount=commentCount+1 where id=#{id}
+  </update>
+  <update id="updateLevelByPrimaryKey" parameterType="java.lang.Integer">
+    update user set level=#{level} where id=#{id}
+  </update>
   <update id="updateGradeByPrimaryKey" parameterType="java.lang.Integer">
     update user set grade=grade+#{increase} where id=#{id}
   </update>

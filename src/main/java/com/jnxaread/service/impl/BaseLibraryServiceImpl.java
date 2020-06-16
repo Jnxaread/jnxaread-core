@@ -4,10 +4,8 @@ import com.jnxaread.bean.*;
 import com.jnxaread.bean.wrap.ChapterWrap;
 import com.jnxaread.bean.wrap.CommentWrap;
 import com.jnxaread.bean.wrap.FictionWrap;
-import com.jnxaread.dao.ChapterMapper;
-import com.jnxaread.dao.CommentMapper;
-import com.jnxaread.dao.FictionMapper;
-import com.jnxaread.dao.LabelMapper;
+import com.jnxaread.dao.*;
+import com.jnxaread.entity.UserGrade;
 import com.jnxaread.service.BaseLibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +32,12 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Autowired(required = false)
     private LabelMapper labelMapper;
 
+    @Autowired(required = false)
+    private UserMapper userMapper;
+
+    @Autowired
+    private UserGrade userGrade;
+
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int addFiction(Fiction newFiction) {
@@ -50,6 +54,8 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         chapter.setContent("");
         chapter.setDeleted(true);
         chapterMapper.insertSelective(chapter);
+        userMapper.updateFictionCountByPrimaryKey(newFiction.getUserId());
+        userMapper.updateGradeByPrimaryKey(newFiction.getUserId(),userGrade.getNewFiction());
         return newFiction.getId();
     }
 
@@ -67,6 +73,8 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         Chapter chapter1 = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber() - 1);
         if (chapter1 == null) return -2;
         chapterMapper.insertSelective(newChapter);
+        userMapper.updateChapterCountByPrimaryKey(newChapter.getUserId());
+        userMapper.updateGradeByPrimaryKey(newChapter.getUserId(),userGrade.getNewChapter());
         return newChapter.getId();
     }
 
@@ -75,10 +83,10 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     public int addComment(Comment newComment) {
         Fiction fiction = fictionMapper.selectByPrimaryKey(newComment.getFictionId());
         Chapter chapter = chapterMapper.selectByPrimaryKey(newComment.getChapterId());
-        if (fiction.getDeleted() || (chapter.getDeleted() && chapter.getNumber() != 0)) {
-            return 1;
-        }
+        if (fiction.getDeleted() || (chapter.getDeleted() && chapter.getNumber() != 0)) return 1;
         commentMapper.insertSelective(newComment);
+        userMapper.updateCommentCountByPrimaryKey(newComment.getUserId());
+        userMapper.updateGradeByPrimaryKey(newComment.getUserId(),userGrade.getNewComment());
         return 0;
     }
 

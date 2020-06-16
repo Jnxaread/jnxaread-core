@@ -9,6 +9,7 @@ import com.jnxaread.bean.wrap.TopicWrap;
 import com.jnxaread.dao.ReplyMapper;
 import com.jnxaread.dao.TopicMapper;
 import com.jnxaread.dao.UserMapper;
+import com.jnxaread.entity.UserGrade;
 import com.jnxaread.service.BaseForumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,12 +32,16 @@ public class BaseForumServiceImpl implements BaseForumService {
     @Autowired(required = false)
     private UserMapper userMapper;
 
+    @Autowired
+    private UserGrade userGrade;
+
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int addTopic(Topic newTopic) {
         topicMapper.insertSelective(newTopic);
         //帖子作者的发帖量+1
         userMapper.updateTopicCountByPrimaryKey(newTopic.getUserId());
+        userMapper.updateGradeByPrimaryKey(newTopic.getUserId(), userGrade.getNewTopic());
         return newTopic.getId();
     }
 
@@ -60,10 +65,11 @@ public class BaseForumServiceImpl implements BaseForumService {
 
         //帖子的回复数量+1
 //        topicMapper.updateReplyCountByPrimaryKey(topic.getId());
-        topic.setReplyCount(topic.getReplyCount()+1);
+        topic.setReplyCount(topic.getReplyCount() + 1);
         topicMapper.updateByPrimaryKeySelective(topic);
         //作者的回复数量+1
         userMapper.updateReplyCountByPrimaryKey(newReply.getUserId());
+        userMapper.updateGradeByPrimaryKey(newReply.getUserId(),userGrade.getNewReply());
         return 0;
     }
 
