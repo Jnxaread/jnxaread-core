@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.NoticeMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.bean.Notice">
+<mapper namespace="com.jnxaread.dao.NoticeMapper">
+  <resultMap id="BaseResultMap" type="com.jnxaread.bean.Notice">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
@@ -17,7 +17,7 @@
     <result column="hided" jdbcType="BIT" property="hided" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.demo.bean.Notice">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jnxaread.bean.Notice">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -85,7 +85,7 @@
   <sql id="Blob_Column_List">
     content
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.example.demo.bean.NoticeExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.jnxaread.bean.NoticeExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -101,7 +101,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.example.demo.bean.NoticeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.jnxaread.bean.NoticeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -127,13 +127,13 @@
     delete from notice
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.demo.bean.NoticeExample">
+  <delete id="deleteByExample" parameterType="com.jnxaread.bean.NoticeExample">
     delete from notice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.demo.bean.Notice">
+  <insert id="insert" parameterType="com.jnxaread.bean.Notice">
     insert into notice (id, userId, createTime,
       lastUserId, lastTime, label,
       title, position, restricted,
@@ -147,7 +147,7 @@
       #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.bean.Notice">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Notice">
     insert into notice
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -244,7 +244,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.demo.bean.NoticeExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.jnxaread.bean.NoticeExample" resultType="java.lang.Long">
     select count(*) from notice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -344,7 +344,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.bean.Notice">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Notice">
     update notice
     <set>
       <if test="userId != null">
@@ -392,7 +392,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.demo.bean.Notice">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jnxaread.bean.Notice">
     update notice
     set userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
@@ -410,7 +410,7 @@
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.bean.Notice">
+  <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Notice">
     update notice
     set userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},

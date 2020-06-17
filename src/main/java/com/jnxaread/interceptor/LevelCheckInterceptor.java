@@ -20,16 +20,21 @@ public class LevelCheckInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String levelStr = request.getParameter("level");
-        if (levelStr == null) ResponseUtil.response(response, UnifiedResult.build(400, "参数错误", null));
+        if (levelStr == null) {
+            ResponseUtil.response(response, UnifiedResult.build(400, "参数错误", null));
+            return false;
+        }
         Integer level = Integer.valueOf(levelStr);
         if (level < 0 || level > 5) {
             ResponseUtil.response(response, UnifiedResult.build(400, "参数错误", null));
+            return false;
         }
-        if (level > 0) {
+        if (level != 0) {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
             if (user == null || !user.getLevel().equals(level)) {
                 ResponseUtil.response(response, UnifiedResult.build(400, "参数错误", null));
+                return false;
             }
         }
         return true;
