@@ -91,6 +91,12 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     }
 
     @Override
+    public Fiction getFiction(int id) {
+        Fiction fiction = fictionMapper.selectByPrimaryKey(id);
+        return fiction;
+    }
+
+    @Override
     public FictionWrap getFictionWrap(int id) {
         FictionWrap fictionWrap = fictionMapper.findWithUsername(id);
         List<Label> labelList = getLabelByFictionId(id);
@@ -148,8 +154,8 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     }
 
     @Override
-    public List<CommentWrap> getCommentWrapListByUserId(int userId) {
-        List<CommentWrap> commentWrapList = commentMapper.findListByUserId(userId);
+    public List<CommentWrap> getCommentWrapListByUserId(int userId,int level) {
+        List<CommentWrap> commentWrapList = commentMapper.findListByUserId(userId,level);
         return commentWrapList;
     }
 

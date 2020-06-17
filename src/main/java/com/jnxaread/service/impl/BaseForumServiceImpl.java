@@ -117,8 +117,8 @@ public class BaseForumServiceImpl implements BaseForumService {
     }
 
     @Override
-    public List<ReplyWrap> getReplyWrapListByUserId(int userId) {
-        List<ReplyWrap> replyWrapList = replyMapper.findListByUserId(userId);
+    public List<ReplyWrap> getReplyWrapListByUserId(int userId, int level) {
+        List<ReplyWrap> replyWrapList = replyMapper.findListByUserId(userId, level);
         //遍历回复列表，如果回复已被删除，则将内容替换为“该回复以被删除”
         for (ReplyWrap replyWrap : replyWrapList) {
             if (replyWrap.getQuote() != 0) {

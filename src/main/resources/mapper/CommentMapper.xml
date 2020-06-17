@@ -330,8 +330,9 @@
     WHERE comment.chapterId=#{chapterId} AND comment.hided=0 AND comment.deleted=0 AND comment.userId=user.id
   </select>
   <select id="findListByUserId" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
-    SELECT comment.createTime,comment.content,user.username,fiction.title FROM comment,user,fiction
-    WHERE comment.userId=#{userId} AND comment.hided=0 AND comment.deleted=0 AND user.id=#{userId} AND comment.fictionId=fiction.id
+    SELECT comment.createTime,comment.content,user.username,fiction.title FROM comment,user,fiction,chapter
+    WHERE comment.userId=#{userId} AND comment.hided=0 AND comment.deleted=0 AND user.id=#{userId}
+    AND comment.fictionId=fiction.id AND comment.chapterId=chapter.id AND chapter.restricted&lt;=#{level}
   </select>
   <!--========================================================================================-->
 </mapper>

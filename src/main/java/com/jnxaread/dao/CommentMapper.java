@@ -42,5 +42,5 @@ public interface CommentMapper {
 
     List<CommentWrap> findListWidthUsername(int chapterId);
 
-    List<CommentWrap> findListByUserId(int userId);
+    List<CommentWrap> findListByUserId(@Param("userId") int userId,@Param("level") int level);
 }

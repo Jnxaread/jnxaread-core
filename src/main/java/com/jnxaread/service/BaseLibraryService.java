@@ -47,6 +47,8 @@ public interface BaseLibraryService {
      */
     int addComment(Comment newComment);
 
+    Fiction getFiction(int id);
+
     FictionWrap getFictionWrap(int id);
 
     Chapter getChapter(int id);
@@ -59,7 +61,7 @@ public interface BaseLibraryService {
 
     List<CommentWrap> getCommentWrapList(int chapterId);
 
-    List<CommentWrap> getCommentWrapListByUserId(int userId);
+    List<CommentWrap> getCommentWrapListByUserId(int userId,int level);
 
     List<Chapter> getChapterList(int fictionId, int level);
 

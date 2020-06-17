@@ -32,4 +32,6 @@ public class UserLevel {
     private Integer lv5;
 
     private Integer[] gradeArr;
+
+    private Integer[] levelArr;
 }

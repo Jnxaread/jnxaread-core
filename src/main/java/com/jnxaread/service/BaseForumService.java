@@ -67,9 +67,10 @@ public interface BaseForumService {
      * 根据用户ID获取回复包装类型列表
      *
      * @param userId
+     * @param level
      * @return
      */
-    List<ReplyWrap> getReplyWrapListByUserId(int userId);
+    List<ReplyWrap> getReplyWrapListByUserId(int userId, int level);
 
     /**
      * 获取帖子数量

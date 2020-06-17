@@ -42,7 +42,7 @@ public interface ReplyMapper {
 
     List<ReplyWrap> findListWithUsername(@Param("topicId") int topicId, @Param("startRow") int startRow);
 
-    List<ReplyWrap> findListByUserId(int userId);
+    List<ReplyWrap> findListByUserId(@Param("userId") int userId, @Param("level") int level);
 
     ReplyWrap findWithUsername(int id);
 }
