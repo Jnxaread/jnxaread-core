@@ -5,6 +5,12 @@ public class Authority {
 
     private String role;
 
+    private Boolean addNotice;
+
+    private Boolean addCategory;
+
+    private Boolean addBoard;
+
     private Boolean banAccount;
 
     private Boolean banTopic;
@@ -105,13 +111,11 @@ public class Authority {
 
     private Boolean restrictTopic;
 
+    private Boolean restrictNotice;
+
     private Boolean restrictCategory;
 
     private Boolean restrictBoard;
-
-    private Boolean addCategory;
-
-    private Boolean addBoard;
 
     private Boolean lockCategory;
 
@@ -139,6 +143,30 @@ public class Authority {
 
     public void setRole(String role) {
         this.role = role == null ? null : role.trim();
+    }
+
+    public Boolean getAddNotice() {
+        return addNotice;
+    }
+
+    public void setAddNotice(Boolean addNotice) {
+        this.addNotice = addNotice;
+    }
+
+    public Boolean getAddCategory() {
+        return addCategory;
+    }
+
+    public void setAddCategory(Boolean addCategory) {
+        this.addCategory = addCategory;
+    }
+
+    public Boolean getAddBoard() {
+        return addBoard;
+    }
+
+    public void setAddBoard(Boolean addBoard) {
+        this.addBoard = addBoard;
     }
 
     public Boolean getBanAccount() {
@@ -541,6 +569,14 @@ public class Authority {
         this.restrictTopic = restrictTopic;
     }
 
+    public Boolean getRestrictNotice() {
+        return restrictNotice;
+    }
+
+    public void setRestrictNotice(Boolean restrictNotice) {
+        this.restrictNotice = restrictNotice;
+    }
+
     public Boolean getRestrictCategory() {
         return restrictCategory;
     }
@@ -555,22 +591,6 @@ public class Authority {
 
     public void setRestrictBoard(Boolean restrictBoard) {
         this.restrictBoard = restrictBoard;
-    }
-
-    public Boolean getAddCategory() {
-        return addCategory;
-    }
-
-    public void setAddCategory(Boolean addCategory) {
-        this.addCategory = addCategory;
-    }
-
-    public Boolean getAddBoard() {
-        return addBoard;
-    }
-
-    public void setAddBoard(Boolean addBoard) {
-        this.addBoard = addBoard;
     }
 
     public Boolean getLockCategory() {

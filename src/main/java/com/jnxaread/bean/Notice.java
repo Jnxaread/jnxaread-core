@@ -19,6 +19,8 @@ public class Notice {
 
     private Integer position;
 
+    private Integer restricted;
+
     private Integer viewCount;
 
     private Integer updateCount;
@@ -93,6 +95,14 @@ public class Notice {
 
     public void setPosition(Integer position) {
         this.position = position;
+    }
+
+    public Integer getRestricted() {
+        return restricted;
+    }
+
+    public void setRestricted(Integer restricted) {
+        this.restricted = restricted;
     }
 
     public Integer getViewCount() {

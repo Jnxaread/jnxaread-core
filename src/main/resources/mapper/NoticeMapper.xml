@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jnxaread.dao.NoticeMapper">
-  <resultMap id="BaseResultMap" type="com.jnxaread.bean.Notice">
+<mapper namespace="com.example.demo.dao.NoticeMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.bean.Notice">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
@@ -10,13 +10,14 @@
     <result column="label" jdbcType="VARCHAR" property="label" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="position" jdbcType="INTEGER" property="position" />
+    <result column="restricted" jdbcType="INTEGER" property="restricted" />
     <result column="viewCount" jdbcType="INTEGER" property="viewCount" />
     <result column="updateCount" jdbcType="INTEGER" property="updateCount" />
     <result column="locked" jdbcType="BIT" property="locked" />
     <result column="hided" jdbcType="BIT" property="hided" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jnxaread.bean.Notice">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.demo.bean.Notice">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -78,13 +79,13 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userId, createTime, lastUserId, lastTime, label, title, position, viewCount,
-    updateCount, locked, hided, deleted
+    id, userId, createTime, lastUserId, lastTime, label, title, position, restricted,
+    viewCount, updateCount, locked, hided, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.jnxaread.bean.NoticeExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.example.demo.bean.NoticeExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -100,7 +101,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.jnxaread.bean.NoticeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.demo.bean.NoticeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -126,25 +127,27 @@
     delete from notice
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.jnxaread.bean.NoticeExample">
+  <delete id="deleteByExample" parameterType="com.example.demo.bean.NoticeExample">
     delete from notice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.jnxaread.bean.Notice">
+  <insert id="insert" parameterType="com.example.demo.bean.Notice">
     insert into notice (id, userId, createTime,
       lastUserId, lastTime, label,
-      title, position, viewCount,
-      updateCount, locked, hided,
-      deleted, content)
+      title, position, restricted,
+      viewCount, updateCount, locked,
+      hided, deleted, content
+      )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
       #{lastUserId,jdbcType=INTEGER}, #{lastTime,jdbcType=TIMESTAMP}, #{label,jdbcType=VARCHAR},
-      #{title,jdbcType=VARCHAR}, #{position,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER},
-      #{updateCount,jdbcType=INTEGER}, #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT},
-      #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
+      #{title,jdbcType=VARCHAR}, #{position,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER},
+      #{viewCount,jdbcType=INTEGER}, #{updateCount,jdbcType=INTEGER}, #{locked,jdbcType=BIT},
+      #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Notice">
+  <insert id="insertSelective" parameterType="com.example.demo.bean.Notice">
     insert into notice
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -170,6 +173,9 @@
       </if>
       <if test="position != null">
         position,
+      </if>
+      <if test="restricted != null">
+        restricted,
       </if>
       <if test="viewCount != null">
         viewCount,
@@ -215,6 +221,9 @@
       <if test="position != null">
         #{position,jdbcType=INTEGER},
       </if>
+      <if test="restricted != null">
+        #{restricted,jdbcType=INTEGER},
+      </if>
       <if test="viewCount != null">
         #{viewCount,jdbcType=INTEGER},
       </if>
@@ -235,7 +244,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.jnxaread.bean.NoticeExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.example.demo.bean.NoticeExample" resultType="java.lang.Long">
     select count(*) from notice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -267,6 +276,9 @@
       </if>
       <if test="record.position != null">
         position = #{record.position,jdbcType=INTEGER},
+      </if>
+      <if test="record.restricted != null">
+        restricted = #{record.restricted,jdbcType=INTEGER},
       </if>
       <if test="record.viewCount != null">
         viewCount = #{record.viewCount,jdbcType=INTEGER},
@@ -301,6 +313,7 @@
       label = #{record.label,jdbcType=VARCHAR},
       title = #{record.title,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=INTEGER},
+      restricted = #{record.restricted,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
       updateCount = #{record.updateCount,jdbcType=INTEGER},
       locked = #{record.locked,jdbcType=BIT},
@@ -321,6 +334,7 @@
       label = #{record.label,jdbcType=VARCHAR},
       title = #{record.title,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=INTEGER},
+      restricted = #{record.restricted,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
       updateCount = #{record.updateCount,jdbcType=INTEGER},
       locked = #{record.locked,jdbcType=BIT},
@@ -330,7 +344,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Notice">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.bean.Notice">
     update notice
     <set>
       <if test="userId != null">
@@ -354,6 +368,9 @@
       <if test="position != null">
         position = #{position,jdbcType=INTEGER},
       </if>
+      <if test="restricted != null">
+        restricted = #{restricted,jdbcType=INTEGER},
+      </if>
       <if test="viewCount != null">
         viewCount = #{viewCount,jdbcType=INTEGER},
       </if>
@@ -375,7 +392,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jnxaread.bean.Notice">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.demo.bean.Notice">
     update notice
     set userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
@@ -384,6 +401,7 @@
       label = #{label,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       position = #{position,jdbcType=INTEGER},
+      restricted = #{restricted,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
       updateCount = #{updateCount,jdbcType=INTEGER},
       locked = #{locked,jdbcType=BIT},
@@ -392,7 +410,7 @@
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Notice">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.bean.Notice">
     update notice
     set userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
@@ -401,6 +419,7 @@
       label = #{label,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       position = #{position,jdbcType=INTEGER},
+      restricted = #{restricted,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
       updateCount = #{updateCount,jdbcType=INTEGER},
       locked = #{locked,jdbcType=BIT},

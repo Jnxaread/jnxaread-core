@@ -234,6 +234,186 @@ public class AuthorityExample {
             return (Criteria) this;
         }
 
+        public Criteria andAddNoticeIsNull() {
+            addCriterion("addNotice is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddNoticeIsNotNull() {
+            addCriterion("addNotice is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddNoticeEqualTo(Boolean value) {
+            addCriterion("addNotice =", value, "addNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddNoticeNotEqualTo(Boolean value) {
+            addCriterion("addNotice <>", value, "addNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddNoticeGreaterThan(Boolean value) {
+            addCriterion("addNotice >", value, "addNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddNoticeGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("addNotice >=", value, "addNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddNoticeLessThan(Boolean value) {
+            addCriterion("addNotice <", value, "addNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddNoticeLessThanOrEqualTo(Boolean value) {
+            addCriterion("addNotice <=", value, "addNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddNoticeIn(List<Boolean> values) {
+            addCriterion("addNotice in", values, "addNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddNoticeNotIn(List<Boolean> values) {
+            addCriterion("addNotice not in", values, "addNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddNoticeBetween(Boolean value1, Boolean value2) {
+            addCriterion("addNotice between", value1, value2, "addNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddNoticeNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("addNotice not between", value1, value2, "addNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryIsNull() {
+            addCriterion("addCategory is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryIsNotNull() {
+            addCriterion("addCategory is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryEqualTo(Boolean value) {
+            addCriterion("addCategory =", value, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryNotEqualTo(Boolean value) {
+            addCriterion("addCategory <>", value, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryGreaterThan(Boolean value) {
+            addCriterion("addCategory >", value, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("addCategory >=", value, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryLessThan(Boolean value) {
+            addCriterion("addCategory <", value, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryLessThanOrEqualTo(Boolean value) {
+            addCriterion("addCategory <=", value, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryIn(List<Boolean> values) {
+            addCriterion("addCategory in", values, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryNotIn(List<Boolean> values) {
+            addCriterion("addCategory not in", values, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryBetween(Boolean value1, Boolean value2) {
+            addCriterion("addCategory between", value1, value2, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddCategoryNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("addCategory not between", value1, value2, "addCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardIsNull() {
+            addCriterion("addBoard is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardIsNotNull() {
+            addCriterion("addBoard is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardEqualTo(Boolean value) {
+            addCriterion("addBoard =", value, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardNotEqualTo(Boolean value) {
+            addCriterion("addBoard <>", value, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardGreaterThan(Boolean value) {
+            addCriterion("addBoard >", value, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("addBoard >=", value, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardLessThan(Boolean value) {
+            addCriterion("addBoard <", value, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardLessThanOrEqualTo(Boolean value) {
+            addCriterion("addBoard <=", value, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardIn(List<Boolean> values) {
+            addCriterion("addBoard in", values, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardNotIn(List<Boolean> values) {
+            addCriterion("addBoard not in", values, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardBetween(Boolean value1, Boolean value2) {
+            addCriterion("addBoard between", value1, value2, "addBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddBoardNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("addBoard not between", value1, value2, "addBoard");
+            return (Criteria) this;
+        }
+
         public Criteria andBanAccountIsNull() {
             addCriterion("banAccount is null");
             return (Criteria) this;
@@ -3234,6 +3414,66 @@ public class AuthorityExample {
             return (Criteria) this;
         }
 
+        public Criteria andRestrictNoticeIsNull() {
+            addCriterion("restrictNotice is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictNoticeIsNotNull() {
+            addCriterion("restrictNotice is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictNoticeEqualTo(Boolean value) {
+            addCriterion("restrictNotice =", value, "restrictNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictNoticeNotEqualTo(Boolean value) {
+            addCriterion("restrictNotice <>", value, "restrictNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictNoticeGreaterThan(Boolean value) {
+            addCriterion("restrictNotice >", value, "restrictNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictNoticeGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("restrictNotice >=", value, "restrictNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictNoticeLessThan(Boolean value) {
+            addCriterion("restrictNotice <", value, "restrictNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictNoticeLessThanOrEqualTo(Boolean value) {
+            addCriterion("restrictNotice <=", value, "restrictNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictNoticeIn(List<Boolean> values) {
+            addCriterion("restrictNotice in", values, "restrictNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictNoticeNotIn(List<Boolean> values) {
+            addCriterion("restrictNotice not in", values, "restrictNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictNoticeBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictNotice between", value1, value2, "restrictNotice");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictNoticeNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("restrictNotice not between", value1, value2, "restrictNotice");
+            return (Criteria) this;
+        }
+
         public Criteria andRestrictCategoryIsNull() {
             addCriterion("restrictCategory is null");
             return (Criteria) this;
@@ -3351,126 +3591,6 @@ public class AuthorityExample {
 
         public Criteria andRestrictBoardNotBetween(Boolean value1, Boolean value2) {
             addCriterion("restrictBoard not between", value1, value2, "restrictBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddCategoryIsNull() {
-            addCriterion("addCategory is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddCategoryIsNotNull() {
-            addCriterion("addCategory is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddCategoryEqualTo(Boolean value) {
-            addCriterion("addCategory =", value, "addCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddCategoryNotEqualTo(Boolean value) {
-            addCriterion("addCategory <>", value, "addCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddCategoryGreaterThan(Boolean value) {
-            addCriterion("addCategory >", value, "addCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddCategoryGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("addCategory >=", value, "addCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddCategoryLessThan(Boolean value) {
-            addCriterion("addCategory <", value, "addCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddCategoryLessThanOrEqualTo(Boolean value) {
-            addCriterion("addCategory <=", value, "addCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddCategoryIn(List<Boolean> values) {
-            addCriterion("addCategory in", values, "addCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddCategoryNotIn(List<Boolean> values) {
-            addCriterion("addCategory not in", values, "addCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddCategoryBetween(Boolean value1, Boolean value2) {
-            addCriterion("addCategory between", value1, value2, "addCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddCategoryNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("addCategory not between", value1, value2, "addCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddBoardIsNull() {
-            addCriterion("addBoard is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddBoardIsNotNull() {
-            addCriterion("addBoard is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddBoardEqualTo(Boolean value) {
-            addCriterion("addBoard =", value, "addBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddBoardNotEqualTo(Boolean value) {
-            addCriterion("addBoard <>", value, "addBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddBoardGreaterThan(Boolean value) {
-            addCriterion("addBoard >", value, "addBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddBoardGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("addBoard >=", value, "addBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddBoardLessThan(Boolean value) {
-            addCriterion("addBoard <", value, "addBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddBoardLessThanOrEqualTo(Boolean value) {
-            addCriterion("addBoard <=", value, "addBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddBoardIn(List<Boolean> values) {
-            addCriterion("addBoard in", values, "addBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddBoardNotIn(List<Boolean> values) {
-            addCriterion("addBoard not in", values, "addBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddBoardBetween(Boolean value1, Boolean value2) {
-            addCriterion("addBoard between", value1, value2, "addBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddBoardNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("addBoard not between", value1, value2, "addBoard");
             return (Criteria) this;
         }
 
