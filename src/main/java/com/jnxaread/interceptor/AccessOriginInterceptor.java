@@ -20,7 +20,7 @@ public class AccessOriginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest req, HttpServletResponse rep, Object o) throws Exception {
         String terminal = req.getHeader("User-Agent");
         if (terminal == null) {
-            ResponseUtil.response(rep, UnifiedResult.build(402, "参数错误...", null));
+            ResponseUtil.response(rep, UnifiedResult.build(402, "参数错误", null));
             return false;
         }
         //设置允许跨域的配置
