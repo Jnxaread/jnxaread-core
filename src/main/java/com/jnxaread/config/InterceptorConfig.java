@@ -20,9 +20,16 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Autowired
     private LoginCheckInterceptor loginCheckInterceptor;
 
+    private String[] loginCheckPath = {
+            "/**/new/**", //所有的创建作品的路径
+            "/**/own", //所有的请求自己的作品的路径
+            "/**/edit/**", //所有的编辑或修改路径
+            "/**/brief/chapter", //获取章节简要信息的路径
+    };
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(accessOriginInterceptor).addPathPatterns("/**");
-        registry.addInterceptor(loginCheckInterceptor).addPathPatterns("/**/new/**","/**/own","/**/change/**");
+        registry.addInterceptor(loginCheckInterceptor).addPathPatterns(loginCheckPath);
     }
 }

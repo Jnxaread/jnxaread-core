@@ -223,4 +223,9 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         return fictionCount;
     }
 
+    @Override
+    public void updateChapter(Chapter updatedChapter) {
+        chapterMapper.updateByPrimaryKeySelective(updatedChapter);
+    }
+
 }

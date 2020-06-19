@@ -73,4 +73,6 @@ public interface BaseLibraryService {
 
     long getOwnFictionCount(int userId);
 
+    void updateChapter(Chapter updatedChapter);
+
 }
