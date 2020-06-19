@@ -73,7 +73,11 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         Chapter chapter1 = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber() - 1);
         if (chapter1 == null) return -2;
         chapterMapper.insertSelective(newChapter);
+        //章节所属作品的章节数+1，字数+若干
+        fictionMapper.updateChapterCountAndWordCountByPrimaryKey(newChapter.getFictionId(),newChapter.getWordCount());
+        //作者的章节数+1
         userMapper.updateChapterCountByPrimaryKey(newChapter.getUserId());
+        //作者的积分+若干
         userMapper.updateGradeByPrimaryKey(newChapter.getUserId(), userGrade.getNewChapter());
         return newChapter.getId();
     }
@@ -85,6 +89,9 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         Chapter chapter = chapterMapper.selectByPrimaryKey(newComment.getChapterId());
         if (fiction.getDeleted() || (chapter.getDeleted() && chapter.getNumber() != 0)) return 1;
         commentMapper.insertSelective(newComment);
+        chapter.setCommentCount(chapter.getCommentCount()+1);
+        chapterMapper.updateByPrimaryKeySelective(chapter);
+        fictionMapper.updateCommentCountByPrimaryKey(newComment.getFictionId());
         userMapper.updateCommentCountByPrimaryKey(newComment.getUserId());
         userMapper.updateGradeByPrimaryKey(newComment.getUserId(), userGrade.getNewComment());
         return 0;
@@ -154,8 +161,8 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     }
 
     @Override
-    public List<CommentWrap> getCommentWrapListByUserId(int userId,int level) {
-        List<CommentWrap> commentWrapList = commentMapper.findListByUserId(userId,level);
+    public List<CommentWrap> getCommentWrapListByUserId(int userId, int level) {
+        List<CommentWrap> commentWrapList = commentMapper.findListByUserId(userId, level);
         return commentWrapList;
     }
 

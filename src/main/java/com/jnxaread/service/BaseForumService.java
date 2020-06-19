@@ -57,11 +57,12 @@ public interface BaseForumService {
     /**
      * 获取帖子包装类型列表
      *
+     * @param userId
      * @param level
      * @param page
      * @return
      */
-    List<TopicWrap> getTopicWrapList(int level, int page);
+    List<TopicWrap> getTopicWrapList(int userId, int level, int page);
 
     /**
      * 根据用户ID获取回复包装类型列表

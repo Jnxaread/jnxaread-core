@@ -36,7 +36,11 @@ public interface FictionMapper {
 
     FictionWrap findWithUsername(int id);
 
+    void updateCommentCountByPrimaryKey(int id);
+
     void updateViewCountByPrimaryKey(int id);
+
+    void updateChapterCountAndWordCountByPrimaryKey(@Param("id") int id,@Param("wordCount") int wordCount);
 
     List<FictionWrap> findListWithUsername(@Param("userId") int userId,@Param("level") int level,@Param("startRow") int startRow);
 

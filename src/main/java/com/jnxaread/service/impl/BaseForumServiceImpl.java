@@ -110,9 +110,9 @@ public class BaseForumServiceImpl implements BaseForumService {
     }
 
     @Override
-    public List<TopicWrap> getTopicWrapList(int level, int page) {
+    public List<TopicWrap> getTopicWrapList(int userId, int level, int page) {
         int startRow = (page - 1) * 45;
-        List<TopicWrap> topicWrapList = topicMapper.findListWithUsername(level, startRow);
+        List<TopicWrap> topicWrapList = topicMapper.findListWithUsername(userId, level, startRow);
         return topicWrapList;
     }
 
@@ -139,7 +139,7 @@ public class BaseForumServiceImpl implements BaseForumService {
         return topicCount;
     }
 
-    public Reply getReplyByTopicIdAndFloor(int topicId, int floor) {
+    private Reply getReplyByTopicIdAndFloor(int topicId, int floor) {
         ReplyExample example = new ReplyExample();
         ReplyExample.Criteria criteria = example.createCriteria();
         criteria.andTopicIdEqualTo(topicId);

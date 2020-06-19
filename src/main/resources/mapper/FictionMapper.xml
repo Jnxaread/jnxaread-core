@@ -397,8 +397,14 @@
     FROM fiction,category,user,chapter
     WHERE fiction.id=#{id} AND fiction.categoryId=category.id AND fiction.userId=user.id AND chapter.fictionId=#{id} AND chapter.deleted=0;
   </select>
+  <update id="updateCommentCountByPrimaryKey" parameterType="java.lang.Integer">
+    update fiction set commentCount=commentCount+1 where id=#{id}
+  </update>
   <update id="updateViewCountByPrimaryKey" parameterType="java.lang.Integer">
     update fiction set viewCount=viewCount+1 where id=#{id}
+  </update>
+  <update id="updateChapterCountAndWordCountByPrimaryKey" parameterType="java.lang.Integer">
+    update fiction set chapterCount=chapterCount+1,wordCount=wordCount+#{wordCount} where id=#{id}
   </update>
   <!--===============================================================================================================-->
 </mapper>
