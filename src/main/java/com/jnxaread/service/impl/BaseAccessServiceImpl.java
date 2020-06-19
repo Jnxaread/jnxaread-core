@@ -18,6 +18,6 @@ public class BaseAccessServiceImpl implements BaseAccessService {
 
     @Override
     public void addAccess(Access newAccess) {
-        accessMapper.insert(newAccess);
+        accessMapper.insertSelective(newAccess);
     }
 }
