@@ -21,7 +21,7 @@ USE `jnxaread`;
 DROP TABLE IF EXISTS `Access`;
 
 CREATE TABLE `Access` (
-  `id` int(11) NOT NULL COMMENT '主键自增',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
   `total` int(11) NOT NULL COMMENT '总访问量',
   `PC` int(11) NOT NULL COMMENT 'PC端访问量',
   `Android` int(11) NOT NULL COMMENT '安卓端访问量',
