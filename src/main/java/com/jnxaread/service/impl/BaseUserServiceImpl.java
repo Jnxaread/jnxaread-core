@@ -123,7 +123,7 @@ public class BaseUserServiceImpl implements BaseUserService {
         loginMapper.insertSelective(newLogin);
         /*userMapper.updateLoginCountByPrimaryKey(newLogin.getUserId());
         userMapper.updateGradeByPrimaryKey(newLogin.getUserId(),userGrade.getLogin());*/
-        User user = userMapper.selectByPrimaryKey(newLogin.getUserId());
+        User user = userMapper.selectByPrimaryKeyForUpdate(newLogin.getUserId());
         user.setLoginCount(user.getLoginCount() + 1);
         user.setGrade(user.getGrade() + userGrade.getLogin());
         Integer[] gradeArr = userLevel.getGradeArr();

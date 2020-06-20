@@ -48,4 +48,6 @@ public interface UserMapper {
     int updateLevelByPrimaryKey(@Param("id") int id,@Param("level") int level);
 
     int updateGradeByPrimaryKey(@Param("id") int id,@Param("increase") int increase);
+
+    User selectByPrimaryKeyForUpdate(int id);
 }

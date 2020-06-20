@@ -629,5 +629,8 @@
   <update id="updateGradeByPrimaryKey" parameterType="java.lang.Integer">
     update user set grade=grade+#{increase} where id=#{id}
   </update>
+  <select id="selectByPrimaryKeyForUpdate" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from user where id = #{id,jdbcType=INTEGER} AND deleted=0 for update
+  </select>
   <!--===============================================================================================================-->
 </mapper>

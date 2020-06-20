@@ -378,7 +378,7 @@
   <select id="findListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
     SELECT fmc.id,u.username,fmc.title,fmc.introduction,fmc.chapterCount,fmc.wordCount,fmc.commentCount,fmc.viewCount,ch.number lastNumber,ch.title lastChapter,ch.createTime lastTime FROM
     (SELECT f.id,f.userId,f.title,f.introduction,f.chapterCount,f.wordCount,f.commentCount,f.viewCount,f.hided,f.deleted,mc.id chapterId FROM fiction f,
-    (SELECT fictionId,MAX(id) id FROM chapter WHERE restricted&lt;=#{level} GROUP BY fictionId) mc WHERE f.id=mc.fictionId) fmc,chapter ch,user u
+    (SELECT fictionId,MAX(id) id FROM chapter WHERE restricted&lt;=#{level} AND hided=0 AND deleted=0 GROUP BY fictionId) mc WHERE f.id=mc.fictionId) fmc,chapter ch,user u
     WHERE fmc.userId=u.id AND fmc.chapterId=ch.id AND ch.number!=0 AND fmc.deleted=0 AND fmc.hided=0
     <if test="userId!=0">
       AND fmc.userId=#{userId}

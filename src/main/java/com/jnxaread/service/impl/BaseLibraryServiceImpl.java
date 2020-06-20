@@ -74,7 +74,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         if (chapter1 == null) return -2;
         chapterMapper.insertSelective(newChapter);
         //章节所属作品的章节数+1，字数+若干
-        fictionMapper.updateChapterCountAndWordCountByPrimaryKey(newChapter.getFictionId(),newChapter.getWordCount());
+        fictionMapper.updateChapterCountAndWordCountByPrimaryKey(newChapter.getFictionId(), newChapter.getWordCount());
         //作者的章节数+1
         userMapper.updateChapterCountByPrimaryKey(newChapter.getUserId());
         //作者的积分+若干
@@ -89,7 +89,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         Chapter chapter = chapterMapper.selectByPrimaryKey(newComment.getChapterId());
         if (fiction.getDeleted() || (chapter.getDeleted() && chapter.getNumber() != 0)) return 1;
         commentMapper.insertSelective(newComment);
-        chapter.setCommentCount(chapter.getCommentCount()+1);
+        chapter.setCommentCount(chapter.getCommentCount() + 1);
         chapterMapper.updateByPrimaryKeySelective(chapter);
         fictionMapper.updateCommentCountByPrimaryKey(newComment.getFictionId());
         userMapper.updateCommentCountByPrimaryKey(newComment.getUserId());
@@ -167,12 +167,15 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     }
 
     @Override
-    public List<Chapter> getChapterList(int fictionId, int level) {
+    public List<Chapter> getChapterList(int fictionId, int userId, int level) {
+        Fiction fiction = fictionMapper.selectByPrimaryKey(fictionId);
         ChapterExample example = new ChapterExample();
         ChapterExample.Criteria criteria = example.createCriteria();
         criteria.andFictionIdEqualTo(fictionId);
-        criteria.andRestrictedLessThanOrEqualTo(level);
-        criteria.andHidedEqualTo(false);
+        if (!fiction.getUserId().equals(userId)) {
+            criteria.andRestrictedLessThanOrEqualTo(level);
+            criteria.andHidedEqualTo(false);
+        }
         criteria.andDeletedEqualTo(false);
         return chapterMapper.selectByExample(example);
     }
@@ -233,6 +236,29 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Override
     public void updateChapter(Chapter updatedChapter) {
         chapterMapper.updateByPrimaryKeySelective(updatedChapter);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public int hideChapter(int id, int userId, boolean hide) {
+        Chapter chapter = chapterMapper.selectByPrimaryKeyForUpdate(id);
+        if (chapter == null) return 1;
+        if (!chapter.getUserId().equals(userId)) return 2;
+        if (chapter.getHided() == hide) return 3;
+        chapter.setHided(hide);
+        chapterMapper.updateByPrimaryKeySelective(chapter);
+        return 0;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public int deleteChapter(int id, int userId) {
+        Chapter chapter = chapterMapper.selectByPrimaryKeyForUpdate(id);
+        if (chapter == null) return 1;
+        if (!chapter.getUserId().equals(userId)) return 2;
+        chapter.setDeleted(true);
+        chapterMapper.updateByPrimaryKeySelective(chapter);
+        return 0;
     }
 
 }
