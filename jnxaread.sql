@@ -70,6 +70,11 @@ CREATE TABLE `Authority` (
   `lockCommentOfOwnChapter` tinyint(1) NOT NULL COMMENT '锁定自己的章节评论',
   `lockCommentOfFiction` tinyint(1) NOT NULL COMMENT '锁定作品的评论',
   `lockCommentOfChapter` tinyint(1) NOT NULL COMMENT '锁定章节的评论',
+  `lockTopicOfBoard` tinyint(1) NOT NULL DEFAULT '0' COMMENT '锁定版块的帖子',
+  `lockReplyOfBoard` tinyint(1) NOT NULL DEFAULT '0' COMMENT '锁定版块的回复',
+  `lockFictionOfCategory` tinyint(1) NOT NULL DEFAULT '0' COMMENT '锁定类别的作品',
+  `lockChapterOfCategory` tinyint(1) NOT NULL DEFAULT '0' COMMENT '锁定类别的章节',
+  `lockCommentOfCategory` tinyint(1) NOT NULL DEFAULT '0' COMMENT '锁定类别的评论',
   `hideOwnTopic` tinyint(1) NOT NULL COMMENT '隐藏自己的帖子',
   `hideOwnFiction` tinyint(1) NOT NULL COMMENT '隐藏自己的作品',
   `hideOwnChapter` tinyint(1) NOT NULL COMMENT '隐藏自己的章节',
@@ -96,8 +101,6 @@ CREATE TABLE `Authority` (
   `restrictNotice` tinyint(1) NOT NULL COMMENT '将公告设为限制性内容',
   `restrictCategory` tinyint(1) NOT NULL COMMENT '将作品类别设为限制性内容',
   `restrictBoard` tinyint(1) NOT NULL COMMENT '将版块设为限制性内容',
-  `lockCategory` tinyint(1) NOT NULL COMMENT '锁定类别',
-  `lockBoard` tinyint(1) NOT NULL COMMENT '锁定版块',
   `hideCategory` tinyint(1) NOT NULL COMMENT '隐藏类别',
   `hideBoard` tinyint(1) NOT NULL COMMENT '隐藏版块',
   `deleteCategory` tinyint(1) NOT NULL COMMENT '删除类别',
@@ -107,9 +110,9 @@ CREATE TABLE `Authority` (
 
 /*Data for the table `Authority` */
 
-insert  into `Authority`(`id`,`role`,`addNotice`,`addCategory`,`addBoard`,`banAccount`,`banTopic`,`banReply`,`banMessage`,`banFiction`,`banComment`,`deleteOwnTopic`,`deleteOwnReply`,`deleteOwnFiction`,`deleteOwnChapter`,`deleteOwnComment`,`deleteTopic`,`deleteReply`,`deleteFiction`,`deleteChapter`,`deleteComment`,`lockTopic`,`lockFiction`,`lockChapter`,`lockNotice`,`lockContentOfTopic`,`lockContentOfFiction`,`lockContentOfChapter`,`lockCommentOfOwnFiction`,`lockCommentOfOwnChapter`,`lockCommentOfFiction`,`lockCommentOfChapter`,`hideOwnTopic`,`hideOwnFiction`,`hideOwnChapter`,`hideOwnComment`,`hideTopic`,`hideFiction`,`hideChapter`,`hideComment`,`setAnonymousOfOwnTopic`,`setAnonymousOfOwnReply`,`setAnonymousOfOwnComment`,`cancelAnonymousOfOwnTopic`,`cancelAnonymousOfOwnReply`,`cancelAnonymousOfOwnComment`,`cancelAnonymousTopic`,`cancelAnonymousReply`,`cancelAnonymousComment`,`restrictOwnFiction`,`restrictOwnChapter`,`restrictOwnTopic`,`restrictFiction`,`restrictChapter`,`restrictTopic`,`restrictNotice`,`restrictCategory`,`restrictBoard`,`lockCategory`,`lockBoard`,`hideCategory`,`hideBoard`,`deleteCategory`,`deleteBoard`) values 
-(1,'超级管理员',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1),
-(2,'普通用户',0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0);
+insert  into `Authority`(`id`,`role`,`addNotice`,`addCategory`,`addBoard`,`banAccount`,`banTopic`,`banReply`,`banMessage`,`banFiction`,`banComment`,`deleteOwnTopic`,`deleteOwnReply`,`deleteOwnFiction`,`deleteOwnChapter`,`deleteOwnComment`,`deleteTopic`,`deleteReply`,`deleteFiction`,`deleteChapter`,`deleteComment`,`lockTopic`,`lockFiction`,`lockChapter`,`lockNotice`,`lockContentOfTopic`,`lockContentOfFiction`,`lockContentOfChapter`,`lockCommentOfOwnFiction`,`lockCommentOfOwnChapter`,`lockCommentOfFiction`,`lockCommentOfChapter`,`lockTopicOfBoard`,`lockReplyOfBoard`,`lockFictionOfCategory`,`lockChapterOfCategory`,`lockCommentOfCategory`,`hideOwnTopic`,`hideOwnFiction`,`hideOwnChapter`,`hideOwnComment`,`hideTopic`,`hideFiction`,`hideChapter`,`hideComment`,`setAnonymousOfOwnTopic`,`setAnonymousOfOwnReply`,`setAnonymousOfOwnComment`,`cancelAnonymousOfOwnTopic`,`cancelAnonymousOfOwnReply`,`cancelAnonymousOfOwnComment`,`cancelAnonymousTopic`,`cancelAnonymousReply`,`cancelAnonymousComment`,`restrictOwnFiction`,`restrictOwnChapter`,`restrictOwnTopic`,`restrictFiction`,`restrictChapter`,`restrictTopic`,`restrictNotice`,`restrictCategory`,`restrictBoard`,`hideCategory`,`hideBoard`,`deleteCategory`,`deleteBoard`) values 
+(1,'超级管理员',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1),
+(2,'普通用户',0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0);
 
 /*Table structure for table `Board` */
 
@@ -119,10 +122,12 @@ CREATE TABLE `Board` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
   `name` varchar(8) NOT NULL COMMENT '版块名称',
   `description` varchar(255) NOT NULL COMMENT '版块说明',
+  `noticeCount` int(11) NOT NULL DEFAULT '0' COMMENT '公告数量',
   `topicCount` int(11) NOT NULL DEFAULT '0' COMMENT '帖子数量',
   `replyCount` int(11) NOT NULL DEFAULT '0' COMMENT '回复数量',
   `restricted` int(11) NOT NULL DEFAULT '0' COMMENT '限制性等级',
-  `locked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定，如果为true，则该版块不允许发帖',
+  `topicLocked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定帖子，若为true，则本版块不能发帖',
+  `replyLocked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定回复，若为true，则本版块下的所有帖子都不能回复',
   `hided` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否隐藏，如果为true，则隐藏该版块下所有帖子',
   `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除，如果为true，则删除该版块下所有帖子',
   `createTime` datetime(6) NOT NULL COMMENT '创建时间',
@@ -141,8 +146,11 @@ CREATE TABLE `Category` (
   `description` varchar(255) NOT NULL COMMENT '类别说明',
   `fictionCount` int(11) NOT NULL DEFAULT '0' COMMENT '作品数量',
   `chapterCount` int(11) NOT NULL DEFAULT '0' COMMENT '章节数量',
+  `commentCount` int(11) NOT NULL DEFAULT '0' COMMENT '评论数量',
   `restricted` int(11) NOT NULL DEFAULT '0' COMMENT '限制性等级',
-  `locked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定，如果为true，则该类别不允许发布新作品',
+  `fictionLocked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定作品，如果为true，则该类别不允许发布新作品',
+  `chapterLocked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定章节，如果为true，则该类别下不能发布章节',
+  `commentLocked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定评论，如果为true，则该类别下不能发表评论',
   `hided` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否隐藏，如果为true，则隐藏该类别下的所有作品',
   `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除，如果为true，则删除该类别下的所有作品',
   `createTime` datetime NOT NULL COMMENT '创建时间',
@@ -278,6 +286,7 @@ DROP TABLE IF EXISTS `Notice`;
 
 CREATE TABLE `Notice` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
+  `boardId` int(11) NOT NULL COMMENT '外键，板块Id',
   `userId` int(11) NOT NULL COMMENT '外键，作者ID',
   `createTime` datetime(6) NOT NULL COMMENT '发布时间',
   `lastUserId` int(11) NOT NULL COMMENT '最后编辑者ID',
@@ -295,6 +304,8 @@ CREATE TABLE `Notice` (
   PRIMARY KEY (`id`),
   KEY `notice_user_id` (`userId`),
   KEY `notice_lastUser_id` (`lastUserId`),
+  KEY `notice_board_id` (`boardId`),
+  CONSTRAINT `notice_board_id` FOREIGN KEY (`boardId`) REFERENCES `Board` (`id`),
   CONSTRAINT `notice_lastUser_id` FOREIGN KEY (`lastUserId`) REFERENCES `User` (`id`),
   CONSTRAINT `notice_user_id` FOREIGN KEY (`userId`) REFERENCES `User` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -347,6 +358,7 @@ DROP TABLE IF EXISTS `Topic`;
 
 CREATE TABLE `Topic` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
+  `boardId` int(11) NOT NULL COMMENT '外键，板块Id',
   `userId` int(11) NOT NULL COMMENT '外键，作者ID',
   `createTime` datetime(6) NOT NULL COMMENT '发布时间',
   `label` varchar(4) NOT NULL COMMENT '帖子标签',
@@ -361,6 +373,8 @@ CREATE TABLE `Topic` (
   `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除',
   PRIMARY KEY (`id`),
   KEY `topic_user_id` (`userId`),
+  KEY `topic_board_id` (`boardId`),
+  CONSTRAINT `topic_board_id` FOREIGN KEY (`boardId`) REFERENCES `Board` (`id`),
   CONSTRAINT `topic_user_id` FOREIGN KEY (`userId`) REFERENCES `User` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

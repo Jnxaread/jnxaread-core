@@ -425,6 +425,66 @@ public class CategoryExample {
             return (Criteria) this;
         }
 
+        public Criteria andCommentCountIsNull() {
+            addCriterion("commentCount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentCountIsNotNull() {
+            addCriterion("commentCount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentCountEqualTo(Integer value) {
+            addCriterion("commentCount =", value, "commentCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentCountNotEqualTo(Integer value) {
+            addCriterion("commentCount <>", value, "commentCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentCountGreaterThan(Integer value) {
+            addCriterion("commentCount >", value, "commentCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("commentCount >=", value, "commentCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentCountLessThan(Integer value) {
+            addCriterion("commentCount <", value, "commentCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentCountLessThanOrEqualTo(Integer value) {
+            addCriterion("commentCount <=", value, "commentCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentCountIn(List<Integer> values) {
+            addCriterion("commentCount in", values, "commentCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentCountNotIn(List<Integer> values) {
+            addCriterion("commentCount not in", values, "commentCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentCountBetween(Integer value1, Integer value2) {
+            addCriterion("commentCount between", value1, value2, "commentCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("commentCount not between", value1, value2, "commentCount");
+            return (Criteria) this;
+        }
+
         public Criteria andRestrictedIsNull() {
             addCriterion("restricted is null");
             return (Criteria) this;
@@ -485,63 +545,183 @@ public class CategoryExample {
             return (Criteria) this;
         }
 
-        public Criteria andLockedIsNull() {
-            addCriterion("locked is null");
+        public Criteria andFictionLockedIsNull() {
+            addCriterion("fictionLocked is null");
             return (Criteria) this;
         }
 
-        public Criteria andLockedIsNotNull() {
-            addCriterion("locked is not null");
+        public Criteria andFictionLockedIsNotNull() {
+            addCriterion("fictionLocked is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLockedEqualTo(Boolean value) {
-            addCriterion("locked =", value, "locked");
+        public Criteria andFictionLockedEqualTo(Boolean value) {
+            addCriterion("fictionLocked =", value, "fictionLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedNotEqualTo(Boolean value) {
-            addCriterion("locked <>", value, "locked");
+        public Criteria andFictionLockedNotEqualTo(Boolean value) {
+            addCriterion("fictionLocked <>", value, "fictionLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedGreaterThan(Boolean value) {
-            addCriterion("locked >", value, "locked");
+        public Criteria andFictionLockedGreaterThan(Boolean value) {
+            addCriterion("fictionLocked >", value, "fictionLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("locked >=", value, "locked");
+        public Criteria andFictionLockedGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("fictionLocked >=", value, "fictionLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedLessThan(Boolean value) {
-            addCriterion("locked <", value, "locked");
+        public Criteria andFictionLockedLessThan(Boolean value) {
+            addCriterion("fictionLocked <", value, "fictionLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedLessThanOrEqualTo(Boolean value) {
-            addCriterion("locked <=", value, "locked");
+        public Criteria andFictionLockedLessThanOrEqualTo(Boolean value) {
+            addCriterion("fictionLocked <=", value, "fictionLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedIn(List<Boolean> values) {
-            addCriterion("locked in", values, "locked");
+        public Criteria andFictionLockedIn(List<Boolean> values) {
+            addCriterion("fictionLocked in", values, "fictionLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedNotIn(List<Boolean> values) {
-            addCriterion("locked not in", values, "locked");
+        public Criteria andFictionLockedNotIn(List<Boolean> values) {
+            addCriterion("fictionLocked not in", values, "fictionLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedBetween(Boolean value1, Boolean value2) {
-            addCriterion("locked between", value1, value2, "locked");
+        public Criteria andFictionLockedBetween(Boolean value1, Boolean value2) {
+            addCriterion("fictionLocked between", value1, value2, "fictionLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("locked not between", value1, value2, "locked");
+        public Criteria andFictionLockedNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("fictionLocked not between", value1, value2, "fictionLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterLockedIsNull() {
+            addCriterion("chapterLocked is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterLockedIsNotNull() {
+            addCriterion("chapterLocked is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterLockedEqualTo(Boolean value) {
+            addCriterion("chapterLocked =", value, "chapterLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterLockedNotEqualTo(Boolean value) {
+            addCriterion("chapterLocked <>", value, "chapterLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterLockedGreaterThan(Boolean value) {
+            addCriterion("chapterLocked >", value, "chapterLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterLockedGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("chapterLocked >=", value, "chapterLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterLockedLessThan(Boolean value) {
+            addCriterion("chapterLocked <", value, "chapterLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterLockedLessThanOrEqualTo(Boolean value) {
+            addCriterion("chapterLocked <=", value, "chapterLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterLockedIn(List<Boolean> values) {
+            addCriterion("chapterLocked in", values, "chapterLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterLockedNotIn(List<Boolean> values) {
+            addCriterion("chapterLocked not in", values, "chapterLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterLockedBetween(Boolean value1, Boolean value2) {
+            addCriterion("chapterLocked between", value1, value2, "chapterLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterLockedNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("chapterLocked not between", value1, value2, "chapterLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLockedIsNull() {
+            addCriterion("commentLocked is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLockedIsNotNull() {
+            addCriterion("commentLocked is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLockedEqualTo(Boolean value) {
+            addCriterion("commentLocked =", value, "commentLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLockedNotEqualTo(Boolean value) {
+            addCriterion("commentLocked <>", value, "commentLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLockedGreaterThan(Boolean value) {
+            addCriterion("commentLocked >", value, "commentLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLockedGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("commentLocked >=", value, "commentLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLockedLessThan(Boolean value) {
+            addCriterion("commentLocked <", value, "commentLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLockedLessThanOrEqualTo(Boolean value) {
+            addCriterion("commentLocked <=", value, "commentLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLockedIn(List<Boolean> values) {
+            addCriterion("commentLocked in", values, "commentLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLockedNotIn(List<Boolean> values) {
+            addCriterion("commentLocked not in", values, "commentLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLockedBetween(Boolean value1, Boolean value2) {
+            addCriterion("commentLocked between", value1, value2, "commentLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLockedNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("commentLocked not between", value1, value2, "commentLocked");
             return (Criteria) this;
         }
 

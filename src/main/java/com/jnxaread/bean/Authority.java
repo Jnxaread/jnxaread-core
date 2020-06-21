@@ -65,6 +65,16 @@ public class Authority {
 
     private Boolean lockCommentOfChapter;
 
+    private Boolean lockTopicOfBoard;
+
+    private Boolean lockReplyOfBoard;
+
+    private Boolean lockFictionOfCategory;
+
+    private Boolean lockChapterOfCategory;
+
+    private Boolean lockCommentOfCategory;
+
     private Boolean hideOwnTopic;
 
     private Boolean hideOwnFiction;
@@ -116,10 +126,6 @@ public class Authority {
     private Boolean restrictCategory;
 
     private Boolean restrictBoard;
-
-    private Boolean lockCategory;
-
-    private Boolean lockBoard;
 
     private Boolean hideCategory;
 
@@ -385,6 +391,46 @@ public class Authority {
         this.lockCommentOfChapter = lockCommentOfChapter;
     }
 
+    public Boolean getLockTopicOfBoard() {
+        return lockTopicOfBoard;
+    }
+
+    public void setLockTopicOfBoard(Boolean lockTopicOfBoard) {
+        this.lockTopicOfBoard = lockTopicOfBoard;
+    }
+
+    public Boolean getLockReplyOfBoard() {
+        return lockReplyOfBoard;
+    }
+
+    public void setLockReplyOfBoard(Boolean lockReplyOfBoard) {
+        this.lockReplyOfBoard = lockReplyOfBoard;
+    }
+
+    public Boolean getLockFictionOfCategory() {
+        return lockFictionOfCategory;
+    }
+
+    public void setLockFictionOfCategory(Boolean lockFictionOfCategory) {
+        this.lockFictionOfCategory = lockFictionOfCategory;
+    }
+
+    public Boolean getLockChapterOfCategory() {
+        return lockChapterOfCategory;
+    }
+
+    public void setLockChapterOfCategory(Boolean lockChapterOfCategory) {
+        this.lockChapterOfCategory = lockChapterOfCategory;
+    }
+
+    public Boolean getLockCommentOfCategory() {
+        return lockCommentOfCategory;
+    }
+
+    public void setLockCommentOfCategory(Boolean lockCommentOfCategory) {
+        this.lockCommentOfCategory = lockCommentOfCategory;
+    }
+
     public Boolean getHideOwnTopic() {
         return hideOwnTopic;
     }
@@ -591,22 +637,6 @@ public class Authority {
 
     public void setRestrictBoard(Boolean restrictBoard) {
         this.restrictBoard = restrictBoard;
-    }
-
-    public Boolean getLockCategory() {
-        return lockCategory;
-    }
-
-    public void setLockCategory(Boolean lockCategory) {
-        this.lockCategory = lockCategory;
-    }
-
-    public Boolean getLockBoard() {
-        return lockBoard;
-    }
-
-    public void setLockBoard(Boolean lockBoard) {
-        this.lockBoard = lockBoard;
     }
 
     public Boolean getHideCategory() {

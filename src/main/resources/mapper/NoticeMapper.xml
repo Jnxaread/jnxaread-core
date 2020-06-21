@@ -3,6 +3,7 @@
 <mapper namespace="com.jnxaread.dao.NoticeMapper">
   <resultMap id="BaseResultMap" type="com.jnxaread.bean.Notice">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="boardId" jdbcType="INTEGER" property="boardId" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
     <result column="lastUserId" jdbcType="INTEGER" property="lastUserId" />
@@ -79,7 +80,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userId, createTime, lastUserId, lastTime, label, title, position, restricted,
+    id, boardId, userId, createTime, lastUserId, lastTime, label, title, position, restricted,
     viewCount, updateCount, locked, hided, deleted
   </sql>
   <sql id="Blob_Column_List">
@@ -134,17 +135,17 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Notice">
-    insert into notice (id, userId, createTime,
-      lastUserId, lastTime, label,
-      title, position, restricted,
-      viewCount, updateCount, locked,
-      hided, deleted, content
+    insert into notice (id, boardId, userId,
+      createTime, lastUserId, lastTime,
+      label, title, position,
+      restricted, viewCount, updateCount,
+      locked, hided, deleted, content
       )
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
-      #{lastUserId,jdbcType=INTEGER}, #{lastTime,jdbcType=TIMESTAMP}, #{label,jdbcType=VARCHAR},
-      #{title,jdbcType=VARCHAR}, #{position,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER},
-      #{viewCount,jdbcType=INTEGER}, #{updateCount,jdbcType=INTEGER}, #{locked,jdbcType=BIT},
-      #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{boardId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{lastUserId,jdbcType=INTEGER}, #{lastTime,jdbcType=TIMESTAMP},
+      #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{position,jdbcType=INTEGER},
+      #{restricted,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER}, #{updateCount,jdbcType=INTEGER},
+      #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Notice">
@@ -152,6 +153,9 @@
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="boardId != null">
+        boardId,
       </if>
       <if test="userId != null">
         userId,
@@ -199,6 +203,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="boardId != null">
+        #{boardId,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
@@ -256,6 +263,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.boardId != null">
+        boardId = #{record.boardId,jdbcType=INTEGER},
+      </if>
       <if test="record.userId != null">
         userId = #{record.userId,jdbcType=INTEGER},
       </if>
@@ -306,6 +316,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update notice
     set id = #{record.id,jdbcType=INTEGER},
+      boardId = #{record.boardId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
       lastUserId = #{record.lastUserId,jdbcType=INTEGER},
@@ -327,6 +338,7 @@
   <update id="updateByExample" parameterType="map">
     update notice
     set id = #{record.id,jdbcType=INTEGER},
+      boardId = #{record.boardId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
       lastUserId = #{record.lastUserId,jdbcType=INTEGER},
@@ -347,6 +359,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Notice">
     update notice
     <set>
+      <if test="boardId != null">
+        boardId = #{boardId,jdbcType=INTEGER},
+      </if>
       <if test="userId != null">
         userId = #{userId,jdbcType=INTEGER},
       </if>
@@ -394,7 +409,8 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jnxaread.bean.Notice">
     update notice
-    set userId = #{userId,jdbcType=INTEGER},
+    set boardId = #{boardId,jdbcType=INTEGER},
+      userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
       lastUserId = #{lastUserId,jdbcType=INTEGER},
       lastTime = #{lastTime,jdbcType=TIMESTAMP},
@@ -412,7 +428,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Notice">
     update notice
-    set userId = #{userId,jdbcType=INTEGER},
+    set boardId = #{boardId,jdbcType=INTEGER},
+      userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
       lastUserId = #{lastUserId,jdbcType=INTEGER},
       lastTime = #{lastTime,jdbcType=TIMESTAMP},

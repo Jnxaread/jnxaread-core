@@ -165,6 +165,66 @@ public class TopicExample {
             return (Criteria) this;
         }
 
+        public Criteria andBoardIdIsNull() {
+            addCriterion("boardId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIdIsNotNull() {
+            addCriterion("boardId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIdEqualTo(Integer value) {
+            addCriterion("boardId =", value, "boardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIdNotEqualTo(Integer value) {
+            addCriterion("boardId <>", value, "boardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIdGreaterThan(Integer value) {
+            addCriterion("boardId >", value, "boardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("boardId >=", value, "boardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIdLessThan(Integer value) {
+            addCriterion("boardId <", value, "boardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIdLessThanOrEqualTo(Integer value) {
+            addCriterion("boardId <=", value, "boardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIdIn(List<Integer> values) {
+            addCriterion("boardId in", values, "boardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIdNotIn(List<Integer> values) {
+            addCriterion("boardId not in", values, "boardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIdBetween(Integer value1, Integer value2) {
+            addCriterion("boardId between", value1, value2, "boardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoardIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("boardId not between", value1, value2, "boardId");
+            return (Criteria) this;
+        }
+
         public Criteria andUserIdIsNull() {
             addCriterion("userId is null");
             return (Criteria) this;

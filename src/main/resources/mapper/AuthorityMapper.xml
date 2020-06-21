@@ -34,6 +34,11 @@
     <result column="lockCommentOfOwnChapter" jdbcType="BIT" property="lockCommentOfOwnChapter" />
     <result column="lockCommentOfFiction" jdbcType="BIT" property="lockCommentOfFiction" />
     <result column="lockCommentOfChapter" jdbcType="BIT" property="lockCommentOfChapter" />
+    <result column="lockTopicOfBoard" jdbcType="BIT" property="lockTopicOfBoard" />
+    <result column="lockReplyOfBoard" jdbcType="BIT" property="lockReplyOfBoard" />
+    <result column="lockFictionOfCategory" jdbcType="BIT" property="lockFictionOfCategory" />
+    <result column="lockChapterOfCategory" jdbcType="BIT" property="lockChapterOfCategory" />
+    <result column="lockCommentOfCategory" jdbcType="BIT" property="lockCommentOfCategory" />
     <result column="hideOwnTopic" jdbcType="BIT" property="hideOwnTopic" />
     <result column="hideOwnFiction" jdbcType="BIT" property="hideOwnFiction" />
     <result column="hideOwnChapter" jdbcType="BIT" property="hideOwnChapter" />
@@ -60,8 +65,6 @@
     <result column="restrictNotice" jdbcType="BIT" property="restrictNotice" />
     <result column="restrictCategory" jdbcType="BIT" property="restrictCategory" />
     <result column="restrictBoard" jdbcType="BIT" property="restrictBoard" />
-    <result column="lockCategory" jdbcType="BIT" property="lockCategory" />
-    <result column="lockBoard" jdbcType="BIT" property="lockBoard" />
     <result column="hideCategory" jdbcType="BIT" property="hideCategory" />
     <result column="hideBoard" jdbcType="BIT" property="hideBoard" />
     <result column="deleteCategory" jdbcType="BIT" property="deleteCategory" />
@@ -131,13 +134,14 @@
     deleteOwnComment, deleteTopic, deleteReply, deleteFiction, deleteChapter, deleteComment,
     lockTopic, lockFiction, lockChapter, lockNotice, lockContentOfTopic, lockContentOfFiction,
     lockContentOfChapter, lockCommentOfOwnFiction, lockCommentOfOwnChapter, lockCommentOfFiction,
-    lockCommentOfChapter, hideOwnTopic, hideOwnFiction, hideOwnChapter, hideOwnComment,
-    hideTopic, hideFiction, hideChapter, hideComment, setAnonymousOfOwnTopic, setAnonymousOfOwnReply,
-    setAnonymousOfOwnComment, cancelAnonymousOfOwnTopic, cancelAnonymousOfOwnReply, cancelAnonymousOfOwnComment,
-    cancelAnonymousTopic, cancelAnonymousReply, cancelAnonymousComment, restrictOwnFiction,
-    restrictOwnChapter, restrictOwnTopic, restrictFiction, restrictChapter, restrictTopic,
-    restrictNotice, restrictCategory, restrictBoard, lockCategory, lockBoard, hideCategory,
-    hideBoard, deleteCategory, deleteBoard
+    lockCommentOfChapter, lockTopicOfBoard, lockReplyOfBoard, lockFictionOfCategory,
+    lockChapterOfCategory, lockCommentOfCategory, hideOwnTopic, hideOwnFiction, hideOwnChapter,
+    hideOwnComment, hideTopic, hideFiction, hideChapter, hideComment, setAnonymousOfOwnTopic,
+    setAnonymousOfOwnReply, setAnonymousOfOwnComment, cancelAnonymousOfOwnTopic, cancelAnonymousOfOwnReply,
+    cancelAnonymousOfOwnComment, cancelAnonymousTopic, cancelAnonymousReply, cancelAnonymousComment,
+    restrictOwnFiction, restrictOwnChapter, restrictOwnTopic, restrictFiction, restrictChapter,
+    restrictTopic, restrictNotice, restrictCategory, restrictBoard, hideCategory, hideBoard,
+    deleteCategory, deleteBoard
   </sql>
   <select id="selectByExample" parameterType="com.jnxaread.bean.AuthorityExample" resultMap="BaseResultMap">
     select
@@ -181,17 +185,18 @@
       lockNotice, lockContentOfTopic, lockContentOfFiction,
       lockContentOfChapter, lockCommentOfOwnFiction,
       lockCommentOfOwnChapter, lockCommentOfFiction,
-      lockCommentOfChapter, hideOwnTopic, hideOwnFiction,
-      hideOwnChapter, hideOwnComment, hideTopic,
-      hideFiction, hideChapter, hideComment,
-      setAnonymousOfOwnTopic, setAnonymousOfOwnReply,
-      setAnonymousOfOwnComment, cancelAnonymousOfOwnTopic,
-      cancelAnonymousOfOwnReply, cancelAnonymousOfOwnComment,
-      cancelAnonymousTopic, cancelAnonymousReply, cancelAnonymousComment,
-      restrictOwnFiction, restrictOwnChapter, restrictOwnTopic,
-      restrictFiction, restrictChapter, restrictTopic,
-      restrictNotice, restrictCategory, restrictBoard,
-      lockCategory, lockBoard, hideCategory,
+      lockCommentOfChapter, lockTopicOfBoard, lockReplyOfBoard,
+      lockFictionOfCategory, lockChapterOfCategory, lockCommentOfCategory,
+      hideOwnTopic, hideOwnFiction, hideOwnChapter,
+      hideOwnComment, hideTopic, hideFiction,
+      hideChapter, hideComment, setAnonymousOfOwnTopic,
+      setAnonymousOfOwnReply, setAnonymousOfOwnComment,
+      cancelAnonymousOfOwnTopic, cancelAnonymousOfOwnReply,
+      cancelAnonymousOfOwnComment, cancelAnonymousTopic,
+      cancelAnonymousReply, cancelAnonymousComment, restrictOwnFiction,
+      restrictOwnChapter, restrictOwnTopic, restrictFiction,
+      restrictChapter, restrictTopic, restrictNotice,
+      restrictCategory, restrictBoard, hideCategory,
       hideBoard, deleteCategory, deleteBoard
       )
     values (#{id,jdbcType=INTEGER}, #{role,jdbcType=VARCHAR}, #{addNotice,jdbcType=BIT},
@@ -205,17 +210,18 @@
       #{lockNotice,jdbcType=BIT}, #{lockContentOfTopic,jdbcType=BIT}, #{lockContentOfFiction,jdbcType=BIT},
       #{lockContentOfChapter,jdbcType=BIT}, #{lockCommentOfOwnFiction,jdbcType=BIT},
       #{lockCommentOfOwnChapter,jdbcType=BIT}, #{lockCommentOfFiction,jdbcType=BIT},
-      #{lockCommentOfChapter,jdbcType=BIT}, #{hideOwnTopic,jdbcType=BIT}, #{hideOwnFiction,jdbcType=BIT},
-      #{hideOwnChapter,jdbcType=BIT}, #{hideOwnComment,jdbcType=BIT}, #{hideTopic,jdbcType=BIT},
-      #{hideFiction,jdbcType=BIT}, #{hideChapter,jdbcType=BIT}, #{hideComment,jdbcType=BIT},
-      #{setAnonymousOfOwnTopic,jdbcType=BIT}, #{setAnonymousOfOwnReply,jdbcType=BIT},
-      #{setAnonymousOfOwnComment,jdbcType=BIT}, #{cancelAnonymousOfOwnTopic,jdbcType=BIT},
-      #{cancelAnonymousOfOwnReply,jdbcType=BIT}, #{cancelAnonymousOfOwnComment,jdbcType=BIT},
-      #{cancelAnonymousTopic,jdbcType=BIT}, #{cancelAnonymousReply,jdbcType=BIT}, #{cancelAnonymousComment,jdbcType=BIT},
-      #{restrictOwnFiction,jdbcType=BIT}, #{restrictOwnChapter,jdbcType=BIT}, #{restrictOwnTopic,jdbcType=BIT},
-      #{restrictFiction,jdbcType=BIT}, #{restrictChapter,jdbcType=BIT}, #{restrictTopic,jdbcType=BIT},
-      #{restrictNotice,jdbcType=BIT}, #{restrictCategory,jdbcType=BIT}, #{restrictBoard,jdbcType=BIT},
-      #{lockCategory,jdbcType=BIT}, #{lockBoard,jdbcType=BIT}, #{hideCategory,jdbcType=BIT},
+      #{lockCommentOfChapter,jdbcType=BIT}, #{lockTopicOfBoard,jdbcType=BIT}, #{lockReplyOfBoard,jdbcType=BIT},
+      #{lockFictionOfCategory,jdbcType=BIT}, #{lockChapterOfCategory,jdbcType=BIT}, #{lockCommentOfCategory,jdbcType=BIT},
+      #{hideOwnTopic,jdbcType=BIT}, #{hideOwnFiction,jdbcType=BIT}, #{hideOwnChapter,jdbcType=BIT},
+      #{hideOwnComment,jdbcType=BIT}, #{hideTopic,jdbcType=BIT}, #{hideFiction,jdbcType=BIT},
+      #{hideChapter,jdbcType=BIT}, #{hideComment,jdbcType=BIT}, #{setAnonymousOfOwnTopic,jdbcType=BIT},
+      #{setAnonymousOfOwnReply,jdbcType=BIT}, #{setAnonymousOfOwnComment,jdbcType=BIT},
+      #{cancelAnonymousOfOwnTopic,jdbcType=BIT}, #{cancelAnonymousOfOwnReply,jdbcType=BIT},
+      #{cancelAnonymousOfOwnComment,jdbcType=BIT}, #{cancelAnonymousTopic,jdbcType=BIT},
+      #{cancelAnonymousReply,jdbcType=BIT}, #{cancelAnonymousComment,jdbcType=BIT}, #{restrictOwnFiction,jdbcType=BIT},
+      #{restrictOwnChapter,jdbcType=BIT}, #{restrictOwnTopic,jdbcType=BIT}, #{restrictFiction,jdbcType=BIT},
+      #{restrictChapter,jdbcType=BIT}, #{restrictTopic,jdbcType=BIT}, #{restrictNotice,jdbcType=BIT},
+      #{restrictCategory,jdbcType=BIT}, #{restrictBoard,jdbcType=BIT}, #{hideCategory,jdbcType=BIT},
       #{hideBoard,jdbcType=BIT}, #{deleteCategory,jdbcType=BIT}, #{deleteBoard,jdbcType=BIT}
       )
   </insert>
@@ -318,6 +324,21 @@
       <if test="lockCommentOfChapter != null">
         lockCommentOfChapter,
       </if>
+      <if test="lockTopicOfBoard != null">
+        lockTopicOfBoard,
+      </if>
+      <if test="lockReplyOfBoard != null">
+        lockReplyOfBoard,
+      </if>
+      <if test="lockFictionOfCategory != null">
+        lockFictionOfCategory,
+      </if>
+      <if test="lockChapterOfCategory != null">
+        lockChapterOfCategory,
+      </if>
+      <if test="lockCommentOfCategory != null">
+        lockCommentOfCategory,
+      </if>
       <if test="hideOwnTopic != null">
         hideOwnTopic,
       </if>
@@ -395,12 +416,6 @@
       </if>
       <if test="restrictBoard != null">
         restrictBoard,
-      </if>
-      <if test="lockCategory != null">
-        lockCategory,
-      </if>
-      <if test="lockBoard != null">
-        lockBoard,
       </if>
       <if test="hideCategory != null">
         hideCategory,
@@ -512,6 +527,21 @@
       <if test="lockCommentOfChapter != null">
         #{lockCommentOfChapter,jdbcType=BIT},
       </if>
+      <if test="lockTopicOfBoard != null">
+        #{lockTopicOfBoard,jdbcType=BIT},
+      </if>
+      <if test="lockReplyOfBoard != null">
+        #{lockReplyOfBoard,jdbcType=BIT},
+      </if>
+      <if test="lockFictionOfCategory != null">
+        #{lockFictionOfCategory,jdbcType=BIT},
+      </if>
+      <if test="lockChapterOfCategory != null">
+        #{lockChapterOfCategory,jdbcType=BIT},
+      </if>
+      <if test="lockCommentOfCategory != null">
+        #{lockCommentOfCategory,jdbcType=BIT},
+      </if>
       <if test="hideOwnTopic != null">
         #{hideOwnTopic,jdbcType=BIT},
       </if>
@@ -589,12 +619,6 @@
       </if>
       <if test="restrictBoard != null">
         #{restrictBoard,jdbcType=BIT},
-      </if>
-      <if test="lockCategory != null">
-        #{lockCategory,jdbcType=BIT},
-      </if>
-      <if test="lockBoard != null">
-        #{lockBoard,jdbcType=BIT},
       </if>
       <if test="hideCategory != null">
         #{hideCategory,jdbcType=BIT},
@@ -715,6 +739,21 @@
       <if test="record.lockCommentOfChapter != null">
         lockCommentOfChapter = #{record.lockCommentOfChapter,jdbcType=BIT},
       </if>
+      <if test="record.lockTopicOfBoard != null">
+        lockTopicOfBoard = #{record.lockTopicOfBoard,jdbcType=BIT},
+      </if>
+      <if test="record.lockReplyOfBoard != null">
+        lockReplyOfBoard = #{record.lockReplyOfBoard,jdbcType=BIT},
+      </if>
+      <if test="record.lockFictionOfCategory != null">
+        lockFictionOfCategory = #{record.lockFictionOfCategory,jdbcType=BIT},
+      </if>
+      <if test="record.lockChapterOfCategory != null">
+        lockChapterOfCategory = #{record.lockChapterOfCategory,jdbcType=BIT},
+      </if>
+      <if test="record.lockCommentOfCategory != null">
+        lockCommentOfCategory = #{record.lockCommentOfCategory,jdbcType=BIT},
+      </if>
       <if test="record.hideOwnTopic != null">
         hideOwnTopic = #{record.hideOwnTopic,jdbcType=BIT},
       </if>
@@ -793,12 +832,6 @@
       <if test="record.restrictBoard != null">
         restrictBoard = #{record.restrictBoard,jdbcType=BIT},
       </if>
-      <if test="record.lockCategory != null">
-        lockCategory = #{record.lockCategory,jdbcType=BIT},
-      </if>
-      <if test="record.lockBoard != null">
-        lockBoard = #{record.lockBoard,jdbcType=BIT},
-      </if>
       <if test="record.hideCategory != null">
         hideCategory = #{record.hideCategory,jdbcType=BIT},
       </if>
@@ -850,6 +883,11 @@
       lockCommentOfOwnChapter = #{record.lockCommentOfOwnChapter,jdbcType=BIT},
       lockCommentOfFiction = #{record.lockCommentOfFiction,jdbcType=BIT},
       lockCommentOfChapter = #{record.lockCommentOfChapter,jdbcType=BIT},
+      lockTopicOfBoard = #{record.lockTopicOfBoard,jdbcType=BIT},
+      lockReplyOfBoard = #{record.lockReplyOfBoard,jdbcType=BIT},
+      lockFictionOfCategory = #{record.lockFictionOfCategory,jdbcType=BIT},
+      lockChapterOfCategory = #{record.lockChapterOfCategory,jdbcType=BIT},
+      lockCommentOfCategory = #{record.lockCommentOfCategory,jdbcType=BIT},
       hideOwnTopic = #{record.hideOwnTopic,jdbcType=BIT},
       hideOwnFiction = #{record.hideOwnFiction,jdbcType=BIT},
       hideOwnChapter = #{record.hideOwnChapter,jdbcType=BIT},
@@ -876,8 +914,6 @@
       restrictNotice = #{record.restrictNotice,jdbcType=BIT},
       restrictCategory = #{record.restrictCategory,jdbcType=BIT},
       restrictBoard = #{record.restrictBoard,jdbcType=BIT},
-      lockCategory = #{record.lockCategory,jdbcType=BIT},
-      lockBoard = #{record.lockBoard,jdbcType=BIT},
       hideCategory = #{record.hideCategory,jdbcType=BIT},
       hideBoard = #{record.hideBoard,jdbcType=BIT},
       deleteCategory = #{record.deleteCategory,jdbcType=BIT},
@@ -982,6 +1018,21 @@
       <if test="lockCommentOfChapter != null">
         lockCommentOfChapter = #{lockCommentOfChapter,jdbcType=BIT},
       </if>
+      <if test="lockTopicOfBoard != null">
+        lockTopicOfBoard = #{lockTopicOfBoard,jdbcType=BIT},
+      </if>
+      <if test="lockReplyOfBoard != null">
+        lockReplyOfBoard = #{lockReplyOfBoard,jdbcType=BIT},
+      </if>
+      <if test="lockFictionOfCategory != null">
+        lockFictionOfCategory = #{lockFictionOfCategory,jdbcType=BIT},
+      </if>
+      <if test="lockChapterOfCategory != null">
+        lockChapterOfCategory = #{lockChapterOfCategory,jdbcType=BIT},
+      </if>
+      <if test="lockCommentOfCategory != null">
+        lockCommentOfCategory = #{lockCommentOfCategory,jdbcType=BIT},
+      </if>
       <if test="hideOwnTopic != null">
         hideOwnTopic = #{hideOwnTopic,jdbcType=BIT},
       </if>
@@ -1060,12 +1111,6 @@
       <if test="restrictBoard != null">
         restrictBoard = #{restrictBoard,jdbcType=BIT},
       </if>
-      <if test="lockCategory != null">
-        lockCategory = #{lockCategory,jdbcType=BIT},
-      </if>
-      <if test="lockBoard != null">
-        lockBoard = #{lockBoard,jdbcType=BIT},
-      </if>
       <if test="hideCategory != null">
         hideCategory = #{hideCategory,jdbcType=BIT},
       </if>
@@ -1114,6 +1159,11 @@
       lockCommentOfOwnChapter = #{lockCommentOfOwnChapter,jdbcType=BIT},
       lockCommentOfFiction = #{lockCommentOfFiction,jdbcType=BIT},
       lockCommentOfChapter = #{lockCommentOfChapter,jdbcType=BIT},
+      lockTopicOfBoard = #{lockTopicOfBoard,jdbcType=BIT},
+      lockReplyOfBoard = #{lockReplyOfBoard,jdbcType=BIT},
+      lockFictionOfCategory = #{lockFictionOfCategory,jdbcType=BIT},
+      lockChapterOfCategory = #{lockChapterOfCategory,jdbcType=BIT},
+      lockCommentOfCategory = #{lockCommentOfCategory,jdbcType=BIT},
       hideOwnTopic = #{hideOwnTopic,jdbcType=BIT},
       hideOwnFiction = #{hideOwnFiction,jdbcType=BIT},
       hideOwnChapter = #{hideOwnChapter,jdbcType=BIT},
@@ -1140,8 +1190,6 @@
       restrictNotice = #{restrictNotice,jdbcType=BIT},
       restrictCategory = #{restrictCategory,jdbcType=BIT},
       restrictBoard = #{restrictBoard,jdbcType=BIT},
-      lockCategory = #{lockCategory,jdbcType=BIT},
-      lockBoard = #{lockBoard,jdbcType=BIT},
       hideCategory = #{hideCategory,jdbcType=BIT},
       hideBoard = #{hideBoard,jdbcType=BIT},
       deleteCategory = #{deleteCategory,jdbcType=BIT},

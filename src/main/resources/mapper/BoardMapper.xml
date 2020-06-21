@@ -5,10 +5,12 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="noticeCount" jdbcType="INTEGER" property="noticeCount" />
     <result column="topicCount" jdbcType="INTEGER" property="topicCount" />
     <result column="replyCount" jdbcType="INTEGER" property="replyCount" />
     <result column="restricted" jdbcType="INTEGER" property="restricted" />
-    <result column="locked" jdbcType="BIT" property="locked" />
+    <result column="topicLocked" jdbcType="BIT" property="topicLocked" />
+    <result column="replyLocked" jdbcType="BIT" property="replyLocked" />
     <result column="hided" jdbcType="BIT" property="hided" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
@@ -72,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, description, topicCount, replyCount, restricted, locked, hided, deleted,
-    createTime
+    id, name, description, noticeCount, topicCount, replyCount, restricted, topicLocked,
+    replyLocked, hided, deleted, createTime
   </sql>
   <select id="selectByExample" parameterType="com.jnxaread.bean.BoardExample" resultMap="BaseResultMap">
     select
@@ -107,12 +109,14 @@
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Board">
     insert into board (id, name, description,
-      topicCount, replyCount, restricted,
-      locked, hided, deleted, createTime
+      noticeCount, topicCount, replyCount,
+      restricted, topicLocked, replyLocked,
+      hided, deleted, createTime
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
-      #{topicCount,jdbcType=INTEGER}, #{replyCount,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER},
-      #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}
+      #{noticeCount,jdbcType=INTEGER}, #{topicCount,jdbcType=INTEGER}, #{replyCount,jdbcType=INTEGER},
+      #{restricted,jdbcType=INTEGER}, #{topicLocked,jdbcType=BIT}, #{replyLocked,jdbcType=BIT},
+      #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Board">
@@ -127,6 +131,9 @@
       <if test="description != null">
         description,
       </if>
+      <if test="noticeCount != null">
+        noticeCount,
+      </if>
       <if test="topicCount != null">
         topicCount,
       </if>
@@ -136,8 +143,11 @@
       <if test="restricted != null">
         restricted,
       </if>
-      <if test="locked != null">
-        locked,
+      <if test="topicLocked != null">
+        topicLocked,
+      </if>
+      <if test="replyLocked != null">
+        replyLocked,
       </if>
       <if test="hided != null">
         hided,
@@ -159,6 +169,9 @@
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
+      <if test="noticeCount != null">
+        #{noticeCount,jdbcType=INTEGER},
+      </if>
       <if test="topicCount != null">
         #{topicCount,jdbcType=INTEGER},
       </if>
@@ -168,8 +181,11 @@
       <if test="restricted != null">
         #{restricted,jdbcType=INTEGER},
       </if>
-      <if test="locked != null">
-        #{locked,jdbcType=BIT},
+      <if test="topicLocked != null">
+        #{topicLocked,jdbcType=BIT},
+      </if>
+      <if test="replyLocked != null">
+        #{replyLocked,jdbcType=BIT},
       </if>
       <if test="hided != null">
         #{hided,jdbcType=BIT},
@@ -200,6 +216,9 @@
       <if test="record.description != null">
         description = #{record.description,jdbcType=VARCHAR},
       </if>
+      <if test="record.noticeCount != null">
+        noticeCount = #{record.noticeCount,jdbcType=INTEGER},
+      </if>
       <if test="record.topicCount != null">
         topicCount = #{record.topicCount,jdbcType=INTEGER},
       </if>
@@ -209,8 +228,11 @@
       <if test="record.restricted != null">
         restricted = #{record.restricted,jdbcType=INTEGER},
       </if>
-      <if test="record.locked != null">
-        locked = #{record.locked,jdbcType=BIT},
+      <if test="record.topicLocked != null">
+        topicLocked = #{record.topicLocked,jdbcType=BIT},
+      </if>
+      <if test="record.replyLocked != null">
+        replyLocked = #{record.replyLocked,jdbcType=BIT},
       </if>
       <if test="record.hided != null">
         hided = #{record.hided,jdbcType=BIT},
@@ -231,10 +253,12 @@
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
+      noticeCount = #{record.noticeCount,jdbcType=INTEGER},
       topicCount = #{record.topicCount,jdbcType=INTEGER},
       replyCount = #{record.replyCount,jdbcType=INTEGER},
       restricted = #{record.restricted,jdbcType=INTEGER},
-      locked = #{record.locked,jdbcType=BIT},
+      topicLocked = #{record.topicLocked,jdbcType=BIT},
+      replyLocked = #{record.replyLocked,jdbcType=BIT},
       hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT},
       createTime = #{record.createTime,jdbcType=TIMESTAMP}
@@ -251,6 +275,9 @@
       <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
       </if>
+      <if test="noticeCount != null">
+        noticeCount = #{noticeCount,jdbcType=INTEGER},
+      </if>
       <if test="topicCount != null">
         topicCount = #{topicCount,jdbcType=INTEGER},
       </if>
@@ -260,8 +287,11 @@
       <if test="restricted != null">
         restricted = #{restricted,jdbcType=INTEGER},
       </if>
-      <if test="locked != null">
-        locked = #{locked,jdbcType=BIT},
+      <if test="topicLocked != null">
+        topicLocked = #{topicLocked,jdbcType=BIT},
+      </if>
+      <if test="replyLocked != null">
+        replyLocked = #{replyLocked,jdbcType=BIT},
       </if>
       <if test="hided != null">
         hided = #{hided,jdbcType=BIT},
@@ -279,10 +309,12 @@
     update board
     set name = #{name,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
+      noticeCount = #{noticeCount,jdbcType=INTEGER},
       topicCount = #{topicCount,jdbcType=INTEGER},
       replyCount = #{replyCount,jdbcType=INTEGER},
       restricted = #{restricted,jdbcType=INTEGER},
-      locked = #{locked,jdbcType=BIT},
+      topicLocked = #{topicLocked,jdbcType=BIT},
+      replyLocked = #{replyLocked,jdbcType=BIT},
       hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
       createTime = #{createTime,jdbcType=TIMESTAMP}

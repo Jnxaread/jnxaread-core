@@ -3,6 +3,7 @@
 <mapper namespace="com.jnxaread.dao.TopicMapper">
   <resultMap id="BaseResultMap" type="com.jnxaread.bean.Topic">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="boardId" jdbcType="INTEGER" property="boardId" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
     <result column="label" jdbcType="VARCHAR" property="label" />
@@ -77,8 +78,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userId, createTime, label, title, replyCount, viewCount, restricted, anonymous,
-    locked, hided, deleted
+    id, boardId, userId, createTime, label, title, replyCount, viewCount, restricted,
+    anonymous, locked, hided, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -132,22 +133,25 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Topic">
-    insert into topic (id, userId, createTime,
-      label, title, replyCount,
-      viewCount, restricted, anonymous,
-      locked, hided, deleted, content
-      )
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
-      #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{replyCount,jdbcType=INTEGER},
-      #{viewCount,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER}, #{anonymous,jdbcType=BIT},
-      #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
-      )
+    insert into topic (id, boardId, userId,
+      createTime, label, title,
+      replyCount, viewCount, restricted,
+      anonymous, locked, hided, deleted,
+      content)
+    values (#{id,jdbcType=INTEGER}, #{boardId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},
+      #{replyCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER},
+      #{anonymous,jdbcType=BIT}, #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT},
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Topic" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Topic">
     insert into topic
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="boardId != null">
+        boardId,
       </if>
       <if test="userId != null">
         userId,
@@ -189,6 +193,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="boardId != null">
+        #{boardId,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
@@ -240,6 +247,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.boardId != null">
+        boardId = #{record.boardId,jdbcType=INTEGER},
+      </if>
       <if test="record.userId != null">
         userId = #{record.userId,jdbcType=INTEGER},
       </if>
@@ -284,6 +294,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update topic
     set id = #{record.id,jdbcType=INTEGER},
+      boardId = #{record.boardId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
       label = #{record.label,jdbcType=VARCHAR},
@@ -303,6 +314,7 @@
   <update id="updateByExample" parameterType="map">
     update topic
     set id = #{record.id,jdbcType=INTEGER},
+      boardId = #{record.boardId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
       label = #{record.label,jdbcType=VARCHAR},
@@ -321,6 +333,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Topic">
     update topic
     <set>
+      <if test="boardId != null">
+        boardId = #{boardId,jdbcType=INTEGER},
+      </if>
       <if test="userId != null">
         userId = #{userId,jdbcType=INTEGER},
       </if>
@@ -362,7 +377,8 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jnxaread.bean.Topic">
     update topic
-    set userId = #{userId,jdbcType=INTEGER},
+    set boardId = #{boardId,jdbcType=INTEGER},
+      userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
       label = #{label,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
@@ -378,7 +394,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Topic">
     update topic
-    set userId = #{userId,jdbcType=INTEGER},
+    set boardId = #{boardId,jdbcType=INTEGER},
+      userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
       label = #{label,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},

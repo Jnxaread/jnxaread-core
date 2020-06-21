@@ -305,6 +305,66 @@ public class BoardExample {
             return (Criteria) this;
         }
 
+        public Criteria andNoticeCountIsNull() {
+            addCriterion("noticeCount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCountIsNotNull() {
+            addCriterion("noticeCount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCountEqualTo(Integer value) {
+            addCriterion("noticeCount =", value, "noticeCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCountNotEqualTo(Integer value) {
+            addCriterion("noticeCount <>", value, "noticeCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCountGreaterThan(Integer value) {
+            addCriterion("noticeCount >", value, "noticeCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("noticeCount >=", value, "noticeCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCountLessThan(Integer value) {
+            addCriterion("noticeCount <", value, "noticeCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCountLessThanOrEqualTo(Integer value) {
+            addCriterion("noticeCount <=", value, "noticeCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCountIn(List<Integer> values) {
+            addCriterion("noticeCount in", values, "noticeCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCountNotIn(List<Integer> values) {
+            addCriterion("noticeCount not in", values, "noticeCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCountBetween(Integer value1, Integer value2) {
+            addCriterion("noticeCount between", value1, value2, "noticeCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("noticeCount not between", value1, value2, "noticeCount");
+            return (Criteria) this;
+        }
+
         public Criteria andTopicCountIsNull() {
             addCriterion("topicCount is null");
             return (Criteria) this;
@@ -485,63 +545,123 @@ public class BoardExample {
             return (Criteria) this;
         }
 
-        public Criteria andLockedIsNull() {
-            addCriterion("locked is null");
+        public Criteria andTopicLockedIsNull() {
+            addCriterion("topicLocked is null");
             return (Criteria) this;
         }
 
-        public Criteria andLockedIsNotNull() {
-            addCriterion("locked is not null");
+        public Criteria andTopicLockedIsNotNull() {
+            addCriterion("topicLocked is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLockedEqualTo(Boolean value) {
-            addCriterion("locked =", value, "locked");
+        public Criteria andTopicLockedEqualTo(Boolean value) {
+            addCriterion("topicLocked =", value, "topicLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedNotEqualTo(Boolean value) {
-            addCriterion("locked <>", value, "locked");
+        public Criteria andTopicLockedNotEqualTo(Boolean value) {
+            addCriterion("topicLocked <>", value, "topicLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedGreaterThan(Boolean value) {
-            addCriterion("locked >", value, "locked");
+        public Criteria andTopicLockedGreaterThan(Boolean value) {
+            addCriterion("topicLocked >", value, "topicLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("locked >=", value, "locked");
+        public Criteria andTopicLockedGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("topicLocked >=", value, "topicLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedLessThan(Boolean value) {
-            addCriterion("locked <", value, "locked");
+        public Criteria andTopicLockedLessThan(Boolean value) {
+            addCriterion("topicLocked <", value, "topicLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedLessThanOrEqualTo(Boolean value) {
-            addCriterion("locked <=", value, "locked");
+        public Criteria andTopicLockedLessThanOrEqualTo(Boolean value) {
+            addCriterion("topicLocked <=", value, "topicLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedIn(List<Boolean> values) {
-            addCriterion("locked in", values, "locked");
+        public Criteria andTopicLockedIn(List<Boolean> values) {
+            addCriterion("topicLocked in", values, "topicLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedNotIn(List<Boolean> values) {
-            addCriterion("locked not in", values, "locked");
+        public Criteria andTopicLockedNotIn(List<Boolean> values) {
+            addCriterion("topicLocked not in", values, "topicLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedBetween(Boolean value1, Boolean value2) {
-            addCriterion("locked between", value1, value2, "locked");
+        public Criteria andTopicLockedBetween(Boolean value1, Boolean value2) {
+            addCriterion("topicLocked between", value1, value2, "topicLocked");
             return (Criteria) this;
         }
 
-        public Criteria andLockedNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("locked not between", value1, value2, "locked");
+        public Criteria andTopicLockedNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("topicLocked not between", value1, value2, "topicLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLockedIsNull() {
+            addCriterion("replyLocked is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLockedIsNotNull() {
+            addCriterion("replyLocked is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLockedEqualTo(Boolean value) {
+            addCriterion("replyLocked =", value, "replyLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLockedNotEqualTo(Boolean value) {
+            addCriterion("replyLocked <>", value, "replyLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLockedGreaterThan(Boolean value) {
+            addCriterion("replyLocked >", value, "replyLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLockedGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("replyLocked >=", value, "replyLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLockedLessThan(Boolean value) {
+            addCriterion("replyLocked <", value, "replyLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLockedLessThanOrEqualTo(Boolean value) {
+            addCriterion("replyLocked <=", value, "replyLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLockedIn(List<Boolean> values) {
+            addCriterion("replyLocked in", values, "replyLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLockedNotIn(List<Boolean> values) {
+            addCriterion("replyLocked not in", values, "replyLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLockedBetween(Boolean value1, Boolean value2) {
+            addCriterion("replyLocked between", value1, value2, "replyLocked");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLockedNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("replyLocked not between", value1, value2, "replyLocked");
             return (Criteria) this;
         }
 

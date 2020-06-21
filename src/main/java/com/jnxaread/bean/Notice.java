@@ -5,6 +5,8 @@ import java.util.Date;
 public class Notice {
     private Integer id;
 
+    private Integer boardId;
+
     private Integer userId;
 
     private Date createTime;
@@ -39,6 +41,14 @@ public class Notice {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getBoardId() {
+        return boardId;
+    }
+
+    public void setBoardId(Integer boardId) {
+        this.boardId = boardId;
     }
 
     public Integer getUserId() {

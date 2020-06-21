@@ -55,6 +55,9 @@
         <table tableName="Authority" domainObjectName="Authority">
             <property name="useActualColumnNames" value="true"/>
         </table>
+        <table tableName="Board" domainObjectName="Board">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
         <table tableName="Category" domainObjectName="Category">
             <property name="useActualColumnNames" value="true"/>
         </table>-->

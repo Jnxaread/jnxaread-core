@@ -9,13 +9,17 @@ public class Board {
 
     private String description;
 
+    private Integer noticeCount;
+
     private Integer topicCount;
 
     private Integer replyCount;
 
     private Integer restricted;
 
-    private Boolean locked;
+    private Boolean topicLocked;
+
+    private Boolean replyLocked;
 
     private Boolean hided;
 
@@ -47,6 +51,14 @@ public class Board {
         this.description = description == null ? null : description.trim();
     }
 
+    public Integer getNoticeCount() {
+        return noticeCount;
+    }
+
+    public void setNoticeCount(Integer noticeCount) {
+        this.noticeCount = noticeCount;
+    }
+
     public Integer getTopicCount() {
         return topicCount;
     }
@@ -71,12 +83,20 @@ public class Board {
         this.restricted = restricted;
     }
 
-    public Boolean getLocked() {
-        return locked;
+    public Boolean getTopicLocked() {
+        return topicLocked;
     }
 
-    public void setLocked(Boolean locked) {
-        this.locked = locked;
+    public void setTopicLocked(Boolean topicLocked) {
+        this.topicLocked = topicLocked;
+    }
+
+    public Boolean getReplyLocked() {
+        return replyLocked;
+    }
+
+    public void setReplyLocked(Boolean replyLocked) {
+        this.replyLocked = replyLocked;
     }
 
     public Boolean getHided() {

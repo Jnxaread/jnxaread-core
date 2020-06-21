@@ -2034,6 +2034,306 @@ public class AuthorityExample {
             return (Criteria) this;
         }
 
+        public Criteria andLockTopicOfBoardIsNull() {
+            addCriterion("lockTopicOfBoard is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockTopicOfBoardIsNotNull() {
+            addCriterion("lockTopicOfBoard is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockTopicOfBoardEqualTo(Boolean value) {
+            addCriterion("lockTopicOfBoard =", value, "lockTopicOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockTopicOfBoardNotEqualTo(Boolean value) {
+            addCriterion("lockTopicOfBoard <>", value, "lockTopicOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockTopicOfBoardGreaterThan(Boolean value) {
+            addCriterion("lockTopicOfBoard >", value, "lockTopicOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockTopicOfBoardGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("lockTopicOfBoard >=", value, "lockTopicOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockTopicOfBoardLessThan(Boolean value) {
+            addCriterion("lockTopicOfBoard <", value, "lockTopicOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockTopicOfBoardLessThanOrEqualTo(Boolean value) {
+            addCriterion("lockTopicOfBoard <=", value, "lockTopicOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockTopicOfBoardIn(List<Boolean> values) {
+            addCriterion("lockTopicOfBoard in", values, "lockTopicOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockTopicOfBoardNotIn(List<Boolean> values) {
+            addCriterion("lockTopicOfBoard not in", values, "lockTopicOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockTopicOfBoardBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockTopicOfBoard between", value1, value2, "lockTopicOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockTopicOfBoardNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockTopicOfBoard not between", value1, value2, "lockTopicOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockReplyOfBoardIsNull() {
+            addCriterion("lockReplyOfBoard is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockReplyOfBoardIsNotNull() {
+            addCriterion("lockReplyOfBoard is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockReplyOfBoardEqualTo(Boolean value) {
+            addCriterion("lockReplyOfBoard =", value, "lockReplyOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockReplyOfBoardNotEqualTo(Boolean value) {
+            addCriterion("lockReplyOfBoard <>", value, "lockReplyOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockReplyOfBoardGreaterThan(Boolean value) {
+            addCriterion("lockReplyOfBoard >", value, "lockReplyOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockReplyOfBoardGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("lockReplyOfBoard >=", value, "lockReplyOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockReplyOfBoardLessThan(Boolean value) {
+            addCriterion("lockReplyOfBoard <", value, "lockReplyOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockReplyOfBoardLessThanOrEqualTo(Boolean value) {
+            addCriterion("lockReplyOfBoard <=", value, "lockReplyOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockReplyOfBoardIn(List<Boolean> values) {
+            addCriterion("lockReplyOfBoard in", values, "lockReplyOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockReplyOfBoardNotIn(List<Boolean> values) {
+            addCriterion("lockReplyOfBoard not in", values, "lockReplyOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockReplyOfBoardBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockReplyOfBoard between", value1, value2, "lockReplyOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockReplyOfBoardNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockReplyOfBoard not between", value1, value2, "lockReplyOfBoard");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockFictionOfCategoryIsNull() {
+            addCriterion("lockFictionOfCategory is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockFictionOfCategoryIsNotNull() {
+            addCriterion("lockFictionOfCategory is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockFictionOfCategoryEqualTo(Boolean value) {
+            addCriterion("lockFictionOfCategory =", value, "lockFictionOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockFictionOfCategoryNotEqualTo(Boolean value) {
+            addCriterion("lockFictionOfCategory <>", value, "lockFictionOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockFictionOfCategoryGreaterThan(Boolean value) {
+            addCriterion("lockFictionOfCategory >", value, "lockFictionOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockFictionOfCategoryGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("lockFictionOfCategory >=", value, "lockFictionOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockFictionOfCategoryLessThan(Boolean value) {
+            addCriterion("lockFictionOfCategory <", value, "lockFictionOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockFictionOfCategoryLessThanOrEqualTo(Boolean value) {
+            addCriterion("lockFictionOfCategory <=", value, "lockFictionOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockFictionOfCategoryIn(List<Boolean> values) {
+            addCriterion("lockFictionOfCategory in", values, "lockFictionOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockFictionOfCategoryNotIn(List<Boolean> values) {
+            addCriterion("lockFictionOfCategory not in", values, "lockFictionOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockFictionOfCategoryBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockFictionOfCategory between", value1, value2, "lockFictionOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockFictionOfCategoryNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockFictionOfCategory not between", value1, value2, "lockFictionOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockChapterOfCategoryIsNull() {
+            addCriterion("lockChapterOfCategory is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockChapterOfCategoryIsNotNull() {
+            addCriterion("lockChapterOfCategory is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockChapterOfCategoryEqualTo(Boolean value) {
+            addCriterion("lockChapterOfCategory =", value, "lockChapterOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockChapterOfCategoryNotEqualTo(Boolean value) {
+            addCriterion("lockChapterOfCategory <>", value, "lockChapterOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockChapterOfCategoryGreaterThan(Boolean value) {
+            addCriterion("lockChapterOfCategory >", value, "lockChapterOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockChapterOfCategoryGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("lockChapterOfCategory >=", value, "lockChapterOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockChapterOfCategoryLessThan(Boolean value) {
+            addCriterion("lockChapterOfCategory <", value, "lockChapterOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockChapterOfCategoryLessThanOrEqualTo(Boolean value) {
+            addCriterion("lockChapterOfCategory <=", value, "lockChapterOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockChapterOfCategoryIn(List<Boolean> values) {
+            addCriterion("lockChapterOfCategory in", values, "lockChapterOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockChapterOfCategoryNotIn(List<Boolean> values) {
+            addCriterion("lockChapterOfCategory not in", values, "lockChapterOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockChapterOfCategoryBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockChapterOfCategory between", value1, value2, "lockChapterOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockChapterOfCategoryNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockChapterOfCategory not between", value1, value2, "lockChapterOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCommentOfCategoryIsNull() {
+            addCriterion("lockCommentOfCategory is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCommentOfCategoryIsNotNull() {
+            addCriterion("lockCommentOfCategory is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCommentOfCategoryEqualTo(Boolean value) {
+            addCriterion("lockCommentOfCategory =", value, "lockCommentOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCommentOfCategoryNotEqualTo(Boolean value) {
+            addCriterion("lockCommentOfCategory <>", value, "lockCommentOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCommentOfCategoryGreaterThan(Boolean value) {
+            addCriterion("lockCommentOfCategory >", value, "lockCommentOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCommentOfCategoryGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("lockCommentOfCategory >=", value, "lockCommentOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCommentOfCategoryLessThan(Boolean value) {
+            addCriterion("lockCommentOfCategory <", value, "lockCommentOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCommentOfCategoryLessThanOrEqualTo(Boolean value) {
+            addCriterion("lockCommentOfCategory <=", value, "lockCommentOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCommentOfCategoryIn(List<Boolean> values) {
+            addCriterion("lockCommentOfCategory in", values, "lockCommentOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCommentOfCategoryNotIn(List<Boolean> values) {
+            addCriterion("lockCommentOfCategory not in", values, "lockCommentOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCommentOfCategoryBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockCommentOfCategory between", value1, value2, "lockCommentOfCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockCommentOfCategoryNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("lockCommentOfCategory not between", value1, value2, "lockCommentOfCategory");
+            return (Criteria) this;
+        }
+
         public Criteria andHideOwnTopicIsNull() {
             addCriterion("hideOwnTopic is null");
             return (Criteria) this;
@@ -3591,126 +3891,6 @@ public class AuthorityExample {
 
         public Criteria andRestrictBoardNotBetween(Boolean value1, Boolean value2) {
             addCriterion("restrictBoard not between", value1, value2, "restrictBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockCategoryIsNull() {
-            addCriterion("lockCategory is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockCategoryIsNotNull() {
-            addCriterion("lockCategory is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockCategoryEqualTo(Boolean value) {
-            addCriterion("lockCategory =", value, "lockCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockCategoryNotEqualTo(Boolean value) {
-            addCriterion("lockCategory <>", value, "lockCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockCategoryGreaterThan(Boolean value) {
-            addCriterion("lockCategory >", value, "lockCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockCategoryGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("lockCategory >=", value, "lockCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockCategoryLessThan(Boolean value) {
-            addCriterion("lockCategory <", value, "lockCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockCategoryLessThanOrEqualTo(Boolean value) {
-            addCriterion("lockCategory <=", value, "lockCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockCategoryIn(List<Boolean> values) {
-            addCriterion("lockCategory in", values, "lockCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockCategoryNotIn(List<Boolean> values) {
-            addCriterion("lockCategory not in", values, "lockCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockCategoryBetween(Boolean value1, Boolean value2) {
-            addCriterion("lockCategory between", value1, value2, "lockCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockCategoryNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("lockCategory not between", value1, value2, "lockCategory");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockBoardIsNull() {
-            addCriterion("lockBoard is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockBoardIsNotNull() {
-            addCriterion("lockBoard is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockBoardEqualTo(Boolean value) {
-            addCriterion("lockBoard =", value, "lockBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockBoardNotEqualTo(Boolean value) {
-            addCriterion("lockBoard <>", value, "lockBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockBoardGreaterThan(Boolean value) {
-            addCriterion("lockBoard >", value, "lockBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockBoardGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("lockBoard >=", value, "lockBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockBoardLessThan(Boolean value) {
-            addCriterion("lockBoard <", value, "lockBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockBoardLessThanOrEqualTo(Boolean value) {
-            addCriterion("lockBoard <=", value, "lockBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockBoardIn(List<Boolean> values) {
-            addCriterion("lockBoard in", values, "lockBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockBoardNotIn(List<Boolean> values) {
-            addCriterion("lockBoard not in", values, "lockBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockBoardBetween(Boolean value1, Boolean value2) {
-            addCriterion("lockBoard between", value1, value2, "lockBoard");
-            return (Criteria) this;
-        }
-
-        public Criteria andLockBoardNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("lockBoard not between", value1, value2, "lockBoard");
             return (Criteria) this;
         }
 
