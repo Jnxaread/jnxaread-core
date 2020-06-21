@@ -60,9 +60,9 @@ public interface BaseLibraryService {
 
     List<CommentWrap> getCommentWrapListByUserId(int userId, int level);
 
-    List<Chapter> getChapterList(int fictionId, int userId,int level);
+    List<Chapter> getChapterList(int fictionId, int userId, int level);
 
-    List<FictionWrap> getFictionWrapList(int userId, int level, int page);
+    List<FictionWrap> getFictionWrapList(int userId, int level, int page, int pageSize);
 
     List<FictionWrap> getOwnFictionWrapList(int userId, int page);
 
@@ -74,8 +74,8 @@ public interface BaseLibraryService {
 
     void updateChapter(Chapter updatedChapter);
 
-    int hideChapter(int id,int userId,boolean hide);
+    int hideChapter(int id, int userId, boolean hide);
 
-    int deleteChapter(int id,int userId);
+    int deleteChapter(int id, int userId);
 
 }

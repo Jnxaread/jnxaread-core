@@ -383,7 +383,7 @@
     <if test="userId!=0">
       AND fmc.userId=#{userId}
     </if>
-    ORDER BY lastTime DESC LIMIT #{startRow},30;
+    ORDER BY lastTime DESC LIMIT #{startRow},#{pageSize};
   </select>
   <select id="findOwnListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
     SELECT fmc.id,fmc.title,fmc.introduction,fmc.chapterCount,fmc.wordCount,fmc.commentCount,fmc.viewCount,ch.number lastNumber,ch.title lastChapter,ch.createTime lastTime FROM

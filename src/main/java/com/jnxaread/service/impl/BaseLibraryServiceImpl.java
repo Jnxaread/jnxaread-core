@@ -184,9 +184,9 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     }
 
     @Override
-    public List<FictionWrap> getFictionWrapList(int userId, int level, int page) {
-        int startRow = (page - 1) * 30;
-        List<FictionWrap> fictionWrapList = fictionMapper.findListWithUsername(userId, level, startRow);
+    public List<FictionWrap> getFictionWrapList(int userId, int level, int page, int pageSize) {
+        int startRow = (page - 1) * pageSize;
+        List<FictionWrap> fictionWrapList = fictionMapper.findListWithUsername(userId, level, startRow, pageSize);
         //遍历fictionWrapList，给每一个fictionWrap设置tags
         fictionWrapList.forEach(fictionWrap -> {
             List<Label> labelList = getLabelByFictionId(fictionWrap.getId());
