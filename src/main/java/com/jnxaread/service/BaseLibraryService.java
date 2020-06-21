@@ -1,9 +1,6 @@
 package com.jnxaread.service;
 
-import com.jnxaread.bean.Chapter;
-import com.jnxaread.bean.Comment;
-import com.jnxaread.bean.Fiction;
-import com.jnxaread.bean.Label;
+import com.jnxaread.bean.*;
 import com.jnxaread.bean.wrap.ChapterWrap;
 import com.jnxaread.bean.wrap.CommentWrap;
 import com.jnxaread.bean.wrap.FictionWrap;
@@ -68,6 +65,8 @@ public interface BaseLibraryService {
     List<FictionWrap> getFictionWrapList(int userId, int level, int page);
 
     List<FictionWrap> getOwnFictionWrapList(int userId, int page);
+
+    List<Category> getCategoryList();
 
     long getFictionCountByUserId(int userId);
 

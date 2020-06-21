@@ -33,6 +33,9 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     private LabelMapper labelMapper;
 
     @Autowired(required = false)
+    private CategoryMapper categoryMapper;
+
+    @Autowired(required = false)
     private UserMapper userMapper;
 
     @Autowired
@@ -208,6 +211,13 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
             fictionWrap.setTags(tags);
         });
         return fictionWrapList;
+    }
+
+    @Override
+    public List<Category> getCategoryList() {
+        CategoryExample example = new CategoryExample();
+        List<Category> categoryList = categoryMapper.selectByExample(example);
+        return categoryList;
     }
 
     @Override
