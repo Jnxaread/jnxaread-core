@@ -144,7 +144,7 @@
       #{anonymous,jdbcType=BIT}, #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT},
       #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Topic">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Topic" useGeneratedKeys="true" keyProperty="id">
     insert into topic
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -424,7 +424,7 @@
     (SELECT lastSubmit,user.username lastReply,reply.topicId rti FROM
     (SELECT MAX(reply.createTime) lastSubmit FROM reply GROUP BY reply.topicId) ma,reply,user
     WHERE lastSubmit=reply.createTime AND reply.userId=user.id) b
-    ON a.id=b.rti ORDER BY lastSubmit DESC limit #{startRow},45
+    ON a.id=b.rti ORDER BY lastSubmit DESC limit #{startRow},#{pageSize}
   </select>
   <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.TopicWrap">
     SELECT topic.id,topic.createTime,topic.label,topic.title,topic.content,topic.replyCount,topic.viewCount,user.username

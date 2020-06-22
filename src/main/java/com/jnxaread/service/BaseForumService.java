@@ -62,7 +62,7 @@ public interface BaseForumService {
      * @param page
      * @return
      */
-    List<TopicWrap> getTopicWrapList(int userId, int level, int page);
+    List<TopicWrap> getTopicWrapList(int userId, int level, int page, int pageSize);
 
     /**
      * 根据用户ID获取回复包装类型列表

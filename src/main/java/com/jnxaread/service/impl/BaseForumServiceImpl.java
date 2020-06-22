@@ -110,9 +110,9 @@ public class BaseForumServiceImpl implements BaseForumService {
     }
 
     @Override
-    public List<TopicWrap> getTopicWrapList(int userId, int level, int page) {
-        int startRow = (page - 1) * 45;
-        List<TopicWrap> topicWrapList = topicMapper.findListWithUsername(userId, level, startRow);
+    public List<TopicWrap> getTopicWrapList(int userId, int level, int page, int pageSize) {
+        int startRow = (page - 1) * pageSize;
+        List<TopicWrap> topicWrapList = topicMapper.findListWithUsername(userId, level, startRow, pageSize);
         return topicWrapList;
     }
 

@@ -148,7 +148,7 @@
       #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Notice">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Notice" useGeneratedKeys="true" keyProperty="id">
     insert into notice
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
