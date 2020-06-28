@@ -44,6 +44,8 @@ public interface BaseLibraryService {
      */
     int addComment(Comment newComment);
 
+    int addCategory(Category category);
+
     Fiction getFiction(int id);
 
     FictionWrap getFictionWrap(int id);

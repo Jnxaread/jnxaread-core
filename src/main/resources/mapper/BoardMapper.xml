@@ -119,7 +119,7 @@
       #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Board">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Board" useGeneratedKeys="true" keyProperty="id">
     insert into board
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

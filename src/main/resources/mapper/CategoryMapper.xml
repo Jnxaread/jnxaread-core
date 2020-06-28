@@ -120,7 +120,7 @@
       #{commentLocked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT},
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Category">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Category" useGeneratedKeys="true" keyProperty="id">
     insert into category
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

@@ -24,7 +24,8 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        if (user == null) {
+        User admin = (User) session.getAttribute("admin");
+        if (user == null && admin == null) {
             ResponseUtil.response(response, UnifiedResult.build(400, "您还未登录，请登录", null));
             return false;
         }

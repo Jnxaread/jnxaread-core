@@ -55,13 +55,6 @@ public class BaseUserServiceImpl implements BaseUserService {
         return user;
     }
 
-    @Override
-    public List<User> getUserList() {
-        UserExample example = new UserExample();
-        List<User> userList = userMapper.selectByExample(example);
-        return userList;
-    }
-
     /**
      * 根据账号获取用户
      *
