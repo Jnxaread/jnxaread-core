@@ -1,5 +1,6 @@
 package com.jnxaread.service;
 
+import com.jnxaread.bean.Board;
 import com.jnxaread.bean.Reply;
 import com.jnxaread.bean.Topic;
 import com.jnxaread.bean.wrap.ReplyWrap;
@@ -45,6 +46,13 @@ public interface BaseForumService {
      * @return
      */
     List<ReplyWrap> getReplyWrapList(int topicId, int page);
+
+    /**
+     * 获取版块列表
+     *
+     * @return
+     */
+    List<Board> getBoardList();
 
     /**
      * 根据帖子Id获取回复数量

@@ -101,12 +101,6 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     }
 
     @Override
-    public int addCategory(Category category) {
-        categoryMapper.insertSelective(category);
-        return category.getId();
-    }
-
-    @Override
     public Fiction getFiction(int id) {
         Fiction fiction = fictionMapper.selectByPrimaryKey(id);
         return fiction;

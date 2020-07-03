@@ -1,11 +1,9 @@
 package com.jnxaread.service.impl;
 
-import com.jnxaread.bean.Reply;
-import com.jnxaread.bean.ReplyExample;
-import com.jnxaread.bean.Topic;
-import com.jnxaread.bean.TopicExample;
+import com.jnxaread.bean.*;
 import com.jnxaread.bean.wrap.ReplyWrap;
 import com.jnxaread.bean.wrap.TopicWrap;
+import com.jnxaread.dao.BoardMapper;
 import com.jnxaread.dao.ReplyMapper;
 import com.jnxaread.dao.TopicMapper;
 import com.jnxaread.dao.UserMapper;
@@ -31,6 +29,9 @@ public class BaseForumServiceImpl implements BaseForumService {
 
     @Autowired(required = false)
     private UserMapper userMapper;
+
+    @Autowired(required = false)
+    private BoardMapper boardMapper;
 
     @Autowired
     private UserGrade userGrade;
@@ -98,6 +99,13 @@ public class BaseForumServiceImpl implements BaseForumService {
             }
         }
         return replyWrapList;
+    }
+
+    @Override
+    public List<Board> getBoardList() {
+        BoardExample example = new BoardExample();
+        List<Board> boardList = boardMapper.selectByExample(example);
+        return boardList;
     }
 
     @Override
