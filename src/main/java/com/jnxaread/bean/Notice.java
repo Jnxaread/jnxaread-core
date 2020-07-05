@@ -23,6 +23,8 @@ public class Notice {
 
     private Integer restricted;
 
+    private String password;
+
     private Integer viewCount;
 
     private Integer updateCount;
@@ -113,6 +115,14 @@ public class Notice {
 
     public void setRestricted(Integer restricted) {
         this.restricted = restricted;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     public Integer getViewCount() {

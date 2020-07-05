@@ -12,6 +12,7 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="position" jdbcType="INTEGER" property="position" />
     <result column="restricted" jdbcType="INTEGER" property="restricted" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="viewCount" jdbcType="INTEGER" property="viewCount" />
     <result column="updateCount" jdbcType="INTEGER" property="updateCount" />
     <result column="locked" jdbcType="BIT" property="locked" />
@@ -81,7 +82,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, boardId, userId, createTime, lastUserId, lastTime, label, title, position, restricted,
-    viewCount, updateCount, locked, hided, deleted
+    password, viewCount, updateCount, locked, hided, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -138,15 +139,15 @@
     insert into notice (id, boardId, userId,
       createTime, lastUserId, lastTime,
       label, title, position,
-      restricted, viewCount, updateCount,
-      locked, hided, deleted, content
-      )
+      restricted, password, viewCount,
+      updateCount, locked, hided,
+      deleted, content)
     values (#{id,jdbcType=INTEGER}, #{boardId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
       #{createTime,jdbcType=TIMESTAMP}, #{lastUserId,jdbcType=INTEGER}, #{lastTime,jdbcType=TIMESTAMP},
       #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{position,jdbcType=INTEGER},
-      #{restricted,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER}, #{updateCount,jdbcType=INTEGER},
-      #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
-      )
+      #{restricted,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{viewCount,jdbcType=INTEGER},
+      #{updateCount,jdbcType=INTEGER}, #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT},
+      #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Notice" useGeneratedKeys="true" keyProperty="id">
     insert into notice
@@ -180,6 +181,9 @@
       </if>
       <if test="restricted != null">
         restricted,
+      </if>
+      <if test="password != null">
+        password,
       </if>
       <if test="viewCount != null">
         viewCount,
@@ -230,6 +234,9 @@
       </if>
       <if test="restricted != null">
         #{restricted,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
       </if>
       <if test="viewCount != null">
         #{viewCount,jdbcType=INTEGER},
@@ -290,6 +297,9 @@
       <if test="record.restricted != null">
         restricted = #{record.restricted,jdbcType=INTEGER},
       </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
       <if test="record.viewCount != null">
         viewCount = #{record.viewCount,jdbcType=INTEGER},
       </if>
@@ -325,6 +335,7 @@
       title = #{record.title,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=INTEGER},
       restricted = #{record.restricted,jdbcType=INTEGER},
+      password = #{record.password,jdbcType=VARCHAR},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
       updateCount = #{record.updateCount,jdbcType=INTEGER},
       locked = #{record.locked,jdbcType=BIT},
@@ -347,6 +358,7 @@
       title = #{record.title,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=INTEGER},
       restricted = #{record.restricted,jdbcType=INTEGER},
+      password = #{record.password,jdbcType=VARCHAR},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
       updateCount = #{record.updateCount,jdbcType=INTEGER},
       locked = #{record.locked,jdbcType=BIT},
@@ -386,6 +398,9 @@
       <if test="restricted != null">
         restricted = #{restricted,jdbcType=INTEGER},
       </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
       <if test="viewCount != null">
         viewCount = #{viewCount,jdbcType=INTEGER},
       </if>
@@ -418,6 +433,7 @@
       title = #{title,jdbcType=VARCHAR},
       position = #{position,jdbcType=INTEGER},
       restricted = #{restricted,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
       viewCount = #{viewCount,jdbcType=INTEGER},
       updateCount = #{updateCount,jdbcType=INTEGER},
       locked = #{locked,jdbcType=BIT},
@@ -437,6 +453,7 @@
       title = #{title,jdbcType=VARCHAR},
       position = #{position,jdbcType=INTEGER},
       restricted = #{restricted,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
       viewCount = #{viewCount,jdbcType=INTEGER},
       updateCount = #{updateCount,jdbcType=INTEGER},
       locked = #{locked,jdbcType=BIT},

@@ -8,6 +8,7 @@
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
     <result column="number" jdbcType="INTEGER" property="number" />
     <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="wordCount" jdbcType="INTEGER" property="wordCount" />
     <result column="commentCount" jdbcType="INTEGER" property="commentCount" />
     <result column="viewCount" jdbcType="INTEGER" property="viewCount" />
@@ -79,8 +80,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, fictionId, userId, createTime, number, title, wordCount, commentCount, viewCount,
-    restricted, hided, contentLocked, commentLocked, deleted
+    id, fictionId, userId, createTime, number, title, password, wordCount, commentCount,
+    viewCount, restricted, hided, contentLocked, commentLocked, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -136,16 +137,16 @@
   <insert id="insert" parameterType="com.jnxaread.bean.Chapter">
     insert into chapter (id, fictionId, userId,
       createTime, number, title,
-      wordCount, commentCount, viewCount,
-      restricted, hided, contentLocked,
-      commentLocked, deleted, content
-      )
+      password, wordCount, commentCount,
+      viewCount, restricted, hided,
+      contentLocked, commentLocked, deleted,
+      content)
     values (#{id,jdbcType=INTEGER}, #{fictionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
       #{createTime,jdbcType=TIMESTAMP}, #{number,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
-      #{wordCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER},
-      #{restricted,jdbcType=INTEGER}, #{hided,jdbcType=BIT}, #{contentLocked,jdbcType=BIT},
-      #{commentLocked,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
-      )
+      #{password,jdbcType=VARCHAR}, #{wordCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER},
+      #{viewCount,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER}, #{hided,jdbcType=BIT},
+      #{contentLocked,jdbcType=BIT}, #{commentLocked,jdbcType=BIT}, #{deleted,jdbcType=BIT},
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Chapter" useGeneratedKeys="true" keyProperty="id">
     insert into chapter
@@ -167,6 +168,9 @@
       </if>
       <if test="title != null">
         title,
+      </if>
+      <if test="password != null">
+        password,
       </if>
       <if test="wordCount != null">
         wordCount,
@@ -214,6 +218,9 @@
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
       </if>
       <if test="wordCount != null">
         #{wordCount,jdbcType=INTEGER},
@@ -271,6 +278,9 @@
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
       </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
       <if test="record.wordCount != null">
         wordCount = #{record.wordCount,jdbcType=INTEGER},
       </if>
@@ -311,6 +321,7 @@
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
       number = #{record.number,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
       wordCount = #{record.wordCount,jdbcType=INTEGER},
       commentCount = #{record.commentCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
@@ -332,6 +343,7 @@
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
       number = #{record.number,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
       wordCount = #{record.wordCount,jdbcType=INTEGER},
       commentCount = #{record.commentCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
@@ -361,6 +373,9 @@
       </if>
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="wordCount != null">
         wordCount = #{wordCount,jdbcType=INTEGER},
@@ -399,6 +414,7 @@
       createTime = #{createTime,jdbcType=TIMESTAMP},
       number = #{number,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
       wordCount = #{wordCount,jdbcType=INTEGER},
       commentCount = #{commentCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
@@ -417,6 +433,7 @@
       createTime = #{createTime,jdbcType=TIMESTAMP},
       number = #{number,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
       wordCount = #{wordCount,jdbcType=INTEGER},
       commentCount = #{commentCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},

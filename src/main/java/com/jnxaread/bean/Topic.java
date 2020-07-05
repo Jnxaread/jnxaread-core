@@ -15,6 +15,8 @@ public class Topic {
 
     private String title;
 
+    private String password;
+
     private Integer replyCount;
 
     private Integer viewCount;
@@ -77,6 +79,14 @@ public class Topic {
 
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     public Integer getReplyCount() {

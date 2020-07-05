@@ -15,6 +15,8 @@ public class Fiction {
 
     private String introduction;
 
+    private String password;
+
     private Integer chapterCount;
 
     private Integer wordCount;
@@ -79,6 +81,14 @@ public class Fiction {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction == null ? null : introduction.trim();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     public Integer getChapterCount() {

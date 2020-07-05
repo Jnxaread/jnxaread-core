@@ -15,6 +15,8 @@ public class Chapter {
 
     private String title;
 
+    private String password;
+
     private Integer wordCount;
 
     private Integer commentCount;
@@ -79,6 +81,14 @@ public class Chapter {
 
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     public Integer getWordCount() {

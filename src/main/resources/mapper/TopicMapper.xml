@@ -8,6 +8,7 @@
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
     <result column="label" jdbcType="VARCHAR" property="label" />
     <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="replyCount" jdbcType="INTEGER" property="replyCount" />
     <result column="viewCount" jdbcType="INTEGER" property="viewCount" />
     <result column="restricted" jdbcType="INTEGER" property="restricted" />
@@ -78,7 +79,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, boardId, userId, createTime, label, title, replyCount, viewCount, restricted,
+    id, boardId, userId, createTime, label, title, password, replyCount, viewCount, restricted,
     anonymous, locked, hided, deleted
   </sql>
   <sql id="Blob_Column_List">
@@ -135,14 +136,16 @@
   <insert id="insert" parameterType="com.jnxaread.bean.Topic">
     insert into topic (id, boardId, userId,
       createTime, label, title,
-      replyCount, viewCount, restricted,
-      anonymous, locked, hided, deleted,
-      content)
+      password, replyCount, viewCount,
+      restricted, anonymous, locked,
+      hided, deleted, content
+      )
     values (#{id,jdbcType=INTEGER}, #{boardId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
       #{createTime,jdbcType=TIMESTAMP}, #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},
-      #{replyCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER},
-      #{anonymous,jdbcType=BIT}, #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT},
-      #{content,jdbcType=LONGVARCHAR})
+      #{password,jdbcType=VARCHAR}, #{replyCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER},
+      #{restricted,jdbcType=INTEGER}, #{anonymous,jdbcType=BIT}, #{locked,jdbcType=BIT},
+      #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Topic" useGeneratedKeys="true" keyProperty="id">
     insert into topic
@@ -164,6 +167,9 @@
       </if>
       <if test="title != null">
         title,
+      </if>
+      <if test="password != null">
+        password,
       </if>
       <if test="replyCount != null">
         replyCount,
@@ -208,6 +214,9 @@
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
       </if>
       <if test="replyCount != null">
         #{replyCount,jdbcType=INTEGER},
@@ -262,6 +271,9 @@
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
       </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
       <if test="record.replyCount != null">
         replyCount = #{record.replyCount,jdbcType=INTEGER},
       </if>
@@ -299,6 +311,7 @@
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
       label = #{record.label,jdbcType=VARCHAR},
       title = #{record.title,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
       replyCount = #{record.replyCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
       restricted = #{record.restricted,jdbcType=INTEGER},
@@ -319,6 +332,7 @@
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
       label = #{record.label,jdbcType=VARCHAR},
       title = #{record.title,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
       replyCount = #{record.replyCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
       restricted = #{record.restricted,jdbcType=INTEGER},
@@ -347,6 +361,9 @@
       </if>
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="replyCount != null">
         replyCount = #{replyCount,jdbcType=INTEGER},
@@ -382,6 +399,7 @@
       createTime = #{createTime,jdbcType=TIMESTAMP},
       label = #{label,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
       replyCount = #{replyCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
       restricted = #{restricted,jdbcType=INTEGER},
@@ -399,6 +417,7 @@
       createTime = #{createTime,jdbcType=TIMESTAMP},
       label = #{label,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
       replyCount = #{replyCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
       restricted = #{restricted,jdbcType=INTEGER},
