@@ -49,47 +49,73 @@
         </javaClientGenerator>
 
         <!-- 指定每个表的生成策略 -->
+        <!--
+            <property name="useActualColumnNames" value="true"/>
+            该属性默认为false。
+            如果value为true，则MBG自动生成的bean的字段名与数据库表中的字段名
+            忽略大小写后相同。例如：数据库表中的字段名为topicTitle，则自动生成的bean的字段名为topictitle。
+            如果value为false，则MBG自动生成的bean的字段名时会忽略掉数据库表的字段名中的下划线并使用驼峰命名法。
+            例如：数据库表中的字段名为topic_title，则自动生成的bean的字段名为topicTitle。
+
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            使用加入该属性后生成的mapper.xml文件，当数据库表中存在自增主键时，向表中插入新记录
+            可以在插入成功后直接获取自增id
+        -->
         <!--<table tableName="Access" domainObjectName="Access">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="Authority" domainObjectName="Authority">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="Board" domainObjectName="Board">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="Category" domainObjectName="Category">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>-->
         <table tableName="Chapter" domainObjectName="Chapter">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="Comment" domainObjectName="Comment">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="Fiction" domainObjectName="Fiction">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <!--<table tableName="Login" domainObjectName="Login">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="Notice" domainObjectName="Notice">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="Project" domainObjectName="Project">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>-->
         <table tableName="Reply" domainObjectName="Reply">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="Topic" domainObjectName="Topic">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <!--<table tableName="User" domainObjectName="User">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="Label" domainObjectName="Label">
             <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>-->
 
     </context>
