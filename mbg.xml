@@ -61,7 +61,7 @@
             使用加入该属性后生成的mapper.xml文件，当数据库表中存在自增主键时，向表中插入新记录
             可以在插入成功后直接获取自增id
         -->
-        <!--<table tableName="Access" domainObjectName="Access">
+        <table tableName="Access" domainObjectName="Access">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
@@ -76,7 +76,7 @@
         <table tableName="Category" domainObjectName="Category">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>-->
+        </table>
         <table tableName="Chapter" domainObjectName="Chapter">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
@@ -89,7 +89,7 @@
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-        <!--<table tableName="Login" domainObjectName="Login">
+        <table tableName="Login" domainObjectName="Login">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
@@ -100,7 +100,7 @@
         <table tableName="Project" domainObjectName="Project">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>-->
+        </table>
         <table tableName="Reply" domainObjectName="Reply">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
@@ -109,14 +109,14 @@
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-        <!--<table tableName="User" domainObjectName="User">
+        <table tableName="User" domainObjectName="User">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="Label" domainObjectName="Label">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>-->
+        </table>
 
     </context>
 </generatorConfiguration>
