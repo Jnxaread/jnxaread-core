@@ -5,6 +5,7 @@ import com.jnxaread.bean.wrap.ChapterWrap;
 import com.jnxaread.bean.wrap.CommentWrap;
 import com.jnxaread.bean.wrap.FictionWrap;
 import com.jnxaread.dao.*;
+import com.jnxaread.dao.wrap.UserMapperWrap;
 import com.jnxaread.entity.UserGrade;
 import com.jnxaread.service.BaseLibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     private CategoryMapper categoryMapper;
 
     @Autowired(required = false)
-    private UserMapper userMapper;
+    private UserMapperWrap userMapper;
 
     @Autowired
     private UserGrade userGrade;

@@ -2,12 +2,10 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.User;
 import com.jnxaread.bean.UserExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
 public interface UserMapper {
     long countByExample(UserExample example);
 
@@ -30,24 +28,4 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
-
-    /******************************************************************************************************************/
-
-    int updateLoginCountByPrimaryKey(int id);
-
-    int updateTopicCountByPrimaryKey(int id);
-
-    int updateReplyCountByPrimaryKey(int id);
-
-    int updateFictionCountByPrimaryKey(int id);
-
-    int updateChapterCountByPrimaryKey(int id);
-
-    int updateCommentCountByPrimaryKey(int id);
-
-    int updateLevelByPrimaryKey(@Param("id") int id,@Param("level") int level);
-
-    int updateGradeByPrimaryKey(@Param("id") int id,@Param("increase") int increase);
-
-    User selectByPrimaryKeyForUpdate(int id);
 }

@@ -2,13 +2,10 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Topic;
 import com.jnxaread.bean.TopicExample;
-import com.jnxaread.bean.wrap.TopicWrap;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
 public interface TopicMapper {
     long countByExample(TopicExample example);
 
@@ -37,16 +34,4 @@ public interface TopicMapper {
     int updateByPrimaryKeyWithBLOBs(Topic record);
 
     int updateByPrimaryKey(Topic record);
-
-    /**********************************************************************************/
-
-    List<TopicWrap> findListWithUsername(@Param("userId") int userId, @Param("level") int level, @Param("startRow") int startRow,@Param("pageSize") int pageSize);
-
-    TopicWrap findWithUsername(int id);
-
-    Topic selectByPrimaryKeyForUpdate(int id);
-
-    int updateViewCountByPrimaryKey(int id);
-
-    int updateReplyCountByPrimaryKey(int id);
 }

@@ -4,7 +4,7 @@ import com.jnxaread.bean.Login;
 import com.jnxaread.bean.User;
 import com.jnxaread.bean.UserExample;
 import com.jnxaread.dao.LoginMapper;
-import com.jnxaread.dao.UserMapper;
+import com.jnxaread.dao.wrap.UserMapperWrap;
 import com.jnxaread.entity.UserGrade;
 import com.jnxaread.entity.UserLevel;
 import com.jnxaread.service.BaseUserService;
@@ -20,7 +20,7 @@ import java.util.List;
 public class BaseUserServiceImpl implements BaseUserService {
 
     @Autowired(required = false)
-    private UserMapper userMapper;
+    private UserMapperWrap userMapper;
 
     @Autowired(required = false)
     private LoginMapper loginMapper;

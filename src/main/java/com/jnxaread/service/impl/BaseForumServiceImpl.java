@@ -5,8 +5,8 @@ import com.jnxaread.bean.wrap.ReplyWrap;
 import com.jnxaread.bean.wrap.TopicWrap;
 import com.jnxaread.dao.BoardMapper;
 import com.jnxaread.dao.ReplyMapper;
-import com.jnxaread.dao.TopicMapper;
-import com.jnxaread.dao.UserMapper;
+import com.jnxaread.dao.wrap.TopicMapperWrap;
+import com.jnxaread.dao.wrap.UserMapperWrap;
 import com.jnxaread.entity.UserGrade;
 import com.jnxaread.service.BaseForumService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +22,13 @@ import java.util.List;
 public class BaseForumServiceImpl implements BaseForumService {
 
     @Autowired(required = false)
-    private TopicMapper topicMapper;
+    private TopicMapperWrap topicMapper;
 
     @Autowired(required = false)
     private ReplyMapper replyMapper;
 
     @Autowired(required = false)
-    private UserMapper userMapper;
+    private UserMapperWrap userMapper;
 
     @Autowired(required = false)
     private BoardMapper boardMapper;
