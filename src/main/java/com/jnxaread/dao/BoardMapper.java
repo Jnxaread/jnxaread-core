@@ -2,12 +2,10 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Board;
 import com.jnxaread.bean.BoardExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
 public interface BoardMapper {
     long countByExample(BoardExample example);
 

@@ -3,8 +3,8 @@ package com.jnxaread.service.impl;
 import com.jnxaread.bean.*;
 import com.jnxaread.bean.wrap.ReplyWrap;
 import com.jnxaread.bean.wrap.TopicWrap;
-import com.jnxaread.dao.BoardMapper;
-import com.jnxaread.dao.ReplyMapper;
+import com.jnxaread.dao.wrap.BoardMapperWrap;
+import com.jnxaread.dao.wrap.ReplyMapperWrap;
 import com.jnxaread.dao.wrap.TopicMapperWrap;
 import com.jnxaread.dao.wrap.UserMapperWrap;
 import com.jnxaread.entity.UserGrade;
@@ -25,13 +25,13 @@ public class BaseForumServiceImpl implements BaseForumService {
     private TopicMapperWrap topicMapper;
 
     @Autowired(required = false)
-    private ReplyMapper replyMapper;
+    private ReplyMapperWrap replyMapper;
 
     @Autowired(required = false)
     private UserMapperWrap userMapper;
 
     @Autowired(required = false)
-    private BoardMapper boardMapper;
+    private BoardMapperWrap boardMapper;
 
     @Autowired
     private UserGrade userGrade;

@@ -4,8 +4,7 @@ import com.jnxaread.bean.*;
 import com.jnxaread.bean.wrap.ChapterWrap;
 import com.jnxaread.bean.wrap.CommentWrap;
 import com.jnxaread.bean.wrap.FictionWrap;
-import com.jnxaread.dao.*;
-import com.jnxaread.dao.wrap.UserMapperWrap;
+import com.jnxaread.dao.wrap.*;
 import com.jnxaread.entity.UserGrade;
 import com.jnxaread.service.BaseLibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +21,19 @@ import java.util.List;
 public class BaseLibraryServiceImpl implements BaseLibraryService {
 
     @Autowired(required = false)
-    private FictionMapper fictionMapper;
+    private FictionMapperWrap fictionMapper;
 
     @Autowired(required = false)
-    private ChapterMapper chapterMapper;
+    private ChapterMapperWrap chapterMapper;
 
     @Autowired(required = false)
-    private CommentMapper commentMapper;
+    private CommentMapperWrap commentMapper;
 
     @Autowired(required = false)
-    private LabelMapper labelMapper;
+    private LabelMapperWrap labelMapper;
 
     @Autowired(required = false)
-    private CategoryMapper categoryMapper;
+    private CategoryMapperWrap categoryMapper;
 
     @Autowired(required = false)
     private UserMapperWrap userMapper;

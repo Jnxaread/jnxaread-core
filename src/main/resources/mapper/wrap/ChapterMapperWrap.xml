@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnxaread.dao.wrap.ChapterMapperWrap">
+  <resultMap extends="com.jnxaread.dao.ChapterMapper.ResultMapWithBLOBs" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.ChapterWrap">
+    <result column="username" jdbcType="VARCHAR" property="username"></result>
+  </resultMap>
+  <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.ChapterWrap">
+    SELECT chapter.*,user.username
+    FROM chapter,user WHERE chapter.id=#{id} AND chapter.hided=0 AND chapter.deleted=0 AND chapter.userId=user.id
+  </select>
+  <select id="selectMaxNumberByFictionId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    SELECT MAX(number) FROM chapter WHERE chapter.fictionId=#{fictionId} AND chapter.deleted=0
+  </select>
+  <select id="selectByPrimaryKeyForUpdate" parameterType="java.lang.Integer" resultMap="com.jnxaread.dao.ChapterMapper.ResultMapWithBLOBs">
+    select id,userId,contentLocked,commentLocked,hided from chapter where id = #{id} AND deleted=0 for update
+  </select>
+</mapper>

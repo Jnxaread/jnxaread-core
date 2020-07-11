@@ -2,12 +2,10 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Login;
 import com.jnxaread.bean.LoginExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
 public interface LoginMapper {
     long countByExample(LoginExample example);
 

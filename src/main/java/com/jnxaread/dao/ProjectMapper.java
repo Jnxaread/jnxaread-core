@@ -2,12 +2,10 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Project;
 import com.jnxaread.bean.ProjectExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
 public interface ProjectMapper {
     long countByExample(ProjectExample example);
 

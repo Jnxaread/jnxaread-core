@@ -1,7 +1,7 @@
 package com.jnxaread.service.impl;
 
 import com.jnxaread.bean.wrap.NoticeWrap;
-import com.jnxaread.dao.NoticeMapper;
+import com.jnxaread.dao.wrap.NoticeMapperWrap;
 import com.jnxaread.service.BaseNoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class BaseNoticeServiceImpl implements BaseNoticeService {
 
     @Autowired(required = false)
-    private NoticeMapper noticeMapper;
+    private NoticeMapperWrap noticeMapper;
 
     @Override
     public List<NoticeWrap> getNoticeWrapList() {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnxaread.dao.wrap.CommentMapperWrap">
+  <resultMap extends="com.jnxaread.dao.CommentMapper.ResultMapWithBLOBs" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.CommentWrap">
+    <result column="username" jdbcType="VARCHAR" property="username"/>
+    <result column="title" jdbcType="VARCHAR" property="fictionTitle"/>
+  </resultMap>
+  <select id="findListWidthUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
+    SELECT comment.createTime,comment.content,comment.hided,comment.deleted,user.username FROM comment,user
+    WHERE comment.chapterId=#{chapterId} AND comment.hided=0 AND comment.deleted=0 AND comment.userId=user.id
+  </select>
+  <select id="findListByUserId" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
+    SELECT comment.createTime,comment.content,user.username,fiction.title FROM comment,user,fiction,chapter
+    WHERE comment.userId=#{userId} AND comment.hided=0 AND comment.deleted=0 AND user.id=#{userId}
+    AND comment.fictionId=fiction.id AND comment.chapterId=chapter.id AND chapter.restricted&lt;=#{level}
+  </select>
+</mapper>

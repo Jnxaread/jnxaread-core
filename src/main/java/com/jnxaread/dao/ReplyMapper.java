@@ -2,13 +2,10 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Reply;
 import com.jnxaread.bean.ReplyExample;
-import com.jnxaread.bean.wrap.ReplyWrap;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
 public interface ReplyMapper {
     long countByExample(ReplyExample example);
 
@@ -37,12 +34,4 @@ public interface ReplyMapper {
     int updateByPrimaryKeyWithBLOBs(Reply record);
 
     int updateByPrimaryKey(Reply record);
-
-    /******************************************************************/
-
-    List<ReplyWrap> findListWithUsername(@Param("topicId") int topicId, @Param("startRow") int startRow);
-
-    List<ReplyWrap> findListByUserId(@Param("userId") int userId, @Param("level") int level);
-
-    ReplyWrap findWithUsername(int id);
 }

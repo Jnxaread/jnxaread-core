@@ -2,12 +2,10 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Label;
 import com.jnxaread.bean.LabelExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
 public interface LabelMapper {
     long countByExample(LabelExample example);
 
