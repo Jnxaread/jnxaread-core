@@ -16,4 +16,6 @@ public interface ChapterMapperWrap extends ChapterMapper {
     int selectMaxNumberByFictionId(int fictionId);
 
     Chapter selectByPrimaryKeyForUpdate(int id);
+
+    int updateViewCountByPrimaryKey(int id);
 }

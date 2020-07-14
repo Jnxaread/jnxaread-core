@@ -128,6 +128,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Override
     public ChapterWrap getChapterWrap(int id) {
         ChapterWrap chapterWrap = chapterMapper.findWithUsername(id);
+        chapterMapper.updateViewCountByPrimaryKey(id);
         return chapterWrap;
     }
 
@@ -175,7 +176,8 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         ChapterExample example = new ChapterExample();
         ChapterExample.Criteria criteria = example.createCriteria();
         criteria.andFictionIdEqualTo(fictionId);
-        if (!fiction.getUserId().equals(userId)) {
+        // 如果用户ID与作品的作者ID不相同，则无法查看超过用户限制性等级或被隐藏的内容
+        if (userId == 0 || !fiction.getUserId().equals(userId)) {
             criteria.andRestrictedLessThanOrEqualTo(level);
             criteria.andHidedEqualTo(false);
         }
