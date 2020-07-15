@@ -159,6 +159,13 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     }
 
     @Override
+    public ChapterWrap getChapterWrapByNumber(int fictionId, int number) {
+        if (fictionId == 0 || number == 0) return null;
+        ChapterWrap chapterWrap = chapterMapper.findWithUsernameByNumber(fictionId, number);
+        return chapterWrap;
+    }
+
+    @Override
     public List<CommentWrap> getCommentWrapList(int chapterId) {
         List<CommentWrap> commentWrapList = commentMapper.findListWidthUsername(chapterId);
         return commentWrapList;

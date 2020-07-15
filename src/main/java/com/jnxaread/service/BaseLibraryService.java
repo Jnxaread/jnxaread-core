@@ -56,6 +56,8 @@ public interface BaseLibraryService {
 
     Chapter getChapterByNumber(int fictionId, int number);
 
+    ChapterWrap getChapterWrapByNumber(int fictionId, int number);
+
     List<CommentWrap> getCommentWrapList(int chapterId);
 
     List<CommentWrap> getCommentWrapListByUserId(int userId, int level);

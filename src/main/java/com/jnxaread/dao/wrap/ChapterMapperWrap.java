@@ -4,6 +4,7 @@ import com.jnxaread.bean.Chapter;
 import com.jnxaread.bean.wrap.ChapterWrap;
 import com.jnxaread.dao.ChapterMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author 未央
@@ -12,6 +13,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ChapterMapperWrap extends ChapterMapper {
     ChapterWrap findWithUsername(int id);
+
+    ChapterWrap findWithUsernameByNumber(@Param("fictionId") int fictionId, @Param("number") int number);
 
     int selectMaxNumberByFictionId(int fictionId);
 
