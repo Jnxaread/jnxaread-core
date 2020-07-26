@@ -2,6 +2,7 @@ package com.jnxaread.bean.wrap;
 
 import com.jnxaread.bean.Topic;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
  * @create 2019-11-01 23:09
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class TopicWrap extends Topic {
 
     private String username;

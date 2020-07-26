@@ -2,6 +2,7 @@ package com.jnxaread.bean.wrap;
 
 import com.jnxaread.bean.Fiction;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
  * @create 2020-05-07 10:02
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class FictionWrap extends Fiction {
 
     private String category;
