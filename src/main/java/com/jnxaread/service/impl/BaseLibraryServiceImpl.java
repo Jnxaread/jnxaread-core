@@ -68,11 +68,19 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         labelMapper.insertSelective(label);
     }
 
+    /**
+     * 新增章节
+     *
+     * @param newChapter 新增章节数据
+     * @return
+     */
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int addChapter(Chapter newChapter) {
+        //根据作品id和章节号查找章节，如果章节存在，则返回-1
         Chapter chapter = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber());
         if (chapter != null) return -1;
+        //查找该章节的上一章是否存在，如果不存在，则返回-2
         Chapter chapter1 = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber() - 1);
         if (chapter1 == null) return -2;
         chapterMapper.insertSelective(newChapter);
