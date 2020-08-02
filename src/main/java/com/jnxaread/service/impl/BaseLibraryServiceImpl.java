@@ -41,6 +41,12 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Autowired
     private UserGrade userGrade;
 
+    /**
+     * 新增作品
+     *
+     * @param newFiction 新增作品数据
+     * @return 新增作品id
+     */
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int addFiction(Fiction newFiction) {
@@ -49,7 +55,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         chapter.setFictionId(newFiction.getId());
         chapter.setUserId(newFiction.getUserId());
         chapter.setCreateTime(new Date());
-        chapter.setNumber(0);
+        chapter.setNumber(-1);
         chapter.setTitle("");
         chapter.setWordCount(0);
         chapter.setCommentCount(0);
@@ -72,7 +78,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
      * 新增章节
      *
      * @param newChapter 新增章节数据
-     * @return
+     * @return 执行结果，【id>=0：成功，且返回章节id；id=-1:章节已存在；id=-2：章节号错误】
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -80,9 +86,12 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         //根据作品id和章节号查找章节，如果章节存在，则返回-1
         Chapter chapter = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber());
         if (chapter != null) return -1;
-        //查找该章节的上一章是否存在，如果不存在，则返回-2
-        Chapter chapter1 = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber() - 1);
-        if (chapter1 == null) return -2;
+        //如果新章节不是第一章
+        if (newChapter.getNumber() != 1) {
+            //查找该章节的上一章是否存在，如果不存在，则返回-2
+            Chapter chapter1 = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber() - 1);
+            if (chapter1 == null) return -2;
+        }
         chapterMapper.insertSelective(newChapter);
         //章节所属作品的章节数+1，字数+若干
         fictionMapper.updateChapterCountAndWordCountByPrimaryKey(newChapter.getFictionId(), newChapter.getWordCount());
@@ -98,7 +107,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     public int addComment(Comment newComment) {
         Fiction fiction = fictionMapper.selectByPrimaryKey(newComment.getFictionId());
         Chapter chapter = chapterMapper.selectByPrimaryKey(newComment.getChapterId());
-        if (fiction.getDeleted() || (chapter.getDeleted() && chapter.getNumber() != 0)) return 1;
+        if (fiction.getDeleted() || (chapter.getDeleted() && chapter.getNumber() != -1)) return 1;
         commentMapper.insertSelective(newComment);
         chapter.setCommentCount(chapter.getCommentCount() + 1);
         chapterMapper.updateByPrimaryKeySelective(chapter);
@@ -149,13 +158,20 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         return labelList;
     }
 
+    /**
+     * 根据章节号查询章节
+     *
+     * @param fictionId 作品id
+     * @param number    章节号
+     * @return 章节数据
+     */
     @Override
     public Chapter getChapterByNumber(int fictionId, int number) {
         ChapterExample example = new ChapterExample();
         ChapterExample.Criteria criteria = example.createCriteria();
         criteria.andFictionIdEqualTo(fictionId);
         criteria.andNumberEqualTo(number);
-        if (number != 0) {
+        if (number != -1) {
             criteria.andDeletedEqualTo(false);
         }
         List<Chapter> chapterList = chapterMapper.selectByExample(example);
@@ -168,7 +184,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
 
     @Override
     public ChapterWrap getChapterWrapByNumber(int fictionId, int number) {
-        if (fictionId == 0 || number == 0) return null;
+        if (fictionId == 0 || number < 0) return null;
         ChapterWrap chapterWrap = chapterMapper.findWithUsernameByNumber(fictionId, number);
         return chapterWrap;
     }
