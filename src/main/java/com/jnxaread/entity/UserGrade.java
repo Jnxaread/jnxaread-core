@@ -13,11 +13,11 @@ import org.springframework.context.annotation.PropertySource;
  * @author 未央
  * @create 2020-06-16 10:11
  */
+@Data
 @Configuration
 @PropertySource("classpath:userGrade.properties")
 @ConfigurationProperties(prefix = "grade")
 @EnableConfigurationProperties(UserGrade.class)
-@Data
 public class UserGrade {
 
     private Integer login;

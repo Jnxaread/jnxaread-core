@@ -13,11 +13,11 @@ import org.springframework.context.annotation.PropertySource;
  * @author 未央
  * @create 2020-06-16 15:10
  */
+@Data
 @Configuration
 @PropertySource("classpath:userLevel.properties")
 @ConfigurationProperties(prefix = "level")
 @EnableConfigurationProperties(UserLevel.class)
-@Data
 public class UserLevel {
     private Integer lv0;
 
