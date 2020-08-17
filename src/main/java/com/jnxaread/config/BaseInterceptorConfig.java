@@ -2,10 +2,11 @@ package com.jnxaread.config;
 
 import com.jnxaread.interceptor.AccessOriginInterceptor;
 import com.jnxaread.interceptor.LoginCheckInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import javax.annotation.Resource;
 
 /**
  * @author 未央
@@ -14,10 +15,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class BaseInterceptorConfig implements WebMvcConfigurer {
 
-    @Autowired
+    @Resource
     private AccessOriginInterceptor accessOriginInterceptor;
 
-    @Autowired
+    @Resource
     private LoginCheckInterceptor loginCheckInterceptor;
 
     /**
