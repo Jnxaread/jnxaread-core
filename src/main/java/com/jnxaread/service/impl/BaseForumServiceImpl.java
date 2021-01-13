@@ -104,8 +104,7 @@ public class BaseForumServiceImpl implements BaseForumService {
     @Override
     public List<Board> getBoardList() {
         BoardExample example = new BoardExample();
-        List<Board> boardList = boardMapper.selectByExample(example);
-        return boardList;
+        return boardMapper.selectByExample(example);
     }
 
     @Override
@@ -113,15 +112,13 @@ public class BaseForumServiceImpl implements BaseForumService {
         ReplyExample example = new ReplyExample();
         ReplyExample.Criteria criteria = example.createCriteria();
         criteria.andTopicIdEqualTo(topicId);
-        long replyCount = replyMapper.countByExample(example);
-        return replyCount;
+        return replyMapper.countByExample(example);
     }
 
     @Override
     public List<TopicWrap> getTopicWrapList(int userId, int level, int page, int pageSize) {
         int startRow = (page - 1) * pageSize;
-        List<TopicWrap> topicWrapList = topicMapper.findListWithUsername(userId, level, startRow, pageSize);
-        return topicWrapList;
+        return topicMapper.findListWithUsername(userId, level, startRow, pageSize);
     }
 
     @Override
@@ -143,8 +140,7 @@ public class BaseForumServiceImpl implements BaseForumService {
     @Override
     public long getTopicCount() {
         TopicExample example = new TopicExample();
-        long topicCount = topicMapper.countByExample(example);
-        return topicCount;
+        return topicMapper.countByExample(example);
     }
 
     private Reply getReplyByTopicIdAndFloor(int topicId, int floor) {

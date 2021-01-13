@@ -21,7 +21,6 @@ public class BaseAuthorityServiceImpl implements BaseAuthorityService {
     @Override
     public List<Authority> getAuthorityList() {
         AuthorityExample authorityExample = new AuthorityExample();
-        List<Authority> authorityList = authorityMapper.selectByExample(authorityExample);
-        return authorityList;
+        return authorityMapper.selectByExample(authorityExample);
     }
 }

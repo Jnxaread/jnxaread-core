@@ -3,7 +3,6 @@ package com.jnxaread.service.impl;
 import com.jnxaread.bean.Login;
 import com.jnxaread.bean.User;
 import com.jnxaread.bean.UserExample;
-import com.jnxaread.dao.LoginMapper;
 import com.jnxaread.dao.wrap.LoginMapperWrap;
 import com.jnxaread.dao.wrap.UserMapperWrap;
 import com.jnxaread.entity.UserGrade;
@@ -35,8 +34,8 @@ public class BaseUserServiceImpl implements BaseUserService {
     /**
      * 添加用户
      *
-     * @param newUser
-     * @return
+     * @param newUser 新增用户
+     * @return 新增用户对象
      */
     @Override
     public User addUser(User newUser) {
@@ -47,20 +46,19 @@ public class BaseUserServiceImpl implements BaseUserService {
     /**
      * 根据ID获取用户
      *
-     * @param id
-     * @return
+     * @param id 用户ID
+     * @return 用户对象
      */
     @Override
     public User getUser(int id) {
-        User user = userMapper.selectByPrimaryKey(id);
-        return user;
+        return userMapper.selectByPrimaryKey(id);
     }
 
     /**
      * 根据账号获取用户
      *
-     * @param account
-     * @return
+     * @param account 用户账号
+     * @return 用户对象
      */
     @Override
     public User getUserByAccount(String account) {
@@ -71,15 +69,14 @@ public class BaseUserServiceImpl implements BaseUserService {
         if (userList.isEmpty()) {
             return null;
         }
-        User user = userList.get(0);
-        return user;
+        return userList.get(0);
     }
 
     /**
      * 根据用户名获取用户
      *
-     * @param username
-     * @return
+     * @param username 用户名
+     * @return 用户对象
      */
     @Override
     public User getUserByUsername(String username) {
@@ -90,15 +87,14 @@ public class BaseUserServiceImpl implements BaseUserService {
         if (listUser.isEmpty()) {
             return null;
         }
-        User user = listUser.get(0);
-        return user;
+        return listUser.get(0);
     }
 
     /**
      * 根据邮箱获取用户
      *
-     * @param email
-     * @return
+     * @param email 用户邮箱
+     * @return 用户对象
      */
     @Override
     public User getUserByEmail(String email) {
@@ -109,8 +105,7 @@ public class BaseUserServiceImpl implements BaseUserService {
         if (userList.isEmpty()) {
             return null;
         }
-        User user = userList.get(0);
-        return user;
+        return userList.get(0);
     }
 
     @Override

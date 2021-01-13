@@ -18,8 +18,7 @@ public class BaseNoticeServiceImpl implements BaseNoticeService {
 
     @Override
     public List<NoticeWrap> getNoticeWrapList() {
-        List<NoticeWrap> noticeWrapList = noticeMapper.findListWithUsername();
-        return noticeWrapList;
+        return noticeMapper.findListWithUsername();
     }
 
     @Override

@@ -119,8 +119,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
 
     @Override
     public Fiction getFiction(int id) {
-        Fiction fiction = fictionMapper.selectByPrimaryKey(id);
-        return fiction;
+        return fictionMapper.selectByPrimaryKey(id);
     }
 
     @Override
@@ -138,8 +137,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
 
     @Override
     public Chapter getChapter(int id) {
-        Chapter chapter = chapterMapper.selectByPrimaryKey(id);
-        return chapter;
+        return chapterMapper.selectByPrimaryKey(id);
     }
 
     @Override
@@ -154,8 +152,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         LabelExample example = new LabelExample();
         LabelExample.Criteria criteria = example.createCriteria();
         criteria.andFictionIdEqualTo(fictionId);
-        List<Label> labelList = labelMapper.selectByExample(example);
-        return labelList;
+        return labelMapper.selectByExample(example);
     }
 
     /**
@@ -185,20 +182,17 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Override
     public ChapterWrap getChapterWrapByNumber(int fictionId, int number) {
         if (fictionId == 0 || number < 0) return null;
-        ChapterWrap chapterWrap = chapterMapper.findWithUsernameByNumber(fictionId, number);
-        return chapterWrap;
+        return chapterMapper.findWithUsernameByNumber(fictionId, number);
     }
 
     @Override
     public List<CommentWrap> getCommentWrapList(int chapterId) {
-        List<CommentWrap> commentWrapList = commentMapper.findListWidthUsername(chapterId);
-        return commentWrapList;
+        return commentMapper.findListWidthUsername(chapterId);
     }
 
     @Override
     public List<CommentWrap> getCommentWrapListByUserId(int userId, int level) {
-        List<CommentWrap> commentWrapList = commentMapper.findListByUserId(userId, level);
-        return commentWrapList;
+        return commentMapper.findListByUserId(userId, level);
     }
 
     @Override
@@ -249,8 +243,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Override
     public List<Category> getCategoryList() {
         CategoryExample example = new CategoryExample();
-        List<Category> categoryList = categoryMapper.selectByExample(example);
-        return categoryList;
+        return categoryMapper.selectByExample(example);
     }
 
     @Override
@@ -262,8 +255,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         }
         criteria.andHidedEqualTo(false);
         criteria.andDeletedEqualTo(false);
-        long fictionCount = fictionMapper.countByExample(example);
-        return fictionCount;
+        return fictionMapper.countByExample(example);
     }
 
     @Override
@@ -272,8 +264,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         FictionExample.Criteria criteria = example.createCriteria();
         criteria.andUserIdEqualTo(userId);
         criteria.andDeletedEqualTo(false);
-        long fictionCount = fictionMapper.countByExample(example);
-        return fictionCount;
+        return fictionMapper.countByExample(example);
     }
 
     @Override
