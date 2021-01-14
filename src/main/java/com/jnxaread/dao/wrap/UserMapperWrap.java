@@ -11,21 +11,21 @@ import org.apache.ibatis.annotations.Param;
  */
 @Mapper
 public interface UserMapperWrap extends UserMapper {
-    int updateLoginCountByPrimaryKey(int id);
+    void updateLoginCountByPrimaryKey(int id);
 
-    int updateTopicCountByPrimaryKey(int id);
+    void updateTopicCountByPrimaryKey(int id);
 
-    int updateReplyCountByPrimaryKey(int id);
+    void updateReplyCountByPrimaryKey(int id);
 
-    int updateFictionCountByPrimaryKey(int id);
+    void updateFictionCountByPrimaryKey(int id);
 
-    int updateChapterCountByPrimaryKey(int id);
+    void updateChapterCountByPrimaryKey(int id);
 
-    int updateCommentCountByPrimaryKey(int id);
+    void updateCommentCountByPrimaryKey(int id);
 
-    int updateLevelByPrimaryKey(@Param("id") int id, @Param("level") int level);
+    void updateLevelByPrimaryKey(@Param("id") int id, @Param("level") int level);
 
-    int updateGradeByPrimaryKey(@Param("id") int id,@Param("increase") int increase);
+    void updateGradeByPrimaryKey(@Param("id") int id, @Param("increase") int increase);
 
     User selectByPrimaryKeyForUpdate(int id);
 }
