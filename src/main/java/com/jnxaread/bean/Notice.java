@@ -21,17 +21,17 @@ public class Notice {
 
     private Integer position;
 
-    private Integer restricted;
-
     private String password;
 
     private Integer viewCount;
 
     private Integer updateCount;
 
-    private Boolean locked;
+    private Integer visible;
 
-    private Boolean hided;
+    private Integer restricted;
+
+    private Boolean locked;
 
     private Boolean deleted;
 
@@ -109,14 +109,6 @@ public class Notice {
         this.position = position;
     }
 
-    public Integer getRestricted() {
-        return restricted;
-    }
-
-    public void setRestricted(Integer restricted) {
-        this.restricted = restricted;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -141,20 +133,28 @@ public class Notice {
         this.updateCount = updateCount;
     }
 
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
+    }
+
+    public Integer getRestricted() {
+        return restricted;
+    }
+
+    public void setRestricted(Integer restricted) {
+        this.restricted = restricted;
+    }
+
     public Boolean getLocked() {
         return locked;
     }
 
     public void setLocked(Boolean locked) {
         this.locked = locked;
-    }
-
-    public Boolean getHided() {
-        return hided;
-    }
-
-    public void setHided(Boolean hided) {
-        this.hided = hided;
     }
 
     public Boolean getDeleted() {

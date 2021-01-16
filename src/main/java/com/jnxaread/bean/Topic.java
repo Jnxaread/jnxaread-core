@@ -21,13 +21,13 @@ public class Topic {
 
     private Integer viewCount;
 
+    private Integer visible;
+
     private Integer restricted;
 
     private Boolean anonymous;
 
     private Boolean locked;
-
-    private Boolean hided;
 
     private Boolean deleted;
 
@@ -105,6 +105,14 @@ public class Topic {
         this.viewCount = viewCount;
     }
 
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
+    }
+
     public Integer getRestricted() {
         return restricted;
     }
@@ -127,14 +135,6 @@ public class Topic {
 
     public void setLocked(Boolean locked) {
         this.locked = locked;
-    }
-
-    public Boolean getHided() {
-        return hided;
-    }
-
-    public void setHided(Boolean hided) {
-        this.hided = hided;
     }
 
     public Boolean getDeleted() {

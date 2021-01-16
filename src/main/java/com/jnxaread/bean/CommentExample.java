@@ -405,6 +405,66 @@ public class CommentExample {
             return (Criteria) this;
         }
 
+        public Criteria andVisibleIsNull() {
+            addCriterion("visible is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleIsNotNull() {
+            addCriterion("visible is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleEqualTo(Integer value) {
+            addCriterion("visible =", value, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleNotEqualTo(Integer value) {
+            addCriterion("visible <>", value, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleGreaterThan(Integer value) {
+            addCriterion("visible >", value, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleGreaterThanOrEqualTo(Integer value) {
+            addCriterion("visible >=", value, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleLessThan(Integer value) {
+            addCriterion("visible <", value, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleLessThanOrEqualTo(Integer value) {
+            addCriterion("visible <=", value, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleIn(List<Integer> values) {
+            addCriterion("visible in", values, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleNotIn(List<Integer> values) {
+            addCriterion("visible not in", values, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleBetween(Integer value1, Integer value2) {
+            addCriterion("visible between", value1, value2, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleNotBetween(Integer value1, Integer value2) {
+            addCriterion("visible not between", value1, value2, "visible");
+            return (Criteria) this;
+        }
+
         public Criteria andAnonymousIsNull() {
             addCriterion("anonymous is null");
             return (Criteria) this;
@@ -462,66 +522,6 @@ public class CommentExample {
 
         public Criteria andAnonymousNotBetween(Boolean value1, Boolean value2) {
             addCriterion("anonymous not between", value1, value2, "anonymous");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedIsNull() {
-            addCriterion("hided is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedIsNotNull() {
-            addCriterion("hided is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedEqualTo(Boolean value) {
-            addCriterion("hided =", value, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedNotEqualTo(Boolean value) {
-            addCriterion("hided <>", value, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedGreaterThan(Boolean value) {
-            addCriterion("hided >", value, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("hided >=", value, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedLessThan(Boolean value) {
-            addCriterion("hided <", value, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedLessThanOrEqualTo(Boolean value) {
-            addCriterion("hided <=", value, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedIn(List<Boolean> values) {
-            addCriterion("hided in", values, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedNotIn(List<Boolean> values) {
-            addCriterion("hided not in", values, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedBetween(Boolean value1, Boolean value2) {
-            addCriterion("hided between", value1, value2, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("hided not between", value1, value2, "hided");
             return (Criteria) this;
         }
 

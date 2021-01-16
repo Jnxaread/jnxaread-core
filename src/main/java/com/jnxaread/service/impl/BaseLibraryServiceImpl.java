@@ -204,7 +204,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         // 如果用户ID与作品的作者ID不相同，则无法查看超过用户限制性等级或被隐藏的内容
         if (userId == 0 || !fiction.getUserId().equals(userId)) {
             criteria.andRestrictedLessThanOrEqualTo(level);
-            criteria.andHidedEqualTo(false);
+            criteria.andVisibleEqualTo(1);
         }
         criteria.andDeletedEqualTo(false);
         return chapterMapper.selectByExample(example);
@@ -253,7 +253,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         if (userId != 0) {
             criteria.andUserIdEqualTo(userId);
         }
-        criteria.andHidedEqualTo(false);
+        criteria.andVisibleEqualTo(1);
         criteria.andDeletedEqualTo(false);
         return fictionMapper.countByExample(example);
     }
@@ -275,11 +275,17 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int hideChapter(int id, int userId, boolean hide) {
+        int visible;
+        if (hide) {
+            visible = 0;
+        } else {
+            visible = 1;
+        }
         Chapter chapter = chapterMapper.selectByPrimaryKeyForUpdate(id);
         if (chapter == null) return 1;
         if (!chapter.getUserId().equals(userId)) return 2;
-        if (chapter.getHided() == hide) return 3;
-        chapter.setHided(hide);
+        if (chapter.getVisible() == visible) return 3;
+        chapter.setVisible(visible);
         chapterMapper.updateByPrimaryKeySelective(chapter);
         return 0;
     }

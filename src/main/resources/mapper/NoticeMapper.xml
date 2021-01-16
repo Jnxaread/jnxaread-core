@@ -11,12 +11,12 @@
     <result column="label" jdbcType="VARCHAR" property="label" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="position" jdbcType="INTEGER" property="position" />
-    <result column="restricted" jdbcType="INTEGER" property="restricted" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="viewCount" jdbcType="INTEGER" property="viewCount" />
     <result column="updateCount" jdbcType="INTEGER" property="updateCount" />
+    <result column="visible" jdbcType="INTEGER" property="visible" />
+    <result column="restricted" jdbcType="INTEGER" property="restricted" />
     <result column="locked" jdbcType="BIT" property="locked" />
-    <result column="hided" jdbcType="BIT" property="hided" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jnxaread.bean.Notice">
@@ -81,8 +81,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, boardId, userId, createTime, lastUserId, lastTime, label, title, position, restricted,
-    password, viewCount, updateCount, locked, hided, deleted
+    id, boardId, userId, createTime, lastUserId, lastTime, label, title, position, password, 
+    viewCount, updateCount, visible, restricted, locked, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -118,7 +118,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select
+    select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -136,25 +136,28 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Notice">
-    insert into notice (id, boardId, userId,
-      createTime, lastUserId, lastTime,
-      label, title, position,
-      restricted, password, viewCount,
-      updateCount, locked, hided,
-      deleted, content)
-    values (#{id,jdbcType=INTEGER}, #{boardId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
-      #{createTime,jdbcType=TIMESTAMP}, #{lastUserId,jdbcType=INTEGER}, #{lastTime,jdbcType=TIMESTAMP},
-      #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{position,jdbcType=INTEGER},
-      #{restricted,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{viewCount,jdbcType=INTEGER},
-      #{updateCount,jdbcType=INTEGER}, #{locked,jdbcType=BIT}, #{hided,jdbcType=BIT},
-      #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into notice (boardId, userId, createTime, 
+      lastUserId, lastTime, label, 
+      title, position, password, 
+      viewCount, updateCount, visible, 
+      restricted, locked, deleted, 
+      content)
+    values (#{boardId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUserId,jdbcType=INTEGER}, #{lastTime,jdbcType=TIMESTAMP}, #{label,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{position,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
+      #{viewCount,jdbcType=INTEGER}, #{updateCount,jdbcType=INTEGER}, #{visible,jdbcType=INTEGER}, 
+      #{restricted,jdbcType=INTEGER}, #{locked,jdbcType=BIT}, #{deleted,jdbcType=BIT}, 
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Notice" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Notice">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into notice
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="boardId != null">
         boardId,
       </if>
@@ -179,9 +182,6 @@
       <if test="position != null">
         position,
       </if>
-      <if test="restricted != null">
-        restricted,
-      </if>
       <if test="password != null">
         password,
       </if>
@@ -191,11 +191,14 @@
       <if test="updateCount != null">
         updateCount,
       </if>
+      <if test="visible != null">
+        visible,
+      </if>
+      <if test="restricted != null">
+        restricted,
+      </if>
       <if test="locked != null">
         locked,
-      </if>
-      <if test="hided != null">
-        hided,
       </if>
       <if test="deleted != null">
         deleted,
@@ -205,9 +208,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="boardId != null">
         #{boardId,jdbcType=INTEGER},
       </if>
@@ -232,9 +232,6 @@
       <if test="position != null">
         #{position,jdbcType=INTEGER},
       </if>
-      <if test="restricted != null">
-        #{restricted,jdbcType=INTEGER},
-      </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
@@ -244,11 +241,14 @@
       <if test="updateCount != null">
         #{updateCount,jdbcType=INTEGER},
       </if>
+      <if test="visible != null">
+        #{visible,jdbcType=INTEGER},
+      </if>
+      <if test="restricted != null">
+        #{restricted,jdbcType=INTEGER},
+      </if>
       <if test="locked != null">
         #{locked,jdbcType=BIT},
-      </if>
-      <if test="hided != null">
-        #{hided,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
@@ -294,9 +294,6 @@
       <if test="record.position != null">
         position = #{record.position,jdbcType=INTEGER},
       </if>
-      <if test="record.restricted != null">
-        restricted = #{record.restricted,jdbcType=INTEGER},
-      </if>
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
       </if>
@@ -306,11 +303,14 @@
       <if test="record.updateCount != null">
         updateCount = #{record.updateCount,jdbcType=INTEGER},
       </if>
+      <if test="record.visible != null">
+        visible = #{record.visible,jdbcType=INTEGER},
+      </if>
+      <if test="record.restricted != null">
+        restricted = #{record.restricted,jdbcType=INTEGER},
+      </if>
       <if test="record.locked != null">
         locked = #{record.locked,jdbcType=BIT},
-      </if>
-      <if test="record.hided != null">
-        hided = #{record.hided,jdbcType=BIT},
       </if>
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
@@ -334,12 +334,12 @@
       label = #{record.label,jdbcType=VARCHAR},
       title = #{record.title,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=INTEGER},
-      restricted = #{record.restricted,jdbcType=INTEGER},
       password = #{record.password,jdbcType=VARCHAR},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
       updateCount = #{record.updateCount,jdbcType=INTEGER},
+      visible = #{record.visible,jdbcType=INTEGER},
+      restricted = #{record.restricted,jdbcType=INTEGER},
       locked = #{record.locked,jdbcType=BIT},
-      hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -357,12 +357,12 @@
       label = #{record.label,jdbcType=VARCHAR},
       title = #{record.title,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=INTEGER},
-      restricted = #{record.restricted,jdbcType=INTEGER},
       password = #{record.password,jdbcType=VARCHAR},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
       updateCount = #{record.updateCount,jdbcType=INTEGER},
+      visible = #{record.visible,jdbcType=INTEGER},
+      restricted = #{record.restricted,jdbcType=INTEGER},
       locked = #{record.locked,jdbcType=BIT},
-      hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -395,9 +395,6 @@
       <if test="position != null">
         position = #{position,jdbcType=INTEGER},
       </if>
-      <if test="restricted != null">
-        restricted = #{restricted,jdbcType=INTEGER},
-      </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
@@ -407,11 +404,14 @@
       <if test="updateCount != null">
         updateCount = #{updateCount,jdbcType=INTEGER},
       </if>
+      <if test="visible != null">
+        visible = #{visible,jdbcType=INTEGER},
+      </if>
+      <if test="restricted != null">
+        restricted = #{restricted,jdbcType=INTEGER},
+      </if>
       <if test="locked != null">
         locked = #{locked,jdbcType=BIT},
-      </if>
-      <if test="hided != null">
-        hided = #{hided,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
@@ -432,12 +432,12 @@
       label = #{label,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       position = #{position,jdbcType=INTEGER},
-      restricted = #{restricted,jdbcType=INTEGER},
       password = #{password,jdbcType=VARCHAR},
       viewCount = #{viewCount,jdbcType=INTEGER},
       updateCount = #{updateCount,jdbcType=INTEGER},
+      visible = #{visible,jdbcType=INTEGER},
+      restricted = #{restricted,jdbcType=INTEGER},
       locked = #{locked,jdbcType=BIT},
-      hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
@@ -452,12 +452,12 @@
       label = #{label,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       position = #{position,jdbcType=INTEGER},
-      restricted = #{restricted,jdbcType=INTEGER},
       password = #{password,jdbcType=VARCHAR},
       viewCount = #{viewCount,jdbcType=INTEGER},
       updateCount = #{updateCount,jdbcType=INTEGER},
+      visible = #{visible,jdbcType=INTEGER},
+      restricted = #{restricted,jdbcType=INTEGER},
       locked = #{locked,jdbcType=BIT},
-      hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>

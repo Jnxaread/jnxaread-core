@@ -8,11 +8,11 @@
     <result column="fictionCount" jdbcType="INTEGER" property="fictionCount" />
     <result column="chapterCount" jdbcType="INTEGER" property="chapterCount" />
     <result column="commentCount" jdbcType="INTEGER" property="commentCount" />
+    <result column="visible" jdbcType="INTEGER" property="visible" />
     <result column="restricted" jdbcType="INTEGER" property="restricted" />
     <result column="fictionLocked" jdbcType="BIT" property="fictionLocked" />
     <result column="chapterLocked" jdbcType="BIT" property="chapterLocked" />
     <result column="commentLocked" jdbcType="BIT" property="commentLocked" />
-    <result column="hided" jdbcType="BIT" property="hided" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
@@ -75,8 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, description, fictionCount, chapterCount, commentCount, restricted, fictionLocked,
-    chapterLocked, commentLocked, hided, deleted, createTime
+    id, name, description, fictionCount, chapterCount, commentCount, visible, restricted, 
+    fictionLocked, chapterLocked, commentLocked, deleted, createTime
   </sql>
   <select id="selectByExample" parameterType="com.jnxaread.bean.CategoryExample" resultMap="BaseResultMap">
     select
@@ -93,7 +93,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
     from category
     where id = #{id,jdbcType=INTEGER}
@@ -109,23 +109,26 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Category">
-    insert into category (id, name, description,
-      fictionCount, chapterCount, commentCount,
-      restricted, fictionLocked, chapterLocked,
-      commentLocked, hided, deleted,
-      createTime)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
-      #{fictionCount,jdbcType=INTEGER}, #{chapterCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER},
-      #{restricted,jdbcType=INTEGER}, #{fictionLocked,jdbcType=BIT}, #{chapterLocked,jdbcType=BIT},
-      #{commentLocked,jdbcType=BIT}, #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT},
-      #{createTime,jdbcType=TIMESTAMP})
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into category (name, description, fictionCount, 
+      chapterCount, commentCount, visible, 
+      restricted, fictionLocked, chapterLocked, 
+      commentLocked, deleted, createTime
+      )
+    values (#{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{fictionCount,jdbcType=INTEGER}, 
+      #{chapterCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, #{visible,jdbcType=INTEGER}, 
+      #{restricted,jdbcType=INTEGER}, #{fictionLocked,jdbcType=BIT}, #{chapterLocked,jdbcType=BIT}, 
+      #{commentLocked,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Category" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Category">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into category
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="name != null">
         name,
       </if>
@@ -141,6 +144,9 @@
       <if test="commentCount != null">
         commentCount,
       </if>
+      <if test="visible != null">
+        visible,
+      </if>
       <if test="restricted != null">
         restricted,
       </if>
@@ -153,9 +159,6 @@
       <if test="commentLocked != null">
         commentLocked,
       </if>
-      <if test="hided != null">
-        hided,
-      </if>
       <if test="deleted != null">
         deleted,
       </if>
@@ -164,9 +167,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
@@ -182,6 +182,9 @@
       <if test="commentCount != null">
         #{commentCount,jdbcType=INTEGER},
       </if>
+      <if test="visible != null">
+        #{visible,jdbcType=INTEGER},
+      </if>
       <if test="restricted != null">
         #{restricted,jdbcType=INTEGER},
       </if>
@@ -193,9 +196,6 @@
       </if>
       <if test="commentLocked != null">
         #{commentLocked,jdbcType=BIT},
-      </if>
-      <if test="hided != null">
-        #{hided,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
@@ -232,6 +232,9 @@
       <if test="record.commentCount != null">
         commentCount = #{record.commentCount,jdbcType=INTEGER},
       </if>
+      <if test="record.visible != null">
+        visible = #{record.visible,jdbcType=INTEGER},
+      </if>
       <if test="record.restricted != null">
         restricted = #{record.restricted,jdbcType=INTEGER},
       </if>
@@ -243,9 +246,6 @@
       </if>
       <if test="record.commentLocked != null">
         commentLocked = #{record.commentLocked,jdbcType=BIT},
-      </if>
-      <if test="record.hided != null">
-        hided = #{record.hided,jdbcType=BIT},
       </if>
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
@@ -266,11 +266,11 @@
       fictionCount = #{record.fictionCount,jdbcType=INTEGER},
       chapterCount = #{record.chapterCount,jdbcType=INTEGER},
       commentCount = #{record.commentCount,jdbcType=INTEGER},
+      visible = #{record.visible,jdbcType=INTEGER},
       restricted = #{record.restricted,jdbcType=INTEGER},
       fictionLocked = #{record.fictionLocked,jdbcType=BIT},
       chapterLocked = #{record.chapterLocked,jdbcType=BIT},
       commentLocked = #{record.commentLocked,jdbcType=BIT},
-      hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT},
       createTime = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -295,6 +295,9 @@
       <if test="commentCount != null">
         commentCount = #{commentCount,jdbcType=INTEGER},
       </if>
+      <if test="visible != null">
+        visible = #{visible,jdbcType=INTEGER},
+      </if>
       <if test="restricted != null">
         restricted = #{restricted,jdbcType=INTEGER},
       </if>
@@ -306,9 +309,6 @@
       </if>
       <if test="commentLocked != null">
         commentLocked = #{commentLocked,jdbcType=BIT},
-      </if>
-      <if test="hided != null">
-        hided = #{hided,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
@@ -326,11 +326,11 @@
       fictionCount = #{fictionCount,jdbcType=INTEGER},
       chapterCount = #{chapterCount,jdbcType=INTEGER},
       commentCount = #{commentCount,jdbcType=INTEGER},
+      visible = #{visible,jdbcType=INTEGER},
       restricted = #{restricted,jdbcType=INTEGER},
       fictionLocked = #{fictionLocked,jdbcType=BIT},
       chapterLocked = #{chapterLocked,jdbcType=BIT},
       commentLocked = #{commentLocked,jdbcType=BIT},
-      hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
       createTime = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

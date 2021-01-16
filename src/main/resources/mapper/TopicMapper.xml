@@ -11,10 +11,10 @@
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="replyCount" jdbcType="INTEGER" property="replyCount" />
     <result column="viewCount" jdbcType="INTEGER" property="viewCount" />
+    <result column="visible" jdbcType="INTEGER" property="visible" />
     <result column="restricted" jdbcType="INTEGER" property="restricted" />
     <result column="anonymous" jdbcType="BIT" property="anonymous" />
     <result column="locked" jdbcType="BIT" property="locked" />
-    <result column="hided" jdbcType="BIT" property="hided" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jnxaread.bean.Topic">
@@ -79,8 +79,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, boardId, userId, createTime, label, title, password, replyCount, viewCount, restricted,
-    anonymous, locked, hided, deleted
+    id, boardId, userId, createTime, label, title, password, replyCount, viewCount, visible, 
+    restricted, anonymous, locked, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -116,7 +116,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select
+    select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -134,25 +134,26 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Topic">
-    insert into topic (id, boardId, userId,
-      createTime, label, title,
-      password, replyCount, viewCount,
-      restricted, anonymous, locked,
-      hided, deleted, content
-      )
-    values (#{id,jdbcType=INTEGER}, #{boardId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
-      #{createTime,jdbcType=TIMESTAMP}, #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},
-      #{password,jdbcType=VARCHAR}, #{replyCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER},
-      #{restricted,jdbcType=INTEGER}, #{anonymous,jdbcType=BIT}, #{locked,jdbcType=BIT},
-      #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
-      )
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into topic (boardId, userId, createTime, 
+      label, title, password, 
+      replyCount, viewCount, visible, 
+      restricted, anonymous, locked, 
+      deleted, content)
+    values (#{boardId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{label,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{replyCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER}, #{visible,jdbcType=INTEGER}, 
+      #{restricted,jdbcType=INTEGER}, #{anonymous,jdbcType=BIT}, #{locked,jdbcType=BIT}, 
+      #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Topic" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Topic">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into topic
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="boardId != null">
         boardId,
       </if>
@@ -177,6 +178,9 @@
       <if test="viewCount != null">
         viewCount,
       </if>
+      <if test="visible != null">
+        visible,
+      </if>
       <if test="restricted != null">
         restricted,
       </if>
@@ -186,9 +190,6 @@
       <if test="locked != null">
         locked,
       </if>
-      <if test="hided != null">
-        hided,
-      </if>
       <if test="deleted != null">
         deleted,
       </if>
@@ -197,9 +198,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="boardId != null">
         #{boardId,jdbcType=INTEGER},
       </if>
@@ -224,6 +222,9 @@
       <if test="viewCount != null">
         #{viewCount,jdbcType=INTEGER},
       </if>
+      <if test="visible != null">
+        #{visible,jdbcType=INTEGER},
+      </if>
       <if test="restricted != null">
         #{restricted,jdbcType=INTEGER},
       </if>
@@ -232,9 +233,6 @@
       </if>
       <if test="locked != null">
         #{locked,jdbcType=BIT},
-      </if>
-      <if test="hided != null">
-        #{hided,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
@@ -280,6 +278,9 @@
       <if test="record.viewCount != null">
         viewCount = #{record.viewCount,jdbcType=INTEGER},
       </if>
+      <if test="record.visible != null">
+        visible = #{record.visible,jdbcType=INTEGER},
+      </if>
       <if test="record.restricted != null">
         restricted = #{record.restricted,jdbcType=INTEGER},
       </if>
@@ -288,9 +289,6 @@
       </if>
       <if test="record.locked != null">
         locked = #{record.locked,jdbcType=BIT},
-      </if>
-      <if test="record.hided != null">
-        hided = #{record.hided,jdbcType=BIT},
       </if>
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
@@ -314,10 +312,10 @@
       password = #{record.password,jdbcType=VARCHAR},
       replyCount = #{record.replyCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
+      visible = #{record.visible,jdbcType=INTEGER},
       restricted = #{record.restricted,jdbcType=INTEGER},
       anonymous = #{record.anonymous,jdbcType=BIT},
       locked = #{record.locked,jdbcType=BIT},
-      hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -335,10 +333,10 @@
       password = #{record.password,jdbcType=VARCHAR},
       replyCount = #{record.replyCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
+      visible = #{record.visible,jdbcType=INTEGER},
       restricted = #{record.restricted,jdbcType=INTEGER},
       anonymous = #{record.anonymous,jdbcType=BIT},
       locked = #{record.locked,jdbcType=BIT},
-      hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -371,6 +369,9 @@
       <if test="viewCount != null">
         viewCount = #{viewCount,jdbcType=INTEGER},
       </if>
+      <if test="visible != null">
+        visible = #{visible,jdbcType=INTEGER},
+      </if>
       <if test="restricted != null">
         restricted = #{restricted,jdbcType=INTEGER},
       </if>
@@ -379,9 +380,6 @@
       </if>
       <if test="locked != null">
         locked = #{locked,jdbcType=BIT},
-      </if>
-      <if test="hided != null">
-        hided = #{hided,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
@@ -402,10 +400,10 @@
       password = #{password,jdbcType=VARCHAR},
       replyCount = #{replyCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
+      visible = #{visible,jdbcType=INTEGER},
       restricted = #{restricted,jdbcType=INTEGER},
       anonymous = #{anonymous,jdbcType=BIT},
       locked = #{locked,jdbcType=BIT},
-      hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
@@ -420,10 +418,10 @@
       password = #{password,jdbcType=VARCHAR},
       replyCount = #{replyCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
+      visible = #{visible,jdbcType=INTEGER},
       restricted = #{restricted,jdbcType=INTEGER},
       anonymous = #{anonymous,jdbcType=BIT},
       locked = #{locked,jdbcType=BIT},
-      hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>

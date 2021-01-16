@@ -7,8 +7,8 @@
     <result column="chapterId" jdbcType="INTEGER" property="chapterId" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="visible" jdbcType="INTEGER" property="visible" />
     <result column="anonymous" jdbcType="BIT" property="anonymous" />
-    <result column="hided" jdbcType="BIT" property="hided" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jnxaread.bean.Comment">
@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, fictionId, chapterId, userId, createTime, anonymous, hided, deleted
+    id, fictionId, chapterId, userId, createTime, visible, anonymous, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -109,7 +109,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select
+    select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -127,21 +127,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Comment">
-    insert into comment (id, fictionId, chapterId,
-      userId, createTime, anonymous,
-      hided, deleted, content
-      )
-    values (#{id,jdbcType=INTEGER}, #{fictionId,jdbcType=INTEGER}, #{chapterId,jdbcType=INTEGER},
-      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{anonymous,jdbcType=BIT},
-      #{hided,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
-      )
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into comment (fictionId, chapterId, userId, 
+      createTime, visible, anonymous, 
+      deleted, content)
+    values (#{fictionId,jdbcType=INTEGER}, #{chapterId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{visible,jdbcType=INTEGER}, #{anonymous,jdbcType=BIT}, 
+      #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Comment">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="fictionId != null">
         fictionId,
       </if>
@@ -154,11 +155,11 @@
       <if test="createTime != null">
         createTime,
       </if>
+      <if test="visible != null">
+        visible,
+      </if>
       <if test="anonymous != null">
         anonymous,
-      </if>
-      <if test="hided != null">
-        hided,
       </if>
       <if test="deleted != null">
         deleted,
@@ -168,9 +169,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="fictionId != null">
         #{fictionId,jdbcType=INTEGER},
       </if>
@@ -183,11 +181,11 @@
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="visible != null">
+        #{visible,jdbcType=INTEGER},
+      </if>
       <if test="anonymous != null">
         #{anonymous,jdbcType=BIT},
-      </if>
-      <if test="hided != null">
-        #{hided,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
@@ -221,11 +219,11 @@
       <if test="record.createTime != null">
         createTime = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.visible != null">
+        visible = #{record.visible,jdbcType=INTEGER},
+      </if>
       <if test="record.anonymous != null">
         anonymous = #{record.anonymous,jdbcType=BIT},
-      </if>
-      <if test="record.hided != null">
-        hided = #{record.hided,jdbcType=BIT},
       </if>
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
@@ -245,8 +243,8 @@
       chapterId = #{record.chapterId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      visible = #{record.visible,jdbcType=INTEGER},
       anonymous = #{record.anonymous,jdbcType=BIT},
-      hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -260,8 +258,8 @@
       chapterId = #{record.chapterId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      visible = #{record.visible,jdbcType=INTEGER},
       anonymous = #{record.anonymous,jdbcType=BIT},
-      hided = #{record.hided,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -282,11 +280,11 @@
       <if test="createTime != null">
         createTime = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="visible != null">
+        visible = #{visible,jdbcType=INTEGER},
+      </if>
       <if test="anonymous != null">
         anonymous = #{anonymous,jdbcType=BIT},
-      </if>
-      <if test="hided != null">
-        hided = #{hided,jdbcType=BIT},
       </if>
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
@@ -303,8 +301,8 @@
       chapterId = #{chapterId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
+      visible = #{visible,jdbcType=INTEGER},
       anonymous = #{anonymous,jdbcType=BIT},
-      hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
@@ -315,8 +313,8 @@
       chapterId = #{chapterId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
+      visible = #{visible,jdbcType=INTEGER},
       anonymous = #{anonymous,jdbcType=BIT},
-      hided = #{hided,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>

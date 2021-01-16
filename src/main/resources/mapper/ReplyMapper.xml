@@ -109,7 +109,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select
+    select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -127,21 +127,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Reply">
-    insert into reply (id, topicId, userId,
-      createTime, floor, quote,
-      anonymous, deleted, content
-      )
-    values (#{id,jdbcType=INTEGER}, #{topicId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
-      #{createTime,jdbcType=TIMESTAMP}, #{floor,jdbcType=INTEGER}, #{quote,jdbcType=INTEGER},
-      #{anonymous,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
-      )
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into reply (topicId, userId, createTime, 
+      floor, quote, anonymous, 
+      deleted, content)
+    values (#{topicId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{floor,jdbcType=INTEGER}, #{quote,jdbcType=INTEGER}, #{anonymous,jdbcType=BIT}, 
+      #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Reply">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into reply
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="topicId != null">
         topicId,
       </if>
@@ -168,9 +169,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="topicId != null">
         #{topicId,jdbcType=INTEGER},
       </if>

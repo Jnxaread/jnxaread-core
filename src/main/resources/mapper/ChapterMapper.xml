@@ -12,8 +12,8 @@
     <result column="wordCount" jdbcType="INTEGER" property="wordCount" />
     <result column="commentCount" jdbcType="INTEGER" property="commentCount" />
     <result column="viewCount" jdbcType="INTEGER" property="viewCount" />
+    <result column="visible" jdbcType="INTEGER" property="visible" />
     <result column="restricted" jdbcType="INTEGER" property="restricted" />
-    <result column="hided" jdbcType="BIT" property="hided" />
     <result column="contentLocked" jdbcType="BIT" property="contentLocked" />
     <result column="commentLocked" jdbcType="BIT" property="commentLocked" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
@@ -80,8 +80,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, fictionId, userId, createTime, number, title, password, wordCount, commentCount,
-    viewCount, restricted, hided, contentLocked, commentLocked, deleted
+    id, fictionId, userId, createTime, number, title, password, wordCount, commentCount, 
+    viewCount, visible, restricted, contentLocked, commentLocked, deleted
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -117,7 +117,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select
+    select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -135,25 +135,28 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Chapter">
-    insert into chapter (id, fictionId, userId,
-      createTime, number, title,
-      password, wordCount, commentCount,
-      viewCount, restricted, hided,
-      contentLocked, commentLocked, deleted,
-      content)
-    values (#{id,jdbcType=INTEGER}, #{fictionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
-      #{createTime,jdbcType=TIMESTAMP}, #{number,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
-      #{password,jdbcType=VARCHAR}, #{wordCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER},
-      #{viewCount,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER}, #{hided,jdbcType=BIT},
-      #{contentLocked,jdbcType=BIT}, #{commentLocked,jdbcType=BIT}, #{deleted,jdbcType=BIT},
-      #{content,jdbcType=LONGVARCHAR})
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into chapter (fictionId, userId, createTime, 
+      number, title, password, 
+      wordCount, commentCount, viewCount, 
+      visible, restricted, contentLocked, 
+      commentLocked, deleted, content
+      )
+    values (#{fictionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{number,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{wordCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER}, 
+      #{visible,jdbcType=INTEGER}, #{restricted,jdbcType=INTEGER}, #{contentLocked,jdbcType=BIT}, 
+      #{commentLocked,jdbcType=BIT}, #{deleted,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.jnxaread.bean.Chapter" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.jnxaread.bean.Chapter">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into chapter
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="fictionId != null">
         fictionId,
       </if>
@@ -181,11 +184,11 @@
       <if test="viewCount != null">
         viewCount,
       </if>
+      <if test="visible != null">
+        visible,
+      </if>
       <if test="restricted != null">
         restricted,
-      </if>
-      <if test="hided != null">
-        hided,
       </if>
       <if test="contentLocked != null">
         contentLocked,
@@ -201,9 +204,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="fictionId != null">
         #{fictionId,jdbcType=INTEGER},
       </if>
@@ -231,11 +231,11 @@
       <if test="viewCount != null">
         #{viewCount,jdbcType=INTEGER},
       </if>
+      <if test="visible != null">
+        #{visible,jdbcType=INTEGER},
+      </if>
       <if test="restricted != null">
         #{restricted,jdbcType=INTEGER},
-      </if>
-      <if test="hided != null">
-        #{hided,jdbcType=BIT},
       </if>
       <if test="contentLocked != null">
         #{contentLocked,jdbcType=BIT},
@@ -290,11 +290,11 @@
       <if test="record.viewCount != null">
         viewCount = #{record.viewCount,jdbcType=INTEGER},
       </if>
+      <if test="record.visible != null">
+        visible = #{record.visible,jdbcType=INTEGER},
+      </if>
       <if test="record.restricted != null">
         restricted = #{record.restricted,jdbcType=INTEGER},
-      </if>
-      <if test="record.hided != null">
-        hided = #{record.hided,jdbcType=BIT},
       </if>
       <if test="record.contentLocked != null">
         contentLocked = #{record.contentLocked,jdbcType=BIT},
@@ -325,8 +325,8 @@
       wordCount = #{record.wordCount,jdbcType=INTEGER},
       commentCount = #{record.commentCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
+      visible = #{record.visible,jdbcType=INTEGER},
       restricted = #{record.restricted,jdbcType=INTEGER},
-      hided = #{record.hided,jdbcType=BIT},
       contentLocked = #{record.contentLocked,jdbcType=BIT},
       commentLocked = #{record.commentLocked,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT},
@@ -347,8 +347,8 @@
       wordCount = #{record.wordCount,jdbcType=INTEGER},
       commentCount = #{record.commentCount,jdbcType=INTEGER},
       viewCount = #{record.viewCount,jdbcType=INTEGER},
+      visible = #{record.visible,jdbcType=INTEGER},
       restricted = #{record.restricted,jdbcType=INTEGER},
-      hided = #{record.hided,jdbcType=BIT},
       contentLocked = #{record.contentLocked,jdbcType=BIT},
       commentLocked = #{record.commentLocked,jdbcType=BIT},
       deleted = #{record.deleted,jdbcType=BIT}
@@ -386,11 +386,11 @@
       <if test="viewCount != null">
         viewCount = #{viewCount,jdbcType=INTEGER},
       </if>
+      <if test="visible != null">
+        visible = #{visible,jdbcType=INTEGER},
+      </if>
       <if test="restricted != null">
         restricted = #{restricted,jdbcType=INTEGER},
-      </if>
-      <if test="hided != null">
-        hided = #{hided,jdbcType=BIT},
       </if>
       <if test="contentLocked != null">
         contentLocked = #{contentLocked,jdbcType=BIT},
@@ -418,8 +418,8 @@
       wordCount = #{wordCount,jdbcType=INTEGER},
       commentCount = #{commentCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
+      visible = #{visible,jdbcType=INTEGER},
       restricted = #{restricted,jdbcType=INTEGER},
-      hided = #{hided,jdbcType=BIT},
       contentLocked = #{contentLocked,jdbcType=BIT},
       commentLocked = #{commentLocked,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT},
@@ -437,8 +437,8 @@
       wordCount = #{wordCount,jdbcType=INTEGER},
       commentCount = #{commentCount,jdbcType=INTEGER},
       viewCount = #{viewCount,jdbcType=INTEGER},
+      visible = #{visible,jdbcType=INTEGER},
       restricted = #{restricted,jdbcType=INTEGER},
-      hided = #{hided,jdbcType=BIT},
       contentLocked = #{contentLocked,jdbcType=BIT},
       commentLocked = #{commentLocked,jdbcType=BIT},
       deleted = #{deleted,jdbcType=BIT}

@@ -8,7 +8,7 @@
   </resultMap>
   <select id="findListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
     SELECT a.*,IFNULL(b.lastSubmit,a.createTime) lastSubmit,IFNULL(b.lastReply,a.username) lastReply FROM
-    (SELECT topic.*,user.username FROM topic,user WHERE topic.restricted&lt;=#{level} AND topic.hided=0 AND topic.deleted=0 AND topic.userId=user.id
+    (SELECT topic.*,user.username FROM topic,user WHERE topic.restricted&lt;=#{level} AND topic.visible=1 AND topic.deleted=0 AND topic.userId=user.id
     <if test="userId!=0">
       AND topic.userId=#{userId}
     </if>
@@ -20,7 +20,7 @@
   </select>
   <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.TopicWrap">
     SELECT topic.id,topic.createTime,topic.label,topic.title,topic.content,topic.replyCount,topic.viewCount,user.username
-    FROM topic,user WHERE topic.id=#{id} AND topic.hided=0 AND topic.deleted=0 AND topic.userId=user.id
+    FROM topic,user WHERE topic.id=#{id} AND topic.visible=1 AND topic.deleted=0 AND topic.userId=user.id
   </select>
   <select id="selectByPrimaryKeyForUpdate" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.Topic">
     select id,replyCount,locked,deleted from topic where id=#{id} for update

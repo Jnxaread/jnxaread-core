@@ -2,7 +2,6 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Authority;
 import com.jnxaread.bean.AuthorityExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

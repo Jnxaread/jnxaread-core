@@ -100,17 +100,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Project">
-    insert into project (id, version, versionInfo, 
-      userId, createTime)
-    values (#{id,jdbcType=INTEGER}, #{version,jdbcType=VARCHAR}, #{versionInfo,jdbcType=VARCHAR}, 
-      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into project (version, versionInfo, userId, 
+      createTime)
+    values (#{version,jdbcType=VARCHAR}, #{versionInfo,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Project">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into project
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="version != null">
         version,
       </if>
@@ -125,9 +128,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="version != null">
         #{version,jdbcType=VARCHAR},
       </if>

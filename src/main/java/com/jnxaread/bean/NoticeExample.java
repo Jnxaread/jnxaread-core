@@ -665,66 +665,6 @@ public class NoticeExample {
             return (Criteria) this;
         }
 
-        public Criteria andRestrictedIsNull() {
-            addCriterion("restricted is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRestrictedIsNotNull() {
-            addCriterion("restricted is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRestrictedEqualTo(Integer value) {
-            addCriterion("restricted =", value, "restricted");
-            return (Criteria) this;
-        }
-
-        public Criteria andRestrictedNotEqualTo(Integer value) {
-            addCriterion("restricted <>", value, "restricted");
-            return (Criteria) this;
-        }
-
-        public Criteria andRestrictedGreaterThan(Integer value) {
-            addCriterion("restricted >", value, "restricted");
-            return (Criteria) this;
-        }
-
-        public Criteria andRestrictedGreaterThanOrEqualTo(Integer value) {
-            addCriterion("restricted >=", value, "restricted");
-            return (Criteria) this;
-        }
-
-        public Criteria andRestrictedLessThan(Integer value) {
-            addCriterion("restricted <", value, "restricted");
-            return (Criteria) this;
-        }
-
-        public Criteria andRestrictedLessThanOrEqualTo(Integer value) {
-            addCriterion("restricted <=", value, "restricted");
-            return (Criteria) this;
-        }
-
-        public Criteria andRestrictedIn(List<Integer> values) {
-            addCriterion("restricted in", values, "restricted");
-            return (Criteria) this;
-        }
-
-        public Criteria andRestrictedNotIn(List<Integer> values) {
-            addCriterion("restricted not in", values, "restricted");
-            return (Criteria) this;
-        }
-
-        public Criteria andRestrictedBetween(Integer value1, Integer value2) {
-            addCriterion("restricted between", value1, value2, "restricted");
-            return (Criteria) this;
-        }
-
-        public Criteria andRestrictedNotBetween(Integer value1, Integer value2) {
-            addCriterion("restricted not between", value1, value2, "restricted");
-            return (Criteria) this;
-        }
-
         public Criteria andPasswordIsNull() {
             addCriterion("password is null");
             return (Criteria) this;
@@ -915,6 +855,126 @@ public class NoticeExample {
             return (Criteria) this;
         }
 
+        public Criteria andVisibleIsNull() {
+            addCriterion("visible is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleIsNotNull() {
+            addCriterion("visible is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleEqualTo(Integer value) {
+            addCriterion("visible =", value, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleNotEqualTo(Integer value) {
+            addCriterion("visible <>", value, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleGreaterThan(Integer value) {
+            addCriterion("visible >", value, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleGreaterThanOrEqualTo(Integer value) {
+            addCriterion("visible >=", value, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleLessThan(Integer value) {
+            addCriterion("visible <", value, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleLessThanOrEqualTo(Integer value) {
+            addCriterion("visible <=", value, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleIn(List<Integer> values) {
+            addCriterion("visible in", values, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleNotIn(List<Integer> values) {
+            addCriterion("visible not in", values, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleBetween(Integer value1, Integer value2) {
+            addCriterion("visible between", value1, value2, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisibleNotBetween(Integer value1, Integer value2) {
+            addCriterion("visible not between", value1, value2, "visible");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedIsNull() {
+            addCriterion("restricted is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedIsNotNull() {
+            addCriterion("restricted is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedEqualTo(Integer value) {
+            addCriterion("restricted =", value, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedNotEqualTo(Integer value) {
+            addCriterion("restricted <>", value, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedGreaterThan(Integer value) {
+            addCriterion("restricted >", value, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedGreaterThanOrEqualTo(Integer value) {
+            addCriterion("restricted >=", value, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedLessThan(Integer value) {
+            addCriterion("restricted <", value, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedLessThanOrEqualTo(Integer value) {
+            addCriterion("restricted <=", value, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedIn(List<Integer> values) {
+            addCriterion("restricted in", values, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedNotIn(List<Integer> values) {
+            addCriterion("restricted not in", values, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedBetween(Integer value1, Integer value2) {
+            addCriterion("restricted between", value1, value2, "restricted");
+            return (Criteria) this;
+        }
+
+        public Criteria andRestrictedNotBetween(Integer value1, Integer value2) {
+            addCriterion("restricted not between", value1, value2, "restricted");
+            return (Criteria) this;
+        }
+
         public Criteria andLockedIsNull() {
             addCriterion("locked is null");
             return (Criteria) this;
@@ -972,66 +1032,6 @@ public class NoticeExample {
 
         public Criteria andLockedNotBetween(Boolean value1, Boolean value2) {
             addCriterion("locked not between", value1, value2, "locked");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedIsNull() {
-            addCriterion("hided is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedIsNotNull() {
-            addCriterion("hided is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedEqualTo(Boolean value) {
-            addCriterion("hided =", value, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedNotEqualTo(Boolean value) {
-            addCriterion("hided <>", value, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedGreaterThan(Boolean value) {
-            addCriterion("hided >", value, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("hided >=", value, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedLessThan(Boolean value) {
-            addCriterion("hided <", value, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedLessThanOrEqualTo(Boolean value) {
-            addCriterion("hided <=", value, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedIn(List<Boolean> values) {
-            addCriterion("hided in", values, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedNotIn(List<Boolean> values) {
-            addCriterion("hided not in", values, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedBetween(Boolean value1, Boolean value2) {
-            addCriterion("hided between", value1, value2, "hided");
-            return (Criteria) this;
-        }
-
-        public Criteria andHidedNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("hided not between", value1, value2, "hided");
             return (Criteria) this;
         }
 

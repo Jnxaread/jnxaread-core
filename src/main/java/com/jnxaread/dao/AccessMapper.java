@@ -2,7 +2,6 @@ package com.jnxaread.dao;
 
 import com.jnxaread.bean.Access;
 import com.jnxaread.bean.AccessExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -15,6 +15,8 @@ public class Category {
 
     private Integer commentCount;
 
+    private Integer visible;
+
     private Integer restricted;
 
     private Boolean fictionLocked;
@@ -22,8 +24,6 @@ public class Category {
     private Boolean chapterLocked;
 
     private Boolean commentLocked;
-
-    private Boolean hided;
 
     private Boolean deleted;
 
@@ -77,6 +77,14 @@ public class Category {
         this.commentCount = commentCount;
     }
 
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
+    }
+
     public Integer getRestricted() {
         return restricted;
     }
@@ -107,14 +115,6 @@ public class Category {
 
     public void setCommentLocked(Boolean commentLocked) {
         this.commentLocked = commentLocked;
-    }
-
-    public Boolean getHided() {
-        return hided;
-    }
-
-    public void setHided(Boolean hided) {
-        this.hided = hided;
     }
 
     public Boolean getDeleted() {

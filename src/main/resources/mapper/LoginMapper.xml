@@ -101,19 +101,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jnxaread.bean.Login">
-    insert into login (id, userId, createTime, 
-      IP, terminal, system
-      )
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{IP,jdbcType=VARCHAR}, #{terminal,jdbcType=VARCHAR}, #{system,jdbcType=INTEGER}
-      )
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into login (userId, createTime, IP, 
+      terminal, system)
+    values (#{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{IP,jdbcType=VARCHAR}, 
+      #{terminal,jdbcType=VARCHAR}, #{system,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Login">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into login
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="userId != null">
         userId,
       </if>
@@ -131,9 +132,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>

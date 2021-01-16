@@ -15,13 +15,13 @@ public class Board {
 
     private Integer replyCount;
 
+    private Integer visible;
+
     private Integer restricted;
 
     private Boolean topicLocked;
 
     private Boolean replyLocked;
-
-    private Boolean hided;
 
     private Boolean deleted;
 
@@ -75,6 +75,14 @@ public class Board {
         this.replyCount = replyCount;
     }
 
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
+    }
+
     public Integer getRestricted() {
         return restricted;
     }
@@ -97,14 +105,6 @@ public class Board {
 
     public void setReplyLocked(Boolean replyLocked) {
         this.replyLocked = replyLocked;
-    }
-
-    public Boolean getHided() {
-        return hided;
-    }
-
-    public void setHided(Boolean hided) {
-        this.hided = hided;
     }
 
     public Boolean getDeleted() {

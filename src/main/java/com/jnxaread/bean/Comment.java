@@ -13,9 +13,9 @@ public class Comment {
 
     private Date createTime;
 
-    private Boolean anonymous;
+    private Integer visible;
 
-    private Boolean hided;
+    private Boolean anonymous;
 
     private Boolean deleted;
 
@@ -61,20 +61,20 @@ public class Comment {
         this.createTime = createTime;
     }
 
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
+    }
+
     public Boolean getAnonymous() {
         return anonymous;
     }
 
     public void setAnonymous(Boolean anonymous) {
         this.anonymous = anonymous;
-    }
-
-    public Boolean getHided() {
-        return hided;
-    }
-
-    public void setHided(Boolean hided) {
-        this.hided = hided;
     }
 
     public Boolean getDeleted() {

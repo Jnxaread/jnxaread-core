@@ -36,7 +36,7 @@
 
         <!-- 指定sql映射文件生成的位置 -->
         <sqlMapGenerator
-                targetPackage="mapper"
+                targetPackage="mapper_temp"
                 targetProject=".\src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
