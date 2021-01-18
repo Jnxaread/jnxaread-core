@@ -24,7 +24,7 @@ public class BaseInterceptorConfig implements WebMvcConfigurer {
     /**
      * 在此字符串数组中记录所有需要进行登录校验的接口
      */
-    private String[] loginCheckPath = {
+    private final String[] loginCheckPath = {
             "/**/new/**", //所有的创建作品的路径
             "/**/own", //所有的请求自己的作品的路径
             "/**/edit/**", //所有的编辑或修改路径
@@ -35,13 +35,14 @@ public class BaseInterceptorConfig implements WebMvcConfigurer {
     /**
      * 在此字符串数组中记录不需要进行登录校验的接口
      */
-    private String[] loginExcludePath = {
+    private final String[] loginExcludePath = {
             "/admin/user/login", //管理员登录接口
     };
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(accessOriginInterceptor).addPathPatterns("/**");
-        registry.addInterceptor(loginCheckInterceptor).addPathPatterns(loginCheckPath).excludePathPatterns(loginExcludePath);
+        registry.addInterceptor(loginCheckInterceptor).addPathPatterns(loginCheckPath)
+                .excludePathPatterns(loginExcludePath);
     }
 }
