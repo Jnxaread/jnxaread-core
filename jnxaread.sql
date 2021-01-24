@@ -396,8 +396,8 @@ CREATE TABLE `Notice` (
   `content` mediumtext NOT NULL COMMENT '公告内容',
   `position` int(11) NOT NULL COMMENT '公告位置',
   `password` varchar(32) DEFAULT NULL COMMENT '访问密码',
-  `viewCount` int(11) NOT NULL COMMENT '查看次数',
-  `updateCount` int(11) NOT NULL COMMENT '编辑次数',
+  `viewCount` int(11) NOT NULL DEFAULT '0' COMMENT '查看次数',
+  `updateCount` int(11) NOT NULL DEFAULT '0' COMMENT '编辑次数',
   `visible` int(11) NOT NULL DEFAULT '1' COMMENT '对谁可见【0：只对管理员可见；1：对所有人可见；】',
   `restricted` int(11) NOT NULL DEFAULT '0' COMMENT '限制性等级',
   `locked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定',
@@ -586,4 +586,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-16 11:42:28
+-- Dump completed on 2021-01-24 19:08:01
