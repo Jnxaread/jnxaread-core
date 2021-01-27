@@ -1,6 +1,5 @@
 package com.jnxaread.service;
 
-import com.jnxaread.bean.Login;
 import com.jnxaread.bean.User;
 
 /**
@@ -20,7 +19,5 @@ public interface BaseUserService {
     User getUserByEmail(String email);
 
     void updateUser(User updatedUser);
-
-    void addLogin(Login newLogin);
 
 }

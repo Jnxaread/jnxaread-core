@@ -15,22 +15,9 @@
     </appender>
 
     <!--文件输出,时间窗口滚动-->
-    <appender name="infoFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--日志名,指定最新的文件名，其他文件名使用FileNamePattern -->
         <File>${LOG_HOME}/info/jnxaread.log</File>
-        <!--文件滚动模式-->
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件输出的文件名,可设置文件类型为gz,开启文件压缩-->
-            <!-- %d{yyyy-MM,aux}，aux为目录辅助标识；%i表示当前为当天第i个日志 -->
-            <FileNamePattern>${LOG_HOME}/info/%d{yyyy-MM,aux}/jnxaread.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
-            <!--日志文件保留天数-->
-            <MaxHistory>30</MaxHistory>
-            <!--按大小分割同一天的-->
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>8MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-        </rollingPolicy>
-
         <!--输出格式-->
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
@@ -38,10 +25,20 @@
             <!--设置编码-->
             <charset>UTF-8</charset>
         </encoder>
+        <!--文件滚动模式-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名,可设置文件类型为gz,开启文件压缩-->
+            <!-- %d{yyyy-MM,aux}，aux为目录辅助标识；%i表示当前为当天第i个日志 -->
+            <FileNamePattern>${LOG_HOME}/info/%d{yyyy-MM,aux}/jnxaread.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <!--日志文件保留天数-->
+            <MaxHistory>30</MaxHistory>
+            <!--按大小分割同一天的-->
+            <maxFileSize>8MB</maxFileSize>
+        </rollingPolicy>
     </appender>
 
     <!-- 文件 滚动日志 (仅error)-->
-    <appender name="errorFile"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 当前日志输出路径、文件名 -->
         <file>${LOG_HOME}/error/jnxaread-error.log</file>
         <!--日志输出格式-->
@@ -68,12 +65,67 @@
         </filter>
     </appender>
 
+    <!-- 用户访问记录日志输出 -->
+    <appender name="ACCESS_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--日志名,指定最新的文件名，其他文件名使用FileNamePattern -->
+        <File>${LOG_HOME}/access/access.log</File>
+        <!--输出格式-->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %msg%n</pattern>
+            <!--设置编码-->
+            <charset>UTF-8</charset>
+        </encoder>
+        <!--文件滚动模式-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名,可设置文件类型为gz,开启文件压缩-->
+            <!-- %d{yyyy-MM,aux}，aux为目录辅助标识；%i表示当前为当天第i个日志 -->
+            <FileNamePattern>${LOG_HOME}/access/%d{yyyy-MM,aux}/access.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <!--日志文件保留天数-->
+            <MaxHistory>90</MaxHistory>
+            <!--按大小分割同一天的-->
+            <maxFileSize>8MB</maxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 用户登录记录日志输出 -->
+    <appender name="LOGIN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--日志名,指定最新的文件名，其他文件名使用FileNamePattern -->
+        <File>${LOG_HOME}/login/login.log</File>
+        <!--输出格式-->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %msg%n</pattern>
+            <!--设置编码-->
+            <charset>UTF-8</charset>
+        </encoder>
+        <!--文件滚动模式-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名,可设置文件类型为gz,开启文件压缩-->
+            <!-- %d{yyyy-MM,aux}，aux为目录辅助标识；%i表示当前为当天第i个日志 -->
+            <FileNamePattern>${LOG_HOME}/login/%d{yyyy-MM,aux}/login.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <!--日志文件保留天数-->
+            <MaxHistory>90</MaxHistory>
+            <!--按大小分割同一天的-->
+            <maxFileSize>8MB</maxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 用户访问logger -->
+    <logger name="access" level="INFO" additivity="false">
+        <appender-ref ref="ACCESS_LOG"/>
+    </logger>
+
+    <!-- 用户登录logger -->
+    <logger name="login" level="INFO" additivity="false">
+        <appender-ref ref="LOGIN_LOG"/>
+    </logger>
 
     <!--指定基础的日志输出级别-->
     <root level="INFO">
         <!--appender将会添加到这个logger-->
         <appender-ref ref="console"/>
-        <appender-ref ref="infoFile"/>
-        <appender-ref ref="errorFile"/>
+        <appender-ref ref="INFO_FILE"/>
+        <appender-ref ref="ERROR_FILE"/>
     </root>
 </configuration>

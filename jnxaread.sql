@@ -349,35 +349,6 @@ LOCK TABLES `Label` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Login`
---
-
-DROP TABLE IF EXISTS `Login`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Login` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
-  `userId` int(11) NOT NULL COMMENT '外键，用户ID',
-  `createTime` datetime NOT NULL COMMENT '登录时间',
-  `IP` varchar(128) NOT NULL COMMENT 'IP地址',
-  `terminal` varchar(255) NOT NULL COMMENT '登录终端',
-  `system` int(1) NOT NULL COMMENT '登录系统',
-  PRIMARY KEY (`id`),
-  KEY `login_user_id` (`userId`),
-  CONSTRAINT `login_user_id` FOREIGN KEY (`userId`) REFERENCES `User` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Login`
---
-
-LOCK TABLES `Login` WRITE;
-/*!40000 ALTER TABLE `Login` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Login` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `Notice`
 --
 
@@ -586,4 +557,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-24 19:08:01
+-- Dump completed on 2021-01-27 22:34:56

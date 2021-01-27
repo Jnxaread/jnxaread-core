@@ -1,15 +1,10 @@
 package com.jnxaread.service.impl;
 
-import com.jnxaread.bean.Login;
 import com.jnxaread.bean.User;
 import com.jnxaread.bean.UserExample;
-import com.jnxaread.dao.wrap.LoginMapperWrap;
 import com.jnxaread.dao.wrap.UserMapperWrap;
-import com.jnxaread.entity.UserGrade;
-import com.jnxaread.entity.UserLevel;
 import com.jnxaread.service.BaseUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,15 +16,6 @@ public class BaseUserServiceImpl implements BaseUserService {
 
     @Autowired(required = false)
     private UserMapperWrap userMapper;
-
-    @Autowired(required = false)
-    private LoginMapperWrap loginMapper;
-
-    @Autowired
-    private UserGrade userGrade;
-
-    @Autowired
-    private UserLevel userLevel;
 
     /**
      * 添加用户
@@ -111,24 +97,5 @@ public class BaseUserServiceImpl implements BaseUserService {
     @Override
     public void updateUser(User updatedUser) {
         userMapper.updateByPrimaryKeySelective(updatedUser);
-    }
-
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public void addLogin(Login newLogin) {
-        loginMapper.insertSelective(newLogin);
-        /*userMapper.updateLoginCountByPrimaryKey(newLogin.getUserId());
-        userMapper.updateGradeByPrimaryKey(newLogin.getUserId(),userGrade.getLogin());*/
-        User user = userMapper.selectByPrimaryKeyForUpdate(newLogin.getUserId());
-        user.setLoginCount(user.getLoginCount() + 1);
-        user.setGrade(user.getGrade() + userGrade.getLogin());
-        Integer[] gradeArr = userLevel.getGradeArr();
-        for (int i = 0; i < gradeArr.length; i++) {
-            if (gradeArr[i] > user.getGrade()) {
-                user.setLevel(i - 1);
-                break;
-            }
-        }
-        userMapper.updateByPrimaryKeySelective(user);
     }
 }
