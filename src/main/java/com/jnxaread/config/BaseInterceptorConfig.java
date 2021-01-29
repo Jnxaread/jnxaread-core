@@ -1,5 +1,6 @@
 package com.jnxaread.config;
 
+import com.jnxaread.interceptor.AccessLimitInterceptor;
 import com.jnxaread.interceptor.AccessOriginInterceptor;
 import com.jnxaread.interceptor.LoginCheckInterceptor;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,9 @@ import javax.annotation.Resource;
  */
 @Configuration
 public class BaseInterceptorConfig implements WebMvcConfigurer {
+
+    @Resource
+    private AccessLimitInterceptor accessLimitInterceptor;
 
     @Resource
     private AccessOriginInterceptor accessOriginInterceptor;
@@ -41,6 +45,7 @@ public class BaseInterceptorConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(accessLimitInterceptor).addPathPatterns("/**");
         registry.addInterceptor(accessOriginInterceptor).addPathPatterns("/**");
         registry.addInterceptor(loginCheckInterceptor).addPathPatterns(loginCheckPath)
                 .excludePathPatterns(loginExcludePath);

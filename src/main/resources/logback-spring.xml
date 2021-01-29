@@ -66,9 +66,9 @@
     </appender>
 
     <!-- 用户访问记录日志输出 -->
-    <appender name="ACCESS_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="ACCESS_NATURAL" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--日志名,指定最新的文件名，其他文件名使用FileNamePattern -->
-        <File>${LOG_HOME}/access/access.log</File>
+        <File>${LOG_HOME}/access/natural/access.log</File>
         <!--输出格式-->
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
@@ -80,12 +80,70 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!--日志文件输出的文件名,可设置文件类型为gz,开启文件压缩-->
             <!-- %d{yyyy-MM,aux}，aux为目录辅助标识；%i表示当前为当天第i个日志 -->
-            <FileNamePattern>${LOG_HOME}/access/%d{yyyy-MM,aux}/access.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <FileNamePattern>${LOG_HOME}/access/natural/%d{yyyy-MM,aux}/access.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
             <!--日志文件保留天数-->
             <MaxHistory>90</MaxHistory>
             <!--按大小分割同一天的-->
             <maxFileSize>8MB</maxFileSize>
         </rollingPolicy>
+    </appender>
+
+    <!-- 用户访问记录日志输出(仅恶意IP) -->
+    <appender name="ACCESS_VICIOUS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--日志名,指定最新的文件名，其他文件名使用FileNamePattern -->
+        <File>${LOG_HOME}/access/vicious/access.log</File>
+        <!--输出格式-->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %msg%n</pattern>
+            <!--设置编码-->
+            <charset>UTF-8</charset>
+        </encoder>
+        <!--文件滚动模式-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名,可设置文件类型为gz,开启文件压缩-->
+            <!-- %d{yyyy-MM,aux}，aux为目录辅助标识；%i表示当前为当天第i个日志 -->
+            <FileNamePattern>${LOG_HOME}/access/vicious/%d{yyyy-MM,aux}/access.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <!--日志文件保留天数-->
+            <MaxHistory>90</MaxHistory>
+            <!--按大小分割同一天的-->
+            <maxFileSize>8MB</maxFileSize>
+        </rollingPolicy>
+        <!-- 此日志文档只记录error级别的 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>error</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 用户访问记录日志输出(仅受限IP) -->
+    <appender name="ACCESS_LIMITED" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--日志名,指定最新的文件名，其他文件名使用FileNamePattern -->
+        <File>${LOG_HOME}/access/limited/access.log</File>
+        <!--输出格式-->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %msg%n</pattern>
+            <!--设置编码-->
+            <charset>UTF-8</charset>
+        </encoder>
+        <!--文件滚动模式-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名,可设置文件类型为gz,开启文件压缩-->
+            <!-- %d{yyyy-MM,aux}，aux为目录辅助标识；%i表示当前为当天第i个日志 -->
+            <FileNamePattern>${LOG_HOME}/access/limited/%d{yyyy-MM,aux}/access.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <!--日志文件保留天数-->
+            <MaxHistory>90</MaxHistory>
+            <!--按大小分割同一天的-->
+            <maxFileSize>8MB</maxFileSize>
+        </rollingPolicy>
+        <!-- 此日志文档只记录warn级别的 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>warn</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
     </appender>
 
     <!-- 用户登录记录日志输出 -->
@@ -113,7 +171,9 @@
 
     <!-- 用户访问logger -->
     <logger name="access" level="INFO" additivity="false">
-        <appender-ref ref="ACCESS_LOG"/>
+        <appender-ref ref="ACCESS_NATURAL"/>
+        <appender-ref ref="ACCESS_VICIOUS"/>
+        <appender-ref ref="ACCESS_LIMITED"/>
     </logger>
 
     <!-- 用户登录logger -->
