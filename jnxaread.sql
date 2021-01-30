@@ -504,7 +504,7 @@ DROP TABLE IF EXISTS `User`;
 CREATE TABLE `User` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
   `account` varchar(20) NOT NULL COMMENT '用户账号',
-  `password` varchar(32) NOT NULL COMMENT '用户密码',
+  `password` varchar(64) NOT NULL COMMENT '用户密码，使用md5加密',
   `username` varchar(12) NOT NULL COMMENT '用户昵称',
   `countryCode` varchar(8) NOT NULL DEFAULT '+86' COMMENT '国际电话区号',
   `mobile` varchar(11) NOT NULL DEFAULT '00000000000' COMMENT '手机号',
@@ -557,4 +557,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-27 22:34:56
+-- Dump completed on 2021-01-30 10:31:14

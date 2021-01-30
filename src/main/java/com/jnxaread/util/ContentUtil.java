@@ -11,8 +11,8 @@ public class ContentUtil {
     /**
      * 内容非空校验
      *
-     * @param validate
-     * @return
+     * @param validate 需要校验的内容
+     * @return 校验结果
      */
     public static boolean inspection(String validate) {
         String validateA = validate.replaceAll(" ", "");
@@ -20,21 +20,17 @@ public class ContentUtil {
         String validateC = validateB.replaceAll("</p>", "");
         String validateD = validateC.replaceAll("&nbsp;", "");
         String validateE = validateD.replaceAll("<br>", "");
-        if (validateE.length() != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return validateE.length() != 0;
     }
 
     /**
      * 汉字字数统计
      *
-     * @param content
-     * @return
+     * @param content 需要统计的内容
+     * @return 字数
      */
     public static int getWordCount(String content) {
-        String regWord = "^[\u4e00-\u9fa5]{1}$";
+        String regWord = "^[一-龥]$";
         int wordCount = 0;
         for (int i = 0; i < content.length(); i++) {
             String word = Character.toString(content.charAt(i));

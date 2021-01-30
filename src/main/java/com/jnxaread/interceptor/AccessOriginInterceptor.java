@@ -4,7 +4,6 @@ import com.jnxaread.entity.UnifiedResult;
 import com.jnxaread.util.ResponseUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +19,7 @@ public class AccessOriginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest req, HttpServletResponse rep, Object o) throws Exception {
         String terminal = req.getHeader("User-Agent");
         if (terminal == null) {
-            ResponseUtil.response(rep, UnifiedResult.build(402, "参数错误", null));
+            ResponseUtil.response(rep, UnifiedResult.build("402", "参数错误", null));
             return false;
         }
         //设置允许跨域的配置
@@ -29,15 +28,5 @@ public class AccessOriginInterceptor implements HandlerInterceptor {
         // 允许携带cookie跨域
         rep.setHeader("Access-Control-Allow-Credentials", "true");
         return true;
-    }
-
-    @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-
-    }
-
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-
     }
 }

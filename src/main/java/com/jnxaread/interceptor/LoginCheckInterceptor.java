@@ -26,7 +26,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         User user = (User) session.getAttribute("user");
         User admin = (User) session.getAttribute("admin");
         if (user == null && admin == null) {
-            ResponseUtil.response(response, UnifiedResult.build(400, "您还未登录，请登录", null));
+            ResponseUtil.response(response, UnifiedResult.build("400", "您还未登录，请登录", null));
             return false;
         }
         return true;

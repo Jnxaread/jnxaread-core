@@ -14,17 +14,12 @@ import java.io.PrintWriter;
  */
 public class ResponseUtil {
     public static void response(HttpServletResponse response, UnifiedResult result) {
-        PrintWriter writer = null;
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
-        try {
-            writer = response.getWriter();
+        try (PrintWriter writer = response.getWriter()) {
             writer.print(JSONObject.toJSONString(result));
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (writer != null)
-                writer.close();
         }
     }
 }

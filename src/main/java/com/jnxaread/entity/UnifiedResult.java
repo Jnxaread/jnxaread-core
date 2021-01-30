@@ -7,9 +7,15 @@ package com.jnxaread.entity;
  * @create 2019-10-30 19:25
  */
 public class UnifiedResult {
+    public static void main(String[] args) {
+        UnifiedResult build = UnifiedResult.build("0001");
+        System.out.println(build.getStatus());
+        System.out.println(build.getMsg());
+        System.out.println(build.getData());
+    }
 
     // 响应业务状态
-    private Integer status;
+    private String status;
 
     // 响应消息
     private String msg;
@@ -19,16 +25,15 @@ public class UnifiedResult {
 
     // 构造函数
     public UnifiedResult() {
-
     }
 
     public UnifiedResult(Object data) {
-        this.status = 200;
+        this.status = "0000";
         this.msg = "OK";
         this.data = data;
     }
 
-    public UnifiedResult(Integer status, String msg, Object data) {
+    public UnifiedResult(String status, String msg, Object data) {
         this.status = status;
         this.msg = msg;
         this.data = data;
@@ -42,15 +47,19 @@ public class UnifiedResult {
         return new UnifiedResult(data);
     }
 
-    public static UnifiedResult build(Integer status, String msg, Object data) {
+    public static UnifiedResult build(String status) {
+        return new UnifiedResult(status, null, null);
+    }
+
+    public static UnifiedResult build(String status, String msg, Object data) {
         return new UnifiedResult(status, msg, data);
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
