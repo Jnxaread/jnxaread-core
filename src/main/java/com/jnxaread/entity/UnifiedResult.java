@@ -28,7 +28,7 @@ public class UnifiedResult {
     }
 
     public UnifiedResult(Object data) {
-        this.status = "0000";
+        this.status = "000000";
         this.msg = "OK";
         this.data = data;
     }

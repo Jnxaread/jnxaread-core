@@ -2,7 +2,7 @@ package com.jnxaread.interceptor;
 
 import com.jnxaread.entity.AccessIPContainer;
 import com.jnxaread.entity.UnifiedResult;
-import com.jnxaread.status.StatusCodeEnum;
+import com.jnxaread.constant.StatusCodeEnum;
 import com.jnxaread.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

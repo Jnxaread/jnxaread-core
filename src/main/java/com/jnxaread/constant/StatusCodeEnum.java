@@ -1,11 +1,11 @@
-package com.jnxaread.status;
+package com.jnxaread.constant;
 
 /**
  * @Author 未央
  * @Create 2021-01-30 11:11
  */
 public enum StatusCodeEnum {
-    OK("0000", "执行成功"),
+    OK("000000", "执行成功"),
     PASS_CHECK_FORBIDDEN("010001", "禁止通行"),
     PASS_CHECK_LIMITED("010002", "禁止通行");
 
