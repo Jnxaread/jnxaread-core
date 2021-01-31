@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jnxaread.dao.wrap.TopicMapperWrap">
   <resultMap extends="com.jnxaread.dao.TopicMapper.ResultMapWithBLOBs" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.TopicWrap">
-    <result column="username" jdbcType="VARCHAR" property="username"></result>
-    <result column="lastReply" jdbcType="VARCHAR" property="lastReply"></result>
-    <result column="lastSubmit" jdbcType="TIMESTAMP" property="lastSubmit"></result>
+    <result column="username" jdbcType="VARCHAR" property="username"/>
+    <result column="lastReply" jdbcType="VARCHAR" property="lastReply"/>
+    <result column="lastSubmit" jdbcType="TIMESTAMP" property="lastSubmit"/>
   </resultMap>
   <select id="findListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
     SELECT a.*,IFNULL(b.lastSubmit,a.createTime) lastSubmit,IFNULL(b.lastReply,a.username) lastReply FROM

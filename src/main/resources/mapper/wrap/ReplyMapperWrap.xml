@@ -1,21 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jnxaread.dao.wrap.ReplyMapperWrap">
-  <resultMap extends="com.jnxaread.dao.ReplyMapper.ResultMapWithBLOBs" id="ResultMapWithUsername" type="com.jnxaread.bean.wrap.ReplyWrap">
-    <result column="username" jdbcType="VARCHAR" property="username"/>
-    <result column="title" jdbcType="VARCHAR" property="topicTitle"/>
-  </resultMap>
-  <select id="findListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
-    SELECT reply.id,reply.createTime,reply.floor,reply.quote,reply.content,user.username
-    FROM reply,user WHERE reply.topicId=#{topicId} AND reply.userId=user.id AND reply.deleted=0 LIMIT #{startRow},50
-  </select>
-  <select id="findListByUserId" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
-    SELECT reply.id,reply.topicId,reply.createTime,reply.floor,reply.quote,reply.content,user.username,topic.title
-    FROM reply,user,topic WHERE reply.userId=#{userId} AND user.id=#{userId} AND reply.deleted=0 AND reply.topicId=topic.id
-    AND topic.restricted&lt;=#{level}
-  </select>
-  <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.ReplyWrap">
-    SELECT reply.id,reply.createTime,reply.floor,reply.quote,reply.content,reply.deleted,user.username
-    FROM reply,user WHERE reply.id=#{id} AND reply.userId=user.id
-  </select>
+    <resultMap extends="com.jnxaread.dao.ReplyMapper.ResultMapWithBLOBs" id="ResultMapWithUsername"
+               type="com.jnxaread.bean.wrap.ReplyWrap">
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="title" jdbcType="VARCHAR" property="topicTitle"/>
+    </resultMap>
+    <select id="findListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
+        SELECT reply.id, reply.createTime, reply.floor, reply.quote, reply.content, user.username
+        FROM reply,
+             user
+        WHERE reply.topicId = #{topicId}
+          AND reply.userId = user.id
+          AND reply.deleted = 0
+        LIMIT #{startRow},50
+    </select>
+    <select id="findListByUserId" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
+        SELECT reply.id,
+               reply.topicId,
+               reply.createTime,
+               reply.floor,
+               reply.quote,
+               reply.content,
+               user.username,
+               topic.title
+        FROM reply,
+             user,
+             topic
+        WHERE reply.userId = #{userId}
+          AND user.id = #{userId}
+          AND reply.deleted = 0
+          AND reply.topicId = topic.id
+          AND topic.restricted &lt;= #{level}
+    </select>
+    <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.ReplyWrap">
+        SELECT reply.id, reply.createTime, reply.floor, reply.quote, reply.content, reply.deleted, user.username
+        FROM reply,
+             user
+        WHERE reply.id = #{id}
+          AND reply.userId = user.id
+    </select>
 </mapper>
