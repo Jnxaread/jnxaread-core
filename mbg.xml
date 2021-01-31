@@ -89,10 +89,6 @@
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-        <table tableName="Login" domainObjectName="Login">
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
         <table tableName="Notice" domainObjectName="Notice">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
