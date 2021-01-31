@@ -403,6 +403,7 @@ CREATE TABLE `Project` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
   `version` varchar(16) NOT NULL COMMENT '工程版本',
   `versionInfo` varchar(255) NOT NULL COMMENT '版本信息',
+  `system` int(1) DEFAULT NULL COMMENT '系统类别【0：客户端系统；1：服务端系统；2：后台管理系统；3：后台服务系统】',
   `userId` int(11) NOT NULL COMMENT '发布用户',
   `createTime` datetime(6) NOT NULL COMMENT '发布时间',
   PRIMARY KEY (`id`),
@@ -557,4 +558,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-30 10:31:14
+-- Dump completed on 2021-01-31 19:24:02

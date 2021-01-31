@@ -5,6 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="version" jdbcType="VARCHAR" property="version" />
     <result column="versionInfo" jdbcType="VARCHAR" property="versionInfo" />
+    <result column="system" jdbcType="INTEGER" property="system" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, version, versionInfo, userId, createTime
+    id, version, versionInfo, system, userId, createTime
   </sql>
   <select id="selectByExample" parameterType="com.jnxaread.bean.ProjectExample" resultMap="BaseResultMap">
     select
@@ -103,10 +104,10 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into project (version, versionInfo, userId, 
-      createTime)
-    values (#{version,jdbcType=VARCHAR}, #{versionInfo,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP})
+    insert into project (version, versionInfo, system, 
+      userId, createTime)
+    values (#{version,jdbcType=VARCHAR}, #{versionInfo,jdbcType=VARCHAR}, #{system,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Project">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -119,6 +120,9 @@
       </if>
       <if test="versionInfo != null">
         versionInfo,
+      </if>
+      <if test="system != null">
+        system,
       </if>
       <if test="userId != null">
         userId,
@@ -133,6 +137,9 @@
       </if>
       <if test="versionInfo != null">
         #{versionInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="system != null">
+        #{system,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
@@ -160,6 +167,9 @@
       <if test="record.versionInfo != null">
         versionInfo = #{record.versionInfo,jdbcType=VARCHAR},
       </if>
+      <if test="record.system != null">
+        system = #{record.system,jdbcType=INTEGER},
+      </if>
       <if test="record.userId != null">
         userId = #{record.userId,jdbcType=INTEGER},
       </if>
@@ -176,6 +186,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       version = #{record.version,jdbcType=VARCHAR},
       versionInfo = #{record.versionInfo,jdbcType=VARCHAR},
+      system = #{record.system,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -191,6 +202,9 @@
       <if test="versionInfo != null">
         versionInfo = #{versionInfo,jdbcType=VARCHAR},
       </if>
+      <if test="system != null">
+        system = #{system,jdbcType=INTEGER},
+      </if>
       <if test="userId != null">
         userId = #{userId,jdbcType=INTEGER},
       </if>
@@ -204,6 +218,7 @@
     update project
     set version = #{version,jdbcType=VARCHAR},
       versionInfo = #{versionInfo,jdbcType=VARCHAR},
+      system = #{system,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

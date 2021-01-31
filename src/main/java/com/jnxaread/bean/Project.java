@@ -9,6 +9,8 @@ public class Project {
 
     private String versionInfo;
 
+    private Integer system;
+
     private Integer userId;
 
     private Date createTime;
@@ -35,6 +37,14 @@ public class Project {
 
     public void setVersionInfo(String versionInfo) {
         this.versionInfo = versionInfo == null ? null : versionInfo.trim();
+    }
+
+    public Integer getSystem() {
+        return system;
+    }
+
+    public void setSystem(Integer system) {
+        this.system = system;
     }
 
     public Integer getUserId() {
