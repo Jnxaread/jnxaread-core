@@ -1,7 +1,10 @@
 package com.jnxaread.dao.wrap;
 
+import com.jnxaread.bean.wrap.ProjectWrap;
 import com.jnxaread.dao.ProjectMapper;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author 未央
@@ -9,4 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ProjectMapperWrap extends ProjectMapper {
+
+    List<ProjectWrap> findListWithUsername();
+
 }

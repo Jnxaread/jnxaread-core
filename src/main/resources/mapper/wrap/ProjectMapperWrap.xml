@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnxaread.dao.wrap.ProjectMapperWrap">
+    <resultMap extends="com.jnxaread.dao.ProjectMapper.BaseResultMap" id="ResultMapWithUsername"
+               type="com.jnxaread.bean.wrap.ProjectWrap">
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+    </resultMap>
+    <select id="findListWithUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
+        select p.*,u.username from Project p,User u
+    </select>
+</mapper>
