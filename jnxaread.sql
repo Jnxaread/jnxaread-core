@@ -403,9 +403,11 @@ CREATE TABLE `Project` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
   `version` varchar(16) NOT NULL COMMENT '工程版本',
   `versionInfo` varchar(255) NOT NULL COMMENT '版本信息',
-  `system` int(1) DEFAULT NULL COMMENT '系统类别【0：客户端系统；1：服务端系统；2：后台管理系统；3：后台服务系统】',
+  `system` int(1) NOT NULL COMMENT '系统类别【0：客户端系统；1：服务端系统；2：后台管理系统；3：后台服务系统】',
+  `status` int(1) NOT NULL DEFAULT '0' COMMENT '版本状态【0：未上线；1：已上线；2：已下线；3：已废弃】',
   `userId` int(11) NOT NULL COMMENT '发布用户',
   `createTime` datetime(6) NOT NULL COMMENT '发布时间',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除【0：未删除；1：已删除】',
   PRIMARY KEY (`id`),
   KEY `project_user_id` (`userId`),
   CONSTRAINT `project_user_id` FOREIGN KEY (`userId`) REFERENCES `User` (`id`)
@@ -558,4 +560,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-31 19:24:02
+-- Dump completed on 2021-02-02  9:37:29

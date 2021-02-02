@@ -6,8 +6,10 @@
     <result column="version" jdbcType="VARCHAR" property="version" />
     <result column="versionInfo" jdbcType="VARCHAR" property="versionInfo" />
     <result column="system" jdbcType="INTEGER" property="system" />
+    <result column="status" jdbcType="INTEGER" property="status" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, version, versionInfo, system, userId, createTime
+    id, version, versionInfo, system, status, userId, createTime, deleted
   </sql>
   <select id="selectByExample" parameterType="com.jnxaread.bean.ProjectExample" resultMap="BaseResultMap">
     select
@@ -105,9 +107,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into project (version, versionInfo, system, 
-      userId, createTime)
+      status, userId, createTime, 
+      deleted)
     values (#{version,jdbcType=VARCHAR}, #{versionInfo,jdbcType=VARCHAR}, #{system,jdbcType=INTEGER}, 
-      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+      #{status,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Project">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -124,11 +128,17 @@
       <if test="system != null">
         system,
       </if>
+      <if test="status != null">
+        status,
+      </if>
       <if test="userId != null">
         userId,
       </if>
       <if test="createTime != null">
         createTime,
+      </if>
+      <if test="deleted != null">
+        deleted,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -141,11 +151,17 @@
       <if test="system != null">
         #{system,jdbcType=INTEGER},
       </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -170,11 +186,17 @@
       <if test="record.system != null">
         system = #{record.system,jdbcType=INTEGER},
       </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
       <if test="record.userId != null">
         userId = #{record.userId,jdbcType=INTEGER},
       </if>
       <if test="record.createTime != null">
         createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deleted != null">
+        deleted = #{record.deleted,jdbcType=BIT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -187,8 +209,10 @@
       version = #{record.version,jdbcType=VARCHAR},
       versionInfo = #{record.versionInfo,jdbcType=VARCHAR},
       system = #{record.system,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
-      createTime = #{record.createTime,jdbcType=TIMESTAMP}
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -205,11 +229,17 @@
       <if test="system != null">
         system = #{system,jdbcType=INTEGER},
       </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
       <if test="userId != null">
         userId = #{userId,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -219,8 +249,10 @@
     set version = #{version,jdbcType=VARCHAR},
       versionInfo = #{versionInfo,jdbcType=VARCHAR},
       system = #{system,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
-      createTime = #{createTime,jdbcType=TIMESTAMP}
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

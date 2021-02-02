@@ -11,9 +11,13 @@ public class Project {
 
     private Integer system;
 
+    private Integer status;
+
     private Integer userId;
 
     private Date createTime;
+
+    private Boolean deleted;
 
     public Integer getId() {
         return id;
@@ -47,6 +51,14 @@ public class Project {
         this.system = system;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     public Integer getUserId() {
         return userId;
     }
@@ -61,5 +73,13 @@ public class Project {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
 }
