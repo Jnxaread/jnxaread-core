@@ -4,12 +4,14 @@
   <resultMap id="BaseResultMap" type="com.jnxaread.bean.Project">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="version" jdbcType="VARCHAR" property="version" />
-    <result column="versionInfo" jdbcType="VARCHAR" property="versionInfo" />
     <result column="system" jdbcType="INTEGER" property="system" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jnxaread.bean.Project">
+    <result column="versionInfo" jdbcType="LONGVARCHAR" property="versionInfo" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,8 +72,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, version, versionInfo, system, status, userId, createTime, deleted
+    id, version, system, status, userId, createTime, deleted
   </sql>
+  <sql id="Blob_Column_List">
+    versionInfo
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.jnxaread.bean.ProjectExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from project
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" parameterType="com.jnxaread.bean.ProjectExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -86,9 +107,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from project
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -106,12 +129,12 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into project (version, versionInfo, system, 
-      status, userId, createTime, 
-      deleted)
-    values (#{version,jdbcType=VARCHAR}, #{versionInfo,jdbcType=VARCHAR}, #{system,jdbcType=INTEGER}, 
-      #{status,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=BIT})
+    insert into project (version, system, status, 
+      userId, createTime, deleted, 
+      versionInfo)
+    values (#{version,jdbcType=VARCHAR}, #{system,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, 
+      #{versionInfo,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jnxaread.bean.Project">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -121,9 +144,6 @@
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="version != null">
         version,
-      </if>
-      <if test="versionInfo != null">
-        versionInfo,
       </if>
       <if test="system != null">
         system,
@@ -140,13 +160,13 @@
       <if test="deleted != null">
         deleted,
       </if>
+      <if test="versionInfo != null">
+        versionInfo,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="version != null">
         #{version,jdbcType=VARCHAR},
-      </if>
-      <if test="versionInfo != null">
-        #{versionInfo,jdbcType=VARCHAR},
       </if>
       <if test="system != null">
         #{system,jdbcType=INTEGER},
@@ -162,6 +182,9 @@
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
+      </if>
+      <if test="versionInfo != null">
+        #{versionInfo,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -180,9 +203,6 @@
       <if test="record.version != null">
         version = #{record.version,jdbcType=VARCHAR},
       </if>
-      <if test="record.versionInfo != null">
-        versionInfo = #{record.versionInfo,jdbcType=VARCHAR},
-      </if>
       <if test="record.system != null">
         system = #{record.system,jdbcType=INTEGER},
       </if>
@@ -198,7 +218,24 @@
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
       </if>
+      <if test="record.versionInfo != null">
+        versionInfo = #{record.versionInfo,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update project
+    set id = #{record.id,jdbcType=INTEGER},
+      version = #{record.version,jdbcType=VARCHAR},
+      system = #{record.system,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      userId = #{record.userId,jdbcType=INTEGER},
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      deleted = #{record.deleted,jdbcType=BIT},
+      versionInfo = #{record.versionInfo,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -207,7 +244,6 @@
     update project
     set id = #{record.id,jdbcType=INTEGER},
       version = #{record.version,jdbcType=VARCHAR},
-      versionInfo = #{record.versionInfo,jdbcType=VARCHAR},
       system = #{record.system,jdbcType=INTEGER},
       status = #{record.status,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
@@ -222,9 +258,6 @@
     <set>
       <if test="version != null">
         version = #{version,jdbcType=VARCHAR},
-      </if>
-      <if test="versionInfo != null">
-        versionInfo = #{versionInfo,jdbcType=VARCHAR},
       </if>
       <if test="system != null">
         system = #{system,jdbcType=INTEGER},
@@ -241,13 +274,26 @@
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
       </if>
+      <if test="versionInfo != null">
+        versionInfo = #{versionInfo,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jnxaread.bean.Project">
+    update project
+    set version = #{version,jdbcType=VARCHAR},
+      system = #{system,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      userId = #{userId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+      versionInfo = #{versionInfo,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Project">
     update project
     set version = #{version,jdbcType=VARCHAR},
-      versionInfo = #{versionInfo,jdbcType=VARCHAR},
       system = #{system,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},

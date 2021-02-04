@@ -7,8 +7,6 @@ public class Project {
 
     private String version;
 
-    private String versionInfo;
-
     private Integer system;
 
     private Integer status;
@@ -18,6 +16,8 @@ public class Project {
     private Date createTime;
 
     private Boolean deleted;
+
+    private String versionInfo;
 
     public Integer getId() {
         return id;
@@ -33,14 +33,6 @@ public class Project {
 
     public void setVersion(String version) {
         this.version = version == null ? null : version.trim();
-    }
-
-    public String getVersionInfo() {
-        return versionInfo;
-    }
-
-    public void setVersionInfo(String versionInfo) {
-        this.versionInfo = versionInfo == null ? null : versionInfo.trim();
     }
 
     public Integer getSystem() {
@@ -81,5 +73,13 @@ public class Project {
 
     public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public String getVersionInfo() {
+        return versionInfo;
+    }
+
+    public void setVersionInfo(String versionInfo) {
+        this.versionInfo = versionInfo == null ? null : versionInfo.trim();
     }
 }
