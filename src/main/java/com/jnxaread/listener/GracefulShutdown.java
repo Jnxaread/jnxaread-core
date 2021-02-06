@@ -15,7 +15,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * SpringBoot优雅停机（未测试）
+ * SpringBoot优雅停机（已测试）
  *
  * @Author 未央
  * @Create 2021-02-04 10:11
@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 public class GracefulShutdown implements ApplicationListener<ContextClosedEvent> {
     private final Logger logger = LoggerFactory.getLogger(GracefulShutdown.class);
     private static volatile Connector connector;
-    private static final int waitTime = 30;
+    private static final int waitTime = 120;
 
     /**
      * 用于获取Tomcat连接器
