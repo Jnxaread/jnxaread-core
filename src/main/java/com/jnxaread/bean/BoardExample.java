@@ -725,6 +725,126 @@ public class BoardExample {
             return (Criteria) this;
         }
 
+        public Criteria andUserIdIsNull() {
+            addCriterion("userId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIsNotNull() {
+            addCriterion("userId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdEqualTo(Integer value) {
+            addCriterion("userId =", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotEqualTo(Integer value) {
+            addCriterion("userId <>", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThan(Integer value) {
+            addCriterion("userId >", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("userId >=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThan(Integer value) {
+            addCriterion("userId <", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
+            addCriterion("userId <=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIn(List<Integer> values) {
+            addCriterion("userId in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotIn(List<Integer> values) {
+            addCriterion("userId not in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdBetween(Integer value1, Integer value2) {
+            addCriterion("userId between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("userId not between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerIdIsNull() {
+            addCriterion("managerId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerIdIsNotNull() {
+            addCriterion("managerId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerIdEqualTo(Integer value) {
+            addCriterion("managerId =", value, "managerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerIdNotEqualTo(Integer value) {
+            addCriterion("managerId <>", value, "managerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerIdGreaterThan(Integer value) {
+            addCriterion("managerId >", value, "managerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("managerId >=", value, "managerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerIdLessThan(Integer value) {
+            addCriterion("managerId <", value, "managerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerIdLessThanOrEqualTo(Integer value) {
+            addCriterion("managerId <=", value, "managerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerIdIn(List<Integer> values) {
+            addCriterion("managerId in", values, "managerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerIdNotIn(List<Integer> values) {
+            addCriterion("managerId not in", values, "managerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerIdBetween(Integer value1, Integer value2) {
+            addCriterion("managerId between", value1, value2, "managerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("managerId not between", value1, value2, "managerId");
+            return (Criteria) this;
+        }
+
         public Criteria andDeletedIsNull() {
             addCriterion("deleted is null");
             return (Criteria) this;

@@ -23,6 +23,10 @@ public class Board {
 
     private Boolean replyLocked;
 
+    private Integer userId;
+
+    private Integer managerId;
+
     private Boolean deleted;
 
     private Date createTime;
@@ -105,6 +109,22 @@ public class Board {
 
     public void setReplyLocked(Boolean replyLocked) {
         this.replyLocked = replyLocked;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getManagerId() {
+        return managerId;
+    }
+
+    public void setManagerId(Integer managerId) {
+        this.managerId = managerId;
     }
 
     public Boolean getDeleted() {

@@ -25,6 +25,10 @@ public class Category {
 
     private Boolean commentLocked;
 
+    private Integer userId;
+
+    private Integer managerId;
+
     private Boolean deleted;
 
     private Date createTime;
@@ -115,6 +119,22 @@ public class Category {
 
     public void setCommentLocked(Boolean commentLocked) {
         this.commentLocked = commentLocked;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getManagerId() {
+        return managerId;
+    }
+
+    public void setManagerId(Integer managerId) {
+        this.managerId = managerId;
     }
 
     public Boolean getDeleted() {

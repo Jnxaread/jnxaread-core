@@ -150,9 +150,15 @@ CREATE TABLE `Board` (
   `restricted` int(11) NOT NULL DEFAULT '0' COMMENT '限制性等级',
   `topicLocked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定帖子，若为true，则本版块不能发帖',
   `replyLocked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定回复，若为true，则本版块下的所有帖子都不能回复',
+  `userId` int(11) NOT NULL COMMENT '创建者ID',
+  `managerId` int(11) NOT NULL COMMENT '当前管理者ID',
   `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除，如果为true，则删除该版块下所有帖子',
   `createTime` datetime(6) NOT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `board_user_managerId` (`managerId`),
+  KEY `board_user_userId` (`userId`),
+  CONSTRAINT `board_user_managerId` FOREIGN KEY (`managerId`) REFERENCES `User` (`id`),
+  CONSTRAINT `board_user_userId` FOREIGN KEY (`userId`) REFERENCES `User` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -184,9 +190,15 @@ CREATE TABLE `Category` (
   `fictionLocked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定作品，如果为true，则该类别不允许发布新作品',
   `chapterLocked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定章节，如果为true，则该类别下不能发布章节',
   `commentLocked` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定评论，如果为true，则该类别下不能发表评论',
+  `userId` int(11) NOT NULL COMMENT '创建者ID',
+  `managerId` int(11) NOT NULL COMMENT '当前管理者ID',
   `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除，如果为true，则删除该类别下的所有作品',
   `createTime` datetime NOT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `category_user_managerId` (`managerId`),
+  KEY `category_user_userId` (`userId`),
+  CONSTRAINT `category_user_managerId` FOREIGN KEY (`managerId`) REFERENCES `User` (`id`),
+  CONSTRAINT `category_user_userId` FOREIGN KEY (`userId`) REFERENCES `User` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -560,4 +572,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-02 23:30:49
+-- Dump completed on 2021-02-06 11:21:37
