@@ -85,7 +85,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from project
+    from Project
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -99,7 +99,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from project
+    from Project
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -112,15 +112,15 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from project
+    from Project
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from project
+    delete from Project
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.jnxaread.bean.ProjectExample">
-    delete from project
+    delete from Project
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -129,7 +129,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into project (version, system, status, 
+    insert into Project (version, system, status,
       userId, createTime, deleted, 
       versionInfo)
     values (#{version,jdbcType=VARCHAR}, #{system,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
@@ -140,7 +140,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into project
+    insert into Project
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="version != null">
         version,
@@ -189,13 +189,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.jnxaread.bean.ProjectExample" resultType="java.lang.Long">
-    select count(*) from project
+    select count(*) from Project
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update project
+    update Project
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -227,7 +227,7 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
-    update project
+    update Project
     set id = #{record.id,jdbcType=INTEGER},
       version = #{record.version,jdbcType=VARCHAR},
       system = #{record.system,jdbcType=INTEGER},
@@ -241,7 +241,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update project
+    update Project
     set id = #{record.id,jdbcType=INTEGER},
       version = #{record.version,jdbcType=VARCHAR},
       system = #{record.system,jdbcType=INTEGER},
@@ -254,7 +254,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Project">
-    update project
+    update Project
     <set>
       <if test="version != null">
         version = #{version,jdbcType=VARCHAR},
@@ -281,7 +281,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jnxaread.bean.Project">
-    update project
+    update Project
     set version = #{version,jdbcType=VARCHAR},
       system = #{system,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
@@ -292,7 +292,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Project">
-    update project
+    update Project
     set version = #{version,jdbcType=VARCHAR},
       system = #{system,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},

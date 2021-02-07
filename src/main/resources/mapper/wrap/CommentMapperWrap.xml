@@ -7,26 +7,26 @@
         <result column="title" jdbcType="VARCHAR" property="fictionTitle"/>
     </resultMap>
     <select id="findListWidthUsername" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
-        SELECT comment.createTime, comment.content, comment.visible, comment.deleted, user.username
-        FROM comment,
-             user
-        WHERE comment.chapterId = #{chapterId}
-          AND comment.visible = 1
-          AND comment.deleted = 0
-          AND comment.userId = user.id
+        SELECT Comment.createTime, Comment.content, Comment.visible, Comment.deleted, User.username
+        FROM Comment,
+             User
+        WHERE Comment.chapterId = #{chapterId}
+          AND Comment.visible = 1
+          AND Comment.deleted = 0
+          AND Comment.userId = User.id
     </select>
     <select id="findListByUserId" parameterType="java.lang.Integer" resultMap="ResultMapWithUsername">
-        SELECT comment.createTime, comment.content, user.username, fiction.title
-        FROM comment,
-             user,
-             fiction,
-             chapter
-        WHERE comment.userId = #{userId}
-          AND comment.visible = 1
-          AND comment.deleted = 0
-          AND user.id = #{userId}
-          AND comment.fictionId = fiction.id
-          AND comment.chapterId = chapter.id
-          AND chapter.restricted &lt;= #{level}
+        SELECT Comment.createTime, Comment.content, User.username, Fiction.title
+        FROM Comment,
+             User,
+             Fiction,
+             Chapter
+        WHERE Comment.userId = #{userId}
+          AND Comment.visible = 1
+          AND Comment.deleted = 0
+          AND User.id = #{userId}
+          AND Comment.fictionId = Fiction.id
+          AND Comment.chapterId = Chapter.id
+          AND Chapter.restricted &lt;= #{level}
     </select>
 </mapper>

@@ -85,7 +85,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from board
+    from Board
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -96,15 +96,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from board
+    from Board
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from board
+    delete from Board
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.jnxaread.bean.BoardExample">
-    delete from board
+    delete from Board
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -113,7 +113,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into board (name, description, noticeCount, 
+    insert into Board (name, description, noticeCount,
       topicCount, replyCount, visible, 
       restricted, topicLocked, replyLocked, 
       userId, managerId, deleted, 
@@ -128,7 +128,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into board
+    insert into Board
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
         name,
@@ -213,13 +213,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.jnxaread.bean.BoardExample" resultType="java.lang.Long">
-    select count(*) from board
+    select count(*) from Board
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update board
+    update Board
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -269,7 +269,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update board
+    update Board
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
@@ -289,7 +289,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Board">
-    update board
+    update Board
     <set>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -334,7 +334,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Board">
-    update board
+    update Board
     set name = #{name,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       noticeCount = #{noticeCount,jdbcType=INTEGER},

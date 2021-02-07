@@ -2,48 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jnxaread.dao.wrap.UserMapperWrap">
     <update id="updateLoginCountByPrimaryKey" parameterType="java.lang.Integer">
-        update user
+        update User
         set loginCount=loginCount + 1
         where id = #{id}
     </update>
     <update id="updateTopicCountByPrimaryKey" parameterType="java.lang.Integer">
-        update user
+        update User
         set topicCount=topicCount + 1
         where id = #{id}
     </update>
     <update id="updateReplyCountByPrimaryKey" parameterType="java.lang.Integer">
-        update user
+        update User
         set replyCount=replyCount + 1
         where id = #{id}
     </update>
     <update id="updateFictionCountByPrimaryKey" parameterType="java.lang.Integer">
-        update user
+        update User
         set fictionCount=fictionCount + 1
         where id = #{id}
     </update>
     <update id="updateChapterCountByPrimaryKey" parameterType="java.lang.Integer">
-        update user
+        update User
         set chapterCount=chapterCount + 1
         where id = #{id}
     </update>
     <update id="updateCommentCountByPrimaryKey" parameterType="java.lang.Integer">
-        update user
+        update User
         set commentCount=commentCount + 1
         where id = #{id}
     </update>
     <update id="updateLevelByPrimaryKey" parameterType="java.lang.Integer">
-        update user
+        update User
         set level=#{level}
         where id = #{id}
     </update>
     <update id="updateGradeByPrimaryKey" parameterType="java.lang.Integer">
-        update user
+        update User
         set grade=grade + #{increase}
         where id = #{id}
     </update>
     <select id="selectByPrimaryKeyForUpdate" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.User">
         select
         <include refid="com.jnxaread.dao.UserMapper.Base_Column_List"/>
-        from user where id = #{id,jdbcType=INTEGER} AND deleted=0 for update
+        from User where id = #{id,jdbcType=INTEGER} AND deleted=0 for update
     </select>
 </mapper>

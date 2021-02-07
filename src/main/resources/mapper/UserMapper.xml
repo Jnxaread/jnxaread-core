@@ -103,7 +103,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from user
+    from User
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -114,15 +114,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from user
+    from User
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
+    delete from User
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.jnxaread.bean.UserExample">
-    delete from user
+    delete from User
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -131,7 +131,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into user (account, password, username, 
+    insert into User (account, password, username,
       countryCode, mobile, email, 
       gender, authorityId, level, 
       grade, bannedTopic, bannedReply, 
@@ -156,7 +156,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into user
+    insert into User
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="account != null">
         account,
@@ -337,13 +337,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.jnxaread.bean.UserExample" resultType="java.lang.Long">
-    select count(*) from user
+    select count(*) from User
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update user
+    update User
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -441,7 +441,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update user
+    update User
     set id = #{record.id,jdbcType=INTEGER},
       account = #{record.account,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
@@ -477,7 +477,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.User">
-    update user
+    update User
     <set>
       <if test="account != null">
         account = #{account,jdbcType=VARCHAR},
@@ -570,7 +570,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.User">
-    update user
+    update User
     set account = #{account,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},

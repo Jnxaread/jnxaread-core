@@ -6,41 +6,41 @@
         <result column="username" jdbcType="VARCHAR" property="username"/>
     </resultMap>
     <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.ChapterWrap">
-        SELECT chapter.*, user.username
-        FROM chapter,
-             user
-        WHERE chapter.id = #{id}
-          AND chapter.visible = 1
-          AND chapter.deleted = 0
-          AND chapter.userId = user.id
+        SELECT Chapter.*, User.username
+        FROM Chapter,
+             User
+        WHERE Chapter.id = #{id}
+          AND Chapter.visible = 1
+          AND Chapter.deleted = 0
+          AND Chapter.userId = User.id
     </select>
     <select id="findWithUsernameByNumber" parameterType="java.lang.Integer"
             resultType="com.jnxaread.bean.wrap.ChapterWrap">
-        SELECT chapter.*, user.username
-        FROM chapter,
-             user
-        WHERE chapter.fictionId = #{fictionId}
-          AND chapter.number = #{number}
-          AND chapter.visible = 1
-          AND chapter.deleted = 0
-          AND chapter.userId = user.id
+        SELECT Chapter.*, User.username
+        FROM Chapter,
+             User
+        WHERE Chapter.fictionId = #{fictionId}
+          AND Chapter.number = #{number}
+          AND Chapter.visible = 1
+          AND Chapter.deleted = 0
+          AND Chapter.userId = User.id
     </select>
     <select id="selectMaxNumberByFictionId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
         SELECT MAX(number)
-        FROM chapter
-        WHERE chapter.fictionId = #{fictionId}
-          AND chapter.deleted = 0
+        FROM Chapter
+        WHERE Chapter.fictionId = #{fictionId}
+          AND Chapter.deleted = 0
     </select>
     <select id="selectByPrimaryKeyForUpdate" parameterType="java.lang.Integer"
             resultMap="com.jnxaread.dao.ChapterMapper.ResultMapWithBLOBs">
         select id, userId, contentLocked, commentLocked, visible
-        from chapter
+        from Chapter
         where id = #{id}
           AND deleted = 0 for
         update
     </select>
     <update id="updateViewCountByPrimaryKey" parameterType="java.lang.Integer">
-        update chapter
+        update Chapter
         set viewCount=viewCount + 1
         where id = #{id}
     </update>

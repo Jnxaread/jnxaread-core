@@ -76,7 +76,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from label
+    from Label
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,15 +87,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from label
+    from Label
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from label
+    delete from Label
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.jnxaread.bean.LabelExample">
-    delete from label
+    delete from Label
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -104,7 +104,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into label (fictionId, userId, label, 
+    insert into Label (fictionId, userId, label,
       createTime, deleted)
     values (#{fictionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{label,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT})
@@ -113,7 +113,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into label
+    insert into Label
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="fictionId != null">
         fictionId,
@@ -150,13 +150,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.jnxaread.bean.LabelExample" resultType="java.lang.Long">
-    select count(*) from label
+    select count(*) from Label
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update label
+    update Label
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -182,7 +182,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update label
+    update Label
     set id = #{record.id,jdbcType=INTEGER},
       fictionId = #{record.fictionId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
@@ -194,7 +194,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Label">
-    update label
+    update Label
     <set>
       <if test="fictionId != null">
         fictionId = #{fictionId,jdbcType=INTEGER},
@@ -215,7 +215,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Label">
-    update label
+    update Label
     set fictionId = #{fictionId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       label = #{label,jdbcType=VARCHAR},

@@ -86,7 +86,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from reply
+    from Reply
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -100,7 +100,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from reply
+    from Reply
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -113,15 +113,15 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from reply
+    from Reply
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from reply
+    delete from Reply
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.jnxaread.bean.ReplyExample">
-    delete from reply
+    delete from Reply
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -130,7 +130,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into reply (topicId, userId, createTime, 
+    insert into Reply (topicId, userId, createTime,
       floor, quote, anonymous, 
       deleted, content)
     values (#{topicId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
@@ -141,7 +141,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into reply
+    insert into Reply
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="topicId != null">
         topicId,
@@ -196,13 +196,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.jnxaread.bean.ReplyExample" resultType="java.lang.Long">
-    select count(*) from reply
+    select count(*) from Reply
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update reply
+    update Reply
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -237,7 +237,7 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
-    update reply
+    update Reply
     set id = #{record.id,jdbcType=INTEGER},
       topicId = #{record.topicId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
@@ -252,7 +252,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update reply
+    update Reply
     set id = #{record.id,jdbcType=INTEGER},
       topicId = #{record.topicId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
@@ -266,7 +266,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Reply">
-    update reply
+    update Reply
     <set>
       <if test="topicId != null">
         topicId = #{topicId,jdbcType=INTEGER},
@@ -296,7 +296,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jnxaread.bean.Reply">
-    update reply
+    update Reply
     set topicId = #{topicId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
@@ -308,7 +308,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Reply">
-    update reply
+    update Reply
     set topicId = #{topicId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},

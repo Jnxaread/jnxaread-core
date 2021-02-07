@@ -149,7 +149,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from authority
+    from Authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -160,15 +160,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from authority
+    from Authority
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from authority
+    delete from Authority
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.jnxaread.bean.AuthorityExample">
-    delete from authority
+    delete from Authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -177,7 +177,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into authority (role, addNotice, addCategory, 
+    insert into Authority (role, addNotice, addCategory,
       addBoard, banAccount, banTopic, 
       banReply, banMessage, banFiction, 
       banComment, deleteOwnTopic, deleteOwnReply, 
@@ -230,7 +230,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into authority
+    insert into Authority
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="role != null">
         role,
@@ -633,13 +633,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.jnxaread.bean.AuthorityExample" resultType="java.lang.Long">
-    select count(*) from authority
+    select count(*) from Authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update authority
+    update Authority
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -848,7 +848,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update authority
+    update Authority
     set id = #{record.id,jdbcType=INTEGER},
       role = #{record.role,jdbcType=VARCHAR},
       addNotice = #{record.addNotice,jdbcType=BIT},
@@ -921,7 +921,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Authority">
-    update authority
+    update Authority
     <set>
       <if test="role != null">
         role = #{role,jdbcType=VARCHAR},
@@ -1125,7 +1125,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Authority">
-    update authority
+    update Authority
     set role = #{role,jdbcType=VARCHAR},
       addNotice = #{addNotice,jdbcType=BIT},
       addCategory = #{addCategory,jdbcType=BIT},

@@ -94,7 +94,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from chapter
+    from Chapter
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -108,7 +108,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from chapter
+    from Chapter
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -121,15 +121,15 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from chapter
+    from Chapter
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from chapter
+    delete from Chapter
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.jnxaread.bean.ChapterExample">
-    delete from chapter
+    delete from Chapter
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -138,7 +138,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into chapter (fictionId, userId, createTime, 
+    insert into Chapter (fictionId, userId, createTime,
       number, title, password, 
       wordCount, commentCount, viewCount, 
       visible, restricted, contentLocked, 
@@ -155,7 +155,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into chapter
+    insert into Chapter
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="fictionId != null">
         fictionId,
@@ -252,13 +252,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.jnxaread.bean.ChapterExample" resultType="java.lang.Long">
-    select count(*) from chapter
+    select count(*) from Chapter
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update chapter
+    update Chapter
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -314,7 +314,7 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
-    update chapter
+    update Chapter
     set id = #{record.id,jdbcType=INTEGER},
       fictionId = #{record.fictionId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
@@ -336,7 +336,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update chapter
+    update Chapter
     set id = #{record.id,jdbcType=INTEGER},
       fictionId = #{record.fictionId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
@@ -357,7 +357,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Chapter">
-    update chapter
+    update Chapter
     <set>
       <if test="fictionId != null">
         fictionId = #{fictionId,jdbcType=INTEGER},
@@ -408,7 +408,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jnxaread.bean.Chapter">
-    update chapter
+    update Chapter
     set fictionId = #{fictionId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
@@ -427,7 +427,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Chapter">
-    update chapter
+    update Chapter
     set fictionId = #{fictionId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},

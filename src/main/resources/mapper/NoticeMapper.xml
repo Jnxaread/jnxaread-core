@@ -95,7 +95,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from notice
+    from Notice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -109,7 +109,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from notice
+    from Notice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -122,15 +122,15 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from notice
+    from Notice
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from notice
+    delete from Notice
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.jnxaread.bean.NoticeExample">
-    delete from notice
+    delete from Notice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -139,7 +139,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into notice (boardId, userId, createTime, 
+    insert into Notice (boardId, userId, createTime,
       lastUserId, lastTime, label, 
       title, position, password, 
       viewCount, updateCount, visible, 
@@ -156,7 +156,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into notice
+    insert into Notice
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="boardId != null">
         boardId,
@@ -259,13 +259,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.jnxaread.bean.NoticeExample" resultType="java.lang.Long">
-    select count(*) from notice
+    select count(*) from Notice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update notice
+    update Notice
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -324,7 +324,7 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
-    update notice
+    update Notice
     set id = #{record.id,jdbcType=INTEGER},
       boardId = #{record.boardId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
@@ -347,7 +347,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update notice
+    update Notice
     set id = #{record.id,jdbcType=INTEGER},
       boardId = #{record.boardId,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
@@ -369,7 +369,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.jnxaread.bean.Notice">
-    update notice
+    update Notice
     <set>
       <if test="boardId != null">
         boardId = #{boardId,jdbcType=INTEGER},
@@ -423,7 +423,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jnxaread.bean.Notice">
-    update notice
+    update Notice
     set boardId = #{boardId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
@@ -443,7 +443,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jnxaread.bean.Notice">
-    update notice
+    update Notice
     set boardId = #{boardId,jdbcType=INTEGER},
       userId = #{userId,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},

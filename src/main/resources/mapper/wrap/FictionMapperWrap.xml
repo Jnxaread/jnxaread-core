@@ -15,9 +15,9 @@
         lastNumber,ch.title lastChapter,ch.createTime lastTime FROM
         (SELECT
         f.id,f.userId,f.title,f.introduction,f.chapterCount,f.wordCount,f.commentCount,f.viewCount,f.visible,f.deleted,mc.id
-        chapterId FROM fiction f,
-        (SELECT fictionId,MAX(id) id FROM chapter WHERE restricted&lt;=#{level} AND visible=1 AND deleted=0 GROUP BY
-        fictionId) mc WHERE f.id=mc.fictionId) fmc,chapter ch,user u
+        chapterId FROM Fiction f,
+        (SELECT fictionId,MAX(id) id FROM Chapter WHERE restricted&lt;=#{level} AND visible=1 AND deleted=0 GROUP BY
+        fictionId) mc WHERE f.id=mc.fictionId) fmc,Chapter ch,User u
         WHERE fmc.userId=u.id AND fmc.chapterId=ch.id AND ch.number!=-1 AND fmc.deleted=0 AND fmc.visible=1
         <if test="userId!=0">
             AND fmc.userId=#{userId}
@@ -45,10 +45,10 @@
                      f.viewCount,
                      f.deleted,
                      mc.id chapterId
-              FROM fiction f,
-                   (SELECT fictionId, MAX(id) id FROM chapter GROUP BY fictionId) mc
+              FROM Fiction f,
+                   (SELECT fictionId, MAX(id) id FROM Chapter GROUP BY fictionId) mc
               WHERE f.id = mc.fictionId) fmc,
-             chapter ch
+             Chapter ch
         WHERE fmc.chapterId = ch.id
           AND fmc.userId = #{userId}
           AND fmc.deleted = 0
@@ -56,39 +56,39 @@
         LIMIT #{startRow},30;
     </select>
     <select id="findWithUsername" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.wrap.FictionWrap">
-        SELECT fiction.id,
-               category.name,
-               user.username,
-               fiction.createTime,
-               fiction.title,
-               fiction.introduction,
-               fiction.chapterCount,
-               fiction.wordCount,
-               fiction.commentCount,
-               fiction.viewCount,
-               MAX(chapter.number) lastNumber
-        FROM fiction,
-             category,
-             user,
-             chapter
-        WHERE fiction.id = #{id}
-          AND fiction.categoryId = category.id
-          AND fiction.userId = user.id
-          AND chapter.fictionId = #{id}
-          AND chapter.deleted = 0;
+        SELECT Fiction.id,
+               Category.name,
+               User.username,
+               Fiction.createTime,
+               Fiction.title,
+               Fiction.introduction,
+               Fiction.chapterCount,
+               Fiction.wordCount,
+               Fiction.commentCount,
+               Fiction.viewCount,
+               MAX(Chapter.number) lastNumber
+        FROM Fiction,
+             Category,
+             User,
+             Chapter
+        WHERE Fiction.id = #{id}
+          AND Fiction.categoryId = Category.id
+          AND Fiction.userId = User.id
+          AND Chapter.fictionId = #{id}
+          AND Chapter.deleted = 0;
     </select>
     <update id="updateCommentCountByPrimaryKey" parameterType="java.lang.Integer">
-        update fiction
+        update Fiction
         set commentCount=commentCount + 1
         where id = #{id}
     </update>
     <update id="updateViewCountByPrimaryKey" parameterType="java.lang.Integer">
-        update fiction
+        update Fiction
         set viewCount=viewCount + 1
         where id = #{id}
     </update>
     <update id="updateChapterCountAndWordCountByPrimaryKey" parameterType="java.lang.Integer">
-        update fiction
+        update Fiction
         set chapterCount=chapterCount + 1,
             wordCount=wordCount + #{wordCount}
         where id = #{id}
