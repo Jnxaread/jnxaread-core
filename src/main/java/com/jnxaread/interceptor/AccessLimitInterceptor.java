@@ -51,13 +51,13 @@ public class AccessLimitInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         AccessIPContainer accessIPContainer = AccessIPContainer.getAccessIpContainer();
         ArrayList<String> viciousIPList = accessIPContainer.getViciousIPList();
-        String remoteAddr = request.getRemoteAddr();
-        if (viciousIPList.contains(remoteAddr)) {
+        String clientAddr = request.getHeader("X-Real-IP");
+        if (viciousIPList.contains(clientAddr)) {
             ResponseUtil.response(response, forbiddenResult);
             return false;
         }
         ConcurrentHashMap<String, Long> limitedIPMap = accessIPContainer.getLimitedIPMap();
-        if (limitedIPMap.containsKey(remoteAddr)) {
+        if (limitedIPMap.containsKey(clientAddr)) {
             ResponseUtil.response(response, limitedResult);
             return false;
         }
@@ -66,8 +66,8 @@ public class AccessLimitInterceptor implements HandlerInterceptor {
 
         long[] accessInfo;
         long currentTime = System.currentTimeMillis();
-        if (accessIPMap.containsKey(remoteAddr)) {
-            accessInfo = accessIPMap.get(remoteAddr);
+        if (accessIPMap.containsKey(clientAddr)) {
+            accessInfo = accessIPMap.get(clientAddr);
             long accessCount = accessInfo[0];
 
             if (accessCount < SAFE_ACCESS_COUNT) {
@@ -80,42 +80,42 @@ public class AccessLimitInterceptor implements HandlerInterceptor {
             double accessRate = (double) accessCount / intervalTime * 1000;
 
             String accessMsg;
-            accessMsg = remoteAddr + "-" + accessCount + "-" + accessTime;
+            accessMsg = clientAddr + "-" + accessCount + "-" + accessTime;
             if (accessCount < WARN_ACCESS_COUNT) {
                 if (accessRate > VICIOUS_SECOND_ACCESS_RATE) {
-                    viciousIPList.add(remoteAddr);
+                    viciousIPList.add(clientAddr);
                     logger.error(accessMsg);
                     ResponseUtil.response(response, forbiddenResult);
                     return false;
                 }
                 if (accessRate > HIGH_SECOND_ACCESS_RATE) {
-                    limitedIPMap.put(remoteAddr, currentTime + HIGH_LIMIT_TIME);
+                    limitedIPMap.put(clientAddr, currentTime + HIGH_LIMIT_TIME);
                     logger.warn(accessMsg + "-" + HIGH_LIMIT_TIME);
                     ResponseUtil.response(response, limitedResult);
                     return false;
                 }
                 if (accessRate > MID_SECOND_ACCESS_RATE) {
-                    limitedIPMap.put(remoteAddr, currentTime + MID_LIMIT_TIME);
+                    limitedIPMap.put(clientAddr, currentTime + MID_LIMIT_TIME);
                     logger.warn(accessMsg + "-" + MID_LIMIT_TIME);
                     ResponseUtil.response(response, limitedResult);
                     return false;
                 }
                 if (accessRate > LOW_SECOND_ACCESS_RATE) {
-                    limitedIPMap.put(remoteAddr, currentTime + LOW_LIMIT_TIME);
+                    limitedIPMap.put(clientAddr, currentTime + LOW_LIMIT_TIME);
                     logger.warn(accessMsg + "-" + LOW_LIMIT_TIME);
                     ResponseUtil.response(response, limitedResult);
                     return false;
                 }
             } else if (accessCount < DANGER_ACCESS_COUNT) {
                 if (accessRate > MINUTE_ACCESS_RATE) {
-                    viciousIPList.add(remoteAddr);
+                    viciousIPList.add(clientAddr);
                     logger.error(accessMsg);
                     ResponseUtil.response(response, forbiddenResult);
                     return false;
                 }
             } else {
                 if (accessRate > HOUR_ACCESS_RATE) {
-                    viciousIPList.add(remoteAddr);
+                    viciousIPList.add(clientAddr);
                     logger.error(accessMsg);
                     ResponseUtil.response(response, forbiddenResult);
                     return false;
@@ -128,10 +128,10 @@ public class AccessLimitInterceptor implements HandlerInterceptor {
         accessInfo = new long[2];
         accessInfo[0] = 1L;
         accessInfo[1] = currentTime;
-        accessIPMap.put(remoteAddr, accessInfo);
+        accessIPMap.put(clientAddr, accessInfo);
 
         //0.0.0.0.0.1
-        logger.info(remoteAddr);
+        logger.info(clientAddr);
 
         return true;
     }
