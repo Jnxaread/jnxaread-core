@@ -2,9 +2,7 @@ package com.jnxaread.entity;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 /**
  * 用户等级体系
@@ -15,9 +13,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @Data
 @Configuration
-@PropertySource("classpath:userLevel.properties")
 @ConfigurationProperties(prefix = "level")
-@EnableConfigurationProperties(UserLevel.class)
 public class UserLevel {
     private Integer lv0;
 

@@ -1,0 +1,7 @@
+grade:
+  login: 1 #每次登录积分+1
+  newTopic: 5 #每次发帖积分+5
+  newReply: 3 #每次回复积分+3
+  newComment: 10 #每次评论积分+10
+  newFiction: 15 #创建作品积分+15
+  newChapter: 100 #发布章节积分+100

@@ -51,7 +51,8 @@ public class AccessLimitInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         AccessIPContainer accessIPContainer = AccessIPContainer.getAccessIpContainer();
         ArrayList<String> viciousIPList = accessIPContainer.getViciousIPList();
-        String clientAddr = request.getHeader("X-Real-IP");
+        String clientAddr = request.getRemoteAddr();
+//        String clientAddr = request.getHeader("X-Real-IP");
         if (viciousIPList.contains(clientAddr)) {
             ResponseUtil.response(response, forbiddenResult);
             return false;

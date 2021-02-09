@@ -2,9 +2,7 @@ package com.jnxaread.entity;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 /**
  * 用户积分体系
@@ -15,9 +13,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @Data
 @Configuration
-@PropertySource("classpath:userGrade.properties")
 @ConfigurationProperties(prefix = "grade")
-@EnableConfigurationProperties(UserGrade.class)
 public class UserGrade {
 
     private Integer login;

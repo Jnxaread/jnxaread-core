@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.mail.nickname",
+      "type": "java.lang.String",
+      "description": "Nickname of mail sender."
+  }
+] }
