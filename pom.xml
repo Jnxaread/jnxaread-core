@@ -5,11 +5,11 @@
     <parent>
         <groupId>com.jnxaread</groupId>
         <artifactId>jnxaread-parent</artifactId>
-        <version>0.0.1</version>
+        <version>1.0.0</version>
         <relativePath/>
     </parent>
     <artifactId>jnxaread-core</artifactId>
-    <version>0.0.1</version>
+    <version>${jnxaread.version}</version>
     <name>jnxaread-core</name>
     <description>谨下工程基础库</description>
 

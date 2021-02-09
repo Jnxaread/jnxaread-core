@@ -19,9 +19,11 @@ public enum StatusCodeEnum {
     OK("000000", "执行成功"),
     PASS_CHECK_FORBIDDEN("010001", "禁止通行"),
     PASS_CHECK_LIMITED("010002", "禁止通行"),
-    PARAMETER_INVALIDATE("010003", "参数错误"),
-    ACCOUNT_OR_PASSWORD_INVALIDATE("010004", "账号或密码错误"),
+    PARAMETER_INVALID("010003", "参数错误"),
+    ACCOUNT_OR_PASSWORD_INVALID("010004", "账号或密码错误"),
     NOT_LOGGED_IN("010010", "用户未登录"),
+    ALREADY_LOGGED_IN("010011", "用户已登录"),
+    EMAIL_SENT_FAILED("020010", "发送邮件失败"),
 
 
     EXECUTION_TIMEOUT("020100", "系统执行超时");
