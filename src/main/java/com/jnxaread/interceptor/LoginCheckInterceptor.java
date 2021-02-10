@@ -26,8 +26,9 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         User user = (User) session.getAttribute("user");
         User admin = (User) session.getAttribute("admin");
         if (user == null && admin == null) {
-            StatusCodeEnum status = StatusCodeEnum.NOT_LOGGED_IN;
-            ResponseUtil.response(response, UnifiedResult.build(status.getCode(), status.getDescribe(), null));
+            String code = StatusCodeEnum.NOT_LOGGED_IN.getCode();
+            String desc = StatusCodeEnum.NOT_LOGGED_IN.getDescribe();
+            ResponseUtil.response(response, UnifiedResult.build(code, desc, null));
             return false;
         }
         return true;

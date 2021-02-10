@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 解决跨域访问问题
+ *
  * @author 未央
  * @create 2020-05-02 20:03
  */
