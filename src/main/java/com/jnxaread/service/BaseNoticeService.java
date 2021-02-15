@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface BaseNoticeService {
 
-    List<NoticeWrap> getNoticeWrapList();
+    List<NoticeWrap> getNoticeWrapList(Integer visible);
 
     NoticeWrap getNoticeWrap(int id);
 

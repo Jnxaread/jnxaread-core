@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Mapper
 public interface NoticeMapperWrap extends NoticeMapper {
-    List<NoticeWrap> findListWithUsername();
+    List<NoticeWrap> findListWithUsername(Integer visible);
 
     NoticeWrap findWithUsername(int id);
 

@@ -17,8 +17,8 @@ public class BaseNoticeServiceImpl implements BaseNoticeService {
     private NoticeMapperWrap noticeMapper;
 
     @Override
-    public List<NoticeWrap> getNoticeWrapList() {
-        return noticeMapper.findListWithUsername();
+    public List<NoticeWrap> getNoticeWrapList(Integer visible) {
+        return noticeMapper.findListWithUsername(visible);
     }
 
     @Override
