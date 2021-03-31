@@ -2,13 +2,12 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/jnxaread?serverTimezone=Asia/Shanghai
-    username: root
-#    password: 123
-    password: UXCK$$%%9278[l
+    username:
+    password:
   mail:
-    host: smtp.sina.com
-    username: inhive@sina.com
-    password: e864188480e4c5b0
+    host:
+    username:
+    password:
     nickname: 谨下网
     protocol: smtps
     port: 465
