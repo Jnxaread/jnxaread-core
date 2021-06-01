@@ -29,3 +29,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/resources/environment/develop.properties
+/src/main/resources/environment/product.properties

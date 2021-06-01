@@ -68,7 +68,34 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>develop</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>develop</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>product</id>
+            <properties>
+                <env>product</env>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
+        <filters>
+            <filter>src/main/resources/environment/${env}.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
