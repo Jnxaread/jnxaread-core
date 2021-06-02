@@ -9,4 +9,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface CategoryMapperWrap extends CategoryMapper {
+    void updateFictionCountByPrimaryKey(int id);
+
+    void updateChapterCountByPrimaryKey(int id);
+
+    void updateCommentCountByPrimaryKey(int id);
 }

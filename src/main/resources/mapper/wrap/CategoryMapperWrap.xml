@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnxaread.dao.wrap.CategoryMapperWrap">
+    <update id="updateFictionCountByPrimaryKey" parameterType="java.lang.Integer">
+        update Category
+        set fictionCount=fictionCount + 1
+        where id = #{id}
+    </update>
+    <update id="updateChapterCountByPrimaryKey" parameterType="java.lang.Integer">
+        update Category
+        set chapterCount=chapterCount + 1
+        where id = #{id}
+    </update>
+    <update id="updateCommentCountByPrimaryKey" parameterType="java.lang.Integer">
+        update Category
+        set commentCount=commentCount + 1
+        where id = #{id}
+    </update>
+</mapper>

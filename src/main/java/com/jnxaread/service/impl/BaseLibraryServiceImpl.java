@@ -65,6 +65,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         chapterMapper.insertSelective(chapter);
         userMapper.updateFictionCountByPrimaryKey(newFiction.getUserId());
         userMapper.updateGradeByPrimaryKey(newFiction.getUserId(), userGrade.getNewFiction());
+        categoryMapper.updateFictionCountByPrimaryKey(newFiction.getCategoryId());
         return newFiction.getId();
     }
 
@@ -83,14 +84,19 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int addChapter(Chapter newChapter) {
-        //根据作品id和章节号查找章节，如果章节存在，则返回-1
+        Fiction fiction = fictionMapper.selectByPrimaryKey(newChapter.getFictionId());
+        //如果作品的作者与章节作者不一致，则返回-1
+        if (!fiction.getUserId().equals(newChapter.getUserId())) {
+            return -1;
+        }
+        //根据作品id和章节号查找章节，如果章节存在，则返回-2
         Chapter chapter = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber());
-        if (chapter != null) return -1;
+        if (chapter != null) return -2;
         //如果新章节不是第一章
         if (newChapter.getNumber() != 1) {
-            //查找该章节的上一章是否存在，如果不存在，则返回-2
+            //查找该章节的上一章是否存在，如果不存在，则返回-3
             Chapter chapter1 = getChapterByNumber(newChapter.getFictionId(), newChapter.getNumber() - 1);
-            if (chapter1 == null) return -2;
+            if (chapter1 == null) return -3;
         }
         chapterMapper.insertSelective(newChapter);
         //章节所属作品的章节数+1，字数+若干
@@ -99,6 +105,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         userMapper.updateChapterCountByPrimaryKey(newChapter.getUserId());
         //作者的积分+若干
         userMapper.updateGradeByPrimaryKey(newChapter.getUserId(), userGrade.getNewChapter());
+        categoryMapper.updateChapterCountByPrimaryKey(fiction.getCategoryId());
         return newChapter.getId();
     }
 
@@ -114,6 +121,7 @@ public class BaseLibraryServiceImpl implements BaseLibraryService {
         fictionMapper.updateCommentCountByPrimaryKey(newComment.getFictionId());
         userMapper.updateCommentCountByPrimaryKey(newComment.getUserId());
         userMapper.updateGradeByPrimaryKey(newComment.getUserId(), userGrade.getNewComment());
+        categoryMapper.updateCommentCountByPrimaryKey(fiction.getCategoryId());
         return 0;
     }
 
