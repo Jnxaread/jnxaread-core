@@ -9,4 +9,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface BoardMapperWrap extends BoardMapper {
+    void updateNoticeCountByPrimaryKey(int id);
+
+    void updateTopicCountByPrimaryKey(int id);
+
+    void updateReplyCountByPrimaryKey(int id);
 }

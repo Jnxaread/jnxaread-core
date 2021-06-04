@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnxaread.dao.wrap.BoardMapperWrap">
+    <update id="updateNoticeCountByPrimaryKey" parameterType="java.lang.Integer">
+        update Board
+        set noticeCount=noticeCount + 1
+        where id = #{id}
+    </update>
+    <update id="updateTopicCountByPrimaryKey" parameterType="java.lang.Integer">
+        update Board
+        set topicCount=topicCount + 1
+        where id = #{id}
+    </update>
+    <update id="updateReplyCountByPrimaryKey" parameterType="java.lang.Integer">
+        update Board
+        set replyCount=replyCount + 1
+        where id = #{id}
+    </update>
+</mapper>

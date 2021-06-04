@@ -43,6 +43,7 @@ public class BaseForumServiceImpl implements BaseForumService {
         //帖子作者的发帖量+1
         userMapper.updateTopicCountByPrimaryKey(newTopic.getUserId());
         userMapper.updateGradeByPrimaryKey(newTopic.getUserId(), userGrade.getNewTopic());
+        boardMapper.updateTopicCountByPrimaryKey(newTopic.getBoardId());
         return newTopic.getId();
     }
 
@@ -71,6 +72,7 @@ public class BaseForumServiceImpl implements BaseForumService {
         //作者的回复数量+1
         userMapper.updateReplyCountByPrimaryKey(newReply.getUserId());
         userMapper.updateGradeByPrimaryKey(newReply.getUserId(), userGrade.getNewReply());
+        boardMapper.updateReplyCountByPrimaryKey(topic.getBoardId());
         return 0;
     }
 
