@@ -1,16 +1,16 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/jnxaread?serverTimezone=Asia/Shanghai
-    username:
-    password:
+    url: @spring.datasource.url@
+    username: @spring.datasource.username@
+    password: @spring.datasource.password@
   mail:
-    host:
-    username:
-    password:
+    host: @spring.mail.host@
+    username: @spring.mail.username@
+    password: @spring.mail.password@
     nickname: 谨下网
     protocol: smtps
-    port: 465
+    port: @spring.mail.port@
     default-encoding: utf-8
   profiles:
     include: userGrade,userLevel
@@ -18,3 +18,7 @@ spring:
 mybatis:
   #配置Mapper.xml文件位置
   mapper-locations: classpath:mapper/*Mapper.xml,mapper/wrap/*MapperWrap.xml
+
+jnxaread:
+  environment:
+    current: @jnxaread.environment.current@

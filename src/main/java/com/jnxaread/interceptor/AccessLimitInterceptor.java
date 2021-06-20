@@ -1,11 +1,12 @@
 package com.jnxaread.interceptor;
 
+import com.jnxaread.constant.StatusCodeEnum;
 import com.jnxaread.entity.AccessIPContainer;
 import com.jnxaread.entity.UnifiedResult;
-import com.jnxaread.constant.StatusCodeEnum;
 import com.jnxaread.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -25,6 +26,8 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class AccessLimitInterceptor implements HandlerInterceptor {
     private final Logger logger = LoggerFactory.getLogger("access");
+    @Value("${jnxaread.environment.current}")
+    private String ENV_CURRENT;
 
     private static final long SAFE_ACCESS_COUNT = 300;
     private static final long WARN_ACCESS_COUNT = 1500;
@@ -51,8 +54,12 @@ public class AccessLimitInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         AccessIPContainer accessIPContainer = AccessIPContainer.getAccessIpContainer();
         ArrayList<String> viciousIPList = accessIPContainer.getViciousIPList();
-//        String clientAddr = request.getRemoteAddr();
-        String clientAddr = request.getHeader("X-Real-IP");
+        String clientAddr;
+        if (this.ENV_CURRENT.equals("develop")) {
+            clientAddr = request.getRemoteAddr();
+        } else {
+            clientAddr = request.getHeader("X-Real-IP");
+        }
         if (viciousIPList.contains(clientAddr)) {
             ResponseUtil.response(response, forbiddenResult);
             return false;

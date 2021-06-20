@@ -4,5 +4,10 @@
       "name": "spring.mail.nickname",
       "type": "java.lang.String",
       "description": "Nickname of mail sender."
-  }
-] }
+    },
+    {
+      "name": "jnxaread.environment.current",
+      "type": "java.lang.String",
+      "description": "当前工程运行环境."
+    }
+  ] }

@@ -23,7 +23,7 @@
     FROM Topic,User WHERE Topic.id=#{id} AND Topic.visible=1 AND Topic.deleted=0 AND Topic.userId=User.id
   </select>
   <select id="selectByPrimaryKeyForUpdate" parameterType="java.lang.Integer" resultType="com.jnxaread.bean.Topic">
-    select id,replyCount,locked,deleted from Topic where id=#{id} for update
+    select id,boardId,replyCount,locked,deleted from Topic where id=#{id} for update
   </select>
   <update id="updateViewCountByPrimaryKey" parameterType="java.lang.Integer">
     update Topic set viewCount=viewCount+1 where id=#{id}
